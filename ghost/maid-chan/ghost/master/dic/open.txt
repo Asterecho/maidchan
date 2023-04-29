@@ -1,0 +1,80 @@
+﻿//**** 打開文件 ************************************************************************************
+OnSystemDialog
+{        
+
+
+	if reference1 == "ceshi2" {
+		DialogCeshi2(reference2);
+	}
+	elseif reference1 == "change3" {
+		DialogChange3(reference2);
+	}
+	elseif reference1 == "change6" {
+		DialogChange6(reference2);
+	}
+	elseif reference1 == "change9" {
+		DialogChange9(reference2);
+	}
+	elseif reference1 == "change12" {
+		DialogChange12(reference2);
+	}
+	elseif reference1 == "change15" {
+		DialogChange15(reference2);
+	}
+	elseif reference1 == "change18" {
+		DialogChange18(reference2);
+	}
+        case reference1 {
+		when "musicopen" 
+		{
+			_filepath = SPLITPATH(reference2)
+			_filename = _filepath[2]
+			_fileext = TOLOWER(_filepath[3])
+			case _fileext
+			{
+				when ".mid", ".wav", ".mp3", ".au", ".ogg", ".wma"
+				{
+					if playmode == 0
+					{
+						Musicfile = REPLACE(reference2,'/','\')
+						//---- 無限制歌詞卡播放。（感謝時原砂さん）
+						if '.mp3' _in_ reference2 {
+						"\0\s[2]\b[2]MP3文件：\n\_q%(_filename)%(_fileext)\n\n要播放此音樂嗎？\_q\n\n[half]/
+						\![*]\q[播放且唱出,OnMusicPlayWithLyric,%(Musicfile),play]\n/
+						\![*]\q[僅播放,OnMusicPlayWithLyric,%(Musicfile),play,nolyric]\n/
+						\![*]\q[循環播放,MusicStart_1]\n\n[half]/
+						\_b[img/close.png,inline]\q[Cancel,CANCEL]";
+						}
+						else {
+							"\0\s[2]\b[2]音樂文件：\n\_q%(_filename)%(_fileext)\n\n要播放此音樂嗎？\_q\n\n[half]/
+							\![*]\q[通常播放,MusicStart_0]\n/
+							\![*]\q[循環播放,MusicStart_1]\n\n[half]/
+							\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+						}
+					}
+					else {
+					"\0\s[3]已經在播放音樂了，不可以同時播放啾。\1\s[16]目前還不支持播放列表，請%(username)忍耐一下呣。\e"
+					}
+				}
+				others
+				{
+					"\0\s[0]未知文件\n\_q「%(_filename)%(_fileext)」\_q\0\s[3]…這不是音樂文件啾。\e"
+				}
+			}
+		}
+	}
+}
+OnCeshi2
+{
+	"\C";
+	--
+	"\![open,dialog,open,--id=ceshi2,--title=请选择]";
+}
+
+DialogCeshi2
+{       _file = _argv[0];
+	_filepath = SPLITPATH(_argv[0])
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+        "\_q\b[5]%(_argv[0])\n_file:%(_file)\n_filepath:&%(_filepath)\n_filename:&%(_filename)\n_fileext:&%(_fileext)\n\_q\e"
+}

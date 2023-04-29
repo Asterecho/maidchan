@@ -1,0 +1,144 @@
+
+//**** 名稱 ***********************************************************************
+//---- 名稱變化 ----------------------------------------------------------------------
+		Choice.TEACHUSERNAME
+		{
+			//---- 改變稱呼
+			"\0\s[11]呣？\n剛才的名字不是真的？\n\n要告訴我真正的名字了嗎？\w9\n這一次是真的？\n\n/
+			\_b[img/ok.png,inline]\q[真的,TEACHUSERNAMERUN]\n/
+			\_b[img/close.png,inline]\q[假的啦,TEACHUSERNAMECANCEL]\e"
+		}
+		Choice.TEACHUSERNAMERUN
+		{
+			username0 = "%(username)"
+			"\0\s[11]是什麼呢？\![open,inputbox,teachusername,-1]\e"
+		}
+		Choice.TEACHUSERNAMECANCEL
+		{
+			"\0\s[3]假、假的啊……\e"
+		}	
+		Choice.teachusername1
+		{
+			username = "%(username)さん"
+			"\0\s[15]好的，記住了。\n\n\0\s[5]記住了，不會忘記的啾。\e"
+		}
+		Choice.teachusername2
+		{
+			"\0\s[15]好的，記住了。\n\n\0\s[5]記住了，不會忘記的啾。\e"
+		}
+		Choice.teachusername3
+		{
+			username = "%(username0)"
+			"\0\s[3]那麼、還是稱呼為%(username)…\e"
+		}		
+		Choice.TEACHUSERNAMEFIRST1
+		{
+		 username = "%(username)さん"
+		 "\0\s[15]好的，記住了。\n\n\0\s[5]記住了，不會忘記的啾。\n\n\0\s[15]請多關照呣！\n\n\0\s[5]多關照啾！\e"
+		}
+		Choice.TEACHUSERNAMEFIRST2
+		{
+		 "\0\s[15]好的，記住了。\n\n\0\s[5]記住了，不會忘記的啾。\n\n\0\s[15]請多關照呣！\n\n\0\s[5]多關照啾！\e"
+		}
+		
+//**** 稱謂 ***********************************************************************
+Choice.TEACHUSERTITLE
+{
+	"\0\s[5]想要改變稱謂的話，請先告訴我們你的名字。\![open,inputbox,OnInputUsername,-1]\e"
+}
+OnInputUsername
+{
+	inputted_name = reference0
+	"\0\s[2]\b[2]那麼要怎樣稱呼呢？\n\n/
+	\![*]\q[%(inputted_name)ちゃん,UsertitleJan]\n/
+	\![*]\q[%(inputted_name)さん,UsertitleSan]\n/
+	\![*]\q[%(inputted_name)君,UsertitleKun]\n/
+	\![*]\q[%(inputted_name)大大,UsertitleDada]\n/
+	\![*]\q[%(inputted_name)先生,UsertitleSir]\n/
+	\![*]\q[%(inputted_name)小姐,UsertitleMs]\n/
+	\![*]\q[%(inputted_name)哥哥,UsertitleNisan]\n/
+	\![*]\q[%(inputted_name)姐姐,UsertitleNesan]\n/
+	\![*]\q[%(inputted_name)爸爸,UsertitleTosan]\n/
+	\![*]\q[%(inputted_name)媽媽,UsertitleKasan]\n/
+	\![*]\q[%(inputted_name)叔叔,UsertitleOjisan]\n/
+	\![*]\q[%(inputted_name)阿姨,UsertitleObasan]\n/
+	\![*]\q[無稱謂,UsertitleNone]\n/
+	\n/
+	\_b[img/back.png,inline]\q[Back,BACK]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]/
+	\e"
+}
+//---- 稱謂變化 ------------------------------------------------------------
+Choice.UsertitleJan
+{
+	username = "%(inputted_name)ちゃん";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleSan
+{
+	username = "%(inputted_name)さん";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleKun
+{
+	username = "%(inputted_name)君";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleDada
+{
+	username = "%(inputted_name)大大";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleSir
+{
+	username = "%(inputted_name)先生";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleMs
+{
+	username = "%(inputted_name)小姐";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleNisan
+{
+	username = "%(inputted_name)哥哥";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleNesan
+{
+	username = "%(inputted_name)姐姐";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleTosan
+{
+	username = "%(inputted_name)爸爸";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleKasan
+{
+	username = "%(inputted_name)媽媽";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleOjisan
+{
+	username = "%(inputted_name)叔叔";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleObasan
+{
+	username = "%(inputted_name)阿姨";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+Choice.UsertitleNone
+{
+	username = "%(inputted_name)";
+	"\0\s[5]那麼，稱呼為%(username)。\0\s[15]%(username)。\e"
+}
+
+//**** 生日 ***********************************************************************
+//---- 輸入生日 ------------------------------------------------------------
+		Choice.TEACHUSERBIRTH
+		{
+			"\0\s[2]%(username)的生日是什麼時候呢？\w9\0\s[15]會仔細的聼呣。\![open,dateinput,teachuserbirthday,-1]\e"
+			teachuserbirthday	= 1
+		}

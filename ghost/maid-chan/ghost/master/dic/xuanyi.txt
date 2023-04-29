@@ -1,0 +1,9 @@
+﻿Choice.Qiuwo
+{      Q1="1"
+	"a\![open,inputbox,Q1，-1]a"
+		if "求"_in_ Q1
+		
+		{
+			"还真求啊\e"
+		}
+}

@@ -1,0 +1,589 @@
+//---- OnFirstBoot事件 ------------------------------------------------------------------
+OnFirstBoot
+{
+	//---- 變數初期化
+	username			= "%(username)"
+	tieba				= "%(tieba)"	
+	stroke				= 0		// 撫摸判定用
+	teachusername			= 0		// 記住user名用
+	teachuserbirthday		= 0		// 記住user生日用
+        tieba="http://www.xiami.com/search?key=%E9%97%B9%E5%A4%9F%E4%BA%86%E6%B2%A1%E6%9C%89&pos=1"         // 贴吧用       
+	tiebalock = "0"		// 贴吧用
+	mikireflag			= 0		// 見切處理用
+	communicateratio		= 10		// 溝通開始率[%]
+	stayontopswitch			= 1		// 最上層處理
+
+	shutdowntimeswitch		= 0		// 自動關機
+	mikireswitch			= "1"		// 見切判定
+	vanishbutton.visible		= "0"		// 消解顯示
+	otherghosttalkswitch		= "1"		// 與他人格對話
+	silent				= "0"		// 靜音判定
+	soundlang			= "中文語音"
+	locale				= "未知地"	// 所在地
+	GhostFirstBoot			= GETSECCOUNT();
+	GhostLastBoot			 = CurrentTime; 
+	CurrentTime			 = GETSECCOUNT();
+	AlarmTime			= "未設定";	// 鬧鐘設定
+	AlarmDelay			= "未設定";	// 鬧鐘間隔設定
+	SNTPserver			= "stdtime.gov.hk" // SNTP時間校準服務器設定
+	//-------------
+	oyasumi				= 0
+//	firstboottime		= "%(year),%(month),%(day),%(hour),%(minute)"
+//	lastboottime		= "%(systemuptime)"
+
+	//---- 透過檢查Vanish次數來判定是否為真的初回起動
+	if reference0 == 0
+	{
+		//---- 初回起動
+	  "\![open,file,op\y]初次见面，请多多关照\w8\n\0\s[4]今后，我就是您的专属女仆了。您有什么吩咐请尽管说。 "
+	  	 
+	}
+	else
+	{
+		//---- 重新安裝後的初回起動
+		if reference0 == 1
+		{
+			"\0\s[0]您又需要我了吗。\w5/
+			\0\s[3]就算再来一次我一样会按您的吩咐做事的。\w5"
+		}
+		else
+		{
+			"\0\s[1]怎么弄了这么多次？\0\s[4]我会生气的哦。一共%(reference0)次了的说。"
+		}
+	}
+}
+
+//**** 時間帯判定 *****************************************************************************************************
+
+GetTimeSlot
+{
+	if userbirthday[1] == month && userbirthday[2] == day
+    {
+    	"用户生日"
+    }
+
+	elseif month == 1 && day == 25
+	{
+		"大年夜"
+	}
+	elseif month == 1 && day == 26
+	{
+		"初一"
+	}
+	elseif month == 1 && day == 1
+	{
+		"元旦"
+	}
+	elseif month == 2 && day == 14
+	{
+		"情人节"
+	}
+	elseif month == 3 && day == 8
+	{
+		"国际妇女节"
+	}
+	elseif month == 3 && day == 12
+	{
+		"植树节"
+	}
+	elseif month == 3 && day == 15
+	{
+		"世界消费者权益日"
+	}
+	elseif month == 3 && day == 22
+	{
+		"世界水日"
+	}
+	elseif month == 4 && day == 1
+	{
+		"愚人节"
+	}
+	
+	elseif month == 4 && day == 4
+	{
+		"清明节"
+	}
+	elseif month == 4 && day == 7
+	{
+		"世界卫生日"
+	}
+	elseif month == 4 && day == 22
+	{
+		"世界地球日"
+	}
+	elseif month == 5 && day == 1
+	{
+		"国际劳动节"
+	}
+	elseif month == 5 && day == 8
+	{
+		"国际红十字日"
+	}
+	elseif month == 5 && day == 31
+	{
+		"世界无烟日"
+	}
+	elseif month == 6 && day == 1
+	{
+		 "国际儿童节"
+	}
+	elseif month == 6 && day == 5
+	{
+	   "世界环境日"
+	}
+	elseif month == 7 && day == 11
+	{
+		"世界人口日"
+	}
+	elseif month == 9 && day == 10
+	{
+		"教师节"
+	}
+	elseif month == 10 && day == 1
+	{
+		"国庆节"
+	}
+	elseif month == 10 && day == 16
+	{
+		"世界粮食日"
+	}
+	elseif month == 10 && day == 22
+	{
+		"人格生日"
+	}
+	elseif month == 11 && day == 1
+	{
+		"万圣节"
+	}
+	elseif month == 12 && day == 1
+	{
+		"世界艾滋病日"
+	}
+	elseif month == 12 && day == 3
+	{
+		"世界残疾日"
+	}
+	elseif month == 12 && day == 24
+	{
+		"平安夜"
+	}
+	elseif month == 12 && day == 25
+	{
+		"圣诞节"
+	}
+	elseif month == 12 && day == 31
+	{
+		"除夕"
+	}
+	elseif hour >= 4 && hour <= 6
+	{
+		"凌晨"
+	}
+	elseif hour >= 7 && hour <= 10
+	{	
+		"早上"
+	}
+	elseif hour >= 11 && hour <= 16
+	{
+		"白天"
+	}
+	elseif hour >= 17 && hour <= 18
+	{
+		"傍晚"
+	}
+	elseif hour >= 19 && hour <= 23
+	{
+		"晚上"
+	}
+	else
+	{
+		"午夜"
+	}
+}
+
+
+//**** 通常起動 ***********************************************************************************
+
+//---- OnBoot事件 -----------------------------------------------------------------------
+OnBoot
+{
+	GhostLastBoot		 = CurrentTime; 
+	CurrentTime		 = GETSECCOUNT();
+	anaclock		 = 0;	//關閉時鐘
+	lastTalk		 = "\0\s[3]咦？不是刚启动的说\0\s[5]您忘了什么事情要说吗？\e"	//避免剛啓動就出0
+	playmode		 = 0;	//關閉播放器
+	_timeslot = GetTimeSlot
+	--
+	if silent == "1" {
+	"\0\s[0]"     //\1\s[10]"
+	}
+	elseif soundlang == "日文語音" {
+	"\0\s[-1]\1\s[-1]\![sound,stop]\![sound,play,voice/start_j.mp3]\![sound,wait]\0\s[0]\1\s[10]"
+	}
+	elseif soundlang == "中文語音" {
+	"\0\s[-1]\1\s[-1]\![sound,stop]\![sound,play,voice/start_c.mp3]\![sound,wait]\0\s[0]\1\s[10]"
+	}
+	--
+	// 判斷上次登入至今是否相差超過一星期
+	if CurrentTime - GhostLastBoot > 604800 {
+		"\0\s[3]您外出了至少一个星期吗？，%(username)。\e"
+	}
+	elseif CurrentTime - GhostLastBoot < 60 {
+		"\0\s[3]\0\s[3]不是才关闭吗，有什么很重要的事忘记了么？%(username)。\e"
+	
+	}
+	//默認設置為可以和他人格對話
+	if otherghosttalkswitch == "1"
+	{
+		"\![set,otherghosttalk,true]"
+	}
+//---- 特殊節日對話 ---------------------------------------------------------------------
+	--
+	if _timeslot == "用户生日"
+	{
+		"\0\s[5]今天是%(userbirthday[1])月%(userbirthday[2])日，祝您生日快乐！！\e"
+	}
+	elseif _timeslot == "大年夜"
+	{
+		"\0\s[3]今天是除夕呢！\n\n[half]\0\s[17]守夜别守得太晚哦。\n\n[half]\0\s[3]天很冷，记得要多穿衣服。\n\n[half]\0\s[0]记得到了0點的時候，要用爆竹來迎接春天的到來哦。\e"
+	}
+	elseif _timeslot == "初一"
+	{
+		"\0\s[5]新年快樂！！\n请别忘了去拜年。\n[half]\0\s[16](作者：%(username)记得收压岁钱哦！)"
+		--
+		if userage >= 20 { "\0\s[0]%(username)已經超齡了吧……" }
+		elseif userage <= 2 { "\0\s[3]呣，看看資料…%(username)還不到2歲呢！不行啊！(这是什么设定)\0\s[3]？！？！" }
+		else { "\0\s[4]作者：为了压岁钱跑来跑去，蛮辛苦的说。\0\s[5]不過%(username)看起来很开心！！" }
+		--
+		"\e"
+	}
+	elseif _timeslot == "元旦"
+	{
+		"\0\s[5]新年快樂啾！\n\n今年也請%(username)多多指教。使用情况怎么样，可以和作者讨论一下哦(984405219)\e"
+	}
+	elseif _timeslot == "情人节"
+	{
+		
+		"\0\s[5]情人节快乐，\n\n[half]\0\s[16]%(username)别忘了约会事宜，(嘛，没情人就算了啦)\n\n[half]\0\s[3]争取Kiss哦，咕嘿嘿\e"
+		
+	}
+	elseif _timeslot == "国际妇女节"
+	{
+		"\0\s[3]啾——\0今天是国际妇女节。\n\n[half] 别忘了要向妈妈祝福下哦。\e"
+	}
+	elseif _timeslot == "植树节"
+	{
+		"\0\s[5]啾——今天是植树节，有时间去植树哦。\n[half]懒就算了吧，浇浇家里的吧\e"
+	}
+	elseif _timeslot == "世界消费者权益日"
+	{
+		"\0\s[3]今天是世界消费者权益日。\0\n[half]没事做就打打12315 吧，嘿。\e"
+	}
+	elseif _timeslot == "世界水日"
+	{
+		"\0\s[5]世界水日就是今天吧。\0\s[3]今天就别用水吧，呵呵。\e"
+	}
+	elseif _timeslot == "愚人节"
+	{
+		"\t\v\0\s[3]其實，今天有很重要的話想要跟%(username)說……\n\n[half]\0\s[0]很重要哦。\n\n[half]\0我嘛…\n\n[half]\0……\n\n[half]\0今天就是住在%(username)的電腦中的最后一天了。\n\n[half]\w9\w9\w9\w9\c\0\c/
+		\0\s[6]一直以來照顧我們，辛苦了。\n\n[half]\s[16]跟%(username)在一起的每一天都很開心……\n\n[half]\0\s[3]沒有開啟我們的時候經常焦急的等待著%(username)。\n\n[half]\s[6]與%(username)對話的時候……話語傳達的時候的那種開心……\n\n[half]\0全部，到今天為止了。\n\n[half]\s[0]希望%(username)以後能常常想起我們。\n\n[half]\0\s[5]我們也絕不會忘記%(username)的。\n\n[half]/
+			\s[9]那麼，再見了呣……\n\n[half]\0\s[0]再見了啾……\n\n[half]\0\s[8]\s[3]\w9\w9\w9\w9\w9\w9\w9\b[-1]\0\b[-1]\w9\w9\w9\w9\w9\w9\0\s[99]\0\s[99]\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9/
+		\b[1]\s[3]\c\n\n[half]\0哎？剛剛我說了什麼嗎？\n\n[half]\0%(username)的表情……好可愛啾！！\n\n[half]\0\s[5]嗯……剛才到底說了什麼呣……\n\n[half]\0\s[8]%(username)好像被嚇到了啾！\n\n[half]\0\s[0]真的有嚇到嗎？\n\n[half]\0\s[5]眼睛睜得圓圓的呢！\n\n[half]\0\s[16]真的呢！\e"
+	}
+	elseif _timeslot == "世界卫生日"
+	{
+		"\0\s[5]哦——Google上好多人说今天是世界卫生日诶。\e"
+	}
+	elseif _timeslot == "世界地球日"
+	{
+		"\0\s[9]百度一下，说今天是世界地球日呣。\0\s[3]好像和我们没有什么关系诶\e"
+	}
+	elseif _timeslot == "国际劳动节"
+	{
+		"\0\s[5]诶——今天就是國際勞動節。\n\n[half]这次和谁出去玩呢？看你不是个勤快的人.........吧\e"
+	}
+	elseif _timeslot == "国际红十字日"
+	{
+		"\0\s[5]嘛，听说今天是国际红十字日哦。\n\n[half]%(username)没事做去放血吧！\e"
+	}
+	elseif _timeslot == "世界无烟日"
+	{
+		"\0\s[5]嗯，好像今天就是世界无烟日。\n\n[half]\0\s[9]在公共场合吸烟的人、会交不到女朋友！\e"
+	}
+	elseif _timeslot == "国际儿童节"
+	{
+		"\0\s[5]哦耶——今天是國際兒童節呣。小孩子们的节日哦，%(username)想起以前小时候的事了吗，\e"
+	}
+	elseif _timeslot == "世界环境日"
+	{
+		"\0\s[5]嗯？据说今天是世界環境日呣。\n\n[half]不亂丟垃圾是小時候就學過的事，請長大後不要忘記呣。\e"
+	}
+	elseif _timeslot == "世界人口日"
+	{
+		"\0\s[5]看网上说——今天是世界人口日呣。\e"
+	}
+	elseif _timeslot == "教师节"
+	{
+		"\0\s[5]嘛——今天是教師節呣。\n\n[half]可以的話，也去看望自己的老師吧。\e"
+	}
+	elseif _timeslot == "国庆节"
+	{
+		"\0\s[5]今天就是國慶節哦。\n\n[half]這次放了幾天假呢？\e"
+	}
+	elseif _timeslot == "人格生日"
+	{
+		"\0\s[5]%(username)，今天是我的生日哦。\e"
+	}
+	elseif _timeslot == "万圣节"
+	{
+		"\0\s[5]萬聖節了。一般和中国人没什么关系吧\e"
+	}
+	elseif _timeslot == "世界艾滋病日"
+	{
+		"\0\s[5]嗯—今天是世界艾滋病日。别做什么邪恶的事情哦。\e"
+	}
+	elseif _timeslot == "世界残疾日"
+	{
+		"\0\s[5]嘛，今天是世界殘疾日喔。\e"
+	}
+	elseif _timeslot == "平安夜"
+	{
+		"\0\s[5]今天是聖誕前夜。明天…約定好了呣…%(username)……不要忘記啾……\e"
+		"\0\s[5]今天是聖誕前夜。\n\n[half]\0\s[2]說好了哦，%(username)在明天開啟我們的話……就會送給%(username)驚喜。\e"
+	}
+	elseif _timeslot == "圣诞节"
+	{
+		if Xmaspresent == 1 {
+		"\0\s[5]聖誕快樂！\n\n[half]\s[4]聖誕快樂！！\n\n[half]\0\s[3]禮物…%(username)喜歡嗎？喜歡的話…就好了呣。\e"
+		}
+		else {
+		"\0\s[5]聖誕快樂！\n\n[half]\s[16]聖誕快樂！！\0\s[5]%(username)遵守了約定…好開心啾！\n\n[half]\s[16]就按照約定好的…今天作為特別的日子，要送給%(username)特別的禮物……\n\n[half]\w9\w9\c\0\c\0\s[3]跟%(username)相處的這些時間…似乎過了很長時間，又似乎只有一瞬……\n\n[half]\s[16]時間對於網路生命體來說意義並不大…因為我們是不會隨著時間改變的。\n\n[half]\0\s[6]會改變的……是人類。\n\n[half]\s[19]以及心…想要擁有人類一般的心靈……\w9我們……\n\n[half]\0\s[0]想要像%(username)一樣，學會溫柔的對待別人……\n\n[half]\s[3]對於最喜歡的%(username)，令你開心是我們現在最重要的事。\n\n[half]\0\s[3]希望%(username)收到這個禮物的時候\w9能夠感覺到我們的\w5心意……\n\n[half]\s[5]那樣的話，我們也會感覺到距離「人類」的情感……近了一點。\n\n[half]%(username)…要接受這個禮物嗎？\w9\w9這個問題如果現在不想回答，\w5今天只要再次開啟我們，就還會再問一遍，所以點錯也沒關係。\n\n/
+	\_b[img/ok.png,inline]\q[接受禮物！,GetXmasPresentOK]\n/
+	\_b[img/close.png,inline]\q[不接受,GetXmasPresentCANCEL]\e"
+		}
+	}
+	elseif _timeslot == "除夕"
+	{
+		"\0\s[5]啾——今天是除夕呣。\e"
+	}
+//--- 特殊時間對話 ---------------------------------------------------------------------
+	elseif _timeslot == "凌晨"
+	{
+		"\0\s[3]這個時間啓動……有什麼事嗎？\w9\w9\n\n\0\s[6]天還黑的呢吧？%(username)真有精神啊……哈欠……\e"
+	}
+	elseif _timeslot == "早上"
+	{
+		"\0\s[5]早安！\w9\w9\0\s[0]今天真早呢。早安。\e"
+	}
+	elseif _timeslot == "白天"
+	{
+		"\0\s[3]等的快不耐煩了。\w9\w9\0\s[0]午安，終于啓動我了。\e"
+	}
+	elseif _timeslot == "傍晚"
+	{
+		"\0\s[4]還以爲今天不會啓動了呢！\w9\w9\0\s[6]不啓動的話就不能見到了%(username)了。\e"
+	}
+	elseif _timeslot == "午夜"
+	{
+		"\0\s[7]好晚啊！！\w9\w9\n\n\0\s[0]%(username)今天有事嗎？很晚才啓動呢，有點擔心。\e"
+	}
+	else
+	{       
+		"\0\s[3]這個時間啓動……有什麼事嗎？\e"
+	}
+}
+
+//**** 下載限定物 *****************************************************
+Choice.GetXmasPresentOK
+{
+	"\0……\n\n[half]\0\s[3]…………\n\n[half]%(username)現在一定有什麼事要做啦，下次再問問看吧！\n\n[half]\0\s[3]嗚嗚嗚啾……\e"
+}
+
+Choice.GetValenPresentCANALE
+{
+	"\0\s[5]那麼，就請%(username)稍等一下！\0\s[-1]\0\s[-1]\_w[2000]\![bind,帽子,櫻花花環,1]\0\s[5]\![bind,帽子,櫻花花環,1]\e"
+}
+Choice.GetValenPresentOK
+{
+	"\0……\n\n[half]\0\s[3]…………\n\n[half]%(username)現在一定有什麼事要做啦，下次再問問看吧！\n\n[half]\0\s[3]嗚嗚嗚啾……\e"
+}
+
+
+//**** 終了 ***************************************************************************************
+
+//---- OnClose事件 ----------------------------------------------------------------------
+OnClose
+{
+	if reference0 == 'shutdown' {
+		"\0\s[27]那，下次再见了哦。"
+		--
+		if silent == "1" {
+		""
+		}
+		elseif soundlang == "日文語音" {
+		"\![sound,stop]\![sound,play,voice/那再见了啦.mp3]\![sound,wait]"
+		}
+		elseif soundlang == "中文語音" {
+		"\![sound,stop]\![sound,play,voice/那再见了啦.mp3]\![sound,wait]"
+		}
+	}
+	else
+	{
+		"\0\s[27]那，下次再见了哦。"
+		--
+		if silent == "1" {
+		""
+		}
+		elseif soundlang == "日文語音" {
+		"\![sound,stop]\![sound,play,voice/那再见了啦.mp3]\![sound,wait]"
+		}
+		elseif soundlang == "中文語音" {
+		"\![sound,stop]\![sound,play,voice/那再见了啦.mp3]\![sound,wait]"
+		}
+	}
+	--
+//	case hour
+//	{
+//		when 4-6
+//		{
+//			"玩通宵？\w6\n祝你有個好夢。"
+			/*break*/
+//		}
+//		when 7-21
+//		{
+//			"那、下次見囉。"
+//			"再見。"
+			/*break*/
+//		}
+//		others
+//		{
+//			"晚安。"
+//			"早點睡喔，拜拜。"
+//		}
+//	}
+//	--
+	"\w9\w9\-\e"
+	
+}
+
+//**** 最小化還原 *********************************************************************************
+//---- OnWindowStateRestore事件 ---------------------------------------------------------
+OnWindowStateRestore
+{
+	"\0\s[3]太好了我又回来了。\e"
+	"\0\s[3]还原了。\e"
+}
+
+//**** GHOST/SHELL變換 ****************************************************************************
+//---- 呼叫他人格完畢 ---------------------------------------------------------
+OnGhostCallComplete
+{
+	TalkGhostCall
+}
+//---- 被別的GHOST呼叫 ------------------------------------------------------------------
+OnGhostCalled
+{
+	TalkGhostCall
+}
+TalkGhostCall
+{
+	if reference0 == "落鳥"
+	{
+		"\0\s[5]啊，是落鳥！\0\s[16]好久不見。\e"
+	}
+	elseif reference0 == "文菜"
+	{
+		"\0\s[4]啊，是文菜前輩。\0\s[16]又要忙著種菜嗎？\e"
+	}
+	elseif reference0 == "橘花"
+	{
+		"\0\s[4]啊，是橘花さん。\0\s[16]聽說這就是黑暗愈系？\e"
+	}
+	elseif reference0 == "54"
+	{
+		"\0\s[3]啊，是日本來的54さん！\n\n[half]\0\s[6]嗯…這個時候要說…\n\n[half]\0\s[0]こんいちは！\_s\e"
+	}
+	else
+	{
+		"\0\s[3]啊，是「%(reference2)」。你好，%(reference0)。\e"
+	}
+}
+
+
+//---- 切換至別的GHOST ------------------------------------------------------------------
+OnGhostChanging
+{
+	if reference0 == "茶兔"
+	{
+		//---- 重新啟動
+		"\0\s[3]重新启动了。\e"
+	}
+	elseif reference0 == "落鳥"
+	{
+		//---- 切換落鳥
+		"\0\s[0]聽說落鳥那樣的就算是天然呆啾？\e"
+	}
+	elseif reference0 == "橘花"
+	{
+		"\0\s[16]聽說人類的叛逆期，就是這個樣子。\e"
+	}
+	elseif reference0 == "54"
+	{
+		//---- 54
+		"\0\s[9]是日本來的54さん诶。\0\s[5]54さん有很多各種各樣外表呢，也有這樣子的生命體啊…\e"
+	}
+	elseif reference1 == "manual"
+	{
+		//---- 手動切換
+		"\0\s[3]%(reference0)比女仆我更可愛嗎……？\e:eval=(intimacy-=2)"
+	}
+	else
+	{
+		//---- 自動切換
+		"\0\s[3]嗯？这个是遥控器！\w9按一下会怎么样呢？\e"
+	}
+}
+
+//---- 切換自別的GHOST ------------------------------------------------------------------
+OnGhostChanged
+{
+	GhostLastBoot		 = CurrentTime; 
+	CurrentTime		 = GETSECCOUNT();
+	if reference0 == "茶兔"
+	{
+		//---- 重新啟動完成
+		"\0\s[3]重新启动完成。\e"
+	}
+	elseif reference0 == "落鳥"
+	{
+		//---- 
+		"\0现在知道什麼是天然呆了嗎？\e"
+	}
+	elseif reference0 == "54"
+	{
+		"\0\s[3]54さん的話、很難以理解嗎？\e"
+	}
+	elseif reference1 == "manual"
+	{
+		//---- 
+		"\0\s[16]果然還是有只有我才能做到的事吧？\e"
+	}
+	else
+	{
+		"\0\s[5]回來了哦！%(reference0)剛剛離開了嗎？坐墊還是溫的呢。\e:eval=(intimacy+=1)"
+	}
+}
+
+//---- SHELL更替開始 --------------------------------------------------------------------
+OnShellChanging
+{
+	"\0\s[3]這是什麼？外表？！更換形象嗎？\e"
+}
+
+//---- SHELL更替完了 --------------------------------------------------------------------
+OnShellChanged
+{
+	"\0\s[0]換裝為「%(reference0)」…這個樣子如何呢？\e"
+}
+
+

@@ -1,0 +1,4 @@
+Charset,gb2312
+name,ÈðÊ¿¾üµ¶
+filename,SAKNIFE.dll
+id,8F8BCFB8-B27A-456f-9BA0-551484856DDC

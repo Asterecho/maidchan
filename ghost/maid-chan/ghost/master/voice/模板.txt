@@ -1,0 +1,12 @@
+\![sound,play,voice/mail.mp3]
+ \![sound,play,voice/message.mp3
+ \![sound,play,voice/那再见了啦 .mp3]
+ \![sound,play,voice/start_j.mp3]
+ \![sound,play,voice/start_j.mp3]
+ \![sound,play,voice/start_j.mp3]
+ \![sound,play,voice/start_j.mp3]
+ \![sound,play,voice/start_j.mp3]
+ \![sound,play,voice/start_j.mp3]
+ \![sound,play,voice/start_j.mp3]
+ \![sound,play,voice/start_j.mp3]
+ \![sound,play,voice/start_j.mp3]

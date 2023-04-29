@@ -1,0 +1,247 @@
+﻿
+OnShortcutMenu 
+{
+_w="\![set,choicetimeout,60000]\f[height,14]\_q\b[2]\_l[10,-]\![*]\q[添加,OnShortcutAdd]　\![*]\q[删除,OnShortcutMenu,ShortcutMenuDel]　\![*]\q[刷新,OnShortcutAdd,ShortcutNew]　\n\_l[10,-]\![*]\q[模式,OnICOMode]　\![*]\q[返回,OpenMenu3]　\![*]\q[退出,OnShortcutOver]";
+  _OSMX="OnShortcut";
+    if reference0=="ShortcutMenuDel" {
+      _w="\_q\b[2]请%(username)点击需要删除的快捷！\n[150]　\![*]\q[全部删除,OnShortcutMenuDel,AllShortcutDel,会把快捷全部删掉哦！]　\![*]\q[返回,OnShortcutMenu]　\![*]\q[退出,OnShortcutOver]\f[height,default]\n";
+      _OSMX="OnShortcutMenuDel";
+    }
+  if shortcutdata[0]==""
+    _w+="\n[200]没有数据哦！……";
+  else {
+    _xc=5;//初始
+    _y=45;//初始
+    _x=_xc;
+    SETDELIM(shortcutdata,"*");
+    for _i=0;shortcutdata[_i]!="";_i++ {
+      _s=shortcutdata[_i];
+      _Name=_s[0,"|"];
+      _Name2=_s[1,"|"];
+      _Path=_s[2,"|"];
+      _Ico=TOINT(_s[3,"|"]);
+      if _Ico>0
+        _w+="\_l[%(_x),%(_y)]\__q[%(_OSMX),%(_Path),%(_Name),1,%(_Name2),%(_i)]\_b[%(CHR(34))saori\Process.dll,%(_Ico)%(CHR(34)),inline%(ICOMode)]\__q";
+      else  
+        _w+="\_l[%(_x),%(_y)]\__q[%(_OSMX),%(_Path),%(_Name),1,%(_Name2),%(_i)]\_b[%(CHR(34))%(_Path),0%(CHR(34)),inline%(ICOMode)]\__q"; 
+      if (_i+1)%7==0 {
+        _x=_xc;
+        _y+=50;
+      }
+      else
+        _x+=40;      
+    }
+  }
+  _w;
+}
+Choice.OpenMenu3
+{
+	OpenMenu
+}
+OnICOMode
+{
+  if ICOMode==",--option=opaque" {
+    ICOMode=",null";
+    "\t所有图标设置为透明模式，\w5此模式下的图标适合颜色深的对话框！\n\w5话虽如此，\w3但效果还是有待提高啊……\_w[1200]\c%(OnShortcutMenu())";
+  }
+  elseif ICOMode==",null" || ICOMode==null {
+    ICOMode=",--option=opaque"
+    "\t所有图标设置为不透明模式，\n\w5此模式下图标比较漂亮，\w5适合颜色浅的对话框！\_w[1200]\c%(OnShortcutMenu())";
+  }
+}
+
+OnShortcutAdd
+{
+  _NoP="[system process],system,smss.exe,csrss.exe,wininit.exe,csrss.exe,services.exe,lsass.exe,lsm.exe,winlogon.exe,svchost.exe,nvvsvc.exe,ccenter.exe,audiodg.exe,slsvc.exe,ravtask.exe,rsstub.exe,ravmond.exe,rfwsrv.exe,rsnetsvr.exe,spoolsv.exe,spoolsv.exe,dwm.exe,explorer.exe,sidebar.exe,sqlservr.exe,taskeng.exe,rstray.exe,cbappendix.exe,dllhost.exe,rundll32.exe,ctfmon.exe,360rp.exe,360sd.exe,360sdupd.exe,mdnsresponder.exe,inetinfo.exe,nvsvc32.exe,sbiesvc.exe,vmware-usbarbitrator.exe,vmnat.exe,vmsrvc.exe,vmusrvc.exe,vpcmap.exe,sogoucloud.exe,conime.exe,ssp.exe"//不显示出来的
+  _x=10;//初始
+  _y=65;//初始
+  _w="";
+  _NA="";
+  _t=FUNCTIONEX('saori\Process.dll');
+  _ProcessData=TOLOWER(valueex0);
+  SETDELIM(_ProcessData,"*");
+  _i=0;
+  foreach _ProcessData; _s {
+    _Name=_s[0,"|"];
+    _Path=_s[2,"|"];
+    if _Path!="" && "|%(_Name)|" !_in_ shortcutdata && reference0!="ShortcutNew" && RE_GREP(_Path,"]")==0 && _Name !_in_ _NoP && _Name !_in_ _NA {
+      _i++;
+      _NA+=_Name;
+      _w+="\_l[%(_x),%(_y)]\__q[OnShortcut,%(_Name),%(_Path),2]\_b[%(CHR(34))%(_Path),0%(CHR(34)),inline%(ICOMode)]\_l[%(_x+35),%(_y)]\![*]软件%(_i): 【%(_Name)】\__q\_l[%(_x+35),%(_y+20)]%(_Path)";
+      //_w+="\_l[%(_x),%(_y)]\__q[OnShortcut,%(_Name),%(_Path),2]\_b[%(CHR(34))%(_Path),0%(CHR(34)),inline%(ICOMode)]\_l[%(_x+35),%(_y)]\![*]软件%(_i): 【%(_Name)】\__q\q[复制,Ontemp111,%(_Name)]\_l[%(_x+35),%(_y+20)]%(_Path)";
+      _y+=45;
+    }
+    elseif "|%(_Name)|" _in_ shortcutdata && reference0=="ShortcutNew" {
+      SETDELIM(shortcutdata,"*");
+      for _i=0;shortcutdata[_i]!="";_i++ {
+        _s=shortcutdata[_i];
+        if _s[1,"|"]==_Name && _s[2,"|"]!=_Path {
+          _g=1;
+          _a=_s[0,"|"];
+          shortcutdata[_i]=IARRAY;
+          shortcutdata+="%(_a)|%(_Name)|%(_Path)*";
+          _w+="\_l[%(_x),%(_y)]\_b[%(CHR(34))%(_Path),0%(CHR(34)),inline%(ICOMode)]\_l[%(_x+35),%(_y)]\![*]更新的软件: 【%(_Name)】\_l[%(_x+35),%(_y+20)]%(_Path)";
+          _y+=45;
+        }
+      }
+    }
+  }
+  if _w=="" && reference0!="ShortcutNew"
+    _w="\_q\n[200]看来没有符合要求的软件呢，\n[120]%(username)记得先把要设置快捷的软件打开哦……\n[120]要不%(username)就自己把软件拖给女仆也是可以的哦……\n[130]文件夹的话也是可以直接拖给女仆的哦！" 
+  elseif _w=="" && reference0=="ShortcutNew"
+    _w="\n[200]\_q没有需要更新的软件快捷呢，\n[120]%(username)没有把要更新路径的软件打开吗？\1我看不是没运行软件，而是根本没有要更新的吧……";
+  if reference0=="ShortcutNew"
+      "\![set,choicetimeout,60000]\_q\b[2]\![set,autoscroll,disable]%(username)，女仆已经把下面的软件快捷更新了哦！\n[150]　\![*]\q[返回,OnShortcutMenu]　\![*]\q[退出,OnShortcutOver]\_n%(_w)";
+  else
+  "\![set,choicetimeout,60000]\_q\b[5]\![set,autoscroll,disable]请%(username)点击需要设置快捷的软件！没有的话，%(username)先运行要设置快捷的软件，再刷新一次看看！！也可以把要设快捷的文件直接拖给女仆哦！\n[130]　\![*]\q[刷新列表,OnShortcutAdd]　　\![*]\q[返回,OnShortcutMenu]　\![*]\q[退出,OnShortcutOver]\_n%(_w)";
+}
+
+
+
+
+
+OnShortcutMenuDel
+{
+  if shortcutdata[0]==""
+    "%(username)是在开玩笑吗，明明没有数据呢！\n[150]　\![*]\q[返回,OnShortcutMenu]　\![*]\q[退出,OnShortcutOver]"
+  else {
+    if reference0=='AllShortcutDel' {
+      ERASEVAR("shortcutdata");
+      "所有快捷删除完毕！\_w[1000]\c%(OnShortcutMenu())"
+    }
+    else {
+      SETDELIM(shortcutdata,"*");
+      shortcutdata[reference4]=IARRAY;
+      "%(reference1) 的快捷删除完毕！\n[150]\_b[%(CHR(34))%(reference0),0%(CHR(34)),inline%(ICOMode)]\n[120]\_q路径为：%(reference0)\n[150]　\![*]\q[返回,OnShortcutMenu]　\![*]\q[退出,OnShortcutOver]";
+    }
+  }
+}
+
+
+
+
+
+
+OnShortcut
+{
+  if reference2==2 {
+    ProcessName=TOLOWER(reference0);
+    ProcessPath=TOLOWER(reference1);
+    "请%(username)设置软件名称，如不设置将会使用%(reference0)作为名称！\![open,inputbox,OnShortcutIco,0,%(reference0)] \n[200]\![*]\q[退出,OnShortcutOver,#1#]"
+  }
+  elseif reference2==1 {
+
+
+			_file = REPLACE(reference0,'/','\\') ;
+    "\0\s[5]女仆正为%(username)打开%(reference1)\n……\![open,file,%(_file)]"
+  }
+}
+OnShortcutIco
+{
+  _a=CUTSPACE(reference0);
+  if _a==""
+    _a=ProcessName;
+  _p=ProcessPath;
+  ProcessPath="%(_a)|%(ProcessName)|%(ProcessPath)";
+  _w="%(username)能看到图标吗，有的软件不包含图标的\n不能选错哦，如果没有图标将无法显示，也无法添加，\n那样就要用全部删除了哦！\n图标为：\_b[%(CHR(34))%(_p),0%(CHR(34)),inline%(ICOMode)]\n[120]路径为：%(_p)\n[150]　\![*]\q[可以看到,OnShortcutName,CanSee]　\![*]\q[看不到,OnShortcutName,NoCanSee,1]　\![*]\q[退出,OnShortcutOver]";
+  if ProcessName=='━文件夹━' {
+    _w="\_q%(username)可以从下面选择一个图标！";
+    _x=5;
+    for _i=2;_i<9;_i++ {
+        _w+="\_l[%(_x),20]\__q[OnShortcutName,NoCanSee,%(_i)]\_b[%(CHR(34))saori\Process.dll,%(_i)%(CHR(34)),inline%(ICOMode)]\__q";
+        _x+=40;
+    }
+    _w+="\n[300]　\![*]\q[退出,OnShortcutOver]"
+  }
+  ERASEVAR("ProcessName");
+  _w;
+}
+
+OnShortcutName
+{
+  _p=ProcessPath[2,"|"];
+  _pi=_p+",0";
+  _a=ProcessPath[0,"|"];
+  if reference0=='CanSee'
+    shortcutdata+="%(ProcessPath)*";
+  elseif reference0=='NoCanSee' {
+    shortcutdata+="%(ProcessPath)|%(reference1)*"; 
+    _pi="saori\Process.dll,%(reference1)";
+  }
+  elseif reference0=='AutoShortcut' {
+    shortcutdata+="%(reference1)*";
+    _a=reference1[0,"|"];
+    _p=reference1[2,"|"];
+    _pi=_p+",0";
+  }
+  ERASEVAR("ProcessPath");
+  "%(_a) 的快捷记录完毕！\n[150]\_b[%(CHR(34))%(_pi)%(CHR(34)),inline%(ICOMode)]\n[120]路径为：%(_p)\n[150]　\![*]\q[继续添加,OnShortcutAdd]　\![*]\q[返回,OnShortcutMenu]　\![*]\q[退出,OnShortcutOver]";
+}
+OnShortcutOver
+{ 
+  _w="";
+  if reference0=="#1#" {
+    ERASEVAR("ProcessName");
+    ERASEVAR("ProcessPath");
+    _w="\![close,inputbox,OnShortcutIco]";
+  }
+  "嗯嗯，好的。%(_w)"
+}
+
+
+
+////---- OnAutoShortcut -------------------
+OnAutoShortcut
+{
+  _InProcess="千千静听|ttplayer.exe*QQ|qq.exe*QQ游戏|qqgame.exe*KMPlayer|kmplayer.exe*金山词霸|xdict.exe*迅雷|thunder.exe*记事本|notepad.exe*记事本|notepad2.exe*UltraEdit|uedit32.exe*Microsoft Visual Studio|devenv.exe*IE浏览器|iexplore.exe*photoshop|photoshop.exe*百度 HI|baiduhi.exe*Dreamweaver|dreamweaver.exe*Flash|flash.exe*Fireworks|fireworks.exe*酷狗音乐|kugoo.exe*飞信|fetionfx.exe*快车|flashget.exe*快车|flashget3.exe*计算器|calc.exe*系统画图|mspaint.exe*虚拟光驱|daemon.exe*";
+  _x=10;//初始
+  _y=58;//初始
+  _w="";
+  _FullData="";
+  _NoclueonN="";
+  _t=FUNCTIONEX('saori\Process.dll');
+  _ProcessData=TOLOWER(valueex0);
+  SETDELIM(_ProcessData,"*");
+  SETDELIM(_InProcess,"*");
+  foreach _InProcess; _s {
+    _Name=_s[1,"|"];
+    if "|%(_Name)|" !_in_ shortcutdata && "%(_Name)*" !_in_ NoclueonProcess && "%(_Name)|" _in_ _ProcessData {
+      foreach _ProcessData; _p {
+        if _Name==_p[0,"|"] && _Name !_in_ _NoclueonN {
+          _N=_s[0,"|"];
+          _Path=_p[2,"|"];
+          _FullData+="%(_N)|%(_Name)|%(_Path)*"
+          _NoclueonN+="%(_Name)*";
+          _w+="\_l[%(_x),%(_y)]\__q[OnShortcutName,AutoShortcut,%(_N)|%(_Name)|%(_Path)]\_b[%(CHR(34))%(_Path),0%(CHR(34)),inline%(ICOMode)]\_l[%(_x+35),%(_y)]\![*]软件: 【%(_N)】\__q\_l[%(_x+35),%(_y+20)]%(_Path)";
+      _y+=45;
+        }
+      }
+    }
+  }
+  if _w!=""
+  "\![set,windowstate,stayontop]\![set,choicetimeout,60000]\0\s[26]\b[2]\_n女仆检测到下面的软件哦！\n要把软件添加到女仆的快捷菜单上吗？\_q\n[140]　\![*]\q[全部添加,OnAllShortcutAdd,%(_FullData)]　\![*]\q[不再提示下面的软件,OnNoclueonProcess,%(_NoclueonN)]　\![*]\q[暂时不,OnShortcutOver]%(_w)\![set,windowstate,!stayontop]";
+}
+OnAllShortcutAdd
+{
+  shortcutdata+=reference0;
+  _w="";
+  SETDELIM(reference0,"*");
+  _x=10;//初始
+  _y=25;//初始
+  foreach reference0; _s {
+    _p=_s[2,"|"];
+    _N=_s[0,"|"];
+    if _N!=null
+    _w+="\_l[%(_x),%(_y)]\_b[%(CHR(34))%(_p),0%(CHR(34)),inline%(ICOMode)]\_l[%(_x+35),%(_y)]软件：【%(_N)】\_l[%(_x+35),%(_y+20)]路径为：%(_p)";
+    _y+=45;
+  }
+  "\b[2]\_n女仆已经记住下面软件的快捷了哦！\_q%(_w)\n[160]　\![*]\q[返回,OnShortcutMenu]　\![*]\q[退出,OnShortcutOver]";
+}
+OnNoclueonProcess
+{
+  NoclueonProcess+=reference0;
+  reference0=REPLACE(reference0,"*"," ");
+  "女仆将不再提醒%(username)软件%(reference0)快捷菜单的添加！";  
+}
+
+

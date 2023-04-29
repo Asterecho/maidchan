@@ -1,0 +1,9 @@
+﻿charset, UTF-8
+
+type,ghost
+
+name,女仆酱
+
+directory,女仆酱
+
+homeurl,

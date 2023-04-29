@@ -1,0 +1,92 @@
+﻿//**** 熱鍵反應 ***********************************************************************************
+
+OnKeyPress
+{
+	if reference0 == "f1" {
+		//---- 開啟readme.txt
+		"\![open,readme]"
+	}
+	elseif reference0 == "f2" {
+		//---- 程式測試
+		//TestFunction
+  	"\![open,inputbox,OnGetVarValue]"
+	}
+	//---- 偷來的XD 
+	elseif reference0 == "f8" {
+                //---- 網卡檢測
+                _i = FUNCTIONEX("saori\uds.dll","ListInt",0);
+                "\_q\0\b[2]%(_i)\n網卡列表：\n\n[half]%(valueex0)\n%(valueex1)\n%(valueex2)\n%(valueex3)\n\_q\e";
+        }
+        elseif reference0 == "f9" {
+                //---- 上下載速度檢測
+                _i = FUNCTIONEX("saori\uds.dll","UpDownSpeed", -1, 10, 0);
+                UNLOADLIB("saori\uds.dll");
+                "\_q%(_i)\n下载速度: \n\_l[20,-]%(valueex0) Bps\n上载速度: \n\_l[20,-]%(valueex1) Bps\_q\e";
+        }
+	elseif reference0 == "f5" {
+		"\![reload,GHOST]"
+	}
+	elseif reference0 == "f6" {
+		"\![open,inputbox,COMMAND_VAR]\e"
+	}
+	elseif reference0 == "f7" {
+		"\![open,inputbox,COMMAND_FUNC]\e"
+	}
+	elseif reference0 == "f8" {
+		position = FUNCTIONEX("saori\wmove.dll","GET_POSITION", 茶兔);
+		"左端のＸ:%(valueex0)\n中心のＸ:%(valueex1)\n右端のＸ:%(valueex2)";
+	}
+	//-------------便利功能熱鍵
+	elseif reference0 == "t" {
+		"\![executesntp]\e"
+	}
+	elseif reference0 == "d" {
+		MenuGoogleDic;
+	}
+	elseif reference0 == "i" {
+		IPAdrMenuTalk;
+	}
+	elseif reference0 == "w" {
+		WeatherCheck;
+	}
+	elseif reference0 == "c" {
+		AlarmMenu;
+	}
+        elseif reference0 == "f10"{
+
+		"\![open,file,saori\rundll32.exe,CameraDll.dll,CameraSubArea]"
+          
+              
+	}
+  	elseif reference0 == "f12" {
+		//截屏功能。感謝Pygmalionさん與Royさん！
+		_result=FUNCTIONEX("saori\screencatch.dll");
+	}
+	else {
+		//"\0\s[0]你按了%(reference0)。編碼是%(reference1)。目前尚未被設定為熱鍵。"
+	}
+}
+
+TestFunction
+{
+	//TestVar = 10;
+	//"程式執行完畢。TestVar = %(TestVar)"
+	_pos1 = STRSTR('sfasdflsdj<title>sfajlewre','<title>','0')
+	"\0\b[2]%(_pos1)\n\e"
+}
+
+
+OnGetVarValue
+{
+	_var = reference0[0,'='];
+	_var = _var[0,'['];
+	_func = reference0[0,'('];
+	if ISVAR(_var) == 0 && ISFUNC(_func) == 0 {
+		"没有这个变量或函数……";
+	}
+        else{
+		"表达式『%(reference0)』的执行结果为：\n"
+		--
+		TOSTR(EVAL(reference0));
+	}
+}

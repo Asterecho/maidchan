@@ -1,0 +1,8 @@
+﻿Choice.TIEBA
+{     tieb="123"
+"\0\s[0]%(tieb)请输入地址\![open,inputbox,tieb,-1]\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9\w9..%(tieb)\e"
+}
+Choice.TIEBAENTER
+{    
+     "\0\s[0]进去喽\C\![open,browser,%(tieba)]\e"   
+}

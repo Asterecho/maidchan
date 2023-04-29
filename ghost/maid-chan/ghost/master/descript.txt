@@ -1,0 +1,13 @@
+charset,UTF-8
+name,女仆酱
+type,ghost
+
+
+sakura.name,女仆酱
+balloon,灰果殼
+default.balloon.path,cya_balloon
+
+sstp.allowunspecifiedsend,1
+
+icon,cya.ico
+shiori,yaya.dll

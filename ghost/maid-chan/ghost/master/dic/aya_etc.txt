@@ -1,0 +1,2247 @@
+
+//**** 人格設定 ***********************************************************************************
+Choice.SETTING
+{
+	GhostSetting
+}
+Choice.SETTINGCLOSE
+{
+	"\0\s[0]设定完毕。\e"
+}
+//---- 人格設定 ----------------------------------------------------------------------
+		GhostSetting
+		{
+			
+			"\_q\0\s[0]\b[2]想要设置什么呢？\n\n[half]/
+			\![*]\q[对话频率,TALKINTERVAL]\n/
+                        \![*]\q[对话数据库,dbms]\n/
+		/*	\![*]\q[語音設定,SOUNDSET]\n/*/
+			\![*]\q[透明度,ALPHASET]\n/
+	/*		\![*]\q[恢復默認對話框,DEFAULTBALLOON]\n/*/
+			\n[half]\_q"
+			--
+		/*	if chlang == "0"
+			{
+				"\![sound,stop]\_q當前語言\_q\_l[90,]\q[○簡,Simplified] \q[⊙繁,Traditional]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q當前語言\_q\_l[90,]\q[⊙簡,Simplified] \q[○繁,Traditional]\![sound,play,voice/收到.mp3]\n"
+			}*/
+			--
+			if stayontopswitch == "0"
+			{
+				"\![sound,stop]\_q前端显示\_q\_l[100,]\q[○是,STAYONTOP] \q[⊙否,NOTSTAYONTOP]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q前端显示\_q\_l[100,]\q[⊙是,STAYONTOP] \q[○否,NOTSTAYONTOP]\![sound,play,voice/收到.mp3]\n"
+			}
+			--
+			if mikireswitch == "0"
+			{
+				"\![sound,stop]\_q见切反应\_q\_l[100,]\q[○是,MikireSwitchON]\_q \_q\q[⊙否,MikireSwitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q见切反应\_q\_l[100,]\q[⊙是,MikireSwitchON]\_q \_q\q[○否,MikireSwitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+/*			--
+			if kasanariswitch == "0"
+			{
+				"\![sound,stop]\_q重疊反應\_q\_l[90,]\q[○是,KasanariSwitchON]\_q \_q\q[⊙否,KasanariSwitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q重疊反應\_q\_l[90,]\q[⊙是,KasanariSwitchON]\_q \_q\q[○否,KasanariSwitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			--         */
+			if vanishbutton.visible == "0"
+			{
+				"\![sound,stop]\_q消解顯示\_q\_l[90,]\q[○是,VanishbuttonSwitchON]\_q \_q\q[⊙否,VanishbuttonSwitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q消解顯示\_q\_l[90,]\q[⊙是,VanishbuttonSwitchON]\_q \_q\q[○否,VanishbuttonSwitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+		/*	--
+			if updateboot == "0"
+			{
+				"\![sound,stop]\_q自動更新\_q\_l[90,]\q[○是,UpdateBootON]\_q \_q\q[⊙否,UpdateBootOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q自動更新\_q\_l[90,]\q[⊙是,UpdateBootON]\_q \_q\q[○否,UpdateBootOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			--*/
+			if shutdowntimeswitch == "0"
+			{
+				"\![sound,stop]\_q自动关机\_q\_l[100,]\q[○开,shutdowntimeswitchON]\_q \_q\q[⊙关,shutdowntimeswitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q自动关机\_q\_l[100,]\q[⊙开,shutdowntimeswitchON]\_q \_q\q[○关,shutdowntimeswitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			--
+			if runstartswitch == "0"
+			{
+				"\![sound,stop]\_q开机自启动\_q\_l[100,]\q[○开,runstartswitchON]\_q \_q\q[⊙关,runstartswitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q开机自启动\_q\_l[100,]\q[⊙开,runstartswitchON]\_q \_q\q[○关,runstartswitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+	/*		--
+			if otherghosttalkswitch == "0"
+			{
+				"\![sound,stop]\_q聽取他人格對話\_q\_l[90,]\q[○是,OtherGhostTalkSwitchON]\_q \_q\q[⊙否,OtherGhostTalkSwitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}
+			else
+			{
+				"\![sound,stop]\_q聽取他人格對話\_q\_l[90,]\q[⊙是,OtherGhostTalkSwitchON]\_q \_q\q[○否,OtherGhostTalkSwitchOFF]\![sound,play,voice/收到.mp3]\n"
+			}*/
+			--
+			"\_q\n[half]/
+			\_b[img/back.png,inline]\q[Back,BACK]\_l[70,-]/
+			\_b[img/close.png,inline]\q[Close,SETTINGCLOSE]\_q\n/
+			\e"
+		}
+//---- 顯示設定 ---------------------------------------------------------
+		Choice.Simplified
+		{
+			chlang = "1"
+			GhostSetting
+		}
+		Choice.Traditional
+		{
+			chlang = "0"
+			GhostSetting
+		}
+		Choice.STAYONTOP
+		{
+			stayontopswitch = "1"
+			--
+			"\![set,windowstate,stayontop]"
+			--
+			GhostSetting
+		}
+		Choice.NOTSTAYONTOP
+		{
+			stayontopswitch = "0"
+			--
+			"\![set,windowstate,!stayontop]"
+			--
+			GhostSetting
+		}
+		Choice.MikireSwitchON
+		{
+			mikireswitch = "1"
+			GhostSetting
+		}
+		Choice.MikireSwitchOFF
+		{
+			mikireswitch = "0"
+			GhostSetting
+		}
+		Choice.KasanariSwitchON
+		{
+			kasanariswitch = "1"
+			GhostSetting
+		}
+		Choice.KasanariSwitchOFF
+		{
+			kasanariswitch = "0"
+			GhostSetting
+		}
+		Choice.VanishbuttonSwitchON
+		{
+			vanishbutton.visible = "1"
+			GhostSetting
+		}
+		Choice.VanishbuttonSwitchOFF
+		{
+			vanishbutton.visible = "0"
+			GhostSetting
+		}
+		Choice.UpdateBootON
+		{
+			updateboot = "1"
+			GhostSetting
+		}
+		Choice.UpdateBootOFF
+		{
+			updateboot = "0"
+			GhostSetting
+		}
+		Choice.shutdowntimeswitchON
+		{
+			shutdowntimeswitch = "1"
+			GhostSetting
+		}
+		Choice.shutdowntimeswitchOFF
+		{
+			shutdowntimeswitch = "0"
+			GhostSetting
+		}
+		Choice.OtherGhostTalkSwitchON
+		{
+			otherghosttalkswitch = "1"
+			--
+			"\![set,otherghosttalk,true]"
+			--
+			GhostSetting
+		}
+		Choice.OtherGhostTalkSwitchOFF
+		{
+			otherghosttalkswitch = "0"
+			--
+			"\![set,otherghosttalk,false]"
+			--
+			GhostSetting
+		}
+//---- 透明度設定 -------------------------------------------------------
+		Choice.ALPHASET
+		{
+			AlphaSetting
+		}
+		Choice.ALPHA20
+		{
+			"\![set,alpha,20%]\0\s[3]哇！变透明了\e"
+		}
+		Choice.ALPHA50
+		{
+			"\![set,alpha,50%]\0\s[3]哇！变透明了\e"
+		}
+		Choice.ALPHA80
+		{
+			"\![set,alpha,80%]\0\s[3]哇！变透明了\e"
+		}
+		Choice.ALPHA100
+		{
+			"\![set,alpha,100%]\0\s[5]恢復了。\e"
+		}
+AlphaSetting
+{
+			"\0\s[3]\b[3]要我變得透明一點嗎？\n\n[half]/
+			\![*]\q[20%,ALPHA20]\n/
+			\![*]\q[50%,ALPHA50]\n/
+			\![*]\q[80%,ALPHA80]\n/
+			\![*]\q[不透明,ALPHA100]\n/
+			\_q\n[half]/
+			\_b[img/back.png,inline]\q[Back,SETTING]\n/
+			\_b[img/close.png,inline]\q[Cancel,CANCEL]\_q\n/
+			\e"
+}
+
+//---- 對話頻度 ----------------------------------------------------------------
+		Choice.TALKINTERVAL
+		{
+			//---- 對話頻率的調整
+			"\0\s[0]\b[2]要我怎么说话呢？\n\n/
+			\![*]\q[健談点,TALKMAX]\n/
+			\![*]\q[普通的,TALKNORMAL]\n/
+			\![*]\q[安静哦,TALKPOOR]\n/
+			\![*]\q[沉默...,TALKNONE]\n\n[half]/
+			\_b[img/back.png,inline]\q[Back,SETTING]\_l[50,-]/
+			\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+		}
+		Choice.TALKMAX
+		{
+			//---- 密集的對話(1分間隔)
+			aitalkinterval = 60
+			"\0\s[3]我不是在講相聲哦……\e"
+		}
+		Choice.TALKNORMAL
+		{
+			//---- 一般速度的對話(5分間隔)
+			aitalkinterval = 300
+			"\0\s[5]偶爾也來聊天吧。\e"
+		}
+		Choice.TALKPOOR
+		{
+			//---- 安靜的對話(10分間隔)
+			aitalkinterval = 600
+			"\0\s[3]剛才說的太多了嗎？\e"
+		}
+		Choice.TALKNONE
+		{
+			//---- 不講話
+			aitalkinterval = 0
+			"\0\s[4]木頭人遊戲开始！\e"
+		}
+//---- 語音設定 -------------------------------------------------------
+Choice.SOUNDSET
+{
+	SoundSetting
+}
+SoundSetting
+{
+	"\0\b[2]\s[0]語音方面的設定。\n\n"
+	--
+	if soundlang == "日文語音"
+	{
+		"\![sound,stop]\_q使用語言\_q\n\n[half]\q[○中文語音,SoundLangChinese]\_l[70,-]\q[⊙日文語音,SoundLangJapanese]\![sound,play,voice/收到.mp3]\n"
+	}
+	else
+	{
+		"\![sound,stop]\_q使用語言\_q\n\n[half]\q[⊙中文語音,SoundLangChinese]\_l[70,-]\q[○日文語音,SoundLangJapanese]\![sound,play,voice/收到.mp3]\n"
+	}
+	--
+	"\n"
+	--
+	if silent == "0"
+	{
+		"\![sound,stop]\_q靜音\_q\n\n[half]\q[○是,SESwitchON]\_l[70,-]\q[⊙否,SESwitchOFF]\![sound,play,voice/收到.mp3]\n"
+	}
+	else
+	{
+		"\![sound,stop]\_q靜音\_q\n\n[half]\q[⊙是,SESwitchON]\_l[70,-]\q[○否,SESwitchOFF]\![sound,play,voice/收到.mp3]\n"
+	}
+	--
+	"\n\n/
+	\_b[img/back.png,inline]\q[Back,SETTING]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+}
+//靜音設定
+Choice.SESwitchON
+{
+	silent = "1"
+	SoundSetting
+}
+Choice.SESwitchOFF
+{
+	silent = "0"
+	SoundSetting
+}
+//語言設定
+Choice.SoundLangChinese
+{
+	soundlang = "中文語音"
+	SoundSetting
+}
+Choice.SoundLangJapanese
+{
+	soundlang = "日文語音"
+	SoundSetting
+}
+
+//---- 默認對話框 ----------------------------------------------------------
+		Choice.DEFAULTBALLOON
+		{
+			"\![change,balloon,女仆酱的对话框]\e"
+		}
+
+//**** 安裝相关 ***********************************************************************************
+//---- 安裝中的訊息 ---------------------------------------------------------------------
+OnInstallBegin
+{
+	"\t\0\s[6]安裝开始。\e"
+}
+
+//---- 完裝完成的訊息 -------------------------------------------------------------------
+OnInstallComplete
+{
+	"\0\s[5]"
+	--
+	if reference0 == "shell"
+	{
+		"外表"
+	}
+	elseif reference0 == "shell with balloon"
+	{
+		"外表"
+	}
+	elseif reference0 == "ghost"
+	{
+		"人格"
+	}
+	elseif reference0 == "ghost with balloon"
+	{
+		"人格"
+	}
+	elseif reference0 == "balloon"
+	{
+		"對話框"
+	}
+	elseif reference0 == "calendar plugin"
+	{
+		"日曆插件"
+	}
+	elseif reference0 == "calendar skin"
+	{
+		"日曆面板"
+	}
+	elseif reference0 == "plugin"
+	{
+		"外掛"
+	}
+	elseif reference0 == "headline"
+	{
+		"線上新聞插件"
+	}
+	elseif reference0 == "supplement"
+	{
+		"追加檔"
+	}
+	--
+	"%(reference0)「%(reference1)」順利地完成了。"
+	--
+	if reference0 == "ghost" || reference0 == "ghost with balloon"
+	{
+		"\0\s[3]需要呼叫%(reference1)嗎？\n/
+		\_b[img/ok.png,inline]\q[呼叫,INSTALLGHOST]\n/
+		\_b[img/close.png,inline]\q[Cancel,CANCEL]"
+	}
+	elseif reference0 == "shell" || reference0 == "shell with balloon"
+	{
+		"\![reloadsurface]"
+	}
+	elseif reference0 == "supplement" && reference1 == "果殼-聖誕裝(限定版)"
+	{
+		"\0\c\0\s[5]打开了！%(username)現在要看嗎？\n\_b[img/ok.png,inline]\q[要,InstallXmasPresent]\_b[img/close.png,inline]\q[不要,CancelXmasPresent]"
+	}
+	--
+	"\e"
+}
+Choice.INSTALLGHOST
+{
+	"\![call,ghost,lastinstalled]\e"
+}
+Choice.InstallXmasPresent
+{
+	"\0\s[5]嘩！！這個…現在就去換上！！\_s請稍等...\_s\w9\w9\w9\s[-1]\0\s[-1]\_w[2000]\1\s[15]\![bind,帽子,聖誕帽,1]\![bind,衣服,聖誕衣,1]\0\s[5]\![bind,帽子,聖誕帽,1]\![bind,衣服,聖誕衣,1]\e"
+}
+Choice.CancelXmasPresent
+{
+	"\0\s[3]好吧，那就再等一會。\s[14]%(username)真忙碌呢……\e"
+}
+//---- 安裝失敗的訊息 -------------------------------------------------------------------
+OnInstallFailure
+{
+	"\0\s[4]哎？好像有點問題…失敗了。\n原因：%(reference0)。\e"
+}
+
+//---- 安裝拒絕（其他人格專用的插件） -------------------------
+OnInstallRefuse
+{
+	"\0\s[9]這個東西拿給我也沒辦法，\n它不屬於我吧？\e"
+}
+
+
+//**** 消滅关連 ***********************************************************************************
+
+//---- 消滅指示 -------------------------------------------------------------------------
+OnVanishSelecting
+{
+	"\0\s[9]啾…\w9\w9\w9\s[38]不要……不要……不要啾……\s[0]終於我也不過是這樣的結局嗎……\x一旦進行消解的話，記憶，還有身體，全都會消失了呣…！\n\w9\w9\0\s[38]已經絕對不想再看我們了嗎？\e"
+}
+
+
+//---- 消滅开始 -------------------------------------------------------------------------
+OnVanishSelected
+{
+	"\0\s[40]\0\s[38]啾嗚嗚嗚……\w9\w9\w9…那麼、現實世界中再相見吧，%(username)。\w9\w9\w9\e:eval=(intimacy=0)"
+}
+
+//---- 消滅中止 -------------------------------------------------------------------------
+OnVanishCancel
+{
+	"\0\s[0]剛才果然只是开玩笑的吧？即使是玩笑也不要再說這樣的話了呣。\e"
+}
+
+//---- 其他人格消滅 ---------------------------------------------------------------------
+OnVanished
+{
+	"\0\s[3]……？！\n\w9\w9剛才…%(reference0)與%(reference3)…消失了？\s[0]\n\w9\w9電氣裏傳來了很悲傷的氣息呢。\e"
+}
+OnOtherGhostVanished
+{
+	"\0\s[3]%(reference0)與%(reference3)…\n被消解了……\e"
+}
+
+//**** 網站更新通知 ***********************************************************************************
+OnWebsiteUpdateNotify
+{
+	"\0\s[3]\b[2]%(reference0)有更新。\n內容：%(reference2)\n%(reference1)\e"
+}
+
+
+//**** 信件確認 ***********************************************************************************
+Choice.ALLMAIL
+{
+	"\![biff]\e"
+}
+//---- 信件確認开始 ---------------------------------------------------------------------
+OnBIFFBegin
+{
+	"\0\s[5]如果是有毒的郵件我还不会处理哦\e"
+}
+
+//---- 信件確認成功 ---------------------------------------------------------------------
+OnBIFFComplete
+{
+	if reference0 == 0
+	{
+		//---- 沒有信件
+		"\0\s[3]現在沒有新的郵件，要我寫一封寄給%(username)嗎？\0\s[0]\n/
+			需要打开默認郵箱嗎？\n\![*]\q[打开,OPENMAILER]\n\![*]\q[算了,CANCEL]/
+			\e:eval=(intimacy+=0.01)"
+	}
+	else
+	{
+		//---- 有新信件
+		"\0\s[9]叮咚，看看有什麼進來了？\0\s[5]是新的郵件啾！有%(reference3)封。\n/
+			需要打开默認郵箱嗎？\n\![*]\q[打开,OPENMAILER]\n\![*]\q[算了,CANCEL]\e:eval=(intimacy+=0.01)"
+	}
+}                 /*C:\Program Files\Windows Live\Mail\wlmail.exe*/
+
+//---- 信件確認失敗 ---------------------------------------------------------------------
+OnBIFFFailure
+{
+	if reference0 == "timeout"
+	{
+		//---- 逾時
+		"\0\s[4]女仆花了好久也沒有連上網路啾，\n超時被关閉連線了啾……T  T\e"
+	}
+	elseif reference0 == "kick"
+	{
+		//---- 踢除
+		"\0\s[0]門関起來了，郵件服務器的大門関起來了，拿不到郵件了。\e"
+	}
+	elseif reference0 == "defect"
+	{
+		//---- 設定誤り
+		"\0\s[16]如果不告訴我們正確的設定作為鑰匙的話，我們是無法打开%(username)的信箱的，剛才的設定錯誤了。\e"
+	}
+	else
+	{
+		//---- 原因不明
+		"\0\s[3]……出錯了……但是……原因不明。好奇怪…\e"
+	}
+}
+/*
+
+//**** 線上更新 ***********************************************************************************
+Choice.GOTOUPDATE
+{
+	"\![updatebymyself]\e"
+}
+Choice.UPDATE
+{
+	"\![updatebymyself,checkonly]\e"
+}
+//---- 線上更新开始 ---------------------------------------------------------------------
+OnUpdateBegin
+{
+	"\0\s[5]开動了啾！\e"
+}
+
+//---- 線上更新準備完了 -----------------------------------------------------------------
+OnUpdateReady
+{
+	"\1\s[15]又有新的飼料可以吃嗎？\0\s[5]我們會因此而長大一點嗎？\e"
+}
+
+//---- 線上更新終了 ---------------------------------------------------------------------
+OnUpdateComplete
+{
+	if reference0 == "none"
+	{
+		//---- 沒有更新檔
+		updatemyself = 0
+		"\0\s[4]缺少功能表，沒有更新啾嗚……\e"
+	}
+	else
+	{
+		//---- 實際更新完成
+		updatemyself = 0
+		"\1\s[15]多謝款待呣。\0\s[5]好豐富的一餐！更新也順利地完成了啾！\e:eval=(intimacy+=0.01)"
+	}
+}
+
+//---- 線上更新失敗 ---------------------------------------------------------------------
+OnUpdateFailure
+{
+	if reference0 == "timeout"
+	{
+		//---- 連線逾時
+		"\0\s[4]超過時間的話菜就不能吃了……"
+	}
+	elseif reference0 == "md5 miss"
+	{
+		//---- MD5値不一致
+		"\0\s[8]餐牌MD5對照完畢，但是，這不是我們預定功能表啾？\n對照結果不一致啾……"
+	}
+	else
+	{
+		//---- 上述以外的狀況
+		"\0\s[3]這是什麼奇怪的功能表呣？\1\s[16]這樣的食物可不能吃。"
+	}
+	--
+	"\n\n\1\s[14]失敗了……\e"
+}
+
+//---- 線上更新 下載开始 ----------------------------------------------------------------
+OnUpdate.OnDownloadBegin
+{
+	"\0\s[6]檔案「%reference0」下載开始。\e"
+}
+
+//---- 線上更新 MD5値對照开始 -----------------------------------------------------------
+OnUpdate.OnMD5CompareBegin
+{
+	"\1\s[10]餐牌MD5對照看看？\e"
+}
+
+//---- 線上更新 MD5値一致 ---------------------------------------------------------------
+OnUpdate.OnMD5CompareComplete
+{
+	"\0\s[5]餐牌MD5對照完畢！與預定的功能表一樣哦！\e"
+}
+
+//---- 線上更新 MD5値不一致 -----------------------------------------------------
+OnUpdate.OnMD5CompareFailure
+{
+	"\0\s[2]餐牌MD5對照完畢，\s[4]但是，這不是我們預定功能表啾？\n對照結果不一致啾……\e"
+}
+//---- 線上更新 僅確認完成 -----------------------------------------------------
+OnUpdateCheckComplete
+{
+	if reference0 == "none"
+	{
+		"\1\s[14]沒有新的餐牌。\0\s[8]咦…"
+	}
+	elseif reference0 > "0"
+	{
+		updatemyself = 1
+		"\_q\0\s[0]有%(reference0)個主菜。\n\_b[img/ok.png,inline]\q[進行更新,GOTOUPDATE]\n\_b[img/close.png,inline]\q[不更新,CANCEL]\_q\e"
+	}
+	else
+	{
+		"\0\s[30]不明狀況。\1\s[14]……\e"
+	}
+}
+OnUpdateCheckFailure
+{
+	"\0\s[4]確認失敗：%(reference0)。\e"
+}
+*/
+//**** HeadlineSense ******************************************************************************
+Choice.HEADLINE
+{
+	"\0\s[5]RSS盒子已經开啓。要看哪裏的新聞呢？\![open,headlinesensorexplorer]\e"
+}
+Choice.HEADLINECANCEL
+{
+	"\0\s[0]好的。\e"
+}
+
+//---- HeadlineSense开始 ----------------------------------------------------------------
+OnHeadlinesenseBegin
+{
+	"\0\s[3]想要查看%(reference0)嗎？通信开始。\e"
+}
+
+//---- Headline讀取 ---------------------------------------------------------------------
+OnHeadlinesense.OnFind
+{
+	//---- 首頁對白
+	if reference2 == "First" || reference2 == "First and Last"
+	{
+		//---- 首頁
+		"\0\b[2]\s[3]\![set,choicetimeout,-1]\![set,balloontimeout,-1]這是%(reference0)的Headline。"
+	}
+	elseif reference2 == "Next"
+	{
+		//---- 中間頁
+		"\0\b[2]\s[3]\![set,choicetimeout,-1]\![set,balloontimeout,-1]%(reference0)的Headline，續頁。"
+	}
+	elseif reference2 == "Last"
+	{
+		//---- 末頁
+		"\0\b[2]\s[6]\![set,choicetimeout,-1]\![set,balloontimeout,-1]%(reference0)的Headline、最後一頁。"
+	}
+	--
+	//---- Headline本体
+	"\n\n%(reference3)\n\n"
+	--
+	//---- 選擇鍵
+	if reference2 == "First" || reference2 == "Next"
+	{
+		//---- 有下一頁的場合
+		"\q0[][下一頁]/
+		\q1[%(reference1)][網址]/
+		\q2[HEADLINECANCEL][取消]\e"
+	}
+	else
+	{
+		//---- 沒下一頁的場合
+		"\q0[%(reference1)][網址]/
+		\q1[HEADLINECANCEL][取消]\e"
+	}
+}
+
+//---- Headline無更新 -------------------------------------------------------------------
+OnHeadlinesenseComplete
+{
+	"\0\s[4]%(reference0)今天沒有更新呣……\e"
+}
+
+//---- HeadlineSense失敗 ----------------------------------------------------------------
+OnHeadlinesenseFailure
+{
+	"\0\s[4]連線失敗。今天感覺是"
+	--
+	if reference0 == "can't download"
+	{
+		"下載失敗。"
+	}
+	elseif reference0 == "can't analyze"
+	{
+		"Headline解析失敗。"
+	}
+	else
+	{
+		"謎。"
+	}
+	--
+	"\e"
+}
+
+//**** RSS讀取(感謝時原砂さん)*******************************************************************************
+OnRSSComplete
+{
+        _n = ARRAYSIZE(reference);
+        if ( _n <= 1 ) { //無更新
+                OnHeadlinesenseComplete('RSS');
+                return;
+        }
+        
+        _title = RemoveSakuraScript(reference[0]);
+        _txt = '\0\s[0]\b[2]\![set,autoscroll,disable]\![set,choicetimeout,-1]\![set,balloontimeout,-1]\_q\f[bold,true]' + _title + '\f[bold,false]\n[200]';
+        
+        for _i = 2 ; _i < _n ; _i++ {
+                _str = reference[_i];
+		if CHR(1) _in_ _str
+		    _str = SPLIT(_str,CHR(1));
+		else
+		    _str = SPLIT(_str,',');
+                _str[0] = REPLACE(_str[0],']','\]');
+                _str[0] = MakeShortText(_str[0],20);//在此設定最多顯示多少個字
+                _txt += "\q[%(_str[0]),OnRSSLink,%(_str[1])]\n";
+        }
+        
+        _txt += "\n\_b[img/ok.png,inline]\q[進入網站,%(reference1)]\n/
+                 \_b[img/close.png,inline]\q[Cancel,CANCEL]\_q\e";
+        
+        _txt;
+}
+
+OnRSSLink
+{
+        "\j[%(reference0)]";
+}
+//---- 清除非字串部份(櫻語語法) ---------------------------------
+RemoveSakuraScript
+{
+        _txt = RE_REPLACE(_argv[0],'\\_{0,2}[a-zA-Z0-9*!&](\d|\[("([^"]|\\")+?"|([^\]]|\\\])+?)+?\])?','')
+        _txt = REPLACE(_txt,'\\','\')                // '
+        _txt;
+}
+//---- 切除過長字串 --------------------------------------------
+MakeShortText
+{
+        if _argc < 2 {
+                '';
+                return;
+        }
+        
+        _num = _argv[1] / 2
+        _len = STRLEN(_argv[0])
+        _txt = ''
+        
+        if _num >= _len {
+                _argv[0]
+                return;
+        }
+        
+        _lendiff = 0
+        while 1 {
+                _txt = SUBSTR(_argv[0],0,_num)
+                
+                _lendiff = GETSTRBYTES(_txt,127) - _argv[1] + 1
+                if _lendiff >= 0 {
+                        break;
+                }
+                _num += 1
+                if _num >= _len {
+                        break;
+                }
+        }
+        
+        if _num >= _len {
+                _argv[0]
+        }
+        else {
+                _txt = SUBSTR(_argv[0],0,_num - 1)
+                if _lendiff == 0 {
+                        _txt += '..'
+                }
+                else {
+                        _txt += '...'
+                }
+                _txt;
+        }
+}
+
+
+
+//**** 檔案作成关連 *******************************************************************************
+
+//---- updates2.dau作成开始 -------------------------------------------------------------
+OnUpdatedataCreating
+{
+	"\0\s[6]線上更新檔案作成中。\e"
+}
+
+//---- updates2.dau作成完了 -------------------------------------------------------------
+OnUpdatedataCreated
+{
+	"\0\s[5]線上更新檔案作成終了。\e"
+}
+
+//---- NAR作成开始 ----------------------------------------------------------------------
+OnNarCreating
+{
+	"\0\s[6]nar檔作成开始。\e"
+}
+
+//---- NAR作成完了 ----------------------------------------------------------------------
+OnNarCreated
+{
+	"\0\s[5]「%(reference0)」的nar檔「%(reference1)」、完成。\e"
+}
+
+//**** 時間同步處理 *******************************************************************************
+//**** みか (http://homepage2.nifty.com/ko-ki/) の辞書を参考にしました。感謝＞こーき氏
+Choice.SNTPTIME
+{
+	"\0\b[2]\s[16]這是很重要的事哦。\n現在的校準伺服器是\n\_q%(SNTPserver)\_q\n要更換伺服器嗎？\n\n/
+	\![*]\q[更改伺服器,SNTPChange]\n/
+	\![*]\q[校準开始,SNTPStart]\n\e"
+}
+Choice.SNTPChange
+{
+	"\0\s[5]請輸入新的伺服器地址。\![open,inputbox,sntpserver,-1,stdtime.gov.hk]\e"
+}
+Choice.SNTPStart
+{
+	"\![executesntp]\e"
+}
+//---- 時間同步處理开始 -----------------------------------------------------------------
+OnSNTPBegin
+{
+	reference0 = SNTPserver;
+	"\0\s[16]連線到\_q%(reference0)\_q伺服器了哦，時間同步开始。\e"
+}
+
+
+//---- 時刻取得成功、比較开始 -----------------------------------------------------------
+OnSNTPCompare
+{
+	"\0\s[16]\n"
+	--
+	if reference3 == 0
+	{
+		_nowtime = SPLIT(reference1,',');
+		"\0\s[5]沒有誤差。%(username)把時鐘照顧得很好呢！\n現在時刻：%(_nowtime[0])年%(_nowtime[1])月%(_nowtime[2])日 %(_nowtime[3]):%(_nowtime[4])\e"
+	}
+	else
+	{
+		"\0\s[9]誤差%(reference3)秒。\n時鐘也需要經常上油才會走得準確，這個以後就交給我吧。\n\n校準中......\6\e:eval=(intimacy+=0.01)"
+	}
+}
+
+OnSNTPCorrect
+{
+	_nowtime = SPLIT(reference1,',');
+	"\0\s[9]同步完成了，很順利呣。\n現在時刻：%(_nowtime[0])年%(_nowtime[1])月%(_nowtime[2])日%(_nowtime[3])：%(_nowtime[4])\e"
+}
+
+
+//---- 時間同步處理失敗 -----------------------------------------------------------------
+OnSNTPFailure
+{
+	"\0\s[3]……失敗了？？嗚……\e"
+}
+
+
+
+//---- 音樂播放+壁紙變換 -------------------------------------------------------------------
+Choice.SetWallpaper_0
+{
+	_tmp = CHARSETLIBEX("saori\proxy.dll", 127)
+	_i = FUNCTIONEX("saori\proxy.dll", "set_wall_paper.exe", "%(ASC(34))%(Wallpaperfile)%(ASC(34))", "0")
+	"\0\s[0]似乎應該這樣……\e"
+}
+Choice.SetWallpaper_1
+{
+	_tmp = CHARSETLIBEX("saori\proxy.dll", 127)
+	_i = FUNCTIONEX("saori\proxy.dll", "set_wall_paper.exe", "%(ASC(34))%(Wallpaperfile)%(ASC(34))", "1")
+	"\0\s[0]似乎應該這樣……\e"
+}
+Choice.SetWallpaper_2
+{
+	_tmp = CHARSETLIBEX("saori\proxy.dll", 127)
+	_i = FUNCTIONEX("saori\proxy.dll", "set_wall_paper.exe", "%(ASC(34))%(Wallpaperfile)%(ASC(34))", "2")
+	"\0\s[0]似乎應該這樣……\e"
+}
+Choice.SetWallpaper_Cancel
+{
+	"\0\s[3]……取消了。\e"
+}
+Choice.OPENPLAYER
+{
+	"\p[2]\0\s[5]音樂播放器打开了。\e"
+}
+/*		Choice.MusicStart_0
+		{
+			//---- 播放音樂
+			_tmp = CHARSETLIBEX("saori\mciaudior.dll", 127)
+			_i = FUNCTIONEX("saori\mciaudior.dll", "stop")
+			_j = FUNCTIONEX("saori\mciaudior.dll", "load", "%(Musicfile)")
+			_k = FUNCTIONEX("saori\mciaudior.dll", "play")
+			playmode = 1
+			"\0\s[5]通常播放。\e"
+		}
+		Choice.MusicStart_1
+		{
+			_tmp = CHARSETLIBEX("saori\mciaudior.dll", 127)
+			_i = FUNCTIONEX("saori\mciaudior.dll", "stop")
+			_j = FUNCTIONEX("saori\mciaudior.dll", "load", "%(Musicfile)")
+			_k = FUNCTIONEX("saori\mciaudior.dll", "loop")
+			playmode = 1
+			"\0\s[5]循環播放。\e"
+		}
+		Choice.MusicStart_Cancel
+		{
+			"\0\s[5]……取消了。\e"
+		}
+		Choice.MusicStart_Stop
+		{
+			playmode = 0
+			_i = FUNCTIONEX("saori\mciaudior.dll", "stop")
+			"\0\s[5]停止播放。\e"
+		}
+		Choice.MusicStart_Loop
+		{
+			playmode = 2
+			_i = FUNCTIONEX("saori\mciaudior.dll", "loop")
+			"\![sound,pause]\0\s[5]暫停播放。\e"
+		}
+		Choice.MusicStart_Resume //無法將循環播放的樂曲暫停并繼續循環播放
+		{
+			playmode = 1
+			_i = FUNCTIONEX("saori\mciaudior.dll", "play")
+			"\![sound,resume]\0\s[5]繼續播放。\e"
+		}
+OnMAAPlayFinish
+{
+	playmode = 0
+	"\0\s[6]播放完畢。\e"
+}*/
+		Choice.MusicStart_0
+		{
+			//---- 播放音樂
+			playmode = 1
+			"\p[2]\s[3]\![sound,play,%(Musicfile)]通常播放。\e"
+		}
+		Choice.MusicStart_1
+		{
+			playmode = 1
+			"\p[2]\s[3]\![sound,loop,%(Musicfile)]循環播放。\e"
+		}
+		Choice.MusicStart_Cancel
+		{
+			"\p[2]\s[-1]\s[3]……取消了。\e"
+		}
+		Choice.MusicStart_Stop
+		{
+			playmode = 0
+			"\p[2]\s[3]\![sound,stop,%(Musicfile)]停止播放。\e"
+		}
+		Choice.MusicStart_Loop
+		{
+			playmode = 2
+			"\p[2]\s[3]\![sound,pause,%(Musicfile)]暫停播放。\e"
+		}
+		Choice.MusicStart_Resume
+		{
+			playmode = 1
+			"\p[2]\s[4]\![sound,resume,%(Musicfile)]繼續播放。\e"
+		}
+//---- OnFileDrop2 ---------------------------------------------------------------------
+OnFileDrop2
+{
+	_filepath = SPLITPATH(reference0)
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	case _fileext
+	{
+		when ".png", ".jpg", ".jpeg", ".bmp"
+		{
+			Wallpaperfile = reference0
+			"\0\s[5]\0\b[2]\s[2]圖像文件\n\_q「%(_filename)%(_fileext)」\n\n[half]\_q要把這個設定為壁紙嗎？\n\n[half]/
+			\![*]\q[置中,SetWallpaper_0]\n/
+			\![*]\q[並列,SetWallpaper_1]\n/
+			\![*]\q[放大,SetWallpaper_2]\n\n[half]/
+			\_b[img/close.png,inline]\q[Cancel,SetWallpaper_Cancel]\e"
+		}
+		when ".mid", ".wav", ".mp3", ".au", ".ogg", ".wma"
+		{
+			if playmode == 0
+			{
+				Musicfile = reference0
+				//---- 無限制歌詞卡播放。（感謝時原砂さん）
+				if '.mp3' _in_ reference0 {
+				"\0\s[2]\b[2]MP3文件：\n\_q%(_filename)%(_fileext)\n\n要播放此音樂嗎？\_q\n\n[half]/
+				\![*]\q[播放2且唱出,OnPlayWithLyric,%(Musicfile),play]\n/
+				\![*]\q[僅播放,OnPlayWithLyric,%(Musicfile),play,nolyric]\n/
+				\![*]\q[循環播放,MusicStart_1]\n\n[half]/
+				\_b[img/close.png,inline]\q[Cancel,CANCEL]";
+			}
+				else {
+					"\0\s[2]\b[2]音樂文件：\n\_q%(_filename)%(_fileext)\n\n要播放此音樂嗎？\_q\n\n[half]/
+					\![*]\q[通常播放,MusicStart_0]\n/
+					\![*]\q[循環播放,MusicStart_1]\n\n[half]/
+					\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+			}
+			}
+			else {
+			"\0\s[3]已經在播放音樂了，不可以同時播放啾。目前還不支持播放列表，請%(username)忍耐一下呣。\e"
+			}
+		}
+		when ".exe"
+		{ 
+      if RE_GREP(_path2,"]")==0
+      "\_q需要女仆设置该软件到女仆的快捷菜单吗？\n[150]　\![*]\q[好的,OnShortcut,%(_filename)%(_fileext),%(_path2),2]　\![*]\q[不了,OnShortcutOver]\n[150]\_l[5,-]\_b[%(CHR(34))%(_path2),0%(CHR(34)),inline%(ICOMode)]\_l[40,-]软件名称：%(_filename)%(_fileext)\n[150]\_l[40,-]软件路径：%(_path2)"
+      else 
+        "\_q\0\s[0]如果%username要设置该软件的快捷，\n路径和名称中请不要带有符号“]”哦！\n[150]\_l[5,-]\_b[%(CHR(34))%(_path2),0%(CHR(34)),inline%(ICOMode)]\_l[40,-]软件名称：%(_filename)%(_fileext)\n[150]\_l[40,-]软件路径：%(_path2)\e"      
+		}
+                when ".lnk"
+                {
+      if RE_GREP(_path2,"]")==0
+      "\_q需要女仆设置该快捷方式到女仆的快捷菜单吗？\n[150]　\![*]\q[好的,OnShortcut,%(_filename)%(_fileext),%(_path2),2]　\![*]\q[不了,OnShortcutOver]\n[150]\_l[5,-]\_b[%(CHR(34))%(_path2),0%(CHR(34)),inline%(ICOMode)]\_l[40,-]软件名称：%(_filename)%(_fileext)\n[150]\_l[40,-]软件路径：%(_path2)"
+      else 
+        "\_q\0\s[0]如果%username要设置该软件的快捷，\n路径和名称中请不要带有符号“]”哦！\n[150]\_l[5,-]\_b[%(CHR(34))%(_path2),0%(CHR(34)),inline%(ICOMode)]\_l[40,-]软件名称：%(_filename)%(_fileext)\n[150]\_l[40,-]软件路径：%(_path2)\e"  
+                }
+		when ""
+		{
+      if _filename==null {
+        _Ico="2";
+        if RE_GREP(_path2,"/")==1
+          _Ico="8";
+      "\_q需要女仆设置该文件夹到女仆的快捷菜单吗？\n[150]　\![*]\q[好的,OnShortcut,━文件夹━,%(_path2),2]　\![*]\q[不了,OnShortcutOver]\n[120]\_l[5,-]\_b[%(CHR(34))saori\Process.dll,%(_Ico)%(CHR(34)),inline%(ICOMode)]\_l[40,-]名称：等下%username自己可以设置名称！%(_fileext)\n[150]\_l[40,-]路径：%(_path2)";
+      }
+      else
+        "\_q\0\s[0]%(_filename)%(_fileext)\n\n%(_path2)\e"
+		}
+		others
+		{
+			"\0\s[3]未知文件\n\_q「%(_filename)%(_fileext)」\_q\0\s[3]…這是什麼？\e"
+		}
+	
+	}
+}
+/*
+//---- 無限制歌詞卡播放。（感謝時原砂さん）
+OnMusicPlayWithLyric
+{
+        _mp3 = REPLACE(reference0, '\', '\\'); //'
+        _lrc = REPLACE(reference0, '.mp3', '.lrc');
+        _txt = '';
+        
+        case reference1 {
+                when 'play' {
+			playmode = 1;
+                        _txt += "\p[2]\s[2]\![sound,play,%(_mp3)]";
+                        if reference2 != 'nolyric' {
+				playmode = 1;
+                                _txt += GetLyric(_lrc);
+                                playTime = GETTICKCOUNT();
+                        }
+                }
+                when 'pause' {
+			playmode = 2;
+                        _txt += "\p[2]\s[3]\![sound,pause]";
+                        if reference2 != 'nolyric' {
+				playmode = 2;
+                                timeDiff = playTime - GETTICKCOUNT();
+                        }
+                }
+                when 'resume' {
+			playmode = 1;
+                        _txt += "\p[2]\s[3]![sound,resume]";
+                        if reference2 != 'nolyric' {
+				playmode = 1;
+                                _txt += GetLyric(_lrc,timeDiff);
+                                playTime = GETTICKCOUNT() + timeDiff;
+                        }
+                }
+                when 'stop' {
+			playmode = 0;
+                        _txt += '\p[2]\s[4]\![sound,stop]';
+                }
+        }
+        
+        _txt;
+}
+*/
+
+/*---------------------------------------------------------------------------------------
+* 函式名稱: GetLyric
+* _argv[0]: 歌詞檔路徑
+* _argv[1]: 歌詞顯示延遲時間
+* _argv[2]: 歌詞檔案語系 0 = Shift_JIS, 1 = UTF-8, 127 = 系統編碼
+*---------------------------------------------------------------------------------------
+*//*
+GetLyric
+{
+        if _argc < 3
+                _tmp = FCHARSET(1);
+        else
+                _tmp = FCHARSET(_argv[2]);
+        
+        _txt = '';
+        _re = FOPEN(_argv[0],'r');
+        if _re == 1 {
+                _txt += '\_q\__w[clear]';
+                while (_re = FREAD(_argv[0])) != -1 {
+                        if SUBSTR(_re, 0, 4) == '[ti:' {
+                                _txt += '\0曲名：' + SUBSTR(_re, 4, STRLEN(_re)-5) + '\n\0';
+                        }
+                        elseif SUBSTR(_re, 0, 4) == '[ar:' {
+                                _txt += '\0歌手：' + SUBSTR(_re, 4, STRLEN(_re)-5) + '\n\0';
+                        }
+                        elseif SUBSTR(_re, 0, 1) == '[' && SUBSTR(_re, 3, 1) == ':' && (SUBSTR(_re, 6, 1) == ':' || SUBSTR(_re, 6, 1) == '.') {
+                                _min = SUBSTR(_re, 1, 2);
+                                _sec = SUBSTR(_re, 4, 2);
+                                _msc = SUBSTR(_re, 7, 2);
+                                _len = TOINT(_min)*60000 + TOINT(_sec)*1000 + TOINT(_msc)*10 + _argv[1];
+                                _str = SUBSTR(_re, 10, STRLEN(_re)-10);
+                                _txt += "\__w[%(_len)]%(_str)\n";
+                        }
+                }
+                FCLOSE(_argv[0]);
+        }
+        else {
+                _txt += '找不到歌詞檔。\n[200]請將歌詞檔命名成與MP3檔一致的檔名，並放在同一資料夾內。';
+        }
+        
+        _txt;
+}
+//---- 音樂結束 -------------------------
+OnSoundStop
+{
+	playmode = 0;
+}
+*/
+//**** 其他處理 ***********************************************************************************
+IpAddress2
+{
+	
+	--
+	_r = FOPEN("var/ip.php","r")
+	_ipaddress2 = FREAD("var/ip.php")
+	_i = FCLOSE("var/ip.php")
+	--
+	"%(ipaddress2)\e"
+}
+
+
+//---- 系統資訊 -----------------------------------------------------------
+OnSystemNormal
+{
+	_i = FUNCTIONEX("saori\uds.dll","UpDownSpeed", -1, 10, 0);
+	UNLOADLIB("saori\uds.dll");
+	_hostname=FUNCTIONEX("saori\saori_ip.dll","host");
+	_ipaddress=FUNCTIONEX("saori\saori_ip.dll","ip");
+	//---- 取得外網真實IP(來自川上さくらさんのIP取得:http://usada.sakura.vg/ip.php)
+	_openipadd2 = FOPEN("var/ip.php","r");
+	_ipaddress2 = FREAD("var/ip.php");
+	_closeipadd2 = FCLOSE("var/ip.php");
+	//---- 取得人格安裝的時間（資料夾建立日期）
+        _installtime = GETTIME(FATTRIB('../../')[9]);
+	"\![execute,http-get,http://usada.sakura.vg/ip.php]/
+	\_q\0\b[2]\s[6]\f[bold,true]系統資訊\f[bold,false]\n\n[half]/
+	//%(year)年%(month)月%(day)日(%(DayofWeek_w))\n/
+	//%(hour):%(minute):%(second)\n/
+	//\n[half]/
+	//---- （感謝Royさん）
+	ＯＳ起動：%(systemuphour)小時%(systemupminute)分\n/
+	人格起動：%(ghostuptime/3600)小時%(ghostuptime/60%60)分\n/
+	捕獲日期：\n%(_installtime[0])年%(_installtime[1])月%(_installtime[2])日\n/
+        //%(_installtime[4]):%(_installtime[5]):%(_installtime[6])\n/
+	\n[half]/
+	//---- 讀取主機名和本地IP（感謝Pygmalionさん）
+	主機名：%(_hostname)\n/
+	本機IP：\n%(_ipaddress)\n/
+	外網IP：\n%(_ipaddress2)\n/
+	\n[half]/
+	下載速度： %(valueex0) Bps\n/
+	上載速度： %(valueex1) Bps\n/
+	\n[half]/
+	\_b[img/next.png,inline]\q[Next,OnSystemNormal2]\_l[70,-]/
+	\_b[img/close.png,inline]\q[Close,CANCEL]/
+	\_q\e"
+}
+
+OnSystemNormal2
+{
+	_i = FUNCTIONEX("saori\KI.dll","Platforms")
+	"\0\s[6]\b[2]\_q/
+	ＣＰＵ：%(SAORI('saori\saori_cpuid.dll','cpu.name'))\n/
+	ＯＳ：%(SAORI('saori\saori_cpuid.dll','os.name'))\n/
+	Build： %(valueex4)\n/*Minor： %(valueex3)\nProducts識別碼： %(valueex1)\n*//
+	\n[half]/
+	內存使用：%(memoryload)％\n/
+	內存全體：%(memorytotalphys/1048576)MB\n/
+	內存空閒：%(memoryavailphys/1048576)MB\n/
+	\n[half]/
+	熒幕尺寸：%(displaywidth) x %(displayheight)\n/
+	熒幕深度：%(displaybpp)Bit\n/
+	\n[half]/
+	人格平台：%(Platform)\n/
+	\n[half]/
+	\_b[img/back.png,inline]\q[Back,OnSystemNormal]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Close,CANCEL]/
+	\_q\e"
+}
+
+DayofWeek_w
+{
+    ("日","一","二","三","四","五","六")[weekday];
+}
+
+Platform
+{
+        case basewarename {
+                when "embryo" {
+                        "Materia"
+                }
+                when "crow" {
+                        "CROW"
+                }
+                when "SSP" {
+                        "SSP"
+                }
+                others {
+                        "謎"
+                }
+        }
+}
+//---- 顯示解析度變更 -----------------------------------------------------------
+OnDisplayChange
+{
+	//---- 用變數取得顯示解析度與色深度相关情報
+	//---- 不知如何使用的話請保持原樣
+	displaybpp    = reference0
+	displaywidth  = reference1
+	displayheight = reference2
+}
+
+//---- URL拖曳 --------------------------------------------------------------------------
+//---- CROW 會在安裝GHOST INSTALLER時呼叫 -----------------------------------------------
+
+//---- 這部份是未完成的語法，待補完中。
+/*OnURLQuery
+{
+	_url = reference0
+	_i = RE_GREP(_url,"\.\w+$")
+	_j = RE_GETSTR
+	_j = TOLOWER(_j)
+	
+	case _j[0]
+	{
+		when ".jpg",".jpeg",".gif",".png"
+		{
+			"\0\s[5]這是圖片。現在還不能做任何動作。\e"
+		}
+		when ".txt"
+		{
+			"\0\s[5]這是純文字檔。\0\s[3]現在還不能做任何動作。\e"
+		}
+		when ".htm",".html"
+		{
+			"\0\s[0]這是網頁。\0\s[3]現在還不能做任何動作。\e"
+		}
+		when ".nar"
+		{
+			"\0\s[0]這是伺か安裝檔。\n要安裝嗎？\n\_b[img/ok.png,inline]\q[安裝,OnURLInstall,%(_url)]\_l[50,-]\_b[img/close.png,inline]\q[僅下載,OnURLDownload,%(_url)]\e"
+		}
+		others
+		{
+			"\0\s[0]\_qURL：\f[height,9]%(reference0)\f[height,default]\_q\0\s[3]現在還不能做任何動作。\e"
+		}
+	}
+}
+
+OnURLInstall
+{
+	"\![execute,install,url,%(reference0),nar]"
+}
+
+OnURLDownload
+{
+	"\![execute,http-get,%(_url),%(reference0),nar]"
+}
+*/
+//-------------------------
+OnURLDropping
+{
+	"\![set,choicetimeout,-1]\![set,balloontimeout,-1]\0\s[6]\_q資料取得中......\_q\e"
+}
+
+OnURLDropped
+{
+	"\0\s[5]\_q%(reference0)資料取得完成。\_q\e"
+}
+
+OnURLDropFailure
+{
+	"\0\s[4]\_q取得失敗。\n\n原因：%(reference1)\_q\e"
+}
+
+//---- 清理垃圾箱 ---------------------------------------------------------------------
+Choice.TRASHCLEAN
+{
+	TrashClean_0
+}
+Choice.TCOK
+{
+	"\![raise,OnTrashClean]\e"
+}
+Choice.TCANCEL
+{
+	"\0\s[3]取消消解。\e"
+}
+
+TrashClean_0
+{
+	_gomicheck = FUNCTIONEX("saori\gomi.dll", "-n")
+	
+	if _gomicheck == 0
+	{
+		"\0\s[3]了解。\n\w9.\w9.\w9.\s[8]好像沒有東西…\w9\w9狀態：\n%(reference0)\n已經被消解了嗎？\e"
+	}
+	elseif _gomicheck > 0
+	{
+		"\0\s[6]要進行消解嗎？\n\_b[img/ok.png,inline]\q[消解,TCOK]\_l[50,-]\_b[img/close.png,inline]\q[Cancel,TCANCEL]"
+	}
+	else
+	{
+		"\0\s[5]不…算了呣。\e"
+	}
+}
+
+OnTrashClean
+{
+	_gomisute = FUNCTIONEX("saori\gomi.dll", "-ef")
+	if _gomisute != 0
+	{
+		"\0\s[5]消解中…\n\w9\w9\w9\w9\w9\w9\0\s[5]消解完畢。辛苦了。\e:eval=(intimacy+=1)"
+	}
+	else
+	{
+		"\w9\w9\0\s[3]咦？失敗了。\e"
+	}
+}
+
+//---- 清理系統 ---------------------------------------------------------------------
+Choice.SYSDUST
+{
+	SystemDust
+}
+SystemDust
+{
+	"\0\s[6]清理开始！\w9\w9\s[16]請選擇需要清理的驅動器。/
+	\![open,file,C:\WINDOWS\system32\cleanmgr.exe]/
+	使用的是Windows自帶的磁盤清理工具，默認路徑為C盤。\e"
+}
+
+
+//---- 電池電力不足 ---------------------------------------------------------------------
+OnBatteryLow
+{
+	"\0\s[9]嗯？！！\n電腦先生的體力不足夠了！危險了哦！\e"
+}
+
+
+//---- 螢幕保護程式實行开始 -------------------------------------------------------------
+OnScreenSaverStart
+{
+	"\0\s[5]電影播放开始！\e"
+}
+
+//---- 螢幕保護程式實行終了 -------------------------------------------------------------
+OnScreenSaverEnd
+{
+	"\0\s[8]電影播放結束！頭有點暈啾……@ @\e"
+}
+
+//---- 切換對話框 ---------------------------------------------------------------
+OnBalloonChange
+{
+	"\0\s[6]切換對話框為\n「%(reference0)」\e"
+}
+
+//---- 切換衣物 ---------------------------------------------------------------
+//---- 兔
+/*Choice.CyauDressup
+{
+	"\0\b[2]\_q這裡是兔的衣櫥。\n\n[half]\_q/
+	\![*]\q[聖誕套裝,CyauXmasDress]\n\n[half]/
+	\_b[img/back.png,inline]\q[Back,BACK]\n/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+}
+Choice.CyauXmasDress
+{
+	"\1\![*]\q[穿上聖誕套裝,CyauXmasDressup]\n\![*]\q[脫下聖誕套裝,CyauXmasDressdown]\n\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+}
+Choice.CyauXmasDressup
+{
+	if Cyaudress == 1 {
+	"\0\s[3]已經穿著了啾。\e"
+	}
+	else {
+	"\0\s[2]等一下啾。\n\w9\s[-1]\_w[2000]\![bind,帽子,聖誕帽,1]\![bind,衣服,聖誕衣,1]\e"
+	}
+}
+Choice.CyauXmasDressdown
+{
+	if Cyaudress == 0 {
+	"\0\s[3]已經脫掉了啾。\e"
+	}
+	else {
+	"\0\s[2]等一下啾。\n\w9\s[-1]\_w[2000]\![bind,帽子,聖誕帽,0]\![bind,衣服,聖誕衣,0]\e"
+	}
+}
+
+//---- 鹿
+Choice.CyakaDressup
+{
+	"\1\b[2]\_q這裡是鹿的衣櫥。\n\n[half]\_q/
+	\![*]\q[聖誕套裝,CyakaXmasDress]\n\n[half]/
+	\_b[img/back.png,inline]\q[Back,BACK2]\n/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+}
+Choice.CyakaXmasDress
+{
+	"\1\![*]\q[穿上聖誕套裝,CyakaXmasDressup]\n\![*]\q[脫下聖誕套裝,CyakaXmasDressdown]\n\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+}
+Choice.CyakaXmasDressup
+{
+	if Cyakadress == 1 {
+	"\1\s[11]已經穿著了呣。\e"
+	}
+	else {
+	"\1\s[11]請稍等一下。\n\w9\s[-1]\_w[2000]\![bind,帽子,聖誕帽,1]\![bind,衣服,聖誕衣,1]\e"
+	}
+}
+Choice.CyakaXmasDressdown
+{
+	if Cyakadress == 0 {
+	"\1\s[11]已經脫下了呣。\e"
+	}
+	else {
+	"\1\s[11]請稍等一下。\n\w9\s[-1]\_w[2000]\![bind,帽子,聖誕帽,0]\![bind,衣服,聖誕衣,0]\e"
+	}
+}
+*/
+/*
+OnDressupChanged
+{
+	case reference1
+	{
+		when "聖誕帽" , "聖誕衣"
+		{
+			if reference2 == 1 {
+			Valenpresent = 1;
+			"\0\s[5]鏘鏘鏘！！換裝完畢！！\n\n[half]\1\s[13]這個…就是我們送給%(username)的禮物……\n\n[half]\0\s[5]今天的我們，就是送給%(username)的聖誕禮物！\n\n[half]\1\s[18]這個時侯是不是應該說「請隨意使用我們」…？\n\n[half]\0\s[3]鹿又在說聽不懂的話了…\n\n[half]\1\s[18]因為畢竟是把自己打包送出去了嘛！\n\n[half]\0\s[1]那麼…%(username)，請食用…啊！說錯了，是請使用…我們吧……\n\n[half]\1\s[13]食用…也可以哦，只有今天的話……\n\n[half]\w9\w9\w9\0\s[5]就保持這樣子一陣子吧！\1\s[15]如果%(username)希望我們換回原來的衣服的話，在我們身上右鍵，選擇【衣物】就可以進行更換了哦。\e"
+			}
+			else {TalkDressupChanged;}
+		}
+		when "櫻花花環"
+		{
+			if reference2 == 1 {
+			Valenpresent = 1;
+			"\0\s[2]%(username)變成桃紅色了嗎？\n\n[half]\1\s[15]%(username)，情人節的時候我們也會一直陪著%(username)哦！\n\n[half]\0\s[5]青人節快樂！\n\n[half]\1\s[15]情人節快樂！\w9\w9\w9\w9\w9\n\n[half]\n\n[half]\1\s[15]如果%(username)希望我們換回原來的衣服的話，在我們身上右鍵，選擇【衣物】就可以進行更換了哦。\e"
+			}
+			else {TalkDressupChanged;}
+		}
+		others { TalkDressupChanged; }
+	}
+}
+TalkDressupChanged
+{
+	if reference0 == 0 {
+		if reference2 == 1 {"\0\s[5]「%(reference1)」穿戴完畢！\e"}
+		elseif reference2 == 0 {"\0\s[6]「%(reference1)」卸下完畢。\e"}
+	}
+	elseif reference0 == 1 {
+		if reference2 == 1 {"\1\s[15]穿上了「%(reference1)」呣。\e"}
+		elseif reference2 == 0 {"\1\s[16]脫下了「%(reference1)」。\e"}
+	}
+}
+//---- 獲取衣物反應 ------------------------------------------------------
+TalkXmasPresent
+{
+	"\1\s[15]已經從網路上拿過來了…打开包裝紙中。\w9\w9\w9\![open,file,var\xmas_xianding.nar]\e"
+}
+*/
+//---- 重起/関機 ---------------------------------------------------------------
+Choice.WindowsLogout
+{
+	"\_q即將登出系統。\n確認嗎？\n/
+	\_b[img/ok.png,inline]\q[OK,OnWindowsLogout]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\_q\e"
+}
+Choice.WindowsReboot
+{
+	"\_q即將重新啓動系統。\n確認嗎？\n/
+	\_b[img/ok.png,inline]\q[OK,OnWindowsReboot]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\_q\e"
+}
+Choice.WindowsShutDown
+{
+	"\_q即將关閉系統。\n確認嗎？\n/
+	\_b[img/ok.png,inline]\q[OK,OnWindowsShutDown]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\_q\e"
+}
+
+OnWindowsLogout
+{
+	SAVEVAR();
+	_i = FUNCTIONEX("saori\KI.dll","ExitWindows","LogOff");
+}
+OnWindowsReboot
+{
+	SAVEVAR();
+	_i = FUNCTIONEX("saori\KI.dll","ExitWindows","Reboot");
+}
+OnWindowsShutDown
+{
+	SAVEVAR();
+	_i = FUNCTIONEX("saori\KI.dll","ExitWindows","ShutDown");
+}
+
+//---- 起動時發現 MATERIA ---------------------------------------------------------------
+OnEmbryoExist
+{
+	"\0\s[6]「伺か」已在啟動中。\e"
+}
+
+//---- 起動時發現 猫どりふ --------------------------------------------------------------
+OnNekodorifExist
+{
+	"\0\s[2]嗚哇、是「猫どりふ」……\w9…\w…\5！！\e:eval=(intimacy-=1)"
+}
+
+//--- 網路不暢 ----------------------------------------------------------------------------
+OnNetworkHeavy
+{
+	"\0\s[4]啾嗚……連接不暢……\e"
+}
+
+//---- 打开網站 ----------------------------------------------------------------------------------
+OnRecommendsiteChoice
+{
+	"「%(reference0)」\n开啟。\e"
+}
+
+
+//**** 泛用應用程式 *******************************************************************************
+
+//---- 起動 -----------------------------------------------------------------------------
+OnApplicationBoot
+{
+	"\0\s[3]%(reference0)、起動。\e"
+}
+
+//---- 終了 -----------------------------------------------------------------------------
+OnApplicationClose
+{
+	"\0\s[6]%(reference0)、終了。\e"
+}
+
+//---- 檔案开啟 -------------------------------------------------------------------------
+OnApplicationFileOpen
+{
+	"\0\s[6]檔案%(reference1)开啟。\e"
+}
+
+
+//**** きのこ *************************************************************************************
+
+//---- 產生 -----------------------------------------------------------------------------
+OnKinokoObjectCreate
+{
+	"\0\s[5]嗚、是%(reference0)嗎…\w5…\w5\0\s[0]…\w5…\e"
+	"\0\s[4]好重。\e"
+}
+
+//---- 消失 -----------------------------------------------------------------------------
+OnKinokoObjectDestroy
+{
+	"\0\s[30]呼、終於消失了。\e"
+}
+
+//---- 系統資源不足 ---------------------------------------------------------------------
+OnSysResourceLow
+{
+	"\0\s[3]啾嗚！！電腦先生的體力不足夠了！\n危險啾！\e"
+}
+OnSysResourceCritical
+{
+	"\0\s[3]啾嗚！！電腦先生快崩潰了！\n危險啾！\e"
+}
+
+
+
+//**** 圖形時鐘2.0（感謝Pygmalionさん） ***********************************************************************************
+Choice.AnaLogClock
+{
+	AnaLogClock
+}
+AnaLogClock
+{
+	//判斷時鐘是否啓動
+	anaclock = 1;
+	"\0\s[9]呀呣，要鹿使用時鐘嗎？\0\s[5]叮咚！現在是幾點了呢？"
+	--
+	_result=FUNCTIONEX("saori\clock\AnalogClock.dll","show","clock",0,0,"kero");
+	--
+	"\e:eval=(intimacy+=0.01)"
+}
+HideAnaLogClock
+{
+	//判斷時鐘是否啓動
+	anaclock = 0;
+	ClockCloseTalk;
+	_result=FUNCTIONEX("saori\clock\AnalogClock.dll","hide","clock");
+}
+OnClockTime
+{
+	"\0\s[2]叮咚，叮咚\n現在時間：\n%(reference0):%(reference1):%(reference2)\e"
+}
+OnClockClose
+{
+	//判斷時鐘是否啓動
+	anaclock = 0;
+	ClockCloseTalk;
+}
+ClockCloseTalk
+{
+	"那麼就把時鐘收起來了呣。\0\s[6]收起來了啾。\e"
+}
+//**** どりふ *************************************************************************************
+
+//---- OnNekodorifObjectHitイベント -----------------------------------------------------
+OnNekodorifObjectHit
+{
+	if reference4 == "茶兔"	// 在此指定sakura的名字
+	{
+		ObjectHitSakura
+	}
+	else
+	{
+		ObjectHitKero
+	}
+}
+
+//---- 命中本体側 -----------------------------------------------------------------------
+ObjectHitSakura
+{
+	if reference2[0] == "pain" || reference2[0] == "stab"
+	{
+		"\0\s[9]好痛！\e:eval=(intimacy-=1)"
+	}
+	elseif reference2[0] == "surprise" || reference2[0] == "huge"
+	{
+		"\0\s[9]哇！\e:eval=(intimacy-=1)"
+	}
+	elseif reference2[0] == "love" || reference2[0] == "elegant" || /
+		reference2[0] == "pretty" || reference2[0] == "food"
+	{
+		"\0\s[4]嗚啊。\e:eval=(intimacy-=1)"
+	}
+	else
+	{
+		"\0\s[2]…\w2…\w2唔，是%(reference0)嗎。\e"
+	}
+}
+
+//---- 命中kero側 -----------------------------------------------------------------------
+ObjectHitKero
+{
+	if reference2[0] == "pain" || reference2[0] == "stab"
+	{
+		"\1\s[17]咕呼…\w2…\w2！\e:eval=(intimacy-=1)"
+	}
+	else
+	{
+		"\1\s[12]呣嗚。\e:eval=(intimacy-=1)"
+	}
+}
+
+///**** 設定鬧鐘 ***********************************************************************************
+Choice.ALARM
+{ AlarmMenu }
+AlarmMenu
+{
+	"\_q\0\b[2]鬧鐘功能。\n\n[half]\_q"
+	--
+	if AlarmTime == "未設定" && AlarmDelay == "未設定" {
+	"\_q\n[half]當前設定：\n/
+	(未設定) 點 (未設定) 分進行提醒\n/
+	每隔 (%(AlarmDelay)) 分鐘提醒一次\n\n\_q"
+	}
+	else {
+	"\_q\n[half]當前設定：\n/
+	%(AlarmTime[0]) 點 %(AlarmTime[1]) 分進行提醒\n/
+	每隔 %(AlarmDelay) 分鐘提醒一次\n\n\_q"
+	}
+	--
+	if AlarmOpenSwitch == "OFF" {
+	"\_q鬧鐘开关：\q[◇OFF,AlarmOpenSwitchON]\n\_q"
+	}
+	else {
+	"\_q鬧鐘开关：\q[◆ON,AlarmOpenSwitchOFF]\n\_q"
+	}
+	--
+	if AlarmDaySwitch == "只今日提醒" {
+	"\_q提醒模式：\q[◇只今日提醒,AlarmDaySwitchON]\n\_q"
+	}
+	else {
+	"\_q提醒模式：\q[◆每日都提醒,AlarmDaySwitchOFF]\n\_q"
+	}
+	--
+	if AlarmPinlvSwitch == "單次提醒" {
+	"\_q提醒頻率：\q[◇單次提醒,AlarmPinlvSwitchON]\n\_q"
+	}
+	else {
+	"\_q提醒頻率：\q[◆間隔提醒,AlarmPinlvSwitchOFF]\n\_q"
+	}
+	--
+	"\n/
+	\![*]\q[設定鬧鈴時間,OnSetAlarm]\n/
+	\![*]\q[設定鬧鈴間隔時間,OnSetAlarmDelay]\n\n/
+	\_b[img/back.png,inline]\q[Back,BACK]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Close,SETTINGCLOSE]\_q\e"
+}
+Choice.AlarmOpenSwitchON
+{
+	AlarmOpenSwitch = "ON";
+	AlarmEntryTime = GETTIME();
+	AlarmMenu;
+}
+Choice.AlarmOpenSwitchOFF
+{
+	AlarmOpenSwitch = "OFF";
+	AlarmMenu;
+}
+Choice.AlarmDaySwitchON
+{
+	AlarmDaySwitch = "每日都提醒";
+	AlarmMenu;
+}
+Choice.AlarmDaySwitchOFF
+{
+	AlarmDaySwitch = "只今日提醒";
+	AlarmMenu;
+}
+Choice.AlarmPinlvSwitchON
+{
+	AlarmPinlvSwitch = "間隔提醒";
+	AlarmMenu;
+}
+Choice.AlarmPinlvSwitchOFF
+{
+	AlarmPinlvSwitch = "單次提醒";
+	AlarmMenu;
+}
+OnSetAlarm
+{
+	"\0\s[2]要在什麼時候提醒%(username)呢？";
+	--
+	"\![open,timeinput,OnSetAlarmComplete]";
+}
+OnSetAlarmComplete
+{
+	AlarmTime = SPLIT(reference0,",");
+	AlarmDay = GETTIME();
+	--
+	if AlarmOpenSwitch == "ON" && AlarmDaySwitch == "只今日提醒" && AlarmPinlvSwitch = "單次提醒" {
+	"\0\s[5]在今天%(AlarmTime[0])點%(AlarmTime[1])分的時候提醒%(username)一次嗎？\n\1\s[15]任務接受！\e"
+	}
+	elseif AlarmOpenSwitch == "ON" && AlarmDaySwitch == "每日都提醒" && AlarmPinlvSwitch = "單次提醒" {
+	"\0\s[5]在每天%(AlarmTime[0])點%(AlarmTime[1])分的時候提醒%(username)一次嗎？\n\1\s[15]任務接受！\e"
+	}
+	else{ "\0\s[5]在%(AlarmTime[0])點%(AlarmTime[1])分的時候提醒%(username)嗎？\n\1\s[15]任務接受！\e" }
+}
+
+OnSetAlarmDelay
+{
+	"\0\s[2]要間隔幾分鐘提醒%(username)呢？\n輸入單個數字即可。";
+	--
+	"\![open,inputbox,OnSetAlarmDelayComplete]";
+}
+OnSetAlarmDelayComplete
+{
+	AlarmDelay = reference0;
+	AlarmEntryTime = GETTIME();  //記錄系統時間
+	--
+	"\0\s[5]間隔%(AlarmDelay)分鐘提醒%(username)一次嗎？\1\s[15]任務接受！\e"
+}
+//**** 設定关機時間 ***********************************************************************************
+/*OnSetShutdown
+{
+	"\0\s[4]爲了防止失憶，自動关機功能暫停中...\e"
+}*/
+OnSetShutdown
+{
+	"\0\s[2]要在什麼時候自動关機呢？";
+	--
+	"\![open,timeinput,OnSetShutdownComplete]";
+}
+OnSetShutdownComplete
+{
+	shutdowntime = SPLIT(reference0,",");
+	
+	"\0\s[6]在%(shutdowntime[0])點%(shutdowntime[1])分的時候自動关機。\1\s[15]任務接受！\e";
+}
+
+//**** 关於人格 **************************************************************************
+		Choice.ABOUTAYA
+		{
+			userage = year - userbirthday[0];
+			userzodiac = OnZodiacSign;
+			"\0\s[6]\b[2]\_q啾…現在的情況。\n\f[color,171,171,171](点击即可更改)\f[default]\n/
+			\q[主人：%(username),TEACHUSERTITLE]\n/
+			\q[生日：%(userbirthday[0])年%(userbirthday[1])月%(userbirthday[2])日,TEACHUSERBIRTH]\n/
+			//年齡：%(userage)歲\n/
+			星座：%(userzodiac)\n"
+			--
+			if locale == 0 {
+			"\q[所在地：<未知地>,EditLocale]\n"
+			}
+			else {
+			"\q[所在地：%(locale),EditLocale]\n"
+			}
+			--
+			"\q[,CYA]/
+			
+	/*		\![*]\q[贴吧设置,TIEBA]\n/*/
+			
+			\![*]\q[版权相关,COPYRIGHT]\n/
+			\![*]\q[龙之介小历史,LONG]\n/
+			\![*]\q[制作人员,STAFF]\n\n[half]/
+	/*		\![*]\q[README,README]\n\n[half]\_q/*/
+			\_b[img/back.png,inline]\q[Back,BACK]\_l[100,-]\_b[img/close.png,inline]\q[Close,CANCEL]\n/
+			
+			\e"
+		}
+		Choice.CYAU
+		{
+			if silent == "1" {
+			"\0\s[5]茶兔，\w9\s[3]因為是兔所以腦袋不太靈光。\w9\n\s[4]在網路的生命體中也常常被嘲笑，不想再那樣了。\w9\w9\n\s[7]為了獲得屬於自己的身體，兔也要努力！\e"
+			}
+			else {
+			"\![sound,stop]\![sound,play,voice/u1.mp3]\0\s[5]茶兔，\w9\s[3]因為是兔所以腦袋不太靈光。\w9\n\s[4]在網路的生命體中也常常被嘲笑，不想再那樣了。\w9\w9\n\s[7]為了獲得屬於自己的身體，兔也要努力！\e"
+			}
+		}
+		Choice.CYAKA
+		{
+			if silent == "1" {
+			"\1\s[16]茶鹿，\w9因為是鹿的关係所以很喜歡橡子。\w9\n\s[15]捧著橡子的兔太可愛了，意識到的時候已經跟兔在一起很長時間了。\w9\w9\n\s[18]在鹿看來，兔就那樣傻乎乎的也沒关係啦。\e"
+			}
+			else {
+			"\![sound,stop]\![sound,play,voice/ka1.mp3]\1\s[16]茶鹿，\w9因為是鹿的关係所以很喜歡橡子。\w9\n\s[15]捧著橡子的兔太可愛了，意識到的時候已經跟兔在一起很長時間了。\w9\w9\n\s[18]在鹿看來，兔就那樣傻乎乎的也沒关係啦。\e"
+			}
+		}
+		Choice.MAINPAGE
+		{
+			"\0\s[6]要看看我的出生地嗎？\n\n[half]/
+			\_b[img/ok.png,inline]\q[OK,OPENMAINPAGE]\_l[50,-]/
+			\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+		}
+		Choice.OPENMAINPAGE
+		{
+			"\j[http://cat-fish.net/ssp/cyaucyaka/]\e"
+		}
+		Choice.COPYRIGHT
+		{
+			"\f[height,12]\![set,autoscroll,disable]\![set,balloontimeout,-1]\![set,choicetimeout,-1]/
+			\0\s[16]\0\b[2]\s[6]這裡是著作權相关問題的回答。\_q/
+			\n\n[half]\f[bold,true]偽春菜著作權問答\f[bold,false]\n人格配布17問\n\n[half]/
+			01.直接連結到人格配布頁面\n/
+			\f[color,112,138,50]A：請自便\f[default]\f[height,12]\n/
+			\n/
+			02.對人格的內容進行劇透/捏他(ネタバレ)\n/
+			\f[color,112,138,50]A：請自便\f[default]\f[height,12]\n/
+			\n/
+			03.批評人格的內容\n/
+			\f[color,112,138,50]A：請自便（但請勿太過主觀）\f[default]\f[height,12]\n/
+			\n/
+			04.人格二次創作物的配布(免費網頁素材配布、同人誌販售等)\n/
+			\f[color,112,138,50]A：請自便\f[default]\f[height,12]\n/
+			\n/
+			05.與原作設定大幅不同的二次創作\n/
+			\f[color,112,138,50]A：請自便\f[default]\f[height,12]\n/
+			\n/
+			06.18禁的二次創作\n/
+			\f[color,112,138,50]A：請自便\f[default]\f[height,12]\n/
+			\n/
+			07.追加外形、對話框等的配布\n/
+			\f[color,161,43,146]A：最好不要（但是可以自行追加衣物）\f[default]\f[height,12]\n/
+			\n/
+			08.更改人格預設外形、預設對話框的配布\n/
+			\f[color,161,43,146]A：最好不要\f[default]\f[height,12]\n/
+			\n/
+			09.在網路上轉載人格之對話\n/
+			\f[color,147,147,147]A：不禁止但也不推薦這麼做\f[default]\f[height,12]\n/
+			\n/
+			10.取用一部份的人格原始碼作為他用\n/
+			\f[color,87,43,161]A：請事先聯絡我\f[default]\f[height,12]\n/
+			\n/
+			11.將人格的預設外形作為素材(留言板圖像、論壇圖示等)來使用\n/
+			\f[color,87,43,161]A：請事先聯絡我\f[default]\f[height,12]\n/
+			\n/
+			12.人格預覽圖的直接連結\n/
+			\f[color,112,138,50]A：請自便\f[default]\f[height,12]\n/
+			\n/
+			13.人格壓縮檔的直接連結(盜連)\n/
+			\f[color,210,0,0]A：絕對不行\f[default]\f[height,12]\n/
+			\n/
+			14.將公开中的人格放到網路上進行再配布\n/
+			\f[color,210,0,0]A：絕對不行\f[default]\f[height,12]\n/
+			\n/
+			15.將公开終了的人格放到網路上進行再配布\n/
+			\f[color,87,43,161]A：請事先聯絡我\f[default]\f[height,12]\n/
+			\n/
+			16.修改人格的原始內容並進行再配布\n/
+			\f[color,210,0,0]A：絕對不行\f[default]\f[height,12]\n/
+			\n/
+			17.將人格收錄在同人誌中\n/
+			\f[color,112,138,50]A：請自便\f[default]\f[height,12]\n/
+			\n/
+			18.將人格收錄在商業誌中\n/
+			\f[color,87,43,161]A：請事先聯絡我\f[default]\f[height,12]\n/
+			\n\n[half]此問卷取得自：\n\_a[http://cuc.moe.hm/wiki/index.php]中文僞春菜後援會\_a\n/
+			→ \_a[http://emily.shillest.net/specwiki/index.php?ueda%2F%E3%82%B4%E3%83%BC%E3%82%B9%E3%83%88%E8%91%97%E4%BD%9C%E6%A8%A9%E6%84%8F%E8%AD%98%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%B3%AA%E5%95%8F]原始出處\_a\n\n[half]\f[height,default]\_q/
+			\_b[img/back.png,inline]\q[Back,BACK]\n/
+			\_b[img/close.png,inline]\q[Cancel,CANCEL]\n/
+			\e"
+		}
+		Choice.LONG
+		{
+			"\![sound,stop]\0\s[3]\![sound,play,voice/龙之介历史.mp3]\e"
+		}
+//**** STAFF *************************************************************************************
+Choice.STAFF
+{
+	TalkStaffList
+}
+TalkStaffList
+{
+	"\f[height,16]\![set,balloontimeout,-1]\![set,choicetimeout,-1]\![set,autoscroll,disable]/
+	\0\b[2]\_q制作人员：\n\n[half]/
+	\f[bold,true]人格本体\f[bold,false]\n/
+	Ghost：\_a[http://www.baidu.com/p/gph159821?from=tieba]harry159821\_a\n/
+	Shell：\_a[http://www.baidu.com/p/gph159821?from=tieba]harry159821\_a+\_a[http://www.baidu.com/p/%E6%B7%A1%E5%BF%98%E4%BA%86%E4%B8%A8%E6%98%9F%E5%B0%98?from=msg]淡忘了丨星尘\_a\n/
+	/*\f[bold,true]配音\f[bold,false]\n/
+	茶兔：\_a[http://kkryu.com/]kkryu\_a\n/
+	茶鹿：\_a[http://kkryu.com/]kkryu\_a\n\n[half]/*/
+	\f[bold,true]感谢\f[bold,false]\n/
+	\_a[http://tieba.baidu.com/樱花庄的宠物女孩]樱花庄的宠物女孩吧吧友们\_a　/*_a[http://]Roy\_a　KSL*/\n/
+	\_q\n\n[half]\f[height,default]/
+	\_b[img/back.png,inline]\q[Back,BACK]\_l[100,-]\_b[img/close.png,inline]\q[Cancel,CANCEL]\n/
+
+	\e"
+}
+//**** readme *************************************************************************************
+Choice.README
+{
+	ReadMe
+}
+ReadMe
+{
+	"\![set,balloontimeout,-1]\![set,choicetimeout,-1]\![set,autoscroll,disable]/
+	\0\s[6]\b[2]\_q現在是2009.07.07版。\n目前附帶的功能：\0\s[15]除SSP自帶功能以外的喲。\0\b[2]\n\n[half]/
+/*	\q[● 迷你遊戲,MiniGame]\n/*/
+	\q[● 線上工具,ToolsOnline]\n/
+	\q[● 系統相关,SystemTools]\n/
+	\q[● 便利機能,UsefulTools]\n/
+	\n\n[half]/
+	\_b[img/back.png,inline]\q[Back,BACK]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\n/
+	\e"
+}
+ReadmeTop { "\![set,balloontimeout,-1]\![set,choicetimeout,-1]\![set,autoscroll,disable]\0\b[2]\_q" }
+ReadmeBottom { "\_q\n\n[half]\_b[img/back.png,inline]\q[Back,README]\_l[50,-]\_b[img/close.png,inline]\q[Cancel,CANCEL]\e" }
+AnchorTop { "\![set,balloontimeout,-1]\![set,choicetimeout,-1]\![set,autoscroll,disable]\1\b[2]\_q" }
+//---- 迷你遊戲 --------------------------
+/*Choice.MiniGame
+{
+	ReadmeTop
+	--
+	"\f[bold,true]● 迷你遊戲\f[bold,false]\n\n[half]/
+	※\_a[Minigame01]茶鹿救救我吧\_a\n/
+	※\_a[Minigame02]果殼轉蛋機\_a\n/
+	※\_a[Minigame04]轉蛋機素描收集系統\_a\n/
+	※\_a[Minigame03]占卜功能\_a"
+	--
+	ReadmeBottom
+}
+MinigameBottom { "\n\n\_b[img/back.png,inline]\q[Back,MiniGame]\_q\e" }
+Anchor.Minigame01
+{ 
+	AnchorTop
+	--
+	"使用方式：茶鹿的菜單→【救救我吧】\n\n在茶鹿的菜單裏，當果殼數少於3的時候一定幾率會出現的特殊選單。\n\n出現的話，意味著什麼呢？"
+	--
+	MinigameBottom
+ }
+Anchor.Minigame02
+{ 
+	AnchorTop
+	--
+	"使用方式：茶鹿的菜單→【关於果殼轉蛋機】\n\n在茶鹿的菜單裏可以看到果殼轉蛋機的介紹。\n需要花費果殼來啟動。\n\n暫時沒有收集功能……\n\n轉蛋機里究竟有些什麼呢？"
+	--
+	MinigameBottom
+ }
+Anchor.Minigame03
+{ 
+	AnchorTop
+	--
+	"使用方式：茶兔的菜單→【占卜】\n\n在茶兔的菜單裏可以選擇占卜功能。\n沒有時間、次數的限制。\n\n想要看看自己會抽到哪根籤嗎？"
+	--
+	MinigameBottom
+ }
+Anchor.Minigame04
+{ 
+	AnchorTop
+	--
+	"使用方式：茶鹿的菜單→【素描收集簿】\n\n現在轉到素描紙的話，就可以自動登錄到收集簿內了喲。\n如果全部收集完的話，說不定會得到神秘禮物哦？"
+	--
+	MinigameBottom
+ }
+*/
+//---- 線上工具 ---------------------------------------------------------------
+Choice.ToolsOnline
+{
+	ReadmeTop
+	--
+	"\f[bold,true]● 線上工具\f[bold,false]\n\n[half]/
+	※\_a[ToolsOnline01]線上漢英/英漢字典\_a\n/
+	※\_a[ToolsOnline04]線上IP地址查詢\_a\n/
+	※\_a[ToolsOnline06]線上天氣預報\_a\n/
+	※\_a[ToolsOnline02]上下載流量\_a\n/
+	※\_a[ToolsOnline03]外網真實IP取得\_a\n/
+	※\_a[ToolsOnline05]在線WEB拍手功能\_a"
+	--
+	ReadmeBottom
+}
+ToolsOnlineBottom { "\n\n\_b[img/back.png,inline]\q[Back,ToolsOnline]\_q\e" }
+Anchor.ToolsOnline01
+{ 
+	AnchorTop
+	--
+	"查看方式：茶兔的菜單→【便利機能】→【線上字典】\n\n利用Google線上字典進行翻譯的功能。\n\n必須要連線才可以進行翻譯喲。"
+	--
+	ToolsOnlineBottom
+ }
+Anchor.ToolsOnline02
+{ 
+	AnchorTop
+	--
+	"查看方式：菜單→【系統資訊】→【上下載速度】\n\n或者按【F9】都可查看當前的上下載流量。\n\n取得的流量是所有網卡的流量。\n\n順帶一提，按【F8】可列出所有網卡。"
+	--
+	ToolsOnlineBottom
+ }
+Anchor.ToolsOnline03
+{ 
+	AnchorTop
+	--
+	"查看方式：菜單→【系統資訊】→【外網IP】"
+	--
+	ToolsOnlineBottom
+}
+Anchor.ToolsOnline04
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【便利機能】→【IP查詢】\n\n利用SOGOU進行線上IP查詢的功能。\n\n必須要連線才可以進行查詢喲。"
+	--
+	ToolsOnlineBottom
+}
+Anchor.ToolsOnline05
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【拍手】\n\n可以輸入100字以內的留言並發送至WEB拍手程式。"
+	--
+	ToolsOnlineBottom
+}
+Anchor.ToolsOnline06
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【便利機能】→【天氣預報】\n\n利用SOGOU進行線上天氣預報查詢的功能。\n目前只支持中國大陸境內的查詢、且只能輸入簡體中文。\n\n必須要連線才可以進行查詢喲。\n\n第一次進行查詢的時候會詢問%(username)的所在地，之後則會自動進行該所在地的查詢。"
+	--
+	ToolsOnlineBottom
+}
+
+//---- 系統相关 ---------------------------------------------------------------
+Choice.SystemTools
+{
+	ReadmeTop
+	--
+	"\f[bold,true]● 系統相关\f[bold,false]\n\n[half]/
+	※\_a[SystemTools04]中文繁簡轉換\_a\n/
+	※\_a[SystemTools01]剛才說了什麼？\_a\n/
+	※\_a[SystemTools02]系統信息查看\_a\n/
+	※\_a[SystemTools03]自定義時間校準伺服器\_a"
+	--
+	ReadmeBottom
+}
+SystemToolsBottom { "\n\n\_b[img/back.png,inline]\q[Back,SystemTools]\_q\e" }
+Anchor.SystemTools01
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【(剛才說了什麼嗎)】\n\n在進行過隨機對話之後，\n可以在主菜單上選擇“剛才說了什麼”選項，\n我們就會重復上一次的對話。\n\n工作忙碌時貼心服務呣。"
+	--
+	SystemToolsBottom
+}
+Anchor.SystemTools02
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【系統資訊】\n\n即可查看。"
+	--
+	SystemToolsBottom
+}
+Anchor.SystemTools03
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【便利機能】→【校準時間】\n\n點擊後就可以選擇更改伺服器、或者是直接進行校準。"
+	--
+	SystemToolsBottom
+}
+Anchor.SystemTools04
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【設定】→【當前語言】\n\n選擇繁簡後可以即時轉換！但是，簡體中文的錯字率可能會上升…請多多包涵。"
+	--
+	SystemToolsBottom
+}
+
+//---- 
+Choice.UsefulTools
+{
+	ReadmeTop
+	--
+	"\f[bold,true]● 便利機能\f[bold,false]\n\n[half]/
+	※\_a[UsefulTools01]音樂播放\_a\n/
+	※\_a[UsefulTools02]更換壁紙\_a\n/
+	※\_a[UsefulTools03]鬧鐘功能\_a\n/
+	※\_a[UsefulTools04]圖形時鐘\_a\n/
+	※\_a[UsefulTools05]清空回收站\_a\n/
+	※\_a[UsefulTools06]登出/重啓/关閉系統\_a\n/
+	※\_a[UsefulTools07]定時自動关機\_a\n/
+	※\_a[UsefulTools08]熱鍵功能\_a\n/
+	※\_a[UsefulTools09]截屏功能\_a"
+	--
+	ReadmeBottom
+}
+UsefulToolsBottom { "\n\n\_b[img/back.png,inline]\q[Back,UsefulTools]\_q\e" }
+Anchor.UsefulTools01
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【果殼音樂播放器】\n\n打开就可以看到果殼播放器。點葉子可以关閉播放器。\n將音樂文件交給鹿或兔就可以播放。\n\n可利用.lrc文件唱出歌詞，僅支持編碼UTF-8的歌詞卡。\n支持路徑內帶有中文，支持mp3、mid、wav、au、ogg、wma格式播放，但僅mp3格式支持歌詞卡功能。\n\n暫停/停止音樂可以在主菜單上選擇。\n\n文件名不可帶有中括號，否則會播放不能。\n\n目前無法完美支持歌詞功能。如果在唱出歌詞的中途暫停的話，歌詞內容將會消失，請注意。"
+	--
+	UsefulToolsBottom
+}
+Anchor.UsefulTools02
+{ 
+	AnchorTop
+	--
+	"使用方式：\n將圖像文件交給鹿或兔就好。\n\n支持png、jpg、jpeg、bmp格式。\n\n支持平鋪、拉伸、居中。\n\n文件名不可帶有中括號，否則會設置不能。"
+	--
+	UsefulToolsBottom
+}
+Anchor.UsefulTools03
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【便利功能】→【鬧鐘】\n\n目前已經成長為比較完整的鬧鐘系統，支援开/关、單日/每日鬧鈴、并支援每隔*分鐘提醒功能。"
+	--
+	UsefulToolsBottom
+}
+Anchor.UsefulTools04
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【便利功能】→【圖形時鐘】\n\nPygmalionさん製作的、利用GUI繪製的圖形時鐘。\n\n雙擊時鐘可讀取時間。"
+	--
+	UsefulToolsBottom
+}
+Anchor.UsefulTools05
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【便利功能】→【打掃垃圾】"
+	--
+	UsefulToolsBottom
+}
+Anchor.UsefulTools06
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【便利功能】→【登出/重啓/关閉】"
+	--
+	UsefulToolsBottom
+}
+Anchor.UsefulTools07
+{ 
+	AnchorTop
+	--
+	"使用方式：菜單→【便利功能】→【定時关機】\n\n設置好時間後就會自動关機。\n\n如果需要取消的話，可以到設定面板內修改。\n\n默認為不啟用。"
+	--
+	UsefulToolsBottom
+}
+Anchor.UsefulTools08
+{ 
+	AnchorTop
+	--
+	"熱鍵列表：\n\n[half]/
+	Ｄ　－　字典界面\n/
+	Ｉ　－　IP查詢\n/
+	Ｗ　－　天氣查詢\n/
+	Ｃ　－　鬧鐘功能\n/
+	Ｔ　－　校準時間"
+	--
+	UsefulToolsBottom
+}
+Anchor.UsefulTools09
+{ 
+	AnchorTop
+	--
+	"截屏快捷鍵：Ｆ１２\n\n[half]/當鼠標變成十字形後選擇需要截取的範圍即可。\n截取後的圖像會放在剪貼板內。"
+	--
+	UsefulToolsBottom
+}

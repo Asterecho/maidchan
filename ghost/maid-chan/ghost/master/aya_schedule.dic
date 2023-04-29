@@ -1,0 +1,77 @@
+///////// 文　ゴーストテンプレート
+///////// スケジュールイベント辞書
+
+OnSchedule5MinutesToGo
+{
+        ScheduleReadProc(1)
+}
+
+OnScheduleRead
+{
+        ScheduleReadProc(0)
+}
+
+#define SCHEDULE_TITLELEN 15
+
+ScheduleTitle
+{
+        "\1\s[10]\0\s[0]\_q\f[bold,true]■ %(_argv[0]) ■\f[bold,false]\n[150]\_q";
+}
+
+ScheduleCutTitle
+{
+        _n = STRLEN(_argv[0])
+        if _n > SCHEDULE_TITLELEN {
+                _argv[0] = SUBSTR(_argv[0],0,SCHEDULE_TITLELEN)
+                _argv[0] += "..."
+        }
+        _argv[0]
+}
+
+ScheduleTranslateScript
+{
+        _text = _argv[0]
+        _text = REPLACE(_text,"\1","\\1")
+        _text = REPLACE(_text,"\4","\\4")
+        _text = REPLACE(_text,"\5","\\5")
+        _text = REPLACE(_text,"\6","\\6")
+        _text = REPLACE(_text,"\7","\\7")
+        _text
+}
+
+ScheduleReadProc
+{
+        if _argv[0] {
+                ScheduleTitle("5分前：%(ScheduleCutTitle(reference1))")
+        }
+        else {
+                ScheduleTitle("預定：%(ScheduleCutTitle(reference1))")
+        }
+        --
+        "\1\s[10]\0\s[0]"
+        --
+        ScheduleTranslateScript(reference3)
+        
+        res_securitylevel = "External"
+}
+
+OnSchedulesenseBegin
+{
+        ScheduleTitle("備忘錄取得：%(reference0)")
+        --
+        "\1\s[10]\0\s[5]。\e"
+}
+
+OnSchedulesenseComplete
+{
+        ScheduleTitle("取得成功：%(reference0)")
+        --
+        "\1\s[10]\0\s[5]有%(reference1)件該做的事。\w9\w9\u如要確認內容的話、\w5請點選標題。\e"
+}
+
+OnSchedulesenseFailure
+{
+        ScheduleTitle("取得失敗：%(reference0)")
+        --
+        "\1\s[10]\0\s[4]問題發生，意外中止。\e"
+}

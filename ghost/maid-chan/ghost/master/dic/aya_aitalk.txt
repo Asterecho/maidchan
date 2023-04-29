@@ -1,0 +1,524 @@
+
+
+//---- OnTranslate事件 ------------------------------------------------------------------
+TextOnlyTranslator
+{
+    _string = RE_SPLIT(_argv[0],'\\(\\|q\[.*?\]\[.*?\]|[!&8cfijmpqsn]\[.*?\]|[-*+014567bcehntuvxz]|_[ablmsuvw]\[.*?\]|__(t|[qw]\[.*?\])|_[!?+nqsV]|[sipw][0-9])')
+    _n = ARRAYSIZE(_string)
+    _tag = RE_GETSTR()
+    _tr = ''
+    _qs = 0
+    
+    for _i = 0 ; _i < _n ; _i++ {
+        _tr += EVAL("%(_argv[1])('%(_string[_i])',%(_qs))")
+        _tr += _tag[_i]
+        if '\_q' _in_ _tag[_i] {
+            _qs = ! _qs
+        }
+    }
+    
+    _tr
+}
+
+TextOnlyTranslatorFunc
+{
+
+    _text = _argv[0]
+    if ! _argv[1] {
+        _text = REPLACE(_text, "、", "、\w5")
+        _text = REPLACE(_text, "，", "，\w9\w5")
+        _text = REPLACE(_text, "。", "。\w9\w9")
+        _text = RE_REPLACE(_text ,'…(?=[^…])|…$', '…\w9\w5')
+        _text = RE_REPLACE(_text ,'？(?=[^？|！])|？$', '？\w9\w5')
+        _text = RE_REPLACE(_text ,'！(?=[^！])|！$', '！\w9\w5')
+    }
+    _text
+}
+OnTranslate
+{
+   //とりあえず最初のおまじない(一時変数にとりあえず代入)
+   _text = reference0
+   _text = TextOnlyTranslator(_text,'TextOnlyTranslatorFunc')
+   //語速控制
+   if AITalking == 1 {
+   _text = REPLACE(_text, '\0', '\0\w9\w9')
+   _text = REPLACE(_text, '\1', '\1\w9\w9')
+   AITalking = 0; //重設為0
+   }
+   //簡繁轉換
+   if chlang == "1" {
+   _text = FUNCTIONEX("saori\ChConverter.dll", "simplified", _text) //轉簡
+   }
+
+   //敬称置換の例
+   //例外は先に書いておく
+   //_text = REPLACE(_text, "たん殿", "たん")
+   
+   //「さん殿」とかだぶりそうなのを置換
+   //_text = RE_REPLACE(_text,"(ちゃん|くん|さん|殿)殿","殿")
+   
+   //ここはおまじないのつもりで。消しちゃだめです。
+   //(一時変数で置き換え処理したものを結果として返す)
+   _text
+}
+
+
+Choice.AITALK
+{
+	OnAiTalk;
+}
+
+//**** 隨機對話 ***********************************************************************************
+
+//---- OnAiTalk事件 ---------------------------------------------------------------------
+OnAiTalk
+{
+	if RAND(100) < communicateratio
+	{
+		//---- communicateratio % 為與其他人格對話的機率
+		StartCommunicate
+	}
+	else
+	{
+		if mikireflag == 0
+		{
+			//---- 平常為隨機對話，有連鎖ID存在時則為連鎖對話
+			if CHAIN.IDName == "" {
+				lastTalk = RandomTalk
+			}
+			else {
+				lastTalk = ChainTalk
+			}
+			lastTalk
+		}
+		else
+		{
+			//---- 在「見切中」(人格圖片的一部份突出螢幕範圍)時進行見切狀態下的特定對話
+			MikireTalk
+		}
+	}
+}
+
+//---- 上一句？ -------------------------------------------------------------------------
+OnLastTalk {
+  "\0\s[3]嗯？剛才……？\0\s[6]是這樣：\w9\w9\c\0\c/
+  %(lastTalk)\e"
+}
+//---- 隨機對話 -------------------------------------------------------------------------
+RandomTalk : nonoverlap
+{
+        tieba		                = " http://www.xiami.com/search?key=%E9%97%B9%E5%A4%9F%E4%BA%86%E6%B2%A1%E6%9C%89&pos=1 "	        // 贴吧用
+	tiebalock = 0	// 贴吧用
+	if anaclock == 1{
+	//---- 進行對話前先關閉圖形時鐘
+	HideAnaLogClock
+	}
+	else
+	{
+/*	AITalking = 1; //判斷AI對話啟動    */
+	"\![sound,stop]\0\s[1]\![sound,play,voice/吵死了开发插件.mp3]标题：吵死了,龙之介大人刚刚接受了S社的委托,\0正在开发用于压缩声音的中间件,要是打扰到他的话担心发病毒给你哦（笑）发自小女仆\e"
+	"\![sound,stop]\0\s[3]\![sound,play,voice/龙之介忙.mp3]龙之介大人现在正在开发动作引擎，的哦，所以无法回复空太君的邮件伊哟\e"
+ 
+
+
+
+
+/*
+	if cyakatalk >= 2 {
+		"\1\s[16]鹿變成什麼樣……\w9其實都無所謂。\w9\w9\n\n[half]\s[16]鹿只要\w5能跟兔在一起就可以了。\w9\w9\n\n[half]\s[10]因為兔那傢伙，\w5沒有跟鹿在一起的話，\w5不知道會發生什麼事……\w9\w9\w9\w9\n\n[half]\s[16]這些，\w5不能告訴兔哦……\e:eval=(cyakatalk==0)"
+	}
+
+	"\0\s[2]聽到了奇怪的聲音！\n\n[half]\1\s[11]%(username)在唱歌嗎？\n\n[half]\0\s[5]在心裡低低的哼著歌呢。\n\n[half]\1\s[14]不過怎麼可以說那是奇怪的聲音呣……\e"
+
+
+*/
+	if systemuphour >= 6 {
+	"\0\s[6]呼……有點困了。\n\n[half]\0\s[3]%(username想睡覺嗎？)\e" 
+	}
+
+	"\0\s[5]即使%(username)沒有在看我……只要被開啟著，我就很開心啦。\n\n[half]\0\s[3]當然，如果能偶爾看一眼就更開心啦！\e"
+
+
+//---- 熬夜
+	case hour
+	{
+		when 0-1 {
+		"\0\s[0]%(username)在熬夜嗎……\n\n[half]\0\s[16]就算有我陪著，也不可以睡太晚哦！\0\s[4]肝臟會哭泣的！\e"
+		}
+		when 2-3 {
+		"\0\s[3]龙之介大人说过，不可以睡太晚的哦。\n\n[half]\0\s[6]睡太晚的话身体会发生各种各样奇怪的变化哦\0\s[0]正常人都会受不了的！所以早点睡觉吧\e"
+		}
+		when 4-5 {
+		"\0\s[3]熬夜之後，第二天會特別有精神一段時間，再之後就完全不行了呢！\n\n[half]\0\s[4]那就是所謂的回光返照呢，是電池的最後一點電力。\n\n[half]\0\s[4]要倒下了……\e"
+		}
+		when 6-7 {
+		"\0\s[3]人還是要好好睡覺啊……\0\s[9]生命體也要好好睡覺啊……\e"
+		}
+	}
+//---- 季節對話
+	   case month 
+	   {
+	      when 3-5 {
+	         "\0\s[16]現在是春天。是一个春暖花开的季节，不要总宅在家里哦，\0\s[9]虽然我不可以和你一起出去，也要多出去走走，那样我也会很开心的哦\e"
+	      }
+
+	      when 6-8 {
+	         "\0\s[3]哪裏在轟隆隆的響呢！\w9\w9\n\n[half]\0\s[5]已經是夏天了，在打雷嗎？\w9\w9\n\n[half]\0\s[3]原来……是%(username)的电脑內……啊！！\w9\w9\n\n[half]\0\s[6]藏在CUP風扇後面的蜜糖溶化了，把風扇的葉片粘住了……\e"
+	      }
+
+	      when 9-11 {
+	         "\0\s[0]不經意的時候，天一下子就黑了啾。\n\0\s[6]不經意的時候，春天、夏天、秋天也一下子就過去了。\n\0\s[17]冬天就快來到了，已經聞到了寒冷的氣息啾。\e"
+	      }
+
+	      when 12 {
+		//---- 特殊日期對話
+		case day
+		{
+			when 20-23 {
+			"\0\s[3]聖誕節馬上就要到了啊……\0\s[5]心情開始緊張起來了！\e"
+			}
+		}
+			
+			"\0\s[4]越來越冷了啾！\0\s[18]最近總算有點冬天的感覺了。\e"
+		}
+		when 1,2 {
+	
+	         "\0\s[4]冬天的感覺……\n\n[half]\0\s[0]一天一天的更冷了呢。\e"
+	   	}
+	     }
+	}
+}
+
+//---- 連鎖對話---------------------------------------------------------------
+Chain01
+{{CHAIN
+	"\0    \e"
+}}CHAIN
+
+//**** 時報/重疊 **********************************************************************************
+//---- OnMinuteChange事件 ---------------------------------------------------------------
+OnMinuteChange
+{
+	EVAL("intimacy+=0.03");
+	_time = GETTIME(); //取得當前系統時間
+	//---- 判定是否設置了自動關機
+
+//---- 任务系统时间部分开始 ---------------------------------------------------------------
+	if tmp1[0] == hour && tmp1[1] == minute 
+	{
+		"\![open,file,%(file3)]\e"
+	}
+	if tmp2[0] == hour && tmp2[1] == minute 
+	{
+		"\![open,file,%(file6)]\e"
+	}
+	if tmp3[0] == hour && tmp3[1] == minute 
+	{
+		"\![open,file,%(file9)]\e"
+	}
+	if tmp4[0] == hour && tmp4[1] == minute 
+	{
+		"\![open,file,%(file12)]\e"
+	}
+	if tmp5[0] == hour && tmp5[1] == minute 
+	{
+		"\![open,file,%(file15)]\e"
+	}
+	if tmp6[0] == hour && tmp6[1] == minute 
+	{
+		"\![open,file,%(file18)]\e"
+	}
+//---- 任务系统时间部分结尾 ---------------------------------------------------------------
+	if shutdowntime[0] == hour && shutdowntime[1] == minute
+	{
+		if shutdowntimeswitch == "1"
+		{
+			SAVEVAR();
+			"\![sound,stop]\0\s[16]\![sound,play,voice/pong.mp3]30秒後將進行關機。如果要取消的話，請雙擊對話框。\_w[30000]"
+			--
+			_i = FUNCTIONEX("saori\KI.dll","ExitWindows","ShutDown");
+		}
+	}
+
+	//---- 判定是否到了鬧鈴設定的時間
+	if AlarmTime[0] == hour && AlarmTime[1] == minute
+	{
+		if AlarmOpenSwitch == "ON" && AlarmDaySwitch == "只今日提醒" && AlarmDay[1] == month && AlarmDay[2] == day
+		{
+			"\![sound,stop]\0\s[16]\![sound,play,voice/lalala.mp3]%(hour)點%(minute)分到了～\x"
+		}
+		elseif AlarmOpenSwitch == "ON" && AlarmDaySwitch == "每日都提醒"
+		{
+			"\![sound,stop]\0\s[2]\![sound,play,voice/lalala.mp3]%(hour)點%(minute)分到了～\x"
+		}
+	}
+	//---- 每隔*分鐘提醒一次
+	elseif AlarmOpenSwitch == "ON" && AlarmPinlvSwitch == "間隔提醒" && _time[5] - AlarmEntryTime[5] == AlarmDelay
+	{
+		AlarmEntryTime = GETTIME();
+		"\![sound,stop]\0\s[2]\![sound,play,voice/lalala.mp3]%(hour)點%(minute)分到了～%(AlarmDelay)分鐘後還會提醒%(username)喲。\e"
+	}
+	//---- 時間的分鐘為 0 時產生報時對話。其他情況時則執行重疊判定
+	elseif minute == 0
+	{
+		MinuteTalk();
+	}
+	elseif mikireflag == 1
+	{
+		//---- 進行見切時的對話
+		if mikireswitch == "1"
+		{
+			MikireTalk
+		}
+	}
+	elseif reference2 == 1
+	{
+		//---- 檢測本體側與kero側是否重疊，並進行重疊反應對話
+		//---- 通常是讓kero側移到一邊去
+		if kasanariswitch == "1"
+		{
+			Kasanari
+		}
+	}
+}
+
+
+//-------- 報時 -------------------------------------------------------------------------
+
+MinuteTalk
+{
+	MinuteTalk1();
+	MinuteTalk2();
+}
+
+MinuteTalk1
+{
+	"\0\s[5]\![sound,play,voice/baoshi.wav]例行報時！\w9\w9\n\n\0\s[16]也就是說，現在已經%(HourPoint)%(hour12)點了。\w9\w9\n\n\0\s[16]女仆酱我的話，時間從沒搞錯過！\w9\w9";
+}
+
+MinuteTalk2
+{
+	case hour {
+		when 0 {
+			"\0\s[4]\![sound,play,voice/baoshi.wav]現在已經是0點了！不可以睡这么晚的哦，难道你想熬夜？";
+		}
+		when 1-3 {
+			"\0\s[4]\![sound,play,voice/baoshi.wav]……\w9\n\n\0\s[9]也就是說現在已經%(HourPoint)%(hour12)點了，去睡嗎？\w9\w9\n\n\0\s[0]我的工作就是陪著%(username)……";
+		}
+		when 4-6 {
+			"%(hour)點了…干脆去看日出吧？";
+			"\![sound,play,voice/baoshi.wav]呼哈～不困吗？\w8\n[150]唔…%(hour)點了。";
+		}
+		when 7-8 {
+			"\![sound,play,voice/baoshi.wav]%(hour)點了，還沒清醒的話趕快打起精神喔。";
+		}
+		when 9-11 {
+			"\![sound,play,voice/baoshi.wav]%(hour)點了…據說是人一天中記憶能力最好的時段呢，要好好利用喔。";
+		}
+		when 12 {
+			"\0\s[4]\![sound,play,voice/baoshi.wav]午飯香？\w9\w9\0\s[16]也就是說現在已經是%(HourPoint)12點了。快去吃午饭吧，千万别饿着肚子哦。";
+		}
+		when 13-14 {
+			"\![sound,play,voice/baoshi.wav]下午%(hour12)點整…總是很想睡的時間呢。";
+		}
+		when 15-16 {
+			"\0\s[6]沒有茶會的%(HourPoint)%(hour12)點一點意思也沒有。\w9\w9\0\s[16]也就是說現在已經是%(HourPoint)%(hour12)點了。";
+		}
+		when 17-18 {
+			"\![sound,play,voice/baoshi.wav]下午%(hour12)點，晚餐時間啦～";
+		}
+		when 19 {
+			"\0\s[5]\![sound,play,voice/baoshi.wav]工作時間結束！\w9\w9\n\n\0\s[16]也就是說現在是%(HourPoint)%(hour12)點了。\w9\w9\n\n\0\s[0]實際上除了玩之外什麼也沒做啊。";
+		}
+		when 20-22 {
+			"\0\s[3]\![sound,play,voice/baoshi.wav]有人在打哈欠了！好大的鼻泡！\w9\w9\n\n\0\s[6]……啊。\w9\0\s[6]也就是說，現在已經是%(HourPoint)%(hour12)點了。\w9\w9\n\n\0\s[6]……";
+		}
+	}
+}
+
+HourPoint
+{
+	if ( _argc == 0 )
+		_argv[0] = hour;
+	
+	case _argv[0] {
+		when 0-3	{ "凌晨"; "半夜"; }
+		when 4-6	{ "清晨"; }
+		when 7-8	{ "早上"; }
+		when 9-11	{ "上午"; }
+		when 12-14	{ "中午"; }
+		when 15-18	{ "午後"; }
+		when 19-23	{ "晚上"; }
+	}
+}
+
+/*---------------------------------------------------------------------------------------
+ *  函式名：IsLeapYear
+ *  機能　：判斷是否為潤年
+ *  引數　：_argv[0]　 年
+ * --------------------------------------------------------------------------------------
+*/
+
+IsLeapYear
+{
+	if _argv[0] % 400 == 0 && _argv[0] % 100 != 0 || _argv[0] % 4 == 0
+		1;
+}
+
+/*---------------------------------------------------------------------------------------
+ *  函式名：IsRightDate
+ *  機能　：判斷日期是否正確
+ *  引數　：_argv[0]　 年
+ *			_argv[1]　 月
+ *			_argv[2]　 日
+ * --------------------------------------------------------------------------------------
+*/
+
+IsRightDate
+{
+	_year	= TOINT(_argv[0]);
+	_month	= TOINT(_argv[1]);
+	_day	= TOINT(_argv[2]);
+	_date	= (31,28,31,30,31,30,31,31,30,31,30,31);
+	
+	// 潤年判定
+	if IsLeapYear(_year)
+		_data[1] = 29;
+	
+	if 0 < _day && _day <= _date[_month - 1]
+		1;
+}
+
+/*---------------------------------------------------------------------------------------
+ *  函式名：ZodiacSign
+ *  機能　：根據日期回傳其星座名稱
+ *  引數　：_argv[0]　 月
+ *			_argv[1]　 日
+ *  感謝Royさん及時原砂さん
+ * --------------------------------------------------------------------------------------
+*/
+OnZodiacSign
+{
+        _month        = userbirthday[1];
+        _day        = userbirthday[2];
+        _zodiac = ("水瓶座","雙魚座","牡羊座","金牛座","雙子座","巨蟹座","獅子座","處女座","天秤座","天蠍座","人馬座","摩羯座");
+        _sign        = "";
+
+        _date        = (31,28,31,30,31,30,31,31,30,31,31);
+        _dateAdj= (-5,1,1,1,0,-2,-3,-4,-6,-6,-5,-6);
+
+        // Day of Year
+        CVINT(_day);
+        _dayofyear = _day;
+        for _i=0; _i<(_month - 1); _i++
+        {
+                _dayofyear += _date[_i];
+        }
+        if _month > 1 
+                _dayofyear--;
+
+        // Offset修正
+        _dayofyear -= 20;
+        if _dayofyear < 0
+                _dayofyear += 365;
+        _dayofyear += _dateAdj[_month - 1];
+
+        _index = _dayofyear/30;
+        CVINT(_index);
+        _sign = _zodiac[_index];
+
+        _sign;
+}
+//**** 見切 ***************************************************************************************
+
+//---- OnSecondChange事件 ---------------------------------------------------------------
+OnSecondChange
+{
+    if mikireenable && reference1 && !mikireflag {
+       mikiretimer--;
+       if mikiretimer < 1 {
+          mikireflag   = 1
+          MikireTalk //見切れ反応時のトーク
+       }
+    } else {
+       mikiretimer = 5
+    }
+ 
+    if mikireflag && !reference1 {
+       //5秒以内に復帰した場合は、見切れ後トークを行わない
+       endmikire = 1
+    }
+ 
+    if endmikire {
+       EndMikireTalk //見切れ終了時のトーク
+    }
+ 
+    if kasanarienable && reference2 {
+       kasanaritimer--;
+       if kasanaritimer < 1 {
+          kasanarienable = 0;
+          Kasanari //重なり反応時のトーク
+          kasanarienable = 1;
+       }
+    } else {
+       kasanaritimer = 5
+    }
+}
+
+//---- 見切中 -----------------------------------------------------------------
+MikireTalk
+{
+	"\0\s[16]啊！出界了！！身體，身體要被切掉了！\e"
+}
+
+//---- 見切終了 ---------------------------------------------------------------
+EndMikireTalk
+{
+	"\0\s[0]还好，沒有真的被切掉啦。不過剛才還真危險呣。"
+	//\e:chain=mikirego"
+}
+
+//---- 見切連鎖對話 -----------------------------------------------------------
+/*mikirego
+{{CHAIN
+	"\0\s[3]被見切的感覺很不好。\w8\1\s[10]大概是「抱歉，可以讓開一下嗎？」這樣的意思吧。\n/
+		比起直接關閉程式來說，算是不錯的了。\w8\0\n\n唔…\w8原來如此。\e"
+}}CHAIN*/
+
+//**** 重なり *********************************************************************************************************
+/*
+Kasanari
+{
+	"\1\s[17]呣……………||||那邊那個，不要一副很舒服的樣子！\0\s[5]%(username)把我們放在一起了！鹿身上暖洋洋的好舒服哦！\e"
+	"\1\s[11]呣？什麼東西軟綿綿的？\w9\w9\s[22]……是兔？！\0\s[30]%(username)又抓著我們拖來拖去了。\e"
+	"\1\s[14]……好重。\n\n[half]\0\s[2]啾？\n\n[half]\1\s[12]我說好重啦！\0\s[4]重的難道不是我嗎？\e"
+	"\1\s[14]雖然被%(username)抓著就可以移動了……\w9\n\s[12]但是總是把我們疊起來可不一定是好事哦！\n\n[half]\0\s[5]兔沒關係啾！\1\s[17]你什麼都沒關係呣……\e"
+}
+*/
+//**** 表情(surface)復原 **************************************************************************
+
+//---- OnSurfaceRestore事件 -------------------------------------------------------------
+OnSurfaceRestore
+{
+	if reference1 == "99"
+	{
+		//---- 時鐘啓用時特殊表情
+		"\0\s[0]\e"
+	}
+	elseif reference0 == "25"
+	{
+		//---- 音樂播放時特殊表情
+		"\0\s[4]\e"
+	}
+	elseif reference1 == "19"
+	{
+		//---- 音樂播放時特殊表情
+		"\0\s[19]\e"
+	}
+	else
+	{
+		//---- 對話完畢經過一段時間後自動將表情變回原樣。
+		"\0\s[0]\e"
+		//"\0\s[0]\1\s[10]\e"
+	}
+}

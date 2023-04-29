@@ -1,0 +1,5552 @@
+// 文　リクエストログ
+// load 時刻 : 2023/04/29 12:40:20
+
+// 辞書ファイル読み込み
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\yaya_config.dic
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\aya_shiori3.dic
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\aya_compatible.dic
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\aya_schedule.dic
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_word.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_aitalk.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_bootend.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_communicate.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_menu.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_react.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_string.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_etc.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_username.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/cya_database.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/comm&user.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/xuanyi.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/talk.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/rjkj3.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/open.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/mission.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/playwithlrc_Unicode.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/aya_hotkey.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/cya_tieba.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/miniuse.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/story.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/cya_traslate.txt
+// - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\dic/cya_runstart.txt
+...完了.
+
+// 辞書の構文解析と中間コード生成
+...完了.
+
+// 変数値の復元 - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\yaya_variable.cfg
+...完了.
+
+// request
+C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\
+// response (Execution time : 16[ms])
+
+// request
+GET Version SHIORI/2.6
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 400 Bad Request
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+ID: version
+SecurityLevel: local
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: Tc533-1
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnInitialize
+Reference0: 
+Reference1: 1
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: ownerghostname
+Reference0: 女仆酱
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: basewareversion
+Reference0: 2.2.90
+Reference1: SSP
+Reference2: 2.2.90.3000
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: capability
+Reference0: request.status
+Reference1: request.securitylevel
+Reference2: request.baseid
+Reference3: response.marker
+Reference4: response.errorlevel
+Reference5: response.errordescription
+Reference6: response.securitylevel
+Reference7: response.requestcharset
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnNotifyOSInfo
+Reference0: WindowsNT,6.2,Windows NT 6.2
+Reference1: Intel,2195,0.6.13.4,bfebfbff
+Reference2: 6208512,2096128
+Reference3: 157
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnNotifyFontInfo
+Reference0: Marlett
+Reference1: Arial
+Reference2: Arial Black
+Reference3: Bahnschrift Light
+Reference4: Bahnschrift SemiLight
+Reference5: Bahnschrift
+Reference6: Bahnschrift SemiBold
+Reference7: Bahnschrift Light SemiCondensed
+Reference8: Bahnschrift SemiLight SemiConde
+Reference9: Bahnschrift SemiCondensed
+Reference10: Bahnschrift SemiBold SemiConden
+Reference11: Bahnschrift Light Condensed
+Reference12: Bahnschrift SemiLight Condensed
+Reference13: Bahnschrift Condensed
+Reference14: Bahnschrift SemiBold Condensed
+Reference15: Calibri
+Reference16: Calibri Light
+Reference17: Cambria
+Reference18: Cambria Math
+Reference19: Candara
+Reference20: Candara Light
+Reference21: Comic Sans MS
+Reference22: Consolas
+Reference23: Constantia
+Reference24: Corbel
+Reference25: Corbel Light
+Reference26: Courier New
+Reference27: Ebrima
+Reference28: Franklin Gothic Medium
+Reference29: Gabriola
+Reference30: Gadugi
+Reference31: Georgia
+Reference32: Impact
+Reference33: Ink Free
+Reference34: Javanese Text
+Reference35: Leelawadee UI
+Reference36: Leelawadee UI Semilight
+Reference37: Lucida Console
+Reference38: Lucida Sans Unicode
+Reference39: Malgun Gothic
+Reference40: Malgun Gothic Semilight
+Reference41: Microsoft Himalaya
+Reference42: Microsoft JhengHei
+Reference43: Microsoft JhengHei UI
+Reference44: Microsoft New Tai Lue
+Reference45: Microsoft PhagsPa
+Reference46: Microsoft Sans Serif
+Reference47: Microsoft Tai Le
+Reference48: 微软雅黑
+Reference49: Microsoft YaHei UI
+Reference50: 微软雅黑 Light
+Reference51: Microsoft YaHei UI Light
+Reference52: Microsoft Yi Baiti
+Reference53: MingLiU-ExtB
+Reference54: PMingLiU-ExtB
+Reference55: MingLiU_HKSCS-ExtB
+Reference56: Mongolian Baiti
+Reference57: MS Gothic
+Reference58: MS UI Gothic
+Reference59: MS PGothic
+Reference60: MV Boli
+Reference61: Myanmar Text
+Reference62: Nirmala UI
+Reference63: Nirmala UI Semilight
+Reference64: Palatino Linotype
+Reference65: Segoe MDL2 Assets
+Reference66: Segoe Print
+Reference67: Segoe Script
+Reference68: Segoe UI
+Reference69: Segoe UI Black
+Reference70: Segoe UI Emoji
+Reference71: Segoe UI Historic
+Reference72: Segoe UI Light
+Reference73: Segoe UI Semibold
+Reference74: Segoe UI Semilight
+Reference75: Segoe UI Symbol
+Reference76: 宋体
+Reference77: 新宋体
+Reference78: SimSun-ExtB
+Reference79: Sitka Small
+Reference80: Sitka Text
+Reference81: Sitka Subheading
+Reference82: Sitka Heading
+Reference83: Sitka Display
+Reference84: Sitka Banner
+Reference85: Sylfaen
+Reference86: Symbol
+Reference87: Tahoma
+Reference88: Times New Roman
+Reference89: Trebuchet MS
+Reference90: Verdana
+Reference91: Webdings
+Reference92: Wingdings
+Reference93: 等线
+Reference94: 等线 Light
+Reference95: 仿宋
+Reference96: 楷体
+Reference97: 黑体
+Reference98: 方正少儿_GBK
+Reference99: 方正粗圆_GBK
+Reference100: 腾祥爱情体简
+Reference101: 造字工房朗倩（非商用）常规体
+Reference102: MT Extra
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnNotifySelfInfo
+Reference0: 女仆酱
+Reference1: 女仆酱
+Reference2: 
+Reference3: master
+Reference4: C:/Users/ifwz/Desktop/ukagaka/maidchan/ghost/maid-chan/shell/master/
+Reference5: 女仆酱的对话框
+Reference6: C:/Users/ifwz/Desktop/ukagaka/maidchan/balloon/nvpu_balloon_0/
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnNotifyBalloonInfo
+Reference0: 女仆酱的对话框
+Reference1: C:/Users/ifwz/Desktop/ukagaka/maidchan/balloon/nvpu_balloon_0/
+Reference2: 0:0,1,2,3,4,5 1:0,1,2,3,4,5,6
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnNotifyShellInfo
+Reference0: master
+Reference1: C:/Users/ifwz/Desktop/ukagaka/maidchan/ghost/maid-chan/shell/master/
+Reference2: 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: useorigin1
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: version
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: Tc533-1
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: name
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: YAYA
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: craftman
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: harry159821
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: craftmanw
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: harry159821
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnNotifyUserInfo
+Reference0: ifwz
+Reference1: ifwz
+Reference2: 
+Reference3: undef
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+ID: otherghostname
+SecurityLevel: local
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnNetworkStatusChange
+Reference0: online
+Reference1: 192.168.1.610.200.210.18
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: ghostpathlist
+Reference0: C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: balloonpathlist
+Reference0: C:\Users\ifwz\Desktop\ukagaka\maidchan\balloon\
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: headlinepathlist
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: pluginpathlist
+Reference0: C:\Users\ifwz\Desktop\ukagaka\maidchan\plugin\
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: calendarskinpathlist
+Reference0: C:\Users\ifwz\Desktop\ukagaka\maidchan\calendar\skin\
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: calendarpluginpathlist
+Reference0: C:\Users\ifwz\Desktop\ukagaka\maidchan\calendar\plugin\
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: menu.background.bitmap.filename
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: menu.foreground.bitmap.filename
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: menu.background.color.r
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: menu.background.color.g
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: menu.background.color.b
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: menu.foreground.color.r
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: menu.foreground.color.g
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: menu.foreground.color.b
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: username
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: installedghostname
+Reference0: 女仆酱
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: installedballoonname
+Reference0: 女仆酱的对话框
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: installedheadlinename
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.recommendsites
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: - 支援感謝 -中文偽春菜後援會http://cuc2.idv.tw/中文偽春菜後援會Wikihttp://cuc2.idv.tw/wiki/SSP中文發佈站http://cers.cuc2.idv.twとらぶる☆ばぐとらっく/SSP BUGTRAQhttp://ssp.shillest.net- 資料倉庫 -CROWˇSSPリファレンスhttp://crow.aqrs.jp/reference/all/index.html駄でべろぱの小ネタWikihttp://emily.shillest.net/specwiki/文Wiki「文屋」http://emily.shillest.net/ayaya/伺かwikihttp://www.towano.net/ua-ks/非公式 伺か 仕様書http://www.ooyashima.net/db/
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.portalsites
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: 
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: kero.recommendsites
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: - SAORI感謝 -SAORI「カイ」http://enflapment.ifdef.jp/saori/index.html/SAORI「MCIAudioR」http://umeici.hp.infoseek.co.jp/SAORI「set_wall_paper」http://www.geocities.jp/poskomaSAORI「gomi.dll」SAORI「AnalogClock2.0」http://cuc2.idv.tw/viewthread.php?tid=949&extra=page%3D2SAORI「systeminfo.dll」SAORI「saori_cpuid.dll」SAORI「saori_ip.dll」SAORI「uds.dll」SAORI「wmove.dll」SAORI「cpconv.dll」SAORI「screencatch.dll」http://cuc2.idv.tw/viewthread.php?tid=1426&pid=9726&page=1&extra=#pid9726SAORI「RunStart.dll」- 函式感謝 -日野春鉄道人間工学研究所http://railway.nanika.jp二次元斷層http://hk.geocities.com/tionzy/index.htm某廢柴的廢棄日記http://scrappedblog.blogspot.com/
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: installedshellname
+Reference0: master
+
+
+// response (Execution time : 15[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: uniqueid
+Reference0: ssp_fmo_header_00000680_000904a2
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+ID: otherghostname
+SecurityLevel: local
+Charset: UTF-8
+Sender: SSP
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: hwnd
+Reference0: 591010590514
+Reference1: 591990656524
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: installedshellname
+Reference0: master
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnDisplayChange
+Reference0: 32
+Reference1: 1366
+Reference2: 768
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnBatteryNotify
+Reference0: 100
+Reference1: -1
+Reference2: online
+Reference3: high
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnNotifyDressupInfo
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnScheduleTodayNotify
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: installedplugin
+Reference0: 共有変数プラグインABED14AF-F34B-4ff2-95B7-30ED37D5802D
+Reference1: 瑞士军刀8F8BCFB8-B27A-456f-9BA0-551484856DDC
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnBoot
+Reference0: master
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\s[-1]\1\s[-1]\![sound,stop]\![sound,play,voice/start_c.mp3]\![sound,wait]\0\s[0]\1\s[10]\![set,otherghosttalk,true]\0\s[3]等的快不耐煩了。\w9\w9\0\s[0]午安，終于啓動我了。\e
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: rateofusegraph
+Reference0: 女仆酱女仆酱2956100.000000boot
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+ID: OnTranslate
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Reference0: \0\s[-1]\1\s[-1]\![sound,stop]\![sound,play,voice/start_c.mp3]\![sound,wait]\0\s[0]\1\s[10]\![set,otherghosttalk,true]\0\s[3]等的快不耐煩了。\w9\w9\0\s[0]午安，終于啓動我了。\e
+Reference1: 
+Reference2: OnBoot
+Reference3: master
+
+
+// response (Execution time : 16[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\s[-1]\1\s[-1]\![sound,stop]\![sound,play,voice/start_c.mp3]\![sound,wait]\0\s[0]\1\s[10]\![set,otherghosttalk,true]\0\s[3]等的快不耐煩了。\w9\w9\w9\w9\0\s[0]午安，\w9\w5終于啓動我了。\w9\w9\e
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSurfaceChange
+Reference0: 0
+Reference1: 10
+Reference2: 1,10,100,200
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSurfaceChange
+Reference0: 0
+Reference1: 10
+Reference2: 0,0,160,250
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSurfaceChange
+Reference0: 3
+Reference1: 10
+Reference2: 0,3,150,172
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSurfaceChange
+Reference0: 0
+Reference1: 10
+Reference2: 0,0,160,250
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnterAll
+Reference0: 36
+Reference1: 25
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 15[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnter
+Reference0: 36
+Reference1: 25
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 36
+Reference1: 25
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 59
+Reference1: 58
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 16[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 72
+Reference1: 77
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 79
+Reference1: 92
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 84
+Reference1: 114
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 86
+Reference1: 120
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 86
+Reference1: 123
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 93
+Reference1: 131
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 101
+Reference1: 144
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 104
+Reference1: 150
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 102
+Reference1: 150
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 102
+Reference1: 152
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 99
+Reference1: 154
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 97
+Reference1: 158
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 96
+Reference1: 161
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 92
+Reference1: 167
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 88
+Reference1: 175
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 88
+Reference1: 179
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseHover
+Reference0: 87
+Reference1: 181
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: tooltip
+Reference0: 87
+Reference1: 181
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 87
+Reference1: 182
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 87
+Reference1: 183
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 86
+Reference1: 184
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseDown
+Reference0: 86
+Reference1: 184
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseUp
+Reference0: 86
+Reference1: 184
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseClick
+Reference0: 86
+Reference1: 184
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 86
+Reference1: 184
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseDoubleClick
+Reference0: 86
+Reference1: 184
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\b[2]\![sound,stop]\_q\s[9]\![sound,play,voice/吩咐.mp3] 有事吗？\n\_q\![*]\q[刚才说了什么？,OnLastTalk]\n\n[half]\![*]\q[聊天,AITALK]\_l[120,-]\![*]\q[说笑话,Story]\n\![*]\q[教学,教学] \_l[120,-]\![*]\q[对话,Communicate]\n\![*]\q[快捷,Rjkj]\_l[120,-]\![*]\q[任务,OnMission]\n\![*]\q[闹钟,Alarm]\_l[120,-]\![*]\q[RSS,Autosign]\n\![*]\q[工具,Tool]   \_l[120,-]\![*]\q[系统,System]\n\![*]\q[设定,SETTING]\_l[120,-]\![*]\q[关于,ABOUTAYA]\n\n\_l[80,-]\q[取消,CANCEL]\e
+
+
+// request
+GET SHIORI/3.0
+ID: OnTranslate
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Reference0: \0\b[2]\![sound,stop]\_q\s[9]\![sound,play,voice/吩咐.mp3] 有事吗？\n\_q\![*]\q[刚才说了什么？,OnLastTalk]\n\n[half]\![*]\q[聊天,AITALK]\_l[120,-]\![*]\q[说笑话,Story]\n\![*]\q[教学,教学] \_l[120,-]\![*]\q[对话,Communicate]\n\![*]\q[快捷,Rjkj]\_l[120,-]\![*]\q[任务,OnMission]\n\![*]\q[闹钟,Alarm]\_l[120,-]\![*]\q[RSS,Autosign]\n\![*]\q[工具,Tool]   \_l[120,-]\![*]\q[系统,System]\n\![*]\q[设定,SETTING]\_l[120,-]\![*]\q[关于,ABOUTAYA]\n\n\_l[80,-]\q[取消,CANCEL]\e
+Reference1: 
+Reference2: OnMouseDoubleClick
+Reference3: 86184000mouse
+
+
+// response (Execution time : 31[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\b[2]\![sound,stop]\_q\s[9]\![sound,play,voice/吩咐.mp3] 有事吗？\n\_q\![*]\q[刚才说了什么？,OnLastTalk]\n\n[half]\![*]\q[聊天,AITALK]\_l[120,-]\![*]\q[说笑话,Story]\n\![*]\q[教学,教学] \_l[120,-]\![*]\q[对话,Communicate]\n\![*]\q[快捷,Rjkj]\_l[120,-]\![*]\q[任务,OnMission]\n\![*]\q[闹钟,Alarm]\_l[120,-]\![*]\q[RSS,Autosign]\n\![*]\q[工具,Tool]   \_l[120,-]\![*]\q[系统,System]\n\![*]\q[设定,SETTING]\_l[120,-]\![*]\q[关于,ABOUTAYA]\n\n\_l[80,-]\q[取消,CANCEL]\e
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSurfaceChange
+Reference0: 9
+Reference1: 10
+Reference2: 0,9,180,195
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseLeave
+Reference0: 96
+Reference1: 129
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnter
+Reference0: 96
+Reference1: 129
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 96
+Reference1: 129
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseUp
+Reference0: 96
+Reference1: 129
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseClick
+Reference0: 96
+Reference1: 129
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking,choosing
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnMouseMove
+Reference0: 95
+Reference1: 129
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnMouseHover
+Reference0: 83
+Reference1: 129
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: tooltip
+Reference0: 83
+Reference1: 129
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnMouseLeave
+Reference0: 77
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnMouseLeaveAll
+Reference0: 77
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: Skirt
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+Reference0: RSS
+Reference1: Autosign
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+Reference0: 闹钟
+Reference1: Alarm
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+Reference0: 工具
+Reference1: Tool
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceSelectEx
+Reference0: 工具
+Reference1: Tool
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceSelect
+Reference0: Tool
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \_q\0\s[0]\b[2]常用的工具：\n\n[half]\![*]\q[电子书,Txtreader]\_l[140,-]\![*]\q[截图,shotcut]\n\![*]\q[制作动图,gif]\_l[140,-]\![*]\q[录制视频,ocam]\n\![*]\q[批量改文件名,Rname]\_l[140,-]\![*]\q[词典,MiniDict]\n\![*]\q[画图,Paint]\_l[140,-]\![*]\q[记事本,Notepad]\n\![*]\q[俄语输入,Russia]_l[140,-]\![*]\q[屏保,matrix]\n\n\_l[10,-]\_b[img/back.png,inline]\q[返回,BACK]\_l[140,-]\_b[img/close.png,inline]\q[取消,CANCEL]\_q\e
+
+
+// request
+GET SHIORI/3.0
+ID: OnTranslate
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Reference0: \_q\0\s[0]\b[2]常用的工具：\n\n[half]\![*]\q[电子书,Txtreader]\_l[140,-]\![*]\q[截图,shotcut]\n\![*]\q[制作动图,gif]\_l[140,-]\![*]\q[录制视频,ocam]\n\![*]\q[批量改文件名,Rname]\_l[140,-]\![*]\q[词典,MiniDict]\n\![*]\q[画图,Paint]\_l[140,-]\![*]\q[记事本,Notepad]\n\![*]\q[俄语输入,Russia]_l[140,-]\![*]\q[屏保,matrix]\n\n\_l[10,-]\_b[img/back.png,inline]\q[返回,BACK]\_l[140,-]\_b[img/close.png,inline]\q[取消,CANCEL]\_q\e
+Reference1: 
+Reference2: OnChoiceSelect
+Reference3: Tool
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \_q\0\s[0]\b[2]常用的工具：\n\n[half]\![*]\q[电子书,Txtreader]\_l[140,-]\![*]\q[截图,shotcut]\n\![*]\q[制作动图,gif]\_l[140,-]\![*]\q[录制视频,ocam]\n\![*]\q[批量改文件名,Rname]\_l[140,-]\![*]\q[词典,MiniDict]\n\![*]\q[画图,Paint]\_l[140,-]\![*]\q[记事本,Notepad]\n\![*]\q[俄语输入,Russia]_l[140,-]\![*]\q[屏保,matrix]\n\n\_l[10,-]\_b[img/back.png,inline]\q[返回,BACK]\_l[140,-]\_b[img/close.png,inline]\q[取消,CANCEL]\_q\e
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSurfaceChange
+Reference0: 0
+Reference1: 10
+Reference2: 0,0,160,250
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking,choosing
+ID: OnChoiceEnter
+Reference0: 返回
+Reference1: BACK
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+
+
+// response (Execution time : 16[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+Reference0: 屏保
+Reference1: matrix
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnSoundStop
+Reference0: C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\voice\吩咐.mp3
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceHover
+Reference0: 屏保
+Reference1: matrix
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: balloon_tooltip
+Reference0: 屏保
+Reference1: matrix
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceEnter
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceSelectEx
+Reference0: 屏保
+Reference1: matrix
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: choosing
+ID: OnChoiceSelect
+Reference0: matrix
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\s[4]\![open,file,saori\matrix.scr]\e
+
+
+// request
+GET SHIORI/3.0
+ID: OnTranslate
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Reference0: \0\s[4]\![open,file,saori\matrix.scr]\e
+Reference1: 
+Reference2: OnChoiceSelect
+Reference3: matrix
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\s[4]\![open,file,saori\matrix.scr]\e
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSurfaceChange
+Reference0: 4
+Reference1: 10
+Reference2: 0,4,150,172
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 1
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 1
+Reference4: 1
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseEnterAll
+Reference0: 11
+Reference1: 74
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseEnter
+Reference0: 11
+Reference1: 74
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 11
+Reference1: 74
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseLeave
+Reference0: 20
+Reference1: 76
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseLeaveAll
+Reference0: 20
+Reference1: 76
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseEnterAll
+Reference0: 68
+Reference1: 86
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseEnter
+Reference0: 68
+Reference1: 86
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 68
+Reference1: 86
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 91
+Reference1: 92
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseLeave
+Reference0: 98
+Reference1: 95
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseEnter
+Reference0: 98
+Reference1: 95
+Reference2: 0
+Reference3: 0
+Reference4: Face
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 105
+Reference1: 98
+Reference2: 0
+Reference3: 0
+Reference4: Face
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 1
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 109
+Reference1: 102
+Reference2: 0
+Reference3: 0
+Reference4: Face
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 111
+Reference1: 109
+Reference2: 0
+Reference3: 0
+Reference4: Face
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseLeave
+Reference0: 111
+Reference1: 111
+Reference2: 0
+Reference3: 0
+Reference4: Face
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseEnter
+Reference0: 111
+Reference1: 111
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 111
+Reference1: 111
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 110
+Reference1: 114
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 109
+Reference1: 116
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 107
+Reference1: 116
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 16[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 105
+Reference1: 119
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 15[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 103
+Reference1: 121
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 101
+Reference1: 124
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseMove
+Reference0: 100
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseHover
+Reference0: 100
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: tooltip
+Reference0: 100
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 1
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseDown
+Reference0: 100
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 1
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 1
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseUp
+Reference0: 100
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 1
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseClick
+Reference0: 100
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 1
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.popupmenu.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.popupmenu.type
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: recommendrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.recommendbuttoncaption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: recommendrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: 特別感謝
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: portalrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.portalbuttoncaption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: portalrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: ??????
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: homeurl
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: http:
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: updatebuttoncaption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.updatebuttoncaption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: updatebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: 用餐時間
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: readmebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: readmebuttoncaption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: readmebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: 女仆酱
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: vanishbuttonvisible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: vanishbutton.visible
+
+
+// response (Execution time : 15[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: 0
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: vanishbuttoncaption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: vanishbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: 再见了
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.recommendsites
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: - 支援感謝 -中文偽春菜後援會http://cuc2.idv.tw/中文偽春菜後援會Wikihttp://cuc2.idv.tw/wiki/SSP中文發佈站http://cers.cuc2.idv.twとらぶる☆ばぐとらっく/SSP BUGTRAQhttp://ssp.shillest.net- 資料倉庫 -CROWˇSSPリファレンスhttp://crow.aqrs.jp/reference/all/index.html駄でべろぱの小ネタWikihttp://emily.shillest.net/specwiki/文Wiki「文屋」http://emily.shillest.net/ayaya/伺かwikihttp://www.towano.net/ua-ks/非公式 伺か 仕様書http://www.ooyashima.net/db/
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sakura.portalsites
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: 
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: headlinesenserootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: headlinesenserootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: pluginrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: pluginrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: biffbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: biffbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: shellscalerootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: shellscalerootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: utilityrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: utilityrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: calendarbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: calendarbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: messengerbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: messengerbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sntpbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: sntpbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: ghostexplorerbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: ghostexplorerbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: scriptlogbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: scriptlogbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: addressbarbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: addressbarbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: updateplatformbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: updateplatformbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: purgeghostcachebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: purgeghostcachebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: updatefmobutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: updatefmobutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: reloadinfobutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: reloadinfobutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchreloadbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchreloadbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: leavepassivebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: leavepassivebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchreloadtempghostbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchreloadtempghostbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchmovetodefaultpositionbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchmovetodefaultpositionbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: resetballoonpositionbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: resetballoonpositionbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: closeballoonbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: closeballoonbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: duibutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: duibutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: configurationrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: configurationrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: configurationbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: configurationbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchproxybutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchproxybutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchtalkghostbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchtalkghostbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchcompatiblemodebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchcompatiblemodebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: charsetbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: charsetbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchquietbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchquietbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: alwaysstayontopbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: alwaysstayontopbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: definedsurfaceonlybutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: definedsurfaceonlybutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchignoreserikomovebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchignoreserikomovebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: enableballoonmovebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: enableballoonmovebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchforcealignfreebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchforcealignfreebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchdontforcealignbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchdontforcealignbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchforcealignlimitbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchforcealignlimitbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: activaterootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: activaterootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchactivatewhentalkbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchactivatewhentalkbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchactivatewhentalkexceptupdatebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchactivatewhentalkexceptupdatebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchdontactivatebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchdontactivatebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchdeactivatebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: switchdeactivatebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: resettodefaultbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: resettodefaultbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: ghostrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: ghostrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: callghostrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: callghostrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: shellrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: shellrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: dressuprootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: dressuprootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: balloonrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: balloonrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: historyrootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: historyrootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: ghosthistorybutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: ghosthistorybutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: callghosthistorybutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: callghosthistorybutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: balloonhistorybutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: balloonhistorybutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: headlinesensehistorybutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: headlinesensehistorybutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: pluginhistorybutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: pluginhistorybutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: inforootbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: inforootbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: firststaffbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: firststaffbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: readmebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: readmebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: 女仆酱
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: helpbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: helpbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: rateofusebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: rateofusebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: systeminfobutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: systeminfobutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: hidebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: hidebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: closebutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: closebutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: quitbutton.visible
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: quitbutton.caption
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseLeave
+Reference0: 100
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnMouseLeaveAll
+Reference0: 100
+Reference1: 127
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 1
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnCloseAll
+BaseID: OnClose
+Reference0: user
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnClose
+Reference0: user
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\s[27]那，下次再见了哦。\![sound,stop]\![sound,play,voice/那再见了啦.mp3]\![sound,wait]\w9\w9\-\e
+
+
+// request
+GET SHIORI/3.0
+ID: OnTranslate
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Reference0: \0\s[27]那，下次再见了哦。\![sound,stop]\![sound,play,voice/那再见了啦.mp3]\![sound,wait]\w9\w9\-\e
+Reference1: 
+Reference2: OnClose
+Reference3: user
+
+
+// response (Execution time : 16[ms])
+SHIORI/3.0 200 OK
+Sender: AYA
+Charset: UTF-8
+Value: \0\s[27]那，\w9\w5下次再见了哦。\w9\w9\![sound,stop]\![sound,play,voice/那再见了啦.mp3]\![sound,wait]\w9\w9\-\e
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSurfaceChange
+Reference0: 27
+Reference1: 10
+Reference2: 0,27,175,190
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnterAll
+Reference0: 169
+Reference1: 140
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnter
+Reference0: 169
+Reference1: 140
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 169
+Reference1: 140
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 161
+Reference1: 141
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseLeave
+Reference0: 149
+Reference1: 142
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseLeaveAll
+Reference0: 149
+Reference1: 142
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnterAll
+Reference0: 127
+Reference1: 144
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnter
+Reference0: 127
+Reference1: 144
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 127
+Reference1: 144
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 102
+Reference1: 149
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseLeave
+Reference0: 56
+Reference1: 152
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseLeaveAll
+Reference0: 56
+Reference1: 152
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnterAll
+Reference0: 27
+Reference1: 150
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseEnter
+Reference0: 27
+Reference1: 150
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 15[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseMove
+Reference0: 27
+Reference1: 150
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseLeave
+Reference0: 2
+Reference1: 148
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnMouseLeaveAll
+Reference0: 2
+Reference1: 148
+Reference2: 0
+Reference3: 0
+Reference4: 
+Reference5: 0
+Reference6: mouse
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 16[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+GET SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSoundStop
+Reference0: C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\voice\那再见了啦.mp3
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+Status: talking
+ID: OnSecondChange
+Reference0: 2
+Reference1: 0
+Reference2: 0
+Reference3: 0
+Reference4: 0
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 200 OK
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: rateofusegraph
+Reference0: 女仆酱女仆酱2956100.000000install
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+NOTIFY SHIORI/3.0
+Charset: UTF-8
+Sender: SSP
+SecurityLevel: local
+ID: OnDestroy
+Reference0: 
+Reference1: 1
+
+
+// response (Execution time : 0[ms])
+SHIORI/3.0 204 No Content
+Charset: UTF-8
+
+
+// request
+
+// response (Execution time : 0[ms])
+
+// 変数値の保存 - C:\Users\ifwz\Desktop\ukagaka\maidchan\ghost\maid-chan\ghost\master\yaya_variable.cfg
+...完了.
+
+// unload 時刻 : 2023/04/29 12:40:41
+

@@ -1,0 +1,507 @@
+OpenMenu
+{
+	"\0\b[2]"
+	--
+	if silent == "1" {
+	""
+	}
+	else {
+//	"\![sound,play,voice/吩 咐.mp3]"
+	}
+		"\![sound,stop]\_q\s[0]\![sound,play,voice/吩咐.mp3] 您有什么事吩咐吗？\n\_q"
+		"\![sound,stop]\_q\s[9]\![sound,play,voice/吩咐.mp3] %(username)有事吗？\n\_q"
+		"\![sound,stop]\_q\s[0]\![sound,play,voice/吩咐.mp3] 嗯…怎么了？\n\_q"
+	
+	--
+	if lastTalk != "" {
+	  "\![*]\q[刚才说了什么？,OnLastTalk]\n"
+	}
+	--
+	nutshell = TOINT(CEIL(intimacy))
+	--
+        "\n[half]/
+	\![*]\q[聊天,AITALK]\_l[120,-]\![*]\q[说笑话,Story]\n/
+ /*     \![*]\q[沟通,COMMENT]\_l[120,-]/                             */                          
+        \![*]\q[教学,教学] \_l[120,-]\![*]\q[对话,Communicate]\n/      
+ /*     \![*]\q[闹钟,AlarmMenu]\n/    \![*]\q[闹钟,ALARM]\n/      */
+ /*       \![*]\q[播放音乐,OnMusicPlayer]\n/*/
+ /*     \![*]\q[进入贴吧,TIEBAENTER] */ 
+        \![*]\q[快捷,Rjkj]\_l[120,-]\![*]\q[任务,OnMission]\n/
+        \![*]\q[闹钟,Alarm]\_l[120,-]\![*]\q[RSS,Autosign]\n/                  
+ /*	\![*]\q[闹钟,ALARM]\_l[120,-]\![*]\q[CG,CG]\n/                */
+ /*     \![*]\q[系统资讯,OnSystemNormal]\n\n[half]/                   */
+	
+	\![*]\q[工具,Tool]   \_l[120,-]\![*]\q[系统,System]\n/
+        \![*]\q[设定,SETTING]\_l[120,-]\![*]\q[关于,ABOUTAYA]\n\n/
+        
+        
+	
+  /*    \_q\_b[img/check.png,inline] × %(nutshell)\n\n[half]\_q/     */
+	//\![*]\q[测试,OnCeshi]\n/
+	//\![*]\q[開發者專用,COMMAND]\n/
+	//\![*]\q[測試專用,fanfou2]\n/
+	"
+	--
+	if playmode == 1 {
+		"\_b[img/close.png,inline]\q[取消,PLAYCANCEL]"
+	}
+	elseif playmode == 2 {
+		"\_b[img/close.png,inline]\q[取消,PLAYCANCEL]"
+	}
+	else {
+		"\_l[80,-]\q[取消,CANCEL]"
+	}
+	--
+	"\e"
+}
+
+
+On_balloon_tooltip {
+　if ISFUNC("BalloonTooltip_%(reference[0])") {
+　EVAL("BalloonTooltip_%(reference[0])")
+　}
+}
+
+
+BalloonTooltip_聊天 { "听听看在說什麼…？" }
+BalloonTooltip_说笑话 { "有很多笑话哦，放心，H的已经被我删掉了哦" }
+BalloonTooltip_教学 { "想教我的话再这里" }
+BalloonTooltip_对话 { "想和女仆酱说话吗？" }
+BalloonTooltip_闹钟 { "闹钟的话再这里" }
+BalloonTooltip_RSS { "阅读新闻" }
+BalloonTooltip_工具 { "日常使用工具都在这里哦" }
+BalloonTooltip_系统 { "系统工具" }
+BalloonTooltip_设定 { "对话频率/对话数据库/透明度/前端显示等等设定都在这里。" }
+BalloonTooltip_关于 { "主人信息在這裡。請一定先來看看" }
+BalloonTooltip_溝通 { "對方只是人工生命體！" }
+
+BalloonTooltip_便利功能 { "郵箱/字典/IP查詢/天氣預報/日曆鬧鐘等功能都在這裡。" }
+
+BalloonTooltip_系统功能 { "本機信息/IP信息/上下載速率等都在這裡。" }
+
+//**** 選單項目選擇 ***************************************************************************
+//---- OnChoiceSelect事件 ---------------------------------------------------------------
+//選択肢をいきなり独立した関数で書く
+OnChoiceSelect
+{
+   EVAL("Choice.%(reference0)")
+}
+
+OnAnchorSelect {
+	if (RE_GREP(reference0,'^http://'))>=1 {"\C\j[%(reference0)]\e"}
+	else {EVAL("Anchor.%(reference0)")}
+	//{"\1\s[10]\b[2]%(reference0)\x\![*]\q[繼續看説明,README]\n\![*]\q[取消,CANCEL]\e"}
+}
+Choice.Communicate
+{
+	_phase = GetPhase;
+	if _phase == 0 {
+		"\![open,communicatebox]\0\s[0]想说什么呢？\e"
+	}
+	else {
+		"\![open,communicatebox]\0\s[26]嗯？\w9想聊点什么呢，%(username)?\e"
+	}
+}
+
+//---- 工具 ---------------------------------------------------------------
+
+Choice.Tool
+{
+			"\_q\0\s[0]\b[2]常用的工具：\n\n[half]/
+                        \![*]\q[电子书,Txtreader]\_l[140,-]\![*]\q[截图,shotcut]\n/
+                        \![*]\q[制作动图,gif]\_l[140,-]\![*]\q[录制视频,ocam]\n/
+                        \![*]\q[批量改文件名,Rname]\_l[140,-]\![*]\q[词典,MiniDict]\n/
+                        \![*]\q[画图,Paint]\_l[140,-]\![*]\q[记事本,Notepad]\n/
+                        \![*]\q[俄语输入,Russia]\_l[140,-]\![*]\q[屏保,matrix]\n\n/
+			\_l[10,-]\_b[img/back.png,inline]\q[返回,BACK]\_l[140,-]/
+			\_b[img/close.png,inline]\q[取消,CANCEL]\_q\e"
+}
+//---- 系统 ---------------------------------------------------------------
+
+Choice.System
+{
+			"\0\s[0]\b[2]系统常用的東西：\n\n[half]\_q/
+			\![*]\q[网络测试,netcheck]\_l[100,-]\![*]\q[输入法工具,inputtool]\n/
+			\![*]\q[打扫垃圾,TRASHCLEAN]\_l[100,-]\![*]\q[C盘垃圾清理,ClearC]\n/
+                        \![*]\q[定时关机,OnSetShutdown]\_l[100,-]\![*]\q[校准时间,SNTPTIME]\n/
+
+/*	                \![*]\q[IE不能打开新链接修复,ierepair]\n/    \q[系统资讯,OnSystemNormal]  */
+
+                        \![*]\q[我的电脑,OnMenuExplorer,mycomputer]\_l[100,-]\![*]\q[控制面板,OnMenuExplorer,control]\n\n/
+
+			\![*]\q[登出,WindowsLogout]\_l[70,-]\![*]\q[重启,WindowsReboot]\_l[140,-]\![*]\q[关机,WindowsShutDown]\n\n/
+			
+			
+			
+
+/*			\![*]\q[打掃垃圾,TRASHCLEAN]\_l[70,-]\![*]\q[清理系統,SYSDUST]\n\n/         */
+
+			\_b[img/back.png,inline]\q[返回,BACK]\_l[100,-]/
+			\_b[img/close.png,inline]\q[取消,CANCEL]\_q\e"
+}
+//---- 取消/返回 ------------------------------------------------------------------------
+Choice.CANCEL
+{
+	      "\0\s[3]菜单被关掉了哦。\e"
+	"\0\s[3]没事了吗。\e"
+	"\0\s[3]嗯……\e"
+
+}
+/*
+Choice.Screencut
+{
+	"\0\s[5]F10就是QQ截图哦!\w9\![open,file,saori\rundll32.exe,CameraDll.dll,CameraSubArea]\e"
+}
+*/
+
+Choice.matrix
+{
+  "\0\s[4]\![open,file,saori\matrix.scr]\e"
+}
+Choice.ocam
+{
+  "\0\s[4]\![open,file,saori\oCam.exe]\e"
+}
+Choice.PLAYCANCEL
+{
+	"\e"
+}
+Choice.BACK
+{
+	OpenMenu
+}
+Choice.BACK2
+{
+	OpenMenuCyaka
+}
+
+Choice.Alarm
+{
+	"\0\s[4]\![open,file,saori\Minialarm.exe]\e"
+}
+
+Choice.Rjkj
+{
+	OnShortcutMenu 
+}
+
+Choice.gif
+{
+	"\0\s[4]\![open,file,saori\ScreenToGif.exe]\e"
+}
+
+Choice.shotcut
+{
+	"\0\s[4]\![open,file,saori\screener.exe]\e"
+}
+
+Choice.Txtreader
+{
+	"\0\s[4]\![open,file,saori\SumatraPDF.exe]\e"
+}
+
+Choice.Rname
+{
+	"\0\s[4]\![open,file,saori\批量修改文件名.exe]\e"
+}
+
+Choice.MiniDict
+{
+	"\0\s[4]%(username)要中英文翻译吗？\![open,file,saori\MiniDict.exe]\c点击F1可以打开帮助哦\e"
+}
+
+
+Choice.Paint
+{
+	"\0\s[4]\![open,file,saori\paint.exe]\c\e"
+}
+
+
+Choice.Notepad
+{
+	"\0\s[4]%(username)要帮您记事吗？\![open,file,saori\notepad.exe]\e"
+}
+Choice.Russia
+{
+	"\0\s[4]\![open,file,saori\Russia.exe]\e"
+}
+
+Choice.CG
+{
+	"\0\b[4]\_b[CG\1]\x\b[4]\w2\_b[CG\2]\w2\_b[CG\3]\w2\_b[CG\4]\w2\_b[CG\5]\w2\_b[CG\6]\w2\_b[CG\7]\w2\_b[CG\8]\w2\_b[CG\9]\w2\_b[CG\10]\w2\_b[CG\11]\w2\_b[CG\12]\w2\_b[CG\13]\w2\_b[CG\14]\w2\_b[CG\15]\w2\_b[CG\16]\w2\_b[CG\17]\x\w2\e"
+}
+//---- 便利功能 ---------------------------------------------------------------
+Choice.USEFUL
+{
+			"\0\s[0]\b[2]常用的東西：\n\n[half]\_q/
+			\![*]\q[开启邮箱,OPENMAILER]\_l[100,-]\![*]\q[收取邮件,ALLMAIL]\n/
+			\![*]\q[開啓浏览器,OPENEXPLORER]\n/
+                        \![*]\q[百度一下,IEbaidu]\_l[100,-]\![*]\q[樱花庄贴吧,IEyhz]\n/
+/*			\![*]\q[線上更新,UPDATE]\_l[100,-]\![*]\q[對話框更新,UPDATEBALLOON]\n/*/
+/*			\n[half]/                                                          */
+			/*\![*]\q[線上字典(Beta),DicMenu]\n/*/
+                        
+                       
+/*			\![*]\q[IP查詢,IPAdrMenu]\n/                                         */
+/*			\![*]\q[天氣預報,LocaleEntry]\n/                                     */
+			\n[half]/
+			\![*]\q[日曆,CALENDAR]\n/
+			\![*]\q[倒数计时,count]\_l[120,-]\![*]\q[秒表,OnSecondWatch]\n/ 
+			\![*]\q[圖形時鐘,AnaLogClock]\n/
+
+
+			\n[half]/
+			\_b[img/back.png,inline]\q[返回,BACK]\_l[50,-]/
+			\_b[img/close.png,inline]\q[取消,CANCEL]\_q\e"
+}
+Choice.OPENEXPLORER
+{
+	"\0\s[2]默認瀏覽器已經開啓。\![open,browser]\e:eval=(intimacy+=0.01)"
+}
+Choice.OPENMAILER
+{
+	"\![open,mailer]\e:eval=(intimacy+=0.01)"
+}
+Choice.UPDATEBALLOON
+{
+	"\0\s[5]看看果殼有沒有更新啾。\1\s[16]打開對話框瀏覽器……\n\n[half]\![open,balloonexplorer]\0\c\b[2]更新方法：\n\n在對話框裏選擇「灰果殼」，\n按右鍵，\n選擇「線上更新」即可。\1\s[15]請經常更新看看呣。\0\s[5]\n\n\n另外，如果想偷懶的話，可以參考這篇文章的設置。\n這樣設置後，就不必再擔心任何東西了啾！\_q\n\n\n【參考文章】\n\_a[http://warmsoil.com/cgi-bin/diarypro/diary.cgi?no=14]對話框如果這樣設置的話會很方便！\_a\_q\e"
+}
+Choice.CALENDAR
+{
+	"\0\s[5]%(username)記性不好嗎？\![open,calendar]\e"
+}
+Choice.rss
+{
+	"\0\s[5]阅读新闻！\w3\c\![open,file,saori\DesktopTicker.exe]\e"
+}
+
+//---- 選單選擇逾時 ---------------------------------------------------------------------
+OnChoiceTimeout
+{
+	"\0\s[4]已经沒有在看了吧？关起来了哦？\e"
+}
+
+//---- 開發者相關指令 --------------------------------------------------------------
+		Choice.COMMAND
+		{
+			"\_q\0\s[0]\b[2]好的。\n\n\_q/
+			\![*]\q[呼叫變數,COMMAND_VAR]\n/
+			\![*]\q[呼叫系統函式並取得返值,COMMAND_FUNC]\n/
+			\![*]\q[直接運行命令,COMMAND_EVAL]\n\n[half]/
+			\_b[img/back.png,inline]\q[返回,BACK]\_l[50,-]/
+			\_b[img/close.png,inline]\q[取消,CANCEL]\e"
+		}
+		Choice.COMMAND_VAR
+		{
+			//---- 開啟變數呼叫的輸入框
+			"\![open,inputbox,COMMAND_VAR]\e"
+		}
+		Choice.COMMAND_FUNC
+		{
+			//---- 開啟系統函式呼叫的輸入框
+			"\![open,inputbox,COMMAND_FUNC]\e"
+		}
+		Choice.COMMAND_EVAL
+		{
+			//---- 開啟命令輸入框
+			"\![open,inputbox,COMMAND_EVAL]\e"
+		}
+Choice.IEbaidu {
+  "\![open,browser,http://www.baidu.com]"
+}
+Choice.IEyhz {
+  "\![open,browser,http://tieba.baidu.com/樱花庄的宠物女孩]"
+}
+// 我的电脑，控制面板
+//-------------------------------------------------------------------
+
+OnMenuExplorer
+{
+	"\C";
+	--
+	case reference0 {
+		when "mycomputer" {
+			_path = FUNCTIONEX("saori/advanced_sysinfo","get_special_folder_path",'Windows');
+			_file = REPLACE(_path,'\','\\') + '\\explorer.exe';
+			_ref = "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}";
+			"\![open,file,%(_file),%(_ref)]"
+		}
+		when "control" {
+			_path = FUNCTIONEX("saori/advanced_sysinfo","get_special_folder_path",'Windows');
+			_file = REPLACE(_path,'\','\\') + '\\system32\\control.exe';
+			"\![open,file,%(_file)]"
+		}
+	}
+}	
+//---- 垃圾場 --------------------------------------------------------------------
+/*
+		Choice.COMMUNICATEOPEN
+		{
+			//---- 開啟溝通輸入欄
+			"\0\s[5]好的。\![open,communicatebox]\e"
+		}
+		Choice.GHOSTCOMSTART
+		{
+			//---- 與其他人對話
+			StartCommunicate
+		}
+*/
+
+//---- OnUserInput事件 ------------------------------------------------------------------
+
+OnUserInput
+{
+	case reference0
+	{
+		when "COMMAND_VAR"
+		{
+			_i = reference1
+			if ISVAR(_i) != 0
+			{
+				_j = EVAL(_i)
+				
+				"%(_i) = %(_j)\e"
+			}
+			else
+			{
+				"變數%(_i)不存在。\e"
+			}
+		}
+		when "COMMAND_FUNC"
+		{
+			_i = reference1
+			_funcNum  = STRSTR(_i,"(",0)
+			_funcName = SUBSTR(_i,0,_funcNum)
+			if ISFUNC(_funcName) == 2
+			{
+				_j = EVAL(_i)
+				
+				"Function： %(_i)\n\n返值： %(_j)\e"
+			}
+			else
+			{
+				"『%(_i)』發生錯誤。\n\n%(_funcName)不是系統函式。\n/
+				_funcNum = %(_funcNum)\n_funcName = %(_funcName)\e"
+			}
+		}
+		when "COMMAND_EVAL"
+		{
+			EVAL(reference1)
+		}
+	}
+		//------呼び方
+		if reference0 == "TeachUsernameFirst"
+		{
+			if reference1 == "%(username)"
+			{
+				"\0\s[3]「%(username)」\n得到了名字。\n\n\0\s[5]那麼說，以后我就为您一人服务了哦。\w9\w9\w9\c/
+					\n\n\0\s[3]從今天起我就開始居住在你的電腦中。\w9\w9\n\n我会好好珍惜這裏。\w9\n\n\0\s[0]你需要做的，僅僅是\w9\w9\n經常開啓我們。\w9\w9\n\n\0\s[9]只是這樣啾。\w9\w9\w9\c/
+				/*	\n\n\0\s[3]啊，如果還能時常連線為我們更新就更好了。\w9\n\n\1\s[15]也許我們會在你的電腦中繼續成長。\w9\n\n\0\s[1]也許有一天能夠離開網路。\w9\n\n\1\s[13]得到身體……\w9\n\n\0\s[3]太遙遠了，到那時再說吧。\w9\n\n\1\s[15]再說吧。\w9\w9\w9\c/  */
+					\0\s[5]請多關照呣！\n\n\0\s[5]多關照啾！\e"
+			}
+			elseif reference1 == ""
+			{
+				"\0\s[3]叫做主人也可以的話，那就……\n\n主人！\w9\w9\w9\c/
+					\n\n\0\s[3]從今天起我就開始居住在你的電腦中。\w9\w9\n\n我会好好珍惜這裏。\w9\n\n\0\s[0]你需要做的，僅僅是\w9\w9\n經常開啓我們。\w9\w9\n\n\0\s[9]只是這樣啾。\w9\w9\w9\c/
+				/*	\n\n\0\s[3]啊，如果還能時常連線為我們更新就更好了。\w9\n\n\1\s[15]也許我們會在你的電腦中繼續成長。\w9\n\n\0\s[1]也許有一天能夠離開網路。\w9\n\n\1\s[13]得到身體……\w9\n\n\0\s[3]太遙遠了，到那時再說吧。\w9\n\n\1\s[15]再說吧。\w9\w9\w9\c/  */
+					\1\s[15]請多關照呣！\n\n\0\s[5]多關照啾！\e"
+			}
+			else
+			{
+				username = "%(reference1)"
+				"\1\s[11]「%(username)」\n得到了名字。\n\n\0\s[5]那麼說，要開始交換契約了。\w9\w9\w9\c/
+					\n\n\0\s[3]從今天起我就開始居住在你的電腦中。\w9\w9\n\n我会好好珍惜這裏。\w9\n\n\0\s[0]你需要做的，僅僅是\w9\w9\n經常開啓我們。\w9\w9\n\n\0\s[9]只是這樣啾。\w9\w9\w9\c/
+				/*	\n\n\0\s[3]啊，如果還能時常連線為我們更新就更好了。\w9\n\n\1\s[15]也許我們會在你的電腦中繼續成長。\w9\n\n\0\s[1]也許有一天能夠離開網路。\w9\n\n\1\s[13]得到身體……\w9\n\n\0\s[3]太遙遠了，到那時再說吧。\w9\n\n\1\s[15]再說吧。\w9\w9\w9\c/  */
+					\n\n\0\s[0]那麼重複一次，你是%(username)。\w9\n\n要稱呼%(username)還是%(username)さん呢？\n\![*]\q[%(username),TEACHUSERNAMEFIRST2]\n\![*]\q[%(username)さん,TEACHUSERNAMEFIRST1]\e"
+			}
+		}
+		elseif reference0 == "teachusername"
+		{
+			if reference1 ==  "%(username)"
+			{
+				"\0\s[3]在害羞嗎？\w9\w9再考慮一下也沒關係，但是我不想等很久……\n\n[half]/
+				\_b[img/back.png,inline]\q[返回,BACK]\n/
+				\_b[img/close.png,inline]\q[取消,CANCEL]\e"
+			}
+			elseif reference1 == ""
+			{
+				"\0\s[3]……不想改變嗎？\e"
+			}
+			else
+			{
+				username = "%(reference1)"
+				"%(username)さん？\n\![*]\q[可以,teachusername1]\w9\w9\0\s[3]或者%(username)也可以？\n\![*]\q[%(username)吧,teachusername2]\n\![X]\q[算了,teachusername3]\e"
+			}
+		}
+		//---------輸入生日----------
+		elseif reference0 == "teachuserbirthday"
+		{
+			if reference1 ==  userbirthday
+			{
+				"\0\s[5]没有记错哦。我记性不错哦。\e"
+			}
+			else
+			{
+				userbirthday = SPLIT(reference1,","); //以「,」作為區隔切成三個陣列元素（感謝時原砂さん）
+				userzodiac = OnZodiacSign;
+				"\0\s[6]%(userbirthday[0])年%(userbirthday[1])月%(userbirthday[2])日，嗯…\w9是%(userzodiac)呢。\s[5]記住了！不會忘記的呣。\e"
+			}
+		}
+		//---- 字詞翻譯
+		elseif  reference0 == "InputGoogleDiczhTWen"
+		{
+			EntryGoogleDiczhTWen
+		}
+		elseif  reference0 == "InputGoogleDicenzhTW"
+		{
+			EntryGoogleDicenzhTW
+		}
+		elseif  reference0 == "InputGoogleDicenzhCN"
+		{
+			EntryGoogleDicenzhCN
+		}
+		elseif  reference0 == "InputICIBADiczhCNen"
+		{
+			EntryIcibaDiccn
+		}
+		elseif  reference0 == "InputIPAdr"
+		{
+			SendIPAdr
+		}
+		elseif  reference0 == "InputLocale"
+		{
+			_r = FUNCTIONEX("saori\ChConverter.dll", "simplified", reference1) //轉簡
+			locale = _r
+			"\0\s[6]%(username)的所在地是「%(locale)」。\n現在開始查詢。"
+			--
+			WeatherCheck;
+		}
+		elseif  reference0 == "sntpserver"
+		{
+			SNTPserver = reference1;
+			"\0\s[9]連線到「%(SNTPserver)」，時間校準開始。\![executesntp]"
+		}
+		//----------------AI(再見~~~~~)---------------------------------------
+/*		elseif reference0 == "AITeachNameEnter"
+		{
+			TeachedName = reference1
+			"\_q\0\b[2]%(reference1)是嗎。那，這是……\n\n/
+			\![*]\q[想見的人,AITeachNameEnter01]\n/
+			\![*]\q[不想見的人,AITeachNameEnter02]\n/
+			\![*]\q[另一個世界的人,AITeachNameEnter03]\n/
+			\n/
+			\_b[img/back.png,inline]\q[返回,BACK]\n/
+			\_b[img/close.png,inline]\q[取消,CANCEL]\_q\e"
+		}
+		elseif reference0 == "AITeachItemEnter"
+		{
+			TeachedItem01 = reference1
+			"\0\b[2]%(reference1)是嗎。那，這是……\n\n/
+			\![*]\q[想見的人,AITeachNameEnter01]\n/
+			\![*]\q[不想見的人,AITeachNameEnter02]\n/
+			\![*]\q[另一個世界的人,AITeachNameEnter03]\n/
+			\n/
+			\_b[img/back.png,inline]\q[返回,BACK]\n/
+			\_b[img/close.png,inline]\q[取消,CANCEL]\e"
+		}*/
+}

@@ -1,0 +1,5 @@
+charset,UTF-8
+type,supplement
+name,開機自啓動插件
+
+directory,ghost/master

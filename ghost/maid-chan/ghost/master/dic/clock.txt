@@ -1,0 +1,90 @@
+OnAlarmMenu
+{
+	AlarmMenu;
+}
+
+AlarmMenu
+{
+	_txt = "\_q\f[bold,true]\0闹钟功能\f[bold,default]\n\n[half]";
+	if ISVAR("alarmset") == 0 {
+		alarmset = IARRAY;
+		alarmset[0] = "OFF";
+		alarmset[1] = "当天";
+		alarmset[2] = "声音";
+		alarmhour = 0;
+		alarmmin = 0;
+		alarmfile = "saori/Ring.mp3";
+	}
+	_txt += "\n[50]闹钟时间：\f[color,34,100,200]%(alarmhour)点%(alarmmin)分\f[color,default]\_l[128]\q[◇设定闹钟,OnAlarmSetTime]\n[150]";
+	if alarmset[0] == "ON" {
+		_txt += "闹钟开关：\q[◎ON,OnAlarmSet,0,ON]\_l[128]\q[○OFF,OnAlarmSet,0,OFF]\n";
+	}
+	else { 
+		_txt += "闹钟开关：\q[○ON,OnAlarmSet,0,ON]\_l[128]\q[◎OFF,OnAlarmSet,0,OFF]\n";
+	}
+	if alarmset[1] == "当天" {
+		_txt += "提醒频率：\q[◎当天提醒,OnAlarmSet,1,当天]\_l[128]\q[○每天提醒,OnAlarmSet,1,每天]\n";
+	}
+	else {
+		_txt += "提醒频率：\q[○当天提醒,OnAlarmSet,1,当天]\_l[128]\q[◎每天提醒,OnAlarmSet,1,每天]\n";
+	}
+	if alarmset[2] == "声音" {
+		_txt += "提醒模式：\q[◎播放声音,OnAlarmSet,2,声音]\_l[128]\q[○任务栏气泡,OnAlarmSet,2,气泡]\n";
+	}
+	else {
+		_txt += "提醒模式：\q[○播放声音,OnAlarmSet,2,声音]\_l[128]\q[◎任务栏气泡,OnAlarmSet,2,气泡]\n";
+	}
+	_txt += "闹钟铃声：\__q[OnSetAlarmFile]%(SPLITPATH(alarmfile)[2])%(SPLITPATH(alarmfile)[3])\__q"
+	_txt += "\n[150]\q[◇返回上一层,OnOpenMenu]    \q[◇终了,OnAlarmEnd]";
+	_txt;
+}	
+
+OnSetAlarmFile
+{
+	"\![open,dialog,open,--id=alarmfile,--title=请选择音乐文件,--filter=音乐文件(mid;wav;mp3;au;ogg;wma)|*.mid;*.wav;*.mp3;*.au;*.ogg;*.wma]"
+}
+
+DialogSetAlarmFile
+{
+	alarmfile = _argv[0];
+	AlarmMenu;
+}
+
+OnAlarmEnd
+{
+}
+
+OnAlarmSet
+{
+	alarmset[reference0] = reference1;
+	AlarmMenu;
+}
+
+OnAlarmSetTime
+{
+	"\0\s[2]要在什么时候提醒%(username)呢？";
+	--
+	"\![open,timeinput,OnAlarmSetComplete]";
+}
+
+OnAlarmSetComplete
+{
+	_txt = "在";
+	if alarmset[1] == "每天" {
+		_txt += "每天的";
+	}
+	_tmp = reference0;
+	_txt += "\f[color,34,100,200]%(_tmp[0])点%(_tmp[1])分\f[color,default]\w9以%(alarmset[2])的方式提醒。\n\w9这样可以吗？"
+	_txt += "\_q\n[200]\q[◆确定,OnAlarmSetConfirmed,1,%(_tmp)]    \q[◇取消,OnAlarmSetConfirmed,0]\_q\n";
+	_txt;
+}
+
+OnAlarmSetConfirmed
+{
+	if reference0 == 1 {
+		alarmhour = reference1;
+		alarmmin = reference2;
+	}
+	AlarmMenu;
+}
+

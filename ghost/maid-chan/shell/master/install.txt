@@ -1,0 +1,6 @@
+﻿Charset,UTF-8
+type,shell
+name,master
+directory,女仆酱
+
+accept,女仆酱

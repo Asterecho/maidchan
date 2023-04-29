@@ -1,0 +1,232 @@
+﻿
+OnMission
+{
+     "\_q\b[4]女仆的任务框：\f[color,127,127,127](开发中暂时只支持打开文档软件）\f[color,0,0,0]\n\![*]\q[返回,MissionC]\_l[100,-]\![*]\q[退出,CANCEL]\n\q[任务1,OnChange1]：%(mission1)\_l[180,-]\q[时间,OnChange2]：%(tmp1[0])点%(tmp1[1])分%(tmp1[2])秒\_l[360,-]\q[路径,OnChange3]：%(file3)/
+      \n\q[任务2,OnChange4]：%(mission2)\_l[180,-]\q[时间,OnChange5]：%(tmp2[0])点%(tmp2[1])分\_l[360,-]\q[路径,OnChange6]：%(file6)/
+      \n\q[任务3,OnChange7]：%(mission3)\_l[180,-]\q[时间,OnChange8]：%(tmp3[0])点%(tmp3[1])分\_l[360,-]\q[路径,OnChange9]：%(file9)/
+      \n\q[任务4,OnChange10]：%(mission4)\_l[180,-]\q[时间,OnChange11]：%(tmp4[0])点%(tmp4[1])分\_l[360,-]\q[路径,OnChange12]：%(file12)/
+      \n\q[任务5,OnChange13]：%(mission5)\_l[180,-]\q[时间,OnChange14]：%(tmp5[0])点%(tmp5[1])分\_l[360,-]\q[路径,OnChange15]：%(file15)/
+      \n\q[任务6,OnChange16]：%(mission6)\_l[180,-]\q[时间,OnChange17]：%(tmp6[0])点%(tmp6[1])分\_l[360,-]\q[路径,OnChange18]：%(file18)/
+      \_q\e"
+}
+Choice.MissionC
+{
+	OpenMenu
+}
+//---- 任务1 ---------------------------------------------------------------
+
+OnChange3
+{
+	"\C";
+	--
+	"\![open,dialog,open,--id=change3,--title=请选择]";
+}
+
+DialogChange3
+{       file3 = _argv[0];
+	_filepath = SPLITPATH(_argv[0])
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	OnMission
+       /* "\_q\b[5]%(_argv[0])\n_file:%(file3)\n_filepath:&%(_filepath)\n_filename:&%(_filename)\n_fileext:&%(_fileext)\n\_q\e"*/
+}
+OnChange1
+{
+	"\![open,input,OnMission1,-1]"
+}
+OnMission1
+{
+	mission1 = reference0
+	OnMission
+}
+OnChange2
+{
+	
+	"\![open,timeinput,OnTimeChange2,-1]";
+}
+OnTimeChange2
+{
+		tmp1 = reference0;
+	        OnMission
+/*	"%(reference0)\n%(tmp1[0])点%(tmp1[1])分%(tmp1[2])秒";*/
+}
+//---- 任务2 ---------------------------------------------------------------
+OnChange6
+{
+	"\C";
+	--
+	"\![open,dialog,open,--id=change6,--title=请选择]";
+}
+
+DialogChange6
+{       file6 = _argv[0];
+	_filepath = SPLITPATH(_argv[0])
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	OnMission
+       /* "\_q\b[5]%(_argv[0])\n_file:%(file6)\n_filepath:&%(_filepath)\n_filename:&%(_filename)\n_fileext:&%(_fileext)\n\_q\e"*/
+}
+OnChange4
+{
+	"\![open,input,OnMission4,-1]"
+}
+OnMission4
+{
+	mission2 = reference0
+	OnMission
+}
+OnChange5
+{
+	
+	"\![open,timeinput,OnTimeChange5,-1]";
+}
+OnTimeChange5
+{
+		tmp2 = reference0;
+	        OnMission
+/*	"%(reference0)\n%(tmp2[0])点%(tmp2[1])分%(tmp2[2])秒";*/
+}
+//---- 任务3 ---------------------------------------------------------------
+OnChange9
+{
+	"\C";
+	--
+	"\![open,dialog,open,--id=change9,--title=请选择]";
+}
+
+DialogChange9
+{       file9 = _argv[0];
+	_filepath = SPLITPATH(_argv[0])
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	OnMission
+       /* "\_q\b[5]%(_argv[0])\n_file:%(file9)\n_filepath:&%(_filepath)\n_filename:&%(_filename)\n_fileext:&%(_fileext)\n\_q\e"*/
+}
+OnChange7
+{
+	"\![open,input,OnMission7,-1]"
+}
+OnMission7
+{
+	mission3 = reference0
+	OnMission
+}
+OnChange8
+{
+	
+	"\![open,timeinput,OnTimeChange8,-1]";
+}
+OnTimeChange8
+{
+		tmp3 = reference0;
+	        OnMission
+/*	"%(reference0)\n%(tmp3[0])点%(tmp3[1])分%(tmp3[2])秒";*/
+}
+//---- 任务4 ---------------------------------------------------------------
+OnChange12
+{
+	"\C";
+	--
+	"\![open,dialog,open,--id=change12,--title=请选择]";
+}
+
+DialogChange12
+{       file12 = _argv[0];
+	_filepath = SPLITPATH(_argv[0])
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	OnMission
+       /* "\_q\b[5]%(_argv[0])\n_file:%(file12)\n_filepath:&%(_filepath)\n_filename:&%(_filename)\n_fileext:&%(_fileext)\n\_q\e"*/
+}
+OnChange10
+{
+	"\![open,input,OnMission10,-1]"
+}
+OnMission10
+{
+	mission4 = reference0
+	OnMission
+}
+OnChange11
+{
+	
+	"\![open,timeinput,OnTimeChange11,-1]";
+}
+OnTimeChange11
+{
+		tmp4 = reference0;
+	        OnMission
+/*	"%(reference0)\n%(tmp4[0])点%(tmp3[1])分%(tmp3[2])秒";*/
+}
+//---- 任务5 ---------------------------------------------------------------
+OnChange15
+{
+	"\C";
+	--
+	"\![open,dialog,open,--id=change15,--title=请选择]";
+}
+
+DialogChange15
+{       file15 = _argv[0];
+	_filepath = SPLITPATH(_argv[0])
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	OnMission
+       /* "\_q\b[5]%(_argv[0])\n_file:%(file15)\n_filepath:&%(_filepath)\n_filename:&%(_filename)\n_fileext:&%(_fileext)\n\_q\e"*/
+}
+OnChange13
+{
+	"\![open,input,OnMission13,-1]"
+}
+OnMission13
+{
+	mission5 = reference0
+	OnMission
+}
+OnChange14
+{
+	
+	"\![open,timeinput,OnTimeChange14,-1]";
+}
+OnTimeChange14
+{
+		tmp5 = reference0;
+	        OnMission
+/*	"%(reference0)\n%(tmp5[0])点%(tmp5[1])分%(tmp5[2])秒";*/
+}
+//---- 任务6 ---------------------------------------------------------------
+OnChange18
+{
+	"\C";
+	--
+	"\![open,dialog,open,--id=change18,--title=请选择]";
+}
+
+DialogChange18
+{       file18 = _argv[0];
+	_filepath = SPLITPATH(_argv[0])
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	OnMission
+       /* "\_q\b[5]%(_argv[0])\n_file:%(file18)\n_filepath:&%(_filepath)\n_filename:&%(_filename)\n_fileext:&%(_fileext)\n\_q\e"*/
+}
+OnChange16
+{
+	"\![open,input,OnMission16,-1]"
+}
+OnMission16
+{
+	mission6 = reference0
+	OnMission
+}
+OnChange17
+{
+	
+	"\![open,timeinput,OnTimeChange17,-1]";
+}
+OnTimeChange17
+{
+		tmp6 = reference0;
+	        OnMission
+/*	"%(reference0)\n%(tmp6[0])点%(tmp6[1])分%(tmp6[2])秒";*/
+}

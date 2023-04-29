@@ -1,0 +1,13 @@
+﻿OnCeshi
+{
+	
+	"\![open,timeinput,OnCeshi1,-1]";
+}
+
+
+OnCeshi1
+{
+	_tmp1 = reference0;
+	
+	"%(reference0)\n%(_tmp1[0])点%(_tmp1[1])分%(_tmp1[2])秒";
+}

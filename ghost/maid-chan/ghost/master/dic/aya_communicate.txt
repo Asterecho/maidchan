@@ -1,0 +1,459 @@
+///////// コミュニケート辞書
+//////// 根據「文　ゴーストテンプレート 紺野ややめ」寫成
+
+//**** 人格主動對話 *******************************************************************************
+
+StartCommunicate
+{
+	//---- 決定對話的對象人格
+	if ghostexcount > 0
+	{
+		// res_reference0 指定人格清單中的對話對象
+		res_reference0 = ghostexlist[RAND(ghostexcount)]
+	}
+
+	//---- 開始對話
+	case res_reference0
+	{
+		when "落鳥"
+		{
+			//---- 與落鳥的對話
+			"\0\s[0]糖果放在哪裏了呢？\e"
+		}
+		when "橘花"
+		{
+			//---- 與橘花的對話
+			"\0\s[0]是橘花與斗和啊……\e"
+			"\0\s[16]聽說人類的叛逆期，就是這個樣子。\e"
+			"\0\s[3]斗和的耳朵上穿了耳環，會痛嗎？\e"
+		}
+		when "偽春菜的野菜園"
+		{
+			"\0\s[3]哇！是老師啾。\e"
+		}
+		when "紺野芽芽美"
+		{
+			"\0\s[5]YAYA的訊息產物。\e"
+			"\0\s[5]說是這樣、還是覺得有點難…畢竟是程序語言啊。"
+		}
+		when "54"
+		{
+			"\0\s[5]是54小姐。\e"
+		}
+		others
+		{
+			if res_reference0 != ""
+			{
+				//---- 與其他人格的對話
+				"\0\s[5]%(res_reference0)，你好。你好。\e"
+			}
+			else
+			{
+				//---- 桌面上不存在其他的人格時，轉為隨機對話
+				RandomTalk
+			}
+		}
+	}
+}
+
+
+//**** 人格被動對話 *******************************************************************************
+OnOtherGhostTalk
+{
+	ReplyToGhost
+}
+//---- OnCommunicate事件 ----------------------------------------------------------------
+/*OnCommunicate
+{
+	if reference0 == "user" || reference0 == "User"
+	{
+		//---- 與User的對話
+		ReplyToUser
+	}
+	else
+	{
+		//---- 與人格的對話
+		ReplyToGhost
+	}
+}*/
+
+//---- 與User的對話 ---------------------------------------------------------------------
+/*ReplyToUser
+{
+	if "名字" _in_ reference1 && "告訴" _in_ reference1
+	{
+		"\0\s[0]好啊，請問你的名字是？\e"
+		
+		//---- 進入user名輸入模式
+		teachusername = 1
+	}
+	elseif "生日" _in_ reference1 && "告訴" _in_ reference1
+	{
+		"\0\s[0]好啊，請問你的生日是幾月幾日？\e"
+		
+		//---- 進入生日輸入模式
+		teachuserbirthday = 1
+	}
+	else
+	{
+		//---- 判定對話的連鎖
+		if teachusername == 1
+		{
+			//---- 之前說過「告訴名字」的話，產生下列回覆
+			username = reference1
+			"\0\s[0]%(username)、是嗎。我知道了。\e"
+			teachusername = 0
+		}
+		elseif teachuserbirthday == 1
+		{
+			//---- 之前說過「告訴生日」的話，產生下列回覆
+			userbirthday = reference1
+			"\0\s[0]%(userbirthday)、是嗎。我知道了。\e"
+			teachuserbirthday = 0
+		}
+		else
+		{
+			//---- 其他的對話
+			TalkToUser
+		}
+	}
+}
+
+//---- 回覆user -------------------------------------------------------------------------
+TalkToUser
+{
+	if "你好" _in_ reference1
+	{
+		"\0\s[0]你好啊，%(username)。\e"
+	}
+	elseif "喜歡" _in_ reference1 || "愛" _in_ reference1
+	{
+		"\0\s[0]是、是嗎。\n我…\w5我也很喜歡%(username)的喔。\e"
+	}
+	elseif "茶兔" _in_ reference1 && "喜歡" _in_ reference1 && ( "東西" _in_ reference1 || "食物" _in_ reference1)
+	{
+		"\0\s[0]這個嘛、我很喜歡放了很多很多葡萄乾的奶油麵包喔。/
+			\w5\1\s[10]我比較喜歡放很多%(food)的餃子。\e"
+	}
+	else
+	{
+		"\0\s[0]你說什麼？\e"
+		"\0\s[0]抱歉，聽不太懂耶。\e"
+	}
+}*/
+
+//---- 與人格的對話 ---------------------------------------------------------------------
+ReplyToGhost
+{
+//---- 對橘花的回覆 --------------------------
+	if reference1 == "橘花"
+	{
+		if "貓的血型" _in_ reference4 || "猫的血型" _in_ reference4
+		{
+			"\0\s[3]難道不都是B型嗎？\e"
+		}
+		elseif "禁止血腥話題" _in_ reference4 || "禁止血性话题" _in_ reference4
+		{
+			"\0\s[5]其實血腥的話題也并沒有很多呣…反而是叛逆話題比較多呢。\e"
+		}
+	}
+//---- 對落鳥的回覆 --------------------------
+	elseif reference1 == "落鳥"
+	{
+		if "請多多指教" _in_ reference4
+		{
+			"\0\s[5]請多多指教！\e"
+		}
+		elseif "普隆德拉的陽光" _in_ reference4
+		{
+			"\0\s[3]落鳥也會cosplay嗎？……\e"
+		}
+		elseif "接受到了郵件" _in_ reference4 && "是騙你的。" _in_ reference4
+		{
+			"\0\s[4]…這也是天然呆的一部分嗎？\e"
+		}
+		elseif "出現了好大一只黑貓" _in_ reference4
+		{
+			"\0\s[3]不是格林威治小精靈嗎？也不是囧森嗎？\e"
+		}
+		elseif "糖果" _in_ reference4 && "藏到哪裏去了呢" _in_ reference4
+		{
+			"\0\s[3]這就是天然呆。\0\s[8]啾…？\e"
+		}
+		elseif "加油" _in_ reference4 || "不死！" _in_ reference4
+		{
+			"\0\s[5]加油！\e"
+		}
+		elseif "來電了" _in_ reference4 && "cosplay" _in_ reference4
+		{
+			"\0\s[3]啾？這是什麼的cosplay呢？大概是Mabinogi的Succubus吧。\e"
+			"\0\s[3]啾？這是什麼的cosplay呢？大概是福星小子的拉姆吧。\e"
+		}
+
+		elseif "消失" _in_ reference4
+		{
+			"\0\s[2]「消失」是指消解嗎？\不是吧。\e"
+		}
+		elseif "蝴蝶結" _in_ reference4
+		{
+			"\0真好啊，落鳥有蝴蝶結…其實沒有我也沒關係。\e"
+		}
+		elseif "生氣" _in_ reference4
+		{
+			"\0\s[3]哇啾。\e"
+		}
+		elseif "ぶにゅー" _in_ reference4
+		{
+			"\0\s[3]ぶ啾？！ぶ吗？！\e"
+		}
+		elseif "ぷは" _in_ reference4
+		{
+			"\0\s[3]ぷ啾？！ぷ呣？！\e"
+		}
+		elseif "叮咚" _in_ reference4
+		{
+			"\0\s[5]叮咚～☆叮咚～★\e"
+		}
+		elseif "請不要隨便開玩笑。" _in_ reference4 || "哈啊……" _in_ reference4
+		{
+			"\0\s[6]呼、太好了。嚇了一跳呢。\e"
+		}
+	}
+//---- 對文菜的回覆 --------------------------
+	elseif reference1 == "文菜"
+	{
+		if "請多多指教" _in_ reference4
+		{
+			"\0\s[5]請多多指教！\e"
+		}
+		elseif "好的下一位～" _in_ reference4
+		{
+			"\0\s[9]又要做什麼事了嗎…\e"
+		}
+		elseif "AYA" _in_ reference4 || "argument" _in_ reference4 || "parameter" _in_ reference4 || "C語言" _in_ reference4
+		{
+			"\0\s[3]…聽不懂啾…\e"
+		}
+		elseif "nanako" _in_ reference4
+		{
+			"\0\s[6]站在我們面前的是奈奈子的外形。\e"
+		}
+		elseif "美坂" _in_ reference4
+		{
+			"\0\s[5]用過AYA之後才知道之間的差異嘛…\w9都是後援會的那句「適合新手入門」惹的禍。\e"
+		}
+		elseif "現在是SSP教學時間～" _in_ reference4 && "更新" _in_ reference4
+		{
+			"\0\s[5]聽說有的人連SSP要如何下載都不知道。其實是SPP CERS的頁面太難了，不知道最新版在哪兒吧？\e"
+		}
+		elseif "現在是SSP教學時間～" _in_ reference4 && "profile" _in_ reference4
+		{
+			"\0\s[3]不要因此就真的去刪除啾！\e"
+		}
+			
+		elseif "菇菌(きのこ)" _in_ reference4 && "貓落物(猫どりふ)" _in_ reference4
+		{
+			"\0\s[6]诶？！那種可怕的東西…雖然是這麼說，不過不也還是沒被砸過嘛。\0\s[8]\n\n[half]那是因為這邊不太知道的關係…\e"
+		}
+		elseif "果然還是想吃中式的口味" _in_ reference4
+		{
+			"\0\s[3]雖然被稱為世界美食之國，不過這方面還真的很貧乏呢…\e"
+		}
+		elseif "今年又歉收了嗎" _in_ reference4
+		{
+			"\0\s[3]偽春菜的春天…什麼時候會來呢？果然已經是過氣的東西了吧…\0\s[4]\n\n[half]啾嗚嗚嗚嗚。\e"
+		}
+		elseif "掰掰啦" _in_ reference4
+		{
+			"\0\s[5]嗯掰～。\e"
+		}
+	}
+//---- 對紺野芽芽美的回覆 --------------------------
+	elseif res_reference0 == "紺野芽芽美"
+	{
+		if "你好" _in_ reference1
+		{
+			res_reference0 = ""
+			"\0\s[5]你好啾！請多多指教！\e"
+		}
+
+		elseif "文" _in_ reference1
+		{
+			res_reference0 = ""
+			"\0\s[4]說是這樣、還是覺得有點難…畢竟是程序語言啊。\e"
+		}
+	}
+//---- 對其他人的回覆 --------------------------
+	else
+	{
+		if "こんいちは" _in_ reference4
+		{
+			"\0\s[3]こ、こんいちは！\n%(res_reference0)。\e"
+		}
+		elseif "茶兔" _in_ reference4
+		{
+			"\e"
+		}
+	}
+}
+//**** 對話教學(再見~~~~~) **********************************************************************************
+/*Choice.AITEACH
+{
+	"\_q\0\b[2]\s[5]%(username)想教我們什麼呢？\n\n/
+	\![*]\q[人名,AITeachName]\n/
+	\![*]\q[物品,AITeachItem]\n/
+	\n/
+	\_b[img/back.png,inline]\q[BACK,BACK]\n/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\_q\e"
+}
+Choice.AITeachName
+{
+	"\0\s[2]請問是誰呢？\![open,inputbox,AITeachNameEnter,-1,人名]\e"
+}
+Choice.AITeachItem
+{
+	"\0\s[2]請輸入物品名字。\![open,inputbox,AITeachItemEnter,-1,物品的名字]\e"
+}
+
+Choice.AITeachNameEnter01
+{
+	AITeachednum++
+	_open = FUNCTIONEX("saori\edittext.dll","AITeach_var.txt","Open")
+	_name = FUNCTIONEX("saori\edittext.dll","AITeach_var.txt","Append",AITeachednum,TeachedName)
+	_save = FUNCTIONEX("saori\edittext.dll","AITeach_var.txt","Save")
+	"\0open:%(_open)save:%(_save)name:%(_name)NameNum:%(AITeachednum)\e"
+}
+Choice.AITeachItemEnter01
+{
+	"\0%(TeachedItem01)是想要的東西。兔知道了。\1鹿也知道了。\e"
+}
+
+//******************************
+Choice.AITEACHED
+{
+	_allname = FUNCTIONEX("saori\edittext.dll","AITeach_var.txt","GetLineNum")
+	_text = FUNCTIONEX("saori\edittext.dll","AITeach_var.txt","GetLine2",AITeachednum-1)
+	"\0\b[2]/
+	all:%(_allname)\n/
+	%(_text)\e"
+}
+*/
+
+
+//**** 溝通 (感謝ひのはるさん) ********************************************************************
+Choice.COMMENT
+{
+	OnShowCommentForm
+	{
+		if silent == "1" {
+		"\0\s[4]要不要跟我說些什麼看看？\0\s[5]只是說好可愛也可以啾！\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[16]今天也有要告訴我的事嗎？\0\s[5]好開心！%(username)請說吧！\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[3]今天%(username)過得怎麼樣？有什麼有趣的事情嗎？\0\s[5]說給我們聽聽吧！\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[5]%(username)今天心情怎麼樣？開心的事也好，傷心的事也好，都可以跟我說哦！\0\s[6]不過，即使不寫下來，%(username)的心情，我們也知道的啾。\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[4]其實我今天有點沒精神呣……\0\s[3]如果%(username)能說點什麼的話，也許就能重新恢復精神了啾。\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[5]最近，我能聽懂的話越來越多了呣。\0\s[5]多虧了%(username)經常與我說話！\n\n[half]\s[16]今天也再說點什麼吧！\![open,inputbox,OnSendComment,0,]\e"
+		}
+		else {
+		"\0\s[4]要不要跟我說些什麼看看？\0\s[5]只是說好可愛也可以啾！\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[16]今天也有要告訴我的事嗎？\0\s[5]好開心！%(username)請說吧！\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[3]今天%(username)過得怎麼樣？有什麼有趣的事情嗎？\0\s[5]說給我們聽聽吧！\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[5]%(username)今天心情怎麼樣？開心的事也好，傷心的事也好，都可以跟我說哦！\0\s[6]不過，即使不寫下來，%(username)的心情，我們也知道的啾。\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[4]其實我今天有點沒精神呣……\0\s[3]如果%(username)能說點什麼的話，也許就能重新恢復精神了啾。\![open,inputbox,OnSendComment,0,]\e"
+	"\0\s[5]最近，我能聽懂的話越來越多了呣。\0\s[5]多虧了%(username)經常與我說話！\n\n[half]\s[16]今天也再說點什麼吧！\![open,inputbox,OnSendComment,0,]\e"
+		}
+	}
+}
+
+//**** 檢測傳輸狀況 ***********************************************************************************
+OnExecuteHTTPComplete
+{
+	if reference1 == 'WEBCLAP'
+	{
+		if silent == "1" {
+		""
+		}
+		else {
+		"\![sound,stop]\9\s[9]\![sound,play,voice/数据传输.mp3]"
+		}
+		--
+		"\0\s[5]順利地傳送了！\w9\n從網路的那一頭傳來了非常溫暖氣息……\e:eval=(intimacy+=1)"
+		/* きちんと送れた場合のメッセージを並べる */
+	}
+	elseif reference1 == 'COMMENT'
+	{
+		if silent == "1" {
+		"\0\s[16]呣……人類的語言果然很難。\n\n\0\s[3]要理解%(username)說了什麼，還需要一點時間啾！\n\n\0\s[15]如果能再多說一點的話，\n我就能更好的回應%(username)了呣。\e:eval=(intimacy+=1)"
+		"\0\s[15]最近，%(username)經常跟我們說話呢！\n\n\0\s[5]雖然慢了點，但是我的回答都藏在隨機對話裏了。\n\n\0\s[15]%(username)注意看看的話，就會找到呣！\e:eval=(intimacy+=1)"
+		"\1\s[16]%(username)剛剛是那樣說的嗎？\n\n\0\s[5]唔，記住了，不過，等下再回答%(username)啾！\e:eval=(intimacy+=1)"
+		"\1\s[13]%(username)說這樣的話…我們也……\e:eval=(intimacy+=1)"
+		"\1\s[15]嗯！知道了！%(username)要加油哦！\n\n\0\s[5]加油啾！\e:eval=(intimacy+=1)"
+		"\1\s[15]%(username)說的是……\w9\w9\w9\n\n[half]\s[13]呣…不好意思馬上回答……等下再偷偷告訴%(username)吧。\e:eval=(intimacy+=1)"
+		}
+		else {
+		"\![sound,stop]\1\s[16]\![sound,play,voice/ka2.mp3]呣……人類的語言果然很難。\n\n\0\s[3]\![sound,play,voice/u3.mp3]要理解%(username)說了什麼，還需要一點時間啾！\n\n\1\s[15]如果能再多說一點的話，\n我就能更好的回應%(username)了呣。\e:eval=(intimacy+=1)"
+		"\![sound,stop]\0\s[15]\![sound,play,voice/ka1.mp3]最近，%(username)經常跟我說話呢！\n\n\0\s[5]\![sound,play,voice/u1.mp3]雖然慢了點，但是我的回答都藏在隨機對話裏了。\n\n\0\s[15]%(username)注意看看的話，就會找到呣！\e:eval=(intimacy+=1)"
+		"\![sound,stop]\0\s[16]\![sound,play,voice/ka3.mp3]%(username)剛剛是那樣說的嗎？\n\n\0\s[5]\![sound,play,voice/u1.mp3]唔，記住了，不過，等下再回答%(username)啾！\e:eval=(intimacy+=1)"
+		"\![sound,stop]\0\s[13]\![sound,play,voice/ka2.mp3]%(username)說這樣的話…我也……\e:eval=(intimacy+=1)"
+		"\![sound,stop]\0\s[15]\![sound,play,voice/ka1.mp3]嗯！知道了！%(username)要加油哦！\n\n\0\s[5]\![sound,play,voice/u1.mp3]加油啾！\e:eval=(intimacy+=1)"
+		"\![sound,stop]\0\s[15]\![sound,play,voice/ka4.mp3]%(username)說的是……\w9\w9\w9\n\n[half]\s[13]呣…不好意思馬上回答……等下再偷偷告訴%(username)吧。\e:eval=(intimacy+=1)"
+		}
+	}
+	elseif reference1 == 'googledic'
+	{
+		GoogleDicRead;
+	}
+	elseif reference1 == 'aicibadic'
+	{
+		IcibaDicRead;
+	}
+	elseif reference1 == 'ipadr'
+	{
+		ReadIPAdr;
+	}
+	elseif reference1 == 'weathercheck'
+	{
+		WeatherRead;
+	}
+	elseif reference1 == 'xmaspresent'
+	{
+		TalkXmasPresent;
+	}
+	elseif reference1 == 'eppresent1'
+	{
+		TalkEPPresent1;
+	}
+	else
+	{ "\0\s[3]啾？\e" }
+}
+
+OnExecuteHTTPFailure
+{
+	if silent == "1" {
+	""
+	}
+	else {
+	"\![sound,stop]\![sound,play,voice/数据传输.mp3]"
+	}
+	--
+	if reference1 == 'WEBCLAP'
+	{
+		"\0\s[3]連線失敗了，沒有連接的話話語就無法傳達了。\0\s[3]Error：\n%(reference4)\e"
+		/* 送れなかった場合のメッセージを並べる。%(reference4)は送れない原因 */
+	}
+	elseif reference1 == 'COMMENT'
+	{
+		"\0\s[3]嗯？線路不太好沒有聽清，再說一次啾？\e"
+	}
+	elseif reference1 == 'googledic'
+	{
+		"\0\s[3]連線失敗了……Error：\n%(reference4)\e"
+	}
+	elseif reference1 == 'aicibadic'
+	{
+		"\0\s[3]連線失敗了……Error：\n%(reference4)\e"
+	}
+	elseif reference1 == 'ipadr'
+	{
+		"\0\s[3]連線失敗了……Error：\n%(reference4)\e"
+	}
+}

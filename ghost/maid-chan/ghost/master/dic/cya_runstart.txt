@@ -1,0 +1,20 @@
+///////// 開機自啟動文件
+///////// 這是「開機自啟動」功能的插件，爲了保持SSP的綠色而特別獨立製作，使用時會有信息被寫入注冊表，請有需要的人斟酌使用！
+
+//****  *****************************************************************************
+Choice.runstartswitchON
+{
+	runstartswitch = "1"
+	--
+	"\0\s[0]插件沒有被裝入啾。\b[2]這是名叫「開機自啟動」的插件，功能是開啟計算機後，自動啟動我。\n\n[half]但是這個插件會修改到%(username)的注冊表，所以不太推薦。\n\n[half]無論如何都想使用的話，可以到\_a[http://warmsoil.com/cgi-bin/diarypro/diary.cgi?no=59]【下載頁面】\_a去下載。\x\e"
+	--
+	GhostSetting
+}
+Choice.runstartswitchOFF
+{
+	runstartswitch = "0"
+	--
+	"\0\s[0]插件沒有被裝入。\b[2]其實推薦的方法是將SSP自行拖入啟動欄，這樣比較綠色。\n\n[half]如果想恢復注冊表的話，添加項位於\_qHKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\_q，\n\n[half]可手動去除或用msconfig命令或通過其他軟件去除呣。\n\n[half]更詳細的設置\_a[http://warmsoil.com/cgi-bin/diarypro/diary.cgi?no=59]【看這裡】\_a\x\e"
+	--
+	GhostSetting
+}

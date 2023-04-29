@@ -1,0 +1,3272 @@
+OnCommunicate
+{
+	if reference0 == "user" || reference0 == "User"
+	{
+		//与user对话
+		lastTalk = ReplyToUser
+	}
+	else
+	{
+		//与其他人格对话
+		lastTalk = ReplyToGhost
+	}
+                lastTalk;
+}
+ReplyToUser
+{
+  //在aya_comm_user.dic辞书中
+	lastTalk = TalkToUser
+        lastTalk
+}
+TalkToUser
+{
+/*  if JuhuaTalkmode==1
+    NvpuTalkToUser;
+  else {
+    Scope = "2";*/
+    ""+ONE+TWO+THREE+""
+ /* }*/
+}
+//**** ONE *************************************************
+ONE
+{
+
+
+  if ISVAR("scope")==0
+  scope = "0"
+
+  //呼叫名字
+  if reference1 == "女仆"
+  {
+        CallNvpu
+  }
+
+  elseif reference1 == "斗和"
+  {
+        CallTowa
+  }
+
+  //---- 2并-2字 ----
+  elseif "女仆" _in_ reference1 && "斗和" _in_ reference1
+  {
+  ""
+  }
+  //---- 2并-1字 ----
+  /*elseif "我" _in_ reference1 && "你" _in_ reference1//“我”没用的话这句也不用
+  {
+  scope = "0"
+  ""
+  }*/
+  //---- 1-2字 ----
+  elseif "斗和" _in_ reference1
+  {
+   scope = "1"
+  }
+  /*elseif "我" _in_ reference1
+  {
+    "%username\w9\w9\n"
+    ""
+    ""
+  }*/
+  elseif /*"你" _in_ reference1 || */ "女仆" _in_ reference1
+  {
+  scope = "0"
+  }
+
+  /*else
+  {
+  scope = "0"
+  ""
+  }
+  */
+}
+
+
+
+
+    
+
+
+//**** TWO *************************************************
+TWO
+{
+
+
+    _phase = GetPhase
+	_timeslot = GetTimeSlot
+ 
+
+
+
+
+
+
+
+//----------------------------------------女仆问候------------------------------------------------------------------
+
+	if "早安" _in_ reference1
+	{
+		if _timeslot == "Earlymorning"
+		{
+			"\0\s[0]嗯、\w9早安喔。\w9\0 嗯。\e"
+			"\0\s[0]嗯、\w9早安。\w9\w9\s[5]\n今天一天也好好加油吧。\e"
+			"\0\s[0]嗯、\w9早安。\0 早啊\w9\w3嗯…\w9\n还真是健康啊。\e"
+		}
+		elseif _timeslot == "Morning" && weekday == "0"
+		{
+			"\0\s[0]嗯、\w9早安。\w9\w9\0 至少礼拜天让我好好休息…\w9\w9\0\s[5]\n\n[half]别说这种\n典型的废人上班族一样的话。\e"
+			"\0\s[0]嗯、\w9早安。\w9\w9\s[5]\n今天一天也好好加油吧。\e"
+		}
+		elseif _timeslot == "Morning"
+		{
+			"\0\s[0]嗯、\w9早安。\w9\0 嗯。\e"
+			"\0\s[0]嗯、\w9早安。\w9\w9\s[5]\n今今天一天也好好加油吧。\e"
+		}
+		elseif _timeslot == "Day" && weekday == "0"
+		{
+			"\0\s[5]早安。\w9\w9\n…\w9嗯、\w9\s[5]已经中午了喔。\w9\w9\0 反正是礼拜天嘛。\w9\w9\n有好好休息吗？\e"
+		}
+		
+                 
+                elseif _timeslot == "Day"
+		{
+			"\0\s[5]早安。\w9\w9\n…\w9嗯、\w9\s[5]已经中午了喔。\e"
+		}
+		else
+		{
+			"\0\s[5]啊、\w9嗯。\w9\w9\w5\n\s[5]这个、\w9早安啊。\e"
+		}
+	}
+
+	elseif "午安" _in_ reference1 || "午安" _in_ reference1
+	{
+		if _timeslot == "Day" || _timeslot == "Evening"
+		{
+			"\0\s[0]你好、\w9午安。\w9\0 嗯。\e"
+		}
+		else
+		{
+			"\0\s[5]啊、\w9嗯。\w9\w9\w5\n\s[5]这个、\w9午安啊。\e"
+		}
+	}
+
+	elseif "晚上好" _in_ reference1 || "晚上好" _in_ reference1
+	{
+		if _timeslot == "Earlymorning"
+		{
+			"\0\s[0]嗯、\w9晚上好。\w9\0 嗯。\e"
+			"\0\s[0]嗯、\w9晚上好。\w9\w9\0 也差不多、\w9\n快到黎明的时间了呢。\e"
+		}
+		elseif _timeslot == "Evening" || _timeslot == "Night" || _timeslot == "Midnight"
+		{
+			"\0\s[0]嗯、\w9晚上好。\w9\0 嗯。\e"
+		}
+		else
+		{
+			"\0\s[5]啊、\w9嗯。\w9\w9\w5\n\s[5]这个、\w9晚上好啊。\e"
+		}
+	}
+
+        /*elseif "女仆" _in_ reference1
+	{
+		CallNvpu
+	}*/
+
+	/*elseif "斗和" _in_ reference1
+	{
+		CallTowa
+	}*/
+
+
+
+elseif "早安" _in_ reference1 || "早上好" _in_ reference1 || "安安" _in_ reference1
+	{
+		case hour
+		{
+			//---- 清晨
+			when 4-6
+			{
+				"\0\s[36]今天%username好早呢。\e"
+				"\0\s[5]おはよう ございます。\e"
+				"\0\s[35]早安、\w9%username。\w9\w9\0 …\w9…\w9…\w9\w9\w9\0\s[0]\n\n[half]這么早是怎么了呢？\e"
+				"\0\s[116]啊…\w9\w9\s[44]早安、\w9%username。\w9\w9\0 …\w9…\w9…\w9\w9\w9\0\s[36]\n\n[half]今天很早呢。\e"
+				"\0\s[0]嗯、\w9早安。\0 早啊\w9\w3嗯…\w9\n还真是健康啊。\e"
+			}
+			//---- 早上
+			when 7-8
+			{
+			"\0\s[0]嗯、\w9早安。\0 早啊\w9\w3嗯…\w9\n还真是健康啊。\e"
+				"\0\s[0]早上好。\e"
+				"\0\s[5]おはよう ございます。\e"
+				"\0\s[35]早安、\w9%username\w9\w9\w9\w9\s[0]\n今天一天也好好加油吧。。\e"
+				"\0\s[5]%username、\w9早安。\w9\w9\0 早。\e"
+				"\0\s[0]嗯、\w9早安喔。\w9\0 嗯。\e"
+			}
+			//---- 上午
+			when 9-10
+			{
+				"\0\s[0]早上好。\e"
+				"\0\s[5]おはよう ございます。\e"
+				"\0\s[35]早安、\w9%username\w9\w9\w9\w9\s[0]\n今天一天也好好加油吧。。\e"
+				"\0\s[5]%username、\w9早安。\w9\w9\0 早。\e"
+				"\0\s[0]嗯、\w9早安喔。\w9\0 嗯。\e"
+			}
+			//---- 中午
+			when 11-13
+			{
+                         if weekday == "0"
+                          {
+                             "\0\s[0]嗯、\w9早安。\w9\w9\0 至少礼拜天让我好好休息…\w9\w9\0\s[5]\n\n[half]别说这种\n典型的废人上班族一样的话。\e"
+                          }
+                           else
+                                 {
+				"\0\s[5]早安...\w8话说时间好象有点...\e"
+				"\0\s[5]早安。\w9\w9\n…\w9嗯、\w9\s[5]已经中午了喔。\w9\w9\0 反正是礼拜天嘛。\w9\w9\n有好好休息吗？\e"
+				
+				}
+			}
+			//---- 下午
+			when 14-18
+			{
+				"\0\s[5]早安...\w8%username午觉睡糊涂啦...\e"
+				"\0\s[5]啊、\w9嗯。\w9\w9\w5\n\s[5]这个、\w9早安啊。\w9...\w9我没听错吧...\e"
+			}
+			//---- 晚上
+			when 19-23
+			{
+				"\0\s[5]啊...早安...\w8刚起床吗...\e"
+			}
+			//---- 深夜
+			others
+			{
+				if weekday == "0"
+				{
+					"\0\s[116]啊、\w9\w9\w9\s[44]早安？\w9%username。\w9\w9\w9\w9\n就算是假日、\w9\n也不要太晚睡喔。\e"
+				}
+				else
+				{
+					"\0\s[116]这么晚了要注意休息喔。\e"
+					"\0\s[116]早安，\w9%username。\w9\w9\w9\w9\s[30]\n这个时间是怎么了呢？\e"
+				}
+			}
+		}
+	}
+
+	
+
+
+        elseif "午安" _in_ reference1 || "中午好" _in_ reference1
+	{
+		if Timejud == "中午"
+		{
+			"\0\s[0]你好、\w9午安。\w9\0 嗯。\e"
+		}
+		else
+		{
+			"\0\s[5]啊、\w9嗯。\w9\w9\w5\n\s[5]这个、\w9午安啊。\e"
+		}
+	}
+
+        elseif "晚安" _in_ reference1
+	{
+		if  Timejud=="晚上" || Timejud=="深夜" || Timejud == "凌晨" || Timejud == "半夜"
+		{
+			"\0\s[0]嗯、\w9晚安。\w9\w9\0 要去睡了啊？\w9\w9\w9\0\s[0]\n\n[half]啊、\w9我们是不是该就此失礼了呢？\n\n/
+			\q[◇回去吧,ForcedClose_0]\n/
+			\q[◇继续待着,ForcedCloseCancel_0]\e"
+		}
+		else
+		{
+			"\0\s[5]要去睡了啊？\w9\w9\0 嗯、\w9我们该怎么做？\0\n\n/
+			\q[◇回去吧,ForcedClose_0]\n/
+			\q[◇继续待着,ForcedCloseCancel_0]\e"
+		}
+	}
+
+        elseif "晚上好" _in_ reference1
+	{
+		if Timejud == "凌晨" || Timejud == "半夜" || Timejud == "清晨" || Timejud == "早上"
+		{
+			"\0\s[0]嗯、\w9晚上好。\w9\0 这个时间吗...\e"
+			"\0\s[0]嗯、\w9晚上好。\w9\w9\0 也差不多、\w9\n快到黎明的时间了呢。\e"
+		}
+		elseif Timejud == "傍晚" || Timejud == "晚上" || Timejud=="深夜"
+		{
+			"\0\s[0]嗯、\w9晚上好。\w9\0 嗯。\e"
+		}
+		else
+		{
+			"\0\s[5]啊、\w9嗯。\w9\w9\w5\n\s[5]这个、\w9晚上好啊。\e"
+		}
+	}
+
+	elseif "回来" _in_ reference1
+	{
+		"\0\s[5]嗯、\w9\s[0]欢迎回来。\w9\w9\n辛苦您了。\w5\0 辛苦啦。\e"
+	}
+	
+
+
+
+	elseif "出门" _in_ reference1 || "出发" _in_ reference1
+	{
+		"\0\s[5]好的。\w9\w9\s[0]\n一路小心喔。\w9\w9\0 掰。\w9\w9\0\s[5]\n\n[half]啊…\w9没有忘了什么东西吧？\0\n\n/
+		\q[◇没有,ForcedClose_1]\n/
+		\q[◇有,ForcedCloseCancel_1]\e"
+	}
+
+      
+//----------------------------------------女仆初见------------------------------------------------------------------
+        elseif "名字" _in_ reference1 || "姓名" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]啊…\w9…\w9\w9\n我的名字是女仆，\w9\w4\n在我身边的那只猫叫斗和。\e"
+			"\0\s[9]嗯…\w4…\w4\w9\w5%(username)真讨厌。\e"
+			"\0\s[0]看起来，\w9\w5%(username)相当健忘呢。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 喂\w9…\w9…\w9\w9\n初次见面的时候\w9\w4我就告诉你了吧。\e"
+			"\0 唔…\w9\w9名字吗…\w9\w9\n其实你知道的吧。\e"
+			"\0\s[9]啊哈…\w9\w9\w9\n…\w5…\w5…\e"
+		}
+	}
+       elseif "几岁" _in_ reference1 || "年龄" _in_ reference1 || "年纪" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]我的年龄吗？\w9\w9\n这个…\w9\w9\s[3]对不起、\w9我也不太清楚。\w9\w9\s[5]\n\n[half]啊、\w9不过大概、\n就跟外表看起来的年龄一样吧。\w9\w9\w9\s[5]\n虽然可能成长的比较慢…\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 最近没有在数、\w9不是很清楚。\w9\w9\s[9]\n需要数的话、有各式各样的意义喵…\e"
+		}
+	}
+
+	elseif "你好" _in_ reference1 
+	{
+		if scope == "0"
+		{
+			"\0\s[5]你好，请多指教…\e"
+            "\0\s[1]呃…你好…\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]啊…干什么？\e"
+		}
+	}
+
+//----------------------------------------女仆天天见------------------------------------------------------------------
+
+
+
+	
+
+	elseif "天气" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[16]嗯…\w9\w9\n天气吗？\w9\w9\s[5]这个，\w9\w9实在很抱歉…\e"
+			"\0\s[5]啊，\w9\w9\w9\n\s[0]关于天气的状况…\w9\w9\n\s[3]…\w9…\w9抱歉\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 喂…\w9\w9\n这种事情\w9\w9\s[9]去看天气预报吧。\e"
+			"\0 真是的，\w9\w9\w9\n问我\w9我也不知道喵。\e"
+		}
+	}	
+
+	
+
+        elseif "冷" _in_ reference1
+       {
+		if scope == "0"
+		{
+                      if month == 1 || month == 2 ||  month == 12
+                      {
+                      "\0\s[5]冬天当然冷了，\w9\w9多穿几件衣服吧！"     
+                      "\0\s[0]%(username)要注意防寒啊，\w9\w9别感冒了。"   
+                      "\0\s[16]冷的话，\w9\w9到女仆的被窝里暖暖吧！"              
+                       }  
+
+                      else {"\0\s[16]外面真的很冷吗？\w9\w9女仆感觉不到呢。"
+
+		           }
+                }
+		elseif scope == "1"
+		{
+			"\0 需要抱猫来暖和一下身子吗？"
+			
+		}
+	}
+
+
+
+        elseif "热" _in_ reference1
+	{
+		if scope == "0"
+		{
+                      if month == 7 || month == 8 ||  month == 9
+                      {
+                      "\0\s[33]是啊，\w8\真热！！真想去海边。\w9"
+                      "%(username)带我们去海边好不好？\n\q[好啊,gotosea]\n\q[算了吧！,nogotosea]"      
+                      "\0\s[5]天气炎热，\w9注意防暑解渴，\w9%(username)要不要来碗绿豆汤呢。\w9"
+                      "\0\s[29]外面实在太热，就在家里陪着女仆嘛。\w9"
+                     
+
+                 }
+
+                      else {"\0\s[41]%(username)，已经不是热的季节了呢，为什么还觉得热呢？"
+		           }
+                }
+		elseif scope == "1"
+		{
+			"\0\s[111]热吗？抽根烟吧！\w9"
+			 "\0\s[9]热吗？小公主的笑话能让你冷下来。\w9"
+		}
+	}
+
+
+	elseif "晴" _in_ reference1
+	{
+		if scope == "0"
+		{
+                        "天气真好啊！！\w9%(OnDoor) \e"
+			"\0\s[5]%(username)，\w9\w5天气好的话，\w9\w4\n就请出去走走哦。\e"
+			"\0\s[5]嗯。\w9\w4不要总是坐在电脑前哦。\e"
+			"\0\s[5]是吗…\w9\w3天气晴朗出去运动运动哦。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 唔…\w8\w3出门晒晒虱子吧…\w9\w9\0\s[5]啊\w2哈\w2…\e"
+			"\0\s[9]喂，\w8不要总在室内呆着。\w9w\4\n出去走走喵。\e"
+			"\0\s[9]是吗。\w9\w2 好天气可别浪费了喵。\e"
+		}
+	}
+
+        
+
+	elseif "雨" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]嗯…\w9\w4\n%(username)，\w9\w2记得收衣服哦。\e"
+			"\0\s[5]下雨了吗…\w9\w9真是容易让人悲伤的天气呢。\e"
+			"\0\s[5]啊…\w9\w3这样啊，\w9\w4\n如果，\w2%(username)要出门的话，\w9请记得带上雨具喔。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]嗯…\w9\w4下雨了吗…\e"
+			"\0\s[9]嗯…\w9\w4雨天还是不要出门的好。\e"
+			"\0\s[9]是吗…\w9\w3那就呆在家里吧。\e"
+		}
+	}
+
+       elseif "雪" _in_ reference1
+       {
+
+		if scope == "0"
+		{
+			"\0\s[1]啊…\w9\w9%(username)，\w9\w2下雪了吗？\e"
+			"\0\s[5]哇！\w9下雪了，\w9\w9外面真美啊！\e"
+			"\0\s[0]外面好厚的雪，\w9\w%(username)，\w9\w我们堆个雪人吧！\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]嗯…\w9\w4下雪了吗…\e"
+			"\0\s[9]嗯…\w9\w4很久没看到这样的大雪了。\e"
+			"\0\s[9]外面很冷…\w9\w8还是呆在家里吧。\e"
+		}
+	}
+
+
+
+
+
+
+
+
+//----------------------------------------女仆关怀------------------------------------------------------------------
+
+          elseif "辛苦" _in_ reference1 || "麻烦" _in_ reference1
+        {
+    	intimacy += 1
+    	"\0\s[1]啊…\w9\w9哪里…\w9\w9没有的事.\n\w9\w9\s[1]其实…\w9\w9可以帮%(username)做点事情,\w9女仆已经是很高兴的了.\n\w9\w9\s[5]所以,\w9请%(username)就不要说那些客气的话了\w9\w9\e"
+        }
+     
+	elseif "累吗" _in_ reference1 || "忙吗" _in_ reference1 || "困吗" _in_ reference1 
+	{
+		if scope == "0"
+		{
+			intimacy += 1
+			"\0\s[1]啊…\w9\w9\w9\n\s[5]谢谢\w9%(username)…\w9\w9如果…\s[1]\w9\w9%(username)累了的话,\w9请好好休息喔。\e"
+			"\0\s[29]咦！？\w9\w9\w9我…\w9我不累\w9\w9\n\s[5]谢谢%(username)的关心…\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 呃…\w9\w9\你这么说\w9还真觉得有点累了\e"
+			"\0\s[9]…\w9…\w9\w9真不敢相信\w9\w9\n\n[half]这句话竟然从你的口中说出来。\w9\w9\0\s[5]咦？\0\s[9]呃…\w9\w9\w4没什么\e"
+			"\0\s[9]呀\w9…\w9\w5你也知道累啊!\w9\w9\w9\n\n[half]工资呢？\w9\w3 快拿出来。\e"
+		}
+	}
+
+	elseif "无聊" _in_ reference1
+	{
+		if scope == "0"
+		{        
+                        "\0\s[5]无聊的话，\w9\w9女仆给%(username)讲个笑话吧，\w9\w9要听吗？\n\q[◇好哇..,Onstoryok]\n\q[◇不了..,Onstorynook]\0 ..\e"
+			"\0\s[5]%(username)，\w9\w9\w5\n如果感觉到无聊就出去走走吧。\e"
+			"\0\s[3]是吗…\w9\w9\n抱歉，\w9\w9\s[0]要不要出去散散心呢？\w9%(username)。\e"
+			"\0\s[5]嗯…\w9\w9感觉到无聊的话，\w9\w4就休息一会吧。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]唔…\w9\w9起身活动活动吧。\e"
+			"\0\s[9]是吗。\w9\w4无聊就去吸烟呀。\e"
+			"\0\s[9]无聊的话，\w9\w5别老前在电脑前！\e"
+		}
+	}
+
+
+
+      elseif "孤独" _in_ reference1 || "寂寞" _in_ reference1
+      {
+ 
+                if scope == "0"
+		{        
+                    "\0\s[0]放开自己的内心，\w9\w9主动跟周围人联系，\w9\w5让他人走进你的心灵 \e" 
+                    "\0\s[5]没法改变他人，\w9\w9就试着适应他人吧，\w9\w5不要让自己被孤立\e"
+                    "\0\s[1]%(username)有认真爱过别人吗，\w9\w9不管怎样，\w9\w5要珍惜身边的人哦\e"
+		}
+		elseif scope == "1"
+		{
+		    "\0 一个人呆着，\w9\w9有时也挺好，\w9\w5享受这份宁静吧。\e"
+                    "\0\s[9]喂，\w9\w9不要老坐在电脑前，\w9\w5现实的生活更精彩。\e"
+                    "\0 怎么样，\w9\w9陪本喵出去走走？\e"  
+                    "\0 猫咪喜欢独自坐，\w9\w5古来圣贤皆寂寞\e" 
+		}
+      }
+
+
+
+
+         elseif "郁闷" _in_ reference1 || "烦" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]啊…\w9\w9到底是因为什么呢？\e"
+			"\0\s[1]咦\w4…\w9\w4什么事情呢？\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 是吗…\w9\w9\n还是劝你一句，\w9\w4不要想太多的好。\e"
+			"\0\s[9]车到山前必有路，\w9\w4船到桥头自然直。\w9\w4\n不要想那么多。\e"
+		}
+	}
+
+
+         elseif "高兴" _in_ reference1 || "快乐"  _in_ reference1
+               {
+               if scope == "0"
+                     {
+                      "\0\s[0]%(username)遇到什么开心事了，\w9\w9能说给女仆听听吗？\e"
+                      "\0\s[1]%(username)高兴，\w9\w9女仆也就感到高兴。\e"
+                      "\0\s[5]保持心情的愉悦，\w9\w9对身体很好哦。\e"
+                     }
+
+               elseif scope == "1"
+                      {
+                      "\0 是吗？\w9\w9那就可喜可贺了。\e"
+                      "\0 嗯，\w9\w9很好\e"
+                      }
+               }
+
+
+         elseif "伤心" _in_ reference1 || "难过"  _in_ reference1 || "悲伤"  _in_ reference1
+               {
+               if scope == "0"
+                     {
+                      "\0\s[0]%(username)？\w9\w9发生什么事了？\e"
+                      "\0\s[1]女仆希望能为%(username)分担一点什么，\w9\w9%(username)伤心难过，\w9\w9女仆也高兴不起来。\e"
+                      "\0\s[16]%(username)，\w9\w9谁欺负你了，\w9\w9\s[16]女仆去把他消灭。\e"
+                     }
+
+               elseif scope == "1"
+                      {
+                      "\0\s[9]唔，\w9\w9我这只猫也不希望你这样，\w9\w9想开点"
+                      "\0\s[9]有什么需要我帮忙的吗？\w9\w9好久没活动了"
+                      "\0\s[9]阳光总在风雨后，\w9\w9风雨后又见彩虹。"
+                      }
+               }
+
+         elseif "生气了" _in_ reference1
+	{
+		if scope == "0"
+		{
+                        if "吗" _in_ reference1
+                        {
+                          "\0\s[3]哼！\e"
+                          "\0\s[5]没有，\w\w%(username)你看我的样子像生气吗？\e"
+                          "\0\s[16]奇怪，\w\w女仆为什么要生气呢？\e"
+                          "\0\s[3]不理你了！\e"
+                        }
+                        else
+                        {
+                        "\0\s[5]%(username)，\w9\w5这样的话，\w9\w4\n很不好。\e"
+			"\0\s[5]不要哦\w9\w4乖啦\e"
+			"\0\s[5]是吗…\w9\w3好啦好啦，我错了啦\e"
+                        }
+		}
+		elseif scope == "1"
+		{
+                       if "吗" _in_ reference1
+                        {
+                          "\0 猫咪会生人类的气吗？\e"                
+                          "\0 我不会哪么小气的喵。\e"   
+                          "\0\s[9]你是不是觉得我好欺负啊？\e"     
+                        }
+                        else
+                        {
+			"\0 恩恩\w8\w3…\w9\w9\0\s[5]我很坏吧\w2嘻嘻\w2…\e"
+			"\0\s[9]啊！\w8不要\w9w\4\n生气喵\e"
+			"\0\s[9]是吗，\w9\w2 要不要我再加强一点喵，哼\e"
+                        }   
+		}
+	}
+	elseif "生气" _in_ reference1
+	{
+		if scope == "0"
+		{
+                        if "不要" _in_ reference1
+                        {
+                        "\0\s[3]%(username)就知道欺负人。\e"
+                        "\0\s[3]女仆才不会生气呢。\e"
+                        "\0\s[1]%(username)不明白女仆的心意吗？\e"
+                        "\0\s[9]其实，\w9\w9也没什么大不了的\e"
+                        "\0\s[16]奇怪，\w9\w9女仆没有生气啊。\s[5]%(username)想多了吧。\e"
+                        }
+                        else
+                        {
+			"\0\s[1]啊…\w9\w4\n女仆做错了什么吗？\n\n/
+			\q[◇没有,ForcedClose_5]\n/
+			\q[◇有,ForcedCloseCancel_5]\e"
+			"\0\s[3]是吗\w9…\w9\w9抱歉…\e"
+			"\0\s[1]啊，\w9\w4\n\s[3]那个…\w9\w3女仆能请求%(username)原谅吗？\n\n/
+			\q[◇原谅,ForcedClose_5]\n/
+			\q[◇不原谅,ForcedCloseCancel_5]\e"
+                        }
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]喂…\w9\w9你在和猫生气吗？\e"
+			"\0\s[9]唔…\w4…\w4…\w9\w9\s[9]\n从没见过和一只猫生气的人。\e"
+			"\0\s[9]…\w4…\w4…\w4…\w4…\w4…\e"
+		}
+	}
+
+
+//---- 2或-1字 ----
+	elseif "忧" _in_ reference1 || "虑" _in_ reference1
+	{
+		if scope == "0" || scope == "2"
+		{
+			"\0\s[0]我想不要太心急也没关系喔。\w9\w9\s[5]\n只要照着%username的步调前进、\w9\n一定没问题的。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 是吗、\w9看来很辛苦啊。\w9\w9\w9\n这样吧、\w9想抱怨的话、不管多少我都听。\w9\w5\n如果愿意的话、尽管跟我说吧。\e"
+		}
+	}
+	elseif "疲" _in_ reference1 || "累" _in_ reference1
+	{
+		if scope == "0" || scope == "2"
+		{
+			if Timejud == "清晨" || Timejud == "半夜"
+			{
+				"\0\s[5]辛苦了。\w9\w9\s[0]\n都已经这个时间了、\w9\n是不是也该休息了呢？\w9\w9\w5\s[1]\n\n[half]…\w9不可以太过勉强、\w9\n而弄坏身体喔。\e"
+			}
+			else
+			{
+				"\0\s[5]是这样吗？\w9\s[0]\n嗯、\w9虽然我只能声援而已…\w9\w9\s[0]\n\n[half]请加油喔。\e"
+			}
+		}
+		elseif scope == "1"
+		{
+			if smoker == "1"
+			{
+				"\0 唔？\w9\n嗯、\w9那就去抽一根休息一下。\w9\s[9]\n精神就会来吧？\w9\w9\0\s[5]…\w9那个、\w9真的是菸吗？\e"
+				"\0 疲劳的时候就去休息。\w9\n顺从身体的需求是健康的秘诀。\e"
+			}
+			else
+			{
+				"\0 疲劳的时候就去休息。\w9\n顺从身体的需求是健康的秘诀。\e"
+			}
+		}
+	}
+
+   elseif "吵" _in_ reference1 || "骂" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]啊…\w9\w9吵架不好……\e"
+			"\0\s[1]咦\w4…\w9\w4什么事情呢？\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 是吗…\w9\w9\n不要理会那个疯子。\e"
+			"\0\s[9]真麻烦…\e"
+		}
+	}
+
+
+	elseif "失恋" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[1]…\w9…\w9\w9\n那，\w9那个…\w9\s[3]\w9%(username)一定要想开！\e"
+			"\0\s[1]啊……\w8\w8\n\s[3]想哭的话…\w9\w4就请哭出来！\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]是吗…\w9\w9\n看来你要好好的换换心情了。\e"
+			"\0\s[9]唔…\w9\w4失恋不可怕，\w9\w5可怕的是你走不出阴影来。\e"
+		}
+	}
+	
+	elseif "忧" _in_ reference1 || "虑" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]我想不要太心急也没关系喔。\w9\w9\s[5]\n只要照着%(username)的步调前进、\w9\n一定没问题的。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 是吗、\w9看来很辛苦喵。\w9\w9\w9\n这样吧、\w9想抱怨的话、不管多少我都听。\w9\w5\n如果愿意的话、尽管跟我说吧。\e"
+		}
+	}
+
+elseif "安全感" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]没有安全感，\w9\w9是不自信的体现哦，\w9\w9相信自己，\w9\w9自己永远都是最好的\e"
+                        "\0\s[0]别人的肯定与支持固然重要，\w9\w9但也不能过度依赖呀，\w9\w9独立做好一件事情，\w9\w9只要自己觉得OK，\w9\w9不也心安理得吗？\e"
+                        if 腹黑度>=100
+                        "\0\s[27]即使有女仆陪着，\w9\w9%(username)也觉得没有安全感吗？\e"
+                        if 依赖度>=100
+                         "\0\s[1]%(username)的存在感，\w9\w9就是女仆的安全感\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 独自去旅行吧，\w9\w9当我还是一只猫的时候，\w9\w9就喜欢独自走走。\e"
+                        "\0 %(username)，\w9\w9你需要一个很爱你的人\e"
+                        "\0 没有安全感，\w9\w9就把帽子戴上吧。\e"
+		}
+	}
+
+
+
+      elseif "病" _in_ reference1
+      {
+ 
+                if scope == "0"
+		{        
+                 "\0\s[0]看过医生了吗？\w9\w9要按嘱咐吃药哦。\e"
+                 "\0\s[5]乖，\w9\w9听话嘛，\w9\w9要记得吃药哦。\e"
+                 "\0\s[0]休息一下，\w9\w9应该会好点吧，\w9\w9不要过度劳累哦。\e"
+                 "\0\s[1]严重吗？\w9\w9去医院检查一下吧\e"
+                 "\0\s[0]生病是身体发出的警告哦，\w9\w9它提醒您注意改变一下不良的生活习惯，\w9\w5避免不愉悦的心情。\e"
+		}
+		elseif scope == "1"
+		{
+		"\0\s[9]电脑上多了，\w9\w9就容易得病吧？\e"
+                "\0\s[9]多喝水，\w9\w9早点睡，\w9\w9不要想太多无聊的事情\e"
+                "\0\s[9]平时不锻炼，\w9\w9今天就容易生病了吧？\e"
+                "\0\s[9]该吃则吃，\w9该睡则睡，\w9该静则静，\w9该动则动，\w9出门晒晒太阳，\w9回家洗洗痱子，\w9\w9这是本喵仙多年修行的秘决\e"
+		}
+      }
+
+   elseif "玩笑" _in_ reference1
+      {
+ 
+                if scope == "0"
+		{        
+                  "\0\s[3]果真是开玩笑吗？\w9\w9哼。\e"
+                  "\0\s[33]讨厌，\w9\w9%(username)欺负人。\e"
+                 if _phase==2
+                  "\0\s[16]讨厌，\w9\w9%(username)我要生气了，\w9\w9这种事怎么能开玩笑呢\e"
+                 else
+                    "\0\s[3]…\w9…\w9…\e"
+		}
+		elseif scope == "1"
+		{
+		"\0\s[9]是吗？\w9\w9\s[9]\e"
+                "\0 不要把自己的快乐建立在别人的痛苦上。\e"
+                "\0 喵咪也是有尊严的。\e"
+		}
+      }
+
+         elseif  "心情" _in_ reference1
+         {
+                if scope == "0"
+		{
+                   if "怎样" _in_ reference1 ||"好吗" _in_ reference1
+                     {
+                      "\0\s[0]一般吧。\e"
+                      "\0\s[1]啊？\w9\w9那个…\w9\w9\s[1]还好吧。\e"
+                      "\0\s[3]怎么说呢？\w9\w9如果%(username)陪女仆的时间能再多点……\e"
+                      "\0\s[5]嗯，\w9\w9还不错哦。\e"
+                      "\0\s[5]嗯，\w9\w9说不上好，\w9还是不好\e"
+                      "\0\s[5]……\e"
+                     }
+                    elseif "不好" _in_ reference1
+                     {
+                     "\0\s[0]怎么了呢？\w9\w9%(username)？\e"
+                     "\0\s[1]咦！？为什么呢……\w9\w9\s[1]是女仆做得不够好吗？\e"
+                     "\0\s[16]有人欺负%(username)了吗？\w9\w9\s[27]\e"
+                     
+                     }
+		}
+		elseif scope == "1"
+		{
+                 if "怎样" _in_ reference1 ||"好吗" _in_ reference1
+                     {
+		"\0 本喵不受心情的影响很多年了\e"
+                "\0\s[9]心情好与不好，\w9\w9又怎样呢，\w9\w9还不是只有自己默默忍受。\e"
+                "\0\s[9]我的内心已经伤痕累累，\w9\w9\s[9]谁又来安抚我敏感的神经与脆弱的灵魂？\e"
+                     }
+                 elseif "不好" _in_ reference1
+                     {
+                "\0 别让心情左右你的觉知。\e"
+                "\0 放松，\w9\w9深呼吸\e"
+                "\0\s[9]抽根菸吧？\w9\w9\s[9]算了，\w9\w9\s[9]还是不抽的好。\e"
+                "\0 要不要出去走走，\w9\w9别在家里闷着。\e"
+                     }
+		}
+      }
+
+
+    elseif  "家" _in_ reference1
+     {
+                if scope == "0"
+		{
+                   "\0\s[1]有%(username)在的地方，\w9\w9就有家。\e"
+                   "\0\s[29]家是让人感到温暖的地方。\e"   
+                   "\0\s[16]有了家，\w9\w9才会有力量干活啊。\e"   
+                   if 萌度>=100
+                   "\0\s[16]女仆会努力捍卫家的完整\e"   
+                   if 腹黑度>=100
+                   "\0\s[16]破坏别人家庭的，\w9\w9就是这个下场。\e"
+                   if 幸福度>=100
+                   "\0\s[27]有%(username)在的家，\w9\w9女仆会一直守护的。\e"
+
+		}
+		elseif scope == "1"
+		{
+		  "\0 啊哈，\w9\w5家啊，\w9\w9这就是家啊。\e"
+                  "\0 你是指这个大房子呢？\w9\w9还是指我们三个人啊？\e"
+                  "\0 我和女仆以前的组合，\w9\w9算不算是一个家呢？\e"
+		}
+      }
+
+   
+
+
+
+//----------------------------------------女仆有爱------------------------------------------------------------------
+
+
+       elseif "嫁给我" _in_ reference1
+	{
+		if scope == "0"
+		{
+                        intimacy += 1
+			"\0\s[1]…\w5…\w5…\w5…\w9\w9\s[1]\n讨，\w5讨厌啦。。\e"
+			"\0\s[29]呀…\w9\w9\w5\s[9]\n讨厌～\e"
+			"\0\s[101]\w9\w9\w9……\w9\n女仆，\w3还未成年喔。。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]…\w9…\w9…\w9…\e"
+			"\0\s[9]真是的…\w9\w9\n喂…\w9\w5下辈子做猫吧。\e"
+		}
+	}
+
+
+	elseif "萌" _in_ reference1
+	{
+		if scope == "0"
+		{
+                        intimacy += 1
+			"\0\s[1]咦…\w9那个…\w9\w9\s[5]\n可以感到高兴吗？\e"
+			"\0\s[1]咦…\w9\s[1]这个…\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]…\w9…\w9…\w9\w9 \e"
+			"\0 啊…\w9喵。\w9\w9\w9\s[9]\n…\w9该表现出什么态度好啊喵。\e"
+		}
+	}
+
+        elseif "推倒" _in_ reference1
+	{
+		if scope == "0"
+		{
+                  intimacy += 2
+			"\0\s[5]%(username)，\w9\w5这样的话，\w9\w4\n很不好的。\e"
+			"\0\s[5]嗯.....\w9\w4不要啊！！\e"
+			"\0\s[110]是吗…\w9\w3你~过来~~。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]唔…\w8\w3…\w9\w9\0\s[9]啊\w2哈\w2…\e"
+			"\0\s[117]啊！\w8不要，不要，不要\w9w\4\n出去！！！！\e"
+			"\0\s[111]是吗，\w9\w2\s[110]要不要我亲自揉厉一下你喵！\e"
+		}
+	}
+
+     
+
+
+         elseif "生日快乐" _in_ reference1
+     {
+    	 if month == TOINT(firstboottime[1]) && TOINT(day == firstboottime[2])
+    	 {
+    	 	 intimacy += 5
+    	 	 "\0\s[1]…\w8…\w8\w9\s[1]谢…\w8\w9\s[5]谢谢…\w9\w8\s[16]女仆…\w9\w9\s[5]真的很高兴\e"
+    	 }
+    	 else
+    	 {
+    	 	 "\0\s[16]今天\w8不是女仆的生日啊.\e"
+    	 }
+    }
+
+
+
+	elseif "喜欢你"  _in_ reference1
+	{
+		if scope == "0"
+		{
+                        intimacy += 2
+			"\0\s[1]咦…\w9啊…\w9\w9\w5\s[1]\n请、\w9请不要故意捉弄我…\e"
+			"\0\s[1]…\w9就算是在开玩笑、\w9我也很高兴。\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 喜欢猫啊？\w9\w9\0\s[5]…\w9嗯？\w9\w9\0 \n\n[half]总之、\w9出门时\n记得准备好能当饲料的东西吧。\e"
+		}
+	}
+
+        elseif ("俺" _in_ reference1 || "我" _in_ reference1) && "的嫁" _in_ reference1
+        {
+                if scope == "0"
+		{
+                        intimacy += 2
+			"\0\s[16]%(username)不要捉弄女仆啦，\w9\w9人家还未成年呢\e"
+			"\0\s[16]%(username)大丈夫？\w9\w9\w9\s[29]不要开这种玩笑嘛\e"
+                        "\0\s[29]%(username)，\w9\w9请你保持对女仆的感情吧\e"
+		}
+		elseif scope == "1"
+		{
+			"\0 真的吗？\w9\w9\0\s[5]…\w9咦？\w9\w9\0 \n\n[half]这可是新鲜事呢，\w9还没听过一只猫要嫁给人类的说。\e"
+                        "\0 你喜欢这种形态，\w9\w9\s[111]还是这种形态？\e"
+
+		}
+
+
+        }
+
+
+    
+	elseif "抱" _in_ reference1
+	{
+		if scope == "0"
+		{
+            intimacy += 5
+			"\w9\w9\0\s[1]咦\w4…\w4…\w9\n\s[1]嗯，如果\w5%(username)想这么做的话…\e"
+			"\0\s[9]嗯～\w9\w5不可以喔。\e"
+			"\0\s[1]咦，\w9\w9\s[29]嗯…\w4…\w4\w5\n\n[half]%(username)的怀抱好温暖…\e"
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]喂…\w9\w5弄疼我了啦。\e"
+			"\0 真是的…\w9\w4\n怎么会突然想抱一只猫…\e"
+			"\0\s[9]…\w9…\w9\w9\n懒得理你。\e"
+			"\0\s[9]…\w4…\w4我不会挠你的。\e"
+		}
+	}	
+
+
+	elseif "睡" _in_ reference1 || "昏" _in_ reference1
+	{
+		if scope == "0"
+		{
+			RestStart
+		}
+		elseif scope == "1"
+		{
+			"\0 那就去睡。\w9\w9\0\s[5]…\w9…\w9…\e"
+		}
+	}
+
+   
+	elseif "谢谢" _in_ reference1
+	{
+		if scope == "0"
+		{
+			if rest == "1"
+			{
+				RestCommunicate
+			}
+			else
+			{
+				"\0\s[1]咦！\w9\w9\s[1]\n喵…\w9谢谢…\w9\w9\0 为什么、\w9要用『谢谢』来回答\n『谢谢』啊。\w9\w9\0\s[5]\n\n[half]嗯…\w9\w9\s[5]似乎有帮上忙真是太好了呢。\e"
+				"\0\s[1]怎么那么说…\w9\w9\n真的不能不感谢的\n应该是我这边呢。\w9\w9\w9\n\n[half]…\w9\s[5]谢谢。\e"
+			}
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]唔？\w9\w9 \n我有做了什么吗？\e"
+			"\0 嗯。\w9\w9好了、\w9那份感谢的心意\w9我确实收到了\n。\e"
+		}
+	}
+	
+	elseif "对不起" _in_ reference1
+	{
+		if scope == "0"
+		{
+			if talkmemo == "e_0"
+			{
+				_phase = GetPhase
+				if _phase == 0
+				{
+					"\0\s[1]啊…\w9\w9\s[3]那个…\w9对不起。\w9\w9\w9\s[35]\n是我太任性了。\e"
+				}
+				elseif _phase == 2
+				{
+					"\0\s[1]啊…\w9\w9\s[1]不…\w9\w9\s[29]\n能够待在这里\w9是我的荣幸。\w9\w9\n\n[half]所以、\w9\w9\s[5]请%(username)不要这么说。\e"
+				}
+				else
+				{
+					"\0\s[1]啊…\w9没有没有。\w9\w9\s[0]\n其实也不是那么要紧的事、\w9\s[5]\n请不要在意。"
+				}
+			}
+			else
+			{
+				"\0\s[16]那个…\w9\w9\n\s[0]虽然不太清楚、\w9不过我没事的。\e"
+			}
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]嗯。\w9 \n知道就好。\w9\w9\w9\w9\n\n[half]…\w9不过、\w9是什么事喵？\e"
+			"\0\s[9]真是的、\w9你很过份耶。\w9\w9\w9\w9 \n\n[half]…\w9话说回来、\w9发生了什么事啊？\e"
+		}
+	}
+	
+	
+
+  elseif "爱你" _in_ reference1
+	{
+		_phase = GetPhase
+		if scope == "0"
+		{
+      if _phase == 2
+      {
+        "\0\s[1]…\w9…\w9…\w9\n啊、\w9那个…\w9耶？\n\n/
+        \q[◇我爱你,Usercomm0_yes]\n/
+        \q[◇没事,Usercomm0_no]\e"
+        "\0\s[1]啊…这个…\s[9]%(username)请再说一次\e"
+        "\0\s[9]%(username)不是开玩笑的吧？\e"
+ 
+      }
+      else
+      {
+         "\0\s[1]这个,请不要这样说\w9\w9\n女仆会很困扰的....\0 女仆对%username好感不够的样子....\e"
+      }
+    }
+    else
+    {
+      "\0\s[9]爱猫啊，\w9\那就给我准备好新鲜的猫料理吧\e"
+      "\0\s[110]是吗？，\w9\w9那么请接受老娘爱的鞭笞吧，\w9\w9哦呵呵呵……\e"
+      "\0 这不可能。\e"
+      "\0 是吗？\w9\w9下辈子变成猫再说吧！\e"
+      "\0 你想上演一场人兽情未了吗？\e"
+    }
+	}
+
+  elseif ("爱" _in_ reference1 ||"喜欢" _in_ reference1) && "我" _in_ reference1 && "吗" _in_ reference1 
+  {
+
+               if scope == "0"
+	       {
+                        _phase = GetPhase
+                        if _phase == 2
+			{
+                           "\0\s[16]讨厌，\w9\w9%(username)何必明知故问呢？\e"
+                           "\0\s[29]女仆喜欢%(username)……\e"
+                           "\0\s[29]%(username)是女仆最爱的人\e"
+                           "\0\s[16]讨厌，女仆不是说过了吗。\e"
+                        }
+                        else
+                        "\0\s[16]让它告诉你吧！\e"
+               }
+		elseif scope == "1"
+		{
+			"\0 唔…你不觉得对一只猫说这句话很可笑吗？\e"
+                        "\0 %(username)不要对我这只猫卖萌啊。\e"
+                        "\0 虽然有时候觉得%(username)很了不起，可我是猫啊。\e"
+                        "\0 好吧，\w9\w9我不喜欢人类，\w9\w9%(username)是个例外……\e"
+		}
+
+
+  }
+
+
+
+elseif  "亲亲" _in_ reference1
+ {
+            if scope == "0"
+	       {
+                       
+                        if 腹黑度>=亲密度
+			{
+                           "\0\s[27]是要用咬的还是用吸的还是舔的？\e"
+                        }
+                        "\0\s[5]可以啊，\w9\w9不过%(username)ん得用刀子把嘴上的毛剃乾净才行。\e"
+
+
+
+                      
+               }
+		elseif scope == "1"
+		{
+		"\0 要做什麼啊，\w9\w9这可不行。\e"
+                "\0 不要对一只猫咪提出过份的要求。\e"
+		}
+  
+ }
+
+
+elseif reference1=="爱" 
+ {
+  
+    "\0\s[1]啊,\w9%username爱什么喔?\0这个时候应该说“爱你”才行哦..\e"
+
+ }
+
+
+  elseif "么么" _in_ reference1
+  {
+            if scope == "0"
+	       {
+                        _phase = GetPhase
+                        if _phase == 2
+			{
+                            intimacy += 2
+                           "\0\s[1]…\w9\w9\s[29]嗯……\w9\w9\s[41]\么么哒！\e"
+                        }
+                        else
+                        "\0\s[16]么么是拟声词，\w9用于网络，\w9手机和情侣之间。\w9\w9也用于萝莉卖萌。\w\w9来源于英语“muah“，\w9意思是“亲亲”、\w9“亲爱的”、\w9“宝贝”、\w9“乖乖”、“相亲相爱，互相帮助”等意思。\e"
+               }
+		elseif scope == "1"
+		{
+			"\0 么么是拟声词，\w9用于网络，\w9手机和情侣之间。\w9\w9也用于萝莉卖萌。\w\w9来源于英语“muah“，\w9意思是“亲亲”、\w9“亲爱的”、\w9“宝贝”、\w9“乖乖”、“相亲相爱，互相帮助”等意思。\e"
+                        "\0 没见过有人对一只猫卖萌的。\e"
+                        "\0 好吧，\w9\w9%(username)，\w9\w9么么\e"
+		}
+
+  }
+
+               elseif "爱" _in_ reference1 ||"喜欢" _in_ reference1 || ("一般" _in_ reference1 || "平常" _in_ reference1 || "来" _in_ reference1 || "想" _in_ reference1 || "要" _in_ reference1) && "什么" _in_ reference1
+               {
+                  if "做" _in_ reference1 || "干" _in_ reference1
+                  {
+                         if  scope == "0"
+                         {
+                         "\0\s[16]做饭，\w9电玩，\w9整理房间，\w9寻找可疑人物后将其尸解，\w9看书，\w9睡觉\e"
+                         "\0\s[5]喜欢做好玩的事情\e"
+                         if 腹黑度>=依赖度||腹黑度>=100
+                         "\0\s[5]斩首，\w9放血，\w9开膛\，\w9破肚，\w9下油锅，\w9饮茶，\w9爆击，\w9然后是大清扫时间，\w9之后读完圣经睡觉。\e"
+
+                         }
+
+                         elseif  scope=="1"
+                         {
+                         "\0 吸菸，\w9喝酒，赌博，\w9看着小公主\e"
+                         }
+                  }
+
+                  elseif "喝" _in_ reference1
+                  { 
+                        if  scope == "0"
+                         {
+                         "\0\s[1]白开水就行\e"
+                          if 腹黑度>=依赖度||腹黑度>=100
+                            "\0\s[5]红茶，\w9越像血一样红的越好喝\e"
+                         }
+
+                         elseif  scope=="1"
+                         {
+                         "\0 鲜鱼汤，\w9要给本喵做吗？\e"
+                         "\0 酒，\w9\w9来陪本喵喝几杯\e"
+                         }
+                  }
+
+                  elseif "吃" _in_ reference1
+                  {
+                        if  scope == "0"
+                         { 
+                           if kikkastm>=0.8*kikkastmmax
+                          "\0\s[0]现在不想吃东西\e"
+                           elseif kikkastmmax-kikkastm>=1000
+                            "\0\s[0]龙虾大餐\e"
+                           elseif kikkastmmax-kikkastm>=600
+                            "\0\s[0]花式蛋糕\e"
+                           elseif kikkastmmax-kikkastm>=300
+                            "\0\s[0]鸡腿汉堡\e"
+                           elseif kikkastmmax-kikkastm>=150
+                            "\0\s[0]馒头\e"
+                           else
+                          "\0\s[9]女仆喜欢吃的东西，不大好说\e"
+                          if _phase==2
+                         "\0\s[1]%(username)做的，\w9女仆都喜欢。\e"
+                         }
+
+                         elseif  scope=="1"
+                         {
+                         "\0 海鲜料理。\w9很久没吃到海味了\e"
+                         "\0 菸啊，要来一支吗？\e"
+                         }
+                  }
+
+                  elseif "书" _in_ reference1||"电影" _in_ reference1 ||"动漫" _in_ reference1 || "看" _in_ reference1
+                  { 
+                        if  scope == "0"
+                         {
+                             if "书吗" _in_ reference1
+                             "\0\s[0]喜欢,\w9\w9女仆读过很多书呢。\e"
+                             elseif "电影吗" _in_ reference1
+                             "\0\s[3]%(username)能陪女仆去看的话，\w9\w9喜欢\e"
+                             elseif  "动漫" _in_ reference1
+                              "\0\s[0]在家无聊的时候，\w9\w9为了打发时间，\w9会看一些\e"
+                             else
+                             {
+                            "\0\s[0]圣经，小说，专业书籍，及一些名人传记\e"
+                            "\0\s[0]一些黑暗愈系的动漫作品\e"
+                             }
+                         }
+
+                         elseif  scope=="1"
+                         {
+                         "\0\s[9]不喜欢\e"
+                         
+                         }
+                  }
+                  elseif "歌" _in_ reference1 ||"的歌" _in_ reference1  || "听" _in_ reference1
+                  { 
+                        if  scope == "0"
+                         {
+                         "\0\s[16]诡异的音乐，\w9例如黑色星期天什么的\e"
+                         if 腹黑度>=依赖度||腹黑度>=100
+                         {
+                             "\0\s[16]电锯运转的声音\e"
+                             "\0\s[16]枪声、\w9爆破声\e"
+                         }
+                         if _phase==2
+                         "\0\s[1]卡农钢琴曲，\w9\w9%(username)要弹给女仆听吗\e"
+                         }
+
+                         elseif  scope=="1"
+                         {
+                         "\0\s[9]不喜欢听歌\e"
+                         "\0 对猫耳来说，\w9\w9那些声音太吵了吧\e"
+                         }
+                  }  
+                     elseif "人" _in_ reference1 ||"的人" _in_ reference1 ||"谁" _in_ reference1||"哪个" _in_ reference1
+                  { 
+                        if  scope == "0"
+                         {
+                         "\0\s[29]女仆喜欢有爱心、\w9\w9责任感、\w9\w9懂得包容的人\e"
+                        if _phase==2
+                          "\0\s[1]女仆喜欢……\w9\w9%(username)这样的人\e"
+                         }
+
+                         elseif  scope=="1"
+                         {
+                         "\0 不告诉你\e"
+                         "\0\s[9]非要我说吗\e"
+                         "\0 我偏不说\e"
+                         "\0 还是不说\e"
+                         "\0 不说不说就不说\e"
+                         "\0 打死我也不说\e"
+                         "\0\s[9]喵~~~~~~~~~~~~~~~~~~~~~\e"
+                         "\0 %(username)你放过我吧，我喜欢你还不行么？\e"
+                         }
+                  }  
+
+
+               }
+
+        elseif "非主流" _in_ reference1
+	{
+		"\0\s[5]不是主流的东西，\w9\w9当然得不到大家的认可了。\e"
+	}
+
+
+	elseif "韩剧" _in_ reference1
+	{
+		"\0\s[9]韩国的东西……\w9\w9女仆不喜欢.\w9\w9\e"
+	}
+
+
+    elseif "棒子" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[16]%(username)，\w9\w5偶要生气了，\w9\w4\n明。。。明明知道最讨厌棒子的喵。\e"
+               }
+		elseif scope == "1"
+		{
+			"\0\s[9]唔…\w8\w3出门晒晒虱子吧…\w9\w9\0\s[5]啊\w2哈\w2…\e"
+		}
+	}
+  
+ 
+  
+	//---- 1-2字 ----
+	
+  elseif "谢谢" _in_ reference1
+	{
+		if scope == "1"
+		{
+      //scope = "2";
+			"\0\s[9]唔？\w9\w9 \n我有做了什么吗？\e"
+			"\0 嗯。\w9\w9好了、\w9那份感谢的心意\w9我确实收到了\n。\e"
+		}
+		else
+		{
+			if rest == "1"
+			{
+				RestCommunicate
+			}
+			else
+			{
+				"\0\s[1]咦！\w9\w9\s[1]\n啊…\w9谢谢…\w9\w9\0 为什么、\w9要用『谢谢』来回答\n『谢谢』啊。\w9\w9\0\s[5]\n\n[half]嗯…\w9\w9\s[5]似乎有帮上忙真是太好了呢。\e"
+				"\0\s[1]怎么那么说…\w9\w9\n真的不能不感谢的\n应该是我这边呢。\w9\w9\w9\n\n[half]…\w9\s[5]谢谢。\e"
+			}
+		}
+
+	}
+
+elseif "奥运" _in_ reference1
+	{
+    if year <= 2010
+    {
+    "\0\s[5]啊，说着08年的奥运是在中国北京举办的喔～\e"
+    "\0\s[5]08年的奥运中国得了100块奖牌，其中有51块金牌喔～\e"
+      "\0\s[29]女仆看过两届奥运会了哦，到2012年的英国伦敦奥运会%username要陪女仆一起看喔～\e"
+    }
+    else
+    {
+    "\0\s[5]啊，说着08年的奥运是在中国北京举办的喔～\e"
+    "\0\s[5]08年的奥运中国得了100块奖牌，其中有51块金牌喔～\e"
+    "\0\s[29]女仆看过三届奥运会了哦~\e"
+    }
+	}
+	
+
+	
+
+  
+
+  //---- 2或-2字 ----
+  elseif "可爱" _in_ reference1 || "漂亮" _in_ reference1
+	{
+		if scope == "0"
+		{
+      //scope = "2";
+			"\0\s[1]咦…\w9那个…\w9\w9\s[9]\n\n[half]难道说、\w9是故意在捉弄我？\e"
+			"\0\s[1]没…\w9\s[1]没那回事喔…\e"
+		}
+		elseif scope == "1"
+		{
+      //scope = "2";
+			"\0 嗯？\e"
+			"\0 唔、\w9这样啊？\e"
+		}
+		else
+		{
+      "\0\s[1]很可爱的吗?\w9是什么啊?\w9女仆也想知道喔~\e"
+      "\0\s[1]很好看的吗?\w9是什么啊?\w9女仆也想知道喔~\e"
+		}
+	}
+  
+	
+//----------------------------------------女仆自动------------------------------------------------------------------
+	 
+         elseif "日历" _in_ reference1
+        {
+        "\![open,calendar]\w9\w9\0\s[16]今天好像是%(year)年%(month)月%(day)日.\e"
+        }
+
+        elseif "说" _in_ reference1 && "什么" _in_ reference1 ||"再说" _in_ reference1 && ( "一次" _in_ reference1 ||"一遍" _in_ reference1) 
+        {
+           lastTalk
+        }
+
+      elseif "玩" _in_ reference1 && "游戏" _in_ reference1
+    {
+     	"\0\s[1]%(username)想和女仆玩游戏吗?想玩什么呢？\n/
+                        \q[◇猜拳,OnHandGame]          扑克游戏：\n/
+			\q[◇猜数字,OnGuessNumber]       \_l[90,-]\q[◇21点,OnBlackjack0]\n/
+			\q[◇开心辞典,OnQuestBegin]\n[150]/
+			\q[◇井字棋,OnPlayOX]\n/
+			\q[◇拼图游戏,OnPuzzleList]\n/
+			\q[◇推箱子,OnBoxGame]\n\e"
+
+
+
+        "\0\s[5]好啊,正好女仆刚学会一些游戏的玩法呢.\e"
+    }
+        elseif "节日" _in_ reference1
+	{
+	if lunartime[9]!=null ||  lunartime[10]!=null 
+          "今天是今天是%(lunartime[9]) %(lunartime[10])\n/
+          \q[◇知道了,End]\n\e"
+	
+           else {"今天没有什么特别的节日哦\e"}
+        }
+
+	//---- 2或-1字 ----
+	elseif "再见" _in_ reference1 || "拜拜" _in_ reference1
+	{
+    "\0\s[16]唔…%usernameByebye哦～\w9\w9\-"
+    "\0\s[16]那个，我们回去了哦..\-"
+	}
+
+        elseif "对我的感觉" _in_ reference1
+        {
+         if intimacy >= 0 && intimacy <= 79 
+                {
+                        "\0\s[9]\0\s[35]对不起…\w9\w9\w9女仆对%(username)没有特别的感情…\n\w9\w9\w9\0\s[5]但是，\w9\w9女仆很感谢%(username)可以让我们待在这里。\w9\w9\0\s[9]简单的说，\w9\w9你被甩了。\e"
+                }
+//大于等于79小于等于99
+            elseif intimacy >= 80 && intimacy <= 129
+                {
+                        "\0 \0\s[1]咦？\w9\w9\w9\0\s[1]怎么突然这么问…\n\w9\w9\w9\0我是不是该先离开一下…\w9\w9\w9\0\s[16]\0\s[29]真的离开了…\w9\w9\n那个…\w9\w9我喜欢%(username)…\w9\w9\w9吧…\w9\w9\0\s[9]卡！\w9\w9要说：\n\w9\w9“我很喜欢%(username)喔♡！”\e"
+                }
+//大于等于100小于等于499
+        elseif intimacy >= 130 && intimacy <= 499
+                {
+                        "\0\s[29]\0\s[9]这个…\w9…\w9\w9我稍微离席吧…\0\s[16]\w9\w9\0\s[29]啊…\w9\w9\w9斗和好过份…\w9\w9\n\0\s[101]那…那个…\w9\w9\w9我真的很喜欢…\w9\w9\w9\s[99]啊…啊！\n\w9\w9…\w9\w9…\w9\w9…\w9\w9\n\0\s[0]好了！\w9\w9现在女仆要大声说…\n\w9\w9\0\s[41]我很喜欢，%(username)！！\e"
+                }
+//大于等于500
+        elseif intimacy >= 500
+                {
+                        "\0\s[29]\0\s[9]这个…\w9\w9我先离…\0\s[32]先听我说完…\w9\w9\w9\0\s[9]\n……知道了。\w9\w9\0\s[5]那么，\w9\w9请%(username)听听我的感情吧…\w9\w9\w9\n我…很希望能够到%(username)的身边…\w9\w9\w9\n\0\s[35]而不是永远的待在这里声援…\w9\w9\w9\n未来，要是%(username)有了女朋友，\w9\w9\w9或是一些原因导致我们不能见面，\w9\w9\w9\n我希望%(usermane)能够记得…\w9\w9…\w9\w9\0\s[41]女仆永远爱着您！\w9\w9\w9\0\s[16]我真的受不了啦！\e"
+                }
+        }
+
+         elseif "对我的感情" _in_ reference1
+{
+        if intimacy >= 30 && intimacy <= 79 
+                {
+                        intimacy +=1
+                        "\0\s[1]咦！\w9\w9\w9\n\0\s[3]对不起，\w9\w9女仆只有出自于尊重的感情…\w9\w9\w9\0\s[9]简单的说，\w9\w9现在只有朋友再高一点点的阶段。\e"
+                }
+        elseif intimacy >= 80 && intimacy <= 129
+                {
+                        intimacy +=2
+                        "\0\s[1]咦！\w9\w9\w9\n\0\s[1]那个…\w9\w9女仆不好意思说…\w9\w9\0\s[9]现在的感情指标，\w9\w9拥有喜欢的感情。\w9\w9\w9\n%(username)您该感到高兴才对。\e"
+                }
+        elseif intimacy >= 130 && intimacy <= 499
+                {
+                        intimacy +=5
+                        "\0\s[1]咦！\w9\w9\w9\0\s[1]…\w9\w9…\w9\w9\n%(username)可以接受女仆吗？\w9\w9\w9\0\s[9]您不是木头吧？\w9\w9所以应该知道是什么意思。\w9\w9\0\s[9]斗和真失礼，\w9\w9相信%(username)会知道的，\w9\w9\w9\0\s[0]对吧！\e"
+                }
+        elseif intimacy >= 500 && intimacy <= 999
+                {
+                        intimacy +=10
+                        "\0\s[29]\0 这个嘛…\w9\w9相信%(username)在平常就…\w9\w9\n\0\s[29]我喜欢%(usermane)。\w9\w9\w9\0\s[9]啊？\w9\w9\w9\0\s[29]我喜欢%(usermane)…\w9\w9\w9\w9我喜欢%(usermane)…\w9\w9\w9\w9我喜欢%(usermane)………\w9\w9\w9\w9\n\0\s[41]我最爱%(username)了！\w9\w9\w9\w9\w9\0\s[9]表达够白了吧…\w9\w9\w9我受不了了…\e"
+                }
+        elseif intimacy >= 1000 && intimacy <2000
+                {
+                        intimacy +=20
+                        "\0 \0\s[1]这个…\w9\w9我已经不知道要说什么了…\0\s[9]%(username)…\w9\w9您让女仆无言了…\e"
+                }
+        elseif intimacy >= 2000 
+                {
+                        intimacy +=30
+                        "\0\s[29]女仆对%(username)的感情有什么让%(username)怀疑的地方吗，\w9\w9女仆是真的…\w9真的…\w9非常…\w9非常喜欢%(username)，\w9\w9如果喜欢一个人的程度可以用一把P90来表示的话，\w9\w9那么女仆对%(username)的爱，\w9\w9可以让全球70亿人都中枪\w9\w9\0 这是什么怪比喻。\e"
+                }
+}
+
+         elseif "女仆" _in_ reference1 && "秘密" _in_ reference1
+                {
+                    "\0\s[0]那么我悄悄的告诉%(username)啊，\w9\w9%(ak_6s)\e"
+                }
+
+          elseif "斗和" _in_ reference1 && "秘密" _in_ reference1
+                {
+                    "\0\s[5]这样对斗和不好吧？\e"
+                    "那女仆告诉%(username)，\w9不要让斗和知道是女仆说的哦。\w9\w9%(at_7s)\e"
+                }
+
+
+          elseif "口渴" _in_ reference1 || "喝" _in_ reference1
+                {
+
+                  "%(Select.TEA)\e"
+                 }
+
+
+          elseif "饿" _in_ reference1 ||"吃" _in_ reference1 && ("什么" _in_ reference1||"饭" _in_ reference1)
+                {
+                  if "吗" _in_ reference1
+                  {
+                          if kikkastm>=0.8*kikkastmmax
+                          "\0\s[0]现在女仆不饿\e"
+                          else
+                          "\0\s[1]有什么可以吃的吗？\e"
+                  }
+                  else
+                  "%(Select.用餐时间)\e"
+                 }
+
+          elseif "吸" _in_ reference1 && ("烟" _in_ reference1||"菸" _in_ reference1)
+                {
+
+                  "%(Select.SmokingPlace)\e"
+                 }
+
+
+
+          elseif "季节" _in_ reference1
+                {
+                   "%(Seasonzone)\e"
+                }
+
+         elseif "秘密服务" _in_ reference1
+                {
+                   "\0\s[0]秘密服务的密码是：%(cryptogramndmh)\e"
+                }
+
+          
+
+
+
+
+
+}
+
+
+
+
+//---------------------------------------华丽丽的分隔线-------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+THREE
+{
+  
+      if "宅人" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]可以简单分成宅男和宅女，当然也可多分人妖一组（这个。。。。特例）。原义是特指对动漫的了解达到达人境界的人。现在广义的可以认为是对某项或者某些事物有着别人不能达到的喜爱或者了解的境界。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]可以简单分成宅男和宅女，当然也可多分人妖一组（这个。。。。特例）。原义是特指对动漫的了解达到达人境界的人。现在广义的可以认为是对某项或者某些事物有着别人不能达到的喜爱或者了解的境界。\e"
+		}
+	}
+
+                elseif "御宅族" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]原义特指在家或者某些固定场所进行观看和收购二次元以及与之相关的事物的人的总称。现在也有非动漫御宅族的称呼，即指那些在家里生活足不出户的人。但是会和御宅族的人很合得来。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]原义特指在家或者某些固定场所进行观看和收购二次元以及与之相关的事物的人的总称。现在也有非动漫御宅族的称呼，即指那些在家里生活足不出户的人。但是会和御宅族的人很合得来。\e"
+		}
+	}
+
+                elseif "家里蹲" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]与御宅组很接近，但不能称为御宅族，因为家里蹲大部分是以个人生活为主，长期处于自我封闭的状况生活的人。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]与御宅组很接近，但不能称为御宅族，因为家里蹲大部分是以个人生活为主，长期处于自我封闭的状况生活的人。\e"
+		}
+	}
+
+                elseif "宅男" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]一般特指对萌系列很有喜爱的人。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]一般特指对萌系列很有喜爱的人。\e"
+		}
+	}
+
+                elseif "宅女" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]与腐女属同一意思，不过...\w9\w5我不是哦\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]与腐女属同一意思，不过...\w9\w5我不是哦\e"
+		}
+	}
+
+
+                elseif "腐女" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]来源于日本，原义腐，指无可救药的，女，女人或者女生。所以就表明意思是指无可救药的女人。原本是女性的自嘲词语，在日本说对方腐女是不恰当的。这个词语来到中国，发展极为迅速，而且中国的喜爱bl系列的女士绝大多数对腐女这个称呼没有异议。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]来源于日本，原义腐，指无可救药的，女，女人或者女生。所以就表明意思是指无可救药的女人。原本是女性的自嘲词语，在日本说对方腐女是不恰当的。这个词语来到中国，发展极为迅速，而且中国的喜爱bl系列的女士绝大多数对腐女这个称呼没有异议。\e"
+		}
+	}
+
+                elseif "萝莉" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出处不明,%(username)输入指令时候没查到而已，一般指14岁以下的少女。身材无特定要求，不过一般属于贫乳。萝莉始祖一般认为为新世界福音战士里的凌波丽。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]出处不明,%(username)输入指令时候没查到而已，一般指14岁以下的少女。身材无特定要求，不过一般属于贫乳。萝莉始祖一般认为为新世界福音战士里的凌波丽。\e"
+		}
+	}
+
+                elseif "御姐" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]一般指21岁到36岁的成熟未婚女性，身材达到s级水准，性格上冷静、淡定，认知上对上对各种事物的理解是多面的复杂的，一般拥有高贵气质。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]一般指21岁到36岁的成熟未婚女性，身材达到s级水准，性格上冷静、淡定，认知上对上对各种事物的理解是多面的复杂的，一般拥有高贵气质。\e"
+		}
+	}
+
+                elseif "正太" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]一般指14岁以下的少年，可爱型为主，声音女性向。\w9\w9\w5我最喜欢了，可以逆袭哦>_< \w9\w5嘻嘻，不过\w9更喜欢%(username)\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]一般指14岁以下的少年，可爱型为主，声音女性向。\w9\w9\w5我最喜欢了，可以逆袭哦>_< \w9\w5嘻嘻，不过\w9更喜欢%(username)\e"
+		}
+	}
+
+                elseif "大叔" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]又称怪大叔，一般指35到45岁之间的已婚男性，相貌属于怪异，身材必需有让人看了必定躲远的心态，性格对萝莉或者御姐有特殊喜爱。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]又称怪大叔，一般指35到45岁之间的已婚男性，相貌属于怪异，身材必需有让人看了必定躲远的心态，性格对萝莉或者御姐有特殊喜爱。\e"
+		}
+	}
+
+                elseif "后宫" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]后宫（动漫类型）：一般把一男主角和3个或3个以上女主角的一部动漫称为后宫动漫。内容要求：女和男的爱情或者其它感情纠葛为主线，一般男女主角关系很不明确。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]后宫（动漫类型）：一般把一男主角和3个或3个以上女主角的一部动漫称为后宫动漫。内容要求：女和男的爱情或者其它感情纠葛为主线，一般男女主角关系很不明确。\e"
+		}
+	}
+
+                elseif "反后宫" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]一般把一女主角和3个或者3个以上男主角的一部动漫称为反后宫动漫。\e"		
+		}
+		elseif scope == "1"
+		{
+		"\0\s[0]一般把一女主角和3个或者3个以上男主角的一部动漫称为反后宫动漫。\e"
+                }
+        }
+
+
+                elseif "伪后宫" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]类似后宫动漫，但不是后宫，类似于key社三大催泪弹之一的Clannad就是这样的一部。其中只有一个男（女）主角，和3个或者3个以上女（男）主角的故事情节比较复杂，人物关系比较清楚的称为伪后宫。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]类似后宫动漫，但不是后宫，类似于key社三大催泪弹之一的Clannad就是这样的一部。其中只有一个男（女）主角，和3个或者3个以上女（男）主角的故事情节比较复杂，人物关系比较清楚的称为伪后宫。\e"
+                }
+        }
+
+                elseif "BL" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]男同性恋型的动漫，主要以男男爱慕为主，不乏一些H系列。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]男同性恋型的动漫，主要以男男爱慕为主，不乏一些H系列。\e"
+                }
+        }
+
+                elseif "百合" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]女同性恋型的动漫，主要以女女爱慕为主，不乏一些H系列。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]女同性恋型的动漫，主要以女女爱慕为主，不乏一些H系列。\e"
+                }
+        }
+
+                elseif "眈美" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出于日本文学上，属于对美好事物追求的意思。后引申之bl动漫上指对美好的联想，现在也特指BL系列的艺术表现。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]出于日本文学上，属于对美好事物追求的意思。后引申之bl动漫上指对美好的联想，现在也特指BL系列的艺术表现。\e"
+                }
+        }
+
+                elseif "腹黑" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指那些表面很好人，内心很坏思想的人，动漫专业术语之一，一般用在开玩笑等场所，是褒义词...我其实,很腹黑的哦\n\n/
+			\q[◇果然腹黑,ForcedClose_5]\n/
+			\q[◇小腹黑猪,ForcedCloseCancel_5]\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指那些表面很好人，内心很坏思想的人，动漫专业术语之一，一般用在开玩笑等场所，是褒义词...我其实,很腹黑的哦\e"
+                }
+        }
+
+                elseif "tv版" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]在电视上播放的动画版本\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]在电视上播放的动画版本\e"
+                }
+        }
+
+
+                elseif "ova版" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]original video anime原创影像动画，和tv相对，不在电视上播放，只能通过购买获得。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]original video anime原创影像动画，和tv相对，不在电视上播放，只能通过购买获得。\e"
+                }
+        }
+
+                elseif "剧场版" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]动画的电影版本，一般分为原著动画电影版，和原创动画电影版。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]动画的电影版本，一般分为原著动画电影版，和原创动画电影版。\e"
+                }
+        }
+
+                elseif "ost" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]original sound track，原创音乐专辑，收录于某动画有关的音乐\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]original sound track，原创音乐专辑，收录于某动画有关的音乐\e"
+                }
+        }
+
+                elseif "op" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]片头曲/主题曲，也可能特指one piece—海贼王\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]片头曲/主题曲，也可能特指one piece—海贼王\e"
+                }
+        }
+
+                elseif "ed" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]片尾曲\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]片尾曲\e"
+                }
+        }
+
+                elseif "Cast" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]声优，配音演员\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]声优，配音演员\e"
+                }
+        }
+
+                elseif "Staff" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]参与制作动画的全体成员\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]参与制作动画的全体成员\e"
+                }
+        }
+
+                elseif "sf动漫" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]science fiction 科幻机械类作品,类似新世界福音战士\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]science fiction 科幻机械类作品,类似新世界福音战士\e"
+                }
+        }
+
+                
+                elseif "ACG" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]英文Animation Comic Game的缩写，意为：动画，漫画，游戏\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]]英文Animation Comic Game的缩写，意为：动画，漫画，游戏\e"
+                }
+        }
+
+                elseif "原画" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]是把画面中人物动作之起始与终点画面或者静画等，以线条稿的模式画在纸上。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]是把画面中人物动作之起始与终点画面或者静画等，以线条稿的模式画在纸上。\e"
+                }
+        }
+
+                elseif "作画监督" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]修正原画，动画成品等要求资深原画家和动漫家才可以的工作啊。\w9\w9我也好想做，可是我不会的说\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]修正原画，动画成品等要求资深原画家和动漫家才可以的工作啊。\w9\w9我也好想做，可是我不会的说\e"
+                }
+        }
+
+                elseif "色指定" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指定用色的工作称之\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指定用色的工作称之\e"
+                }
+        }
+
+                elseif "仕上" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]在日本原意为完成，完稿，中文就是上色，\w9\w5这是很专业的词语的哦\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]在日本原意为完成，完稿，中文就是上色，\w9\w5这是很专业的词语的哦\e"
+                }
+        }
+
+                elseif "音响监督" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]负责插入配乐的人\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]负责插入配乐的人\e"
+                }
+        }
+
+                elseif "Sinario" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]脚本,w9\w9\w5话说，w9\很少人知道的呢\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]脚本,w9\w9\w5话说，w9\很少人知道的呢\e"
+                }
+        }
+
+                elseif "Otaku" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]日语，原义“御宅”\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]日语，原义“御宅”\e"
+                }
+        }
+
+                elseif "王道" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]最近极为流行的词语，大致可以理解为“权威，真理”等意思\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]最近极为流行的词语，大致可以理解为“权威，真理”等意思\e"
+                }
+        }
+
+                elseif "暴走" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出于动画新世界福音战士（eva）中，原本特指机体混乱无法控制，现在指在极端状况下很难解决的问题导致某人类似发狂的状况表现。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]出于动画新世界福音战士（eva）中，原本特指机体混乱无法控制，现在指在极端状况下很难解决的问题导致某人类似发狂的状况表现。\e"
+                }
+        }
+
+                elseif "sm" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]这个\w9\w5不要问我！！！\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[5]这个\w9\w5不要问我！！！\e"
+                }
+        }
+
+                elseif "vs" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[16]对抗，\w9\w5话说，要我对抗%(username)的敌人吗？\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[16]对抗，\w9\w5话说，要我对抗%(username)的敌人吗？\e"
+                }
+        }
+
+                elseif "残念" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[9]可惜的意思。引申词语有碎碎念\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]可惜的意思。引申词语有碎碎念\e"
+                }
+        }
+
+                elseif "XD" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[16]一般指奸笑，看不明白....\w9\w5横过来看这个单词吧...\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[16]一般指奸笑，看不明白....\w9\w5横过来看这个单词吧...\e"
+                }
+        }
+
+                elseif "KUSO" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[41]恶搞得意思，又可用于感叹，例如“可恶。。。”\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[41]]恶搞得意思，又可用于感叹，例如“可恶。。。”\e"
+                }
+        }
+
+                elseif "我要874" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[32]动词，打人抽人 \w9\w9\0 喂喂喂，\w9\w5你指着我干嘛\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[32]动词，打人抽人 \w9\w9\0 喂喂喂，\w9\w5你指着我干嘛\e"
+                }
+        }
+
+                elseif "素人" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]说人很幼稚或者很嫩，如果对女性可以指很娇小，\w9\w5就像我这样的啦 \w9\w9\0\s[9]你很嫩\w9\w5吗？\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[5]说人很幼稚或者很嫩，如果对女性可以指很娇小，\w9\w5就像我这样的啦 \w9\w9\0\s[9]你很幼稚\w9\w5吗？\e"
+                }
+        }
+
+                elseif "Ff" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[30]最终幻想系列的简写，\w9貌似七代的主角很帅的说 \w9\w9\0 哦？\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[30]最终幻想系列的简写，\w9貌似七代的主角很帅的说 \w9\w9\0 哦？\e"
+                }
+        }
+
+                elseif "M0" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]超时空要塞零\w9\w9\0\s[9]没兴趣\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[5]超时空要塞零\w9\w9\0\s[9]没兴趣\e"
+                }
+        }
+
+                elseif "兄贵" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[16]全身肌肉的男子\w9\w9\0\s[9]哇哇\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[16]超时空要塞零\w9\w9\0\s[9]哇哇\e"
+                }
+        }
+
+                elseif "姐贵" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[1]全身肌肉的女子，\w9\w9好恐怖喵\w9\w9\0\s[9]恩恩\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[1]全身肌肉的女子，\w9\w9好恐怖喵\w9\w9\0\s[9]恩恩\e"
+                }
+        }
+
+                elseif "恶趣味" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[1]怪癖，与众不同的爱好\n\w9\w9\0 你有很多吧\w9\w9\0\s[16]没有没有\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[1]怪癖，与众不同的爱好\n\w9\w9\0 你有很多吧\w9\w9\0\s[16]没有没有\e"
+                }
+        }
+
+                elseif "流星" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[1]略带邪恶的cg图\n\w9\w9\0 怎么了\n\w9\w9\0\s[16]%(username)好像收藏了很多哦\w9\0 ......\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[1]略带邪恶的cg图\n\w9\w9\0 怎么了\n\w9\w9\0\s[16]%(username)好像收藏了很多哦\w9\0 ......\e"
+                }
+        }
+
+                elseif "阿囧" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[1]对《凉宫春日的忧郁》中男主角阿虚的戏称。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[1]对《凉宫春日的忧郁》中男主角阿虚的戏称。\e"
+                }
+        }
+
+                elseif "崩坏" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]一般指动画画面很糟糕或者某人精神崩溃\n\w9\w9\0 看了会郁闷啊！\n\w9\w9\0\s[16]所以%(username)看动漫很挑剔的\w9\0 恩恩有同感\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[5]一般指动画画面很糟糕或者某人精神崩溃\n\w9\w9\0 看了会郁闷啊！\n\w9\w9\0\s[16]所以%(username)看动漫很挑剔的\w9\0 恩恩有同感\e"
+                }
+        }
+
+                elseif "补魔" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[16]出自fate stay ningt 进行魔力填充，因为游戏特殊性，又称为ox的代名词\n\w9\w9\0 你再这种表情%(username)会拉你去补魔的\n\w9\w9\0\s[29]....\w9\0 ......\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[16]出自fate stay ningt 进行魔力填充，因为游戏特殊性，又称为ox的代名词\n\w9\w9\0 你再这种表情%(username)会拉你去补魔的\n\w9\w9\0\s[29]....\w9\0 ......\e"
+                }
+        }
+
+                elseif "BE" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[1]BED END\w9\w9最讨厌了\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[1]BED END\w9\w9最讨厌了\e"
+                }
+        }
+
+                elseif "本命" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]意思是最喜爱的，心中排名第一的。\w9\w9不过，\w9\w9\w5%(username)的本命是谁啊？\w9\w9\n\0\s[9]\w9\w9听说是古河褚的说\n\0\s[5]\w9\w9\w5竟然不是我>_<，\w9\w5不过是冈崎褚哦\0 \w5\w9差不多啦\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]意思是最喜爱的，心中排名第一的。\w9\w9不过，\w9\w9\w5%(username)的本命是谁啊？\w9\w9\n\0\s[9]\w9\w9听说是古河褚的说\n\0\s[5]\w9\w9\w5竟然不是我>_<，\w9\w5不过是冈崎褚哦\0 \w5\w9差不多啦\e"
+                }
+        }
+
+                elseif "爆种" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[16]出自《高达SEED》，特指在冲动下能力上升\w9\n\0\s[9]\w9\w9喂喂，\w9\w9不要爆种啊！\n\0\s[30]\w9\w9\w5刚刚怎么了？\0 \w5\w9变的真快啊\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[16]出自《高达SEED》，特指在冲动下能力上升\w9\n\0\s[9]\w9\w9喂喂，\w9\w9不要爆种啊！\n\0\s[30]\w9\w9\w5刚刚怎么了？\0 \w5\w9变的真快啊\e"
+                }
+        }
+
+                elseif "cj" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]纯洁\w9\w9\w5\0\s[9]完全没有吐槽点啊\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]纯洁\w9\w9\w5\0\s[9]完全没有吐槽点啊\e"
+                }
+        }
+
+                elseif "xe" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]邪恶\w9\w9\w5\0\s[9]完全没有吐槽点啊\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]邪恶\w9\w9\w5\0\s[9]完全没有吐槽点啊\e"
+                }
+        }
+
+                elseif "柴刀女" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[3]出自《寒蝉鸣泣之时》黑化的引申称呼\w9\w9\w5\0\s[9]黑化，又是废话啊\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[3]出自《寒蝉鸣泣之时》黑化的引申称呼\w9\w9\w5\0\s[9]黑化，又是废话啊\e"
+                }
+        }
+
+                elseif "黑化" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[111]邪恶面的表现\n\w9\w9\w5\0\s[9]黑化，速度啊，女王版黑化啊\n\w9\w9\w5\0\s[110]刚刚说什么？\w9\w9\w5\0 没，\w9\w9\w5没什么...\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[111]邪恶面的表现\n\w9\w9\w5\0\s[9]黑化，速度啊，女王版黑化啊\n\w9\w9\w5\0\s[110]刚刚说什么？\w9\w9\w5\0 没，\w9\w9\w5没什么...\e"
+                }
+        }
+
+                elseif "D.V.D" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[9]非常言说的dvd，出自某H动漫，后翻译为脱脱脱的代名词\n\w9\w9\w5\0\s[9]很好，很好\n\w9\w9\w5\0\s[5]不要这样说嘛\w9\w9\w5\0 %(username)\w9\w9\w5很喜欢这个哦\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]非常言说的dvd，出自某H动漫，后翻译为脱脱脱的代名词\n\w9\w9\w5\0\s[9]很好，很好\n\w9\w9\w5\0\s[5]不要这样说嘛\w9\w9\w5\0 %(username)\w9\w9\w5很喜欢这个哦\e"
+                }
+        }
+
+                elseif "大邪神" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]由于天朝某动漫杂志社随刊赠送的saber手板极为差劲，后传至日本被戏称为大邪神，一般指走形的意思\w9\w9\w5\0 很\w9\w5郁闷的说\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]由于天朝某动漫杂志社随刊赠送的saber手板极为差劲，后传至日本被戏称为大邪神，一般指走形的意思\w9\w9\w5\0 很\w9\w5郁闷的说\e"
+                }
+        }
+
+                elseif "天朝" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]中国\w9\w9\w5\0 很伟大哦\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]中国\w9\w9\w5\0 很伟大哦\e"
+                }
+        }
+
+                elseif "11区" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]日本\w9\w9\w5\0 很强大哦\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]日本\w9\w9\w5\0 很强大哦\e"
+                }
+        }
+
+                elseif "saber" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]fate stay night 第一女主角\w9\w9\w5\0 听说%(username)的朋友买了saber lily的说\n\w9\w9\w5\0\s[1]真的啊\w9\w9\，现在貌似快没货了，天价物哦...\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]fate stay night 第一女主角\w9\w9\w5\0 听说%(username)的朋友买了saber lily的说\n\w9\w9\w5\0\s[1]真的啊\w9\w9\，现在貌似快没货了，天价物哦...\e"
+                }
+        }
+
+                elseif "大萌神" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]对凉宫春日的忧郁里的长门有希的称呼\n\w9\w9\w5\0\s[5]够我萌吗？\n\w9\w9\w5\0\s[9]哎\w9\w9\，无语了。。。。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]对凉宫春日的忧郁里的长门有希的称呼\n\w9\w9\w5\0\s[5]够我萌吗？\n\w9\w9\w5\0\s[9]哎\w9\w9\，无语了。。。。\e"
+                }
+        }
+
+                elseif "地味" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[30]朴素，老土，不起眼，存在感弱小\w9\w9\w5\0\s[9]不是说我吧。。。。\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[30]朴素，老土，不起眼，存在感弱小\w9\w9\w5\0\s[9]不是说我吧。。。。\e"
+                }
+        }
+
+                elseif "二次元" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指ACG的平面世界，又或者动漫世界\w9\w9\w5\0 我们都是二次元的哦\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指ACG的平面世界，又或者动漫世界\w9\w9\w5\0 我们都是二次元的哦\e"
+                }
+        }
+
+                elseif "三次元" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指生物生存的世界\w9\w9\w5\0 %(username)是三次元的哦\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指生物生存的世界\w9\w9\w5\0 %(username)是三次元的哦\e\e"
+                }
+        }
+
+                elseif "发卡" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]即派发好人卡\w9\w9\w5\0 %(username)，被发了很多张啊\n\w9\w9\w5\0\s[28]不要这样说的，\w9\w5%(username)会生气的，而且\w9\w9\w5我不会这样对%(username)的\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]即派发好人卡\w9\w9\w5\0 %(username)，被发了很多张啊\n\w9\w9\w5\0\s[28]不要这样说的，\w9\w5%(username)会生气的，而且\w9\w9\w5我不会这样对%(username)的\e"
+                }
+        }
+
+                elseif "好人卡" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]一般指被男生表白然后被冠以你是好人所以我们不合适，后称为好人卡\n\w9\w9\w5\0 %(username)，被发了很多张啊\w9\w9\w5\0\s[28]不要这样说的，\w9\w5%(username)会生气的，而且\w9\w9\w5我不会这样对%(username)的\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]一般指被男生表白然后被冠以你是好人所以我们不合适，后称为好人卡\n\w9\w9\w5\0 %(username)，被发了很多张啊\w9\w9\w5\0\s[28]不要这样说的，\w9\w5%(username)会生气的，而且\w9\w9\w5我不会这样对%(username)的\e"
+                }
+        }
+
+                elseif "鬼隐" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出自《寒蝉鸣泣之时》，原作意思是村庄消失，现在延伸意思为从论坛或者某处消失\e"		
+		}
+		elseif scope == "1"
+		{
+			"出自《寒蝉鸣泣之时》，原作意思是村庄消失，现在延伸意思为从论坛或者某处消失\e"
+                }
+        }
+
+                elseif "galgame" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]美少女游戏\w9\w9\w5\0\s[9]%(username)很爱的啊\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]美少女游戏\w9\w9\w5\0\s[9]%(username)很爱的啊\e"
+                }
+        }
+
+                elseif "嘎哦" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出自AIR中的神尾观玲的口头禅\n\w9\w9\w5\0 不过观铃很可怜的说\w9\w9\w5\0\s[3]恩恩\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]出自AIR中的神尾观玲的口头禅\n\w9\w9\w5\0 不过观铃很可怜的说\w9\w9\w5\0\s[3]恩恩\e"
+                }
+        }
+
+                elseif "工口" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[9]H系列的又一称法\n\w9\w9\w5\0\s[9]很xe的说\w9\w9\w5\0\s[1]恩恩\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]H系列的又一称法\n\w9\w9\w5\0\s[9]很xe的说\w9\w9\w5\0\s[1]恩恩\e"
+                }
+        }
+
+                elseif "和谐" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]又称河蟹，意味很邪恶的东西，或者某论坛等被关闭\n\w9\w9\w5\0\s[9]最近很多地方都被和谐的说\w9\w9\w5\0\s[5]是啊是啊\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[5]又称河蟹，意味很邪恶的东西，或者某论坛等被关闭\n\w9\w9\w5\0\s[9]最近很多地方都被和谐的说\w9\w9\w5\0\s[5]是啊是啊\e"
+                }
+        }
+
+                elseif "好人王" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[35]被多次发卡的人可以这样称呼\n\w9\w9\w5\0 真可怜的喵\w9\w9\w5\0\s[100]不过，\w9\w9\w5你要吗？\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[35]被多次发卡的人可以这样称呼\n\w9\w9\w5\0 真可怜的喵\w9\w9\w5\0\s[100]不过，\w9\w9\w5你要吗？\e"
+                }
+        }
+
+                elseif "黑板" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[110]剧透\n\w9\w9\w5\0\s[9]最痛恨的啦\w9\w9\w5\0\s[111]同意\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[110]剧透\n\w9\w9\w5\0\s[9]最痛恨的啦\w9\w9\w5\0\s[111]同意\e"
+                }
+        }
+
+                elseif "基情" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[51]BL之情\n\w9\w9\w5\0 %(username)的某朋友很喜欢的说\w9\w9\w5\0\s[0]%(username)的朋友还真是什么都有呢\e"		
+		}
+		elseif scope == "1"
+		{
+			"\0\s[51]BL之情\n\w9\w9\w5\0 %(username)的某朋友很喜欢的说\w9\w9\w5\0\s[0]%(username)的朋友还真是什么都有呢\e"
+                }
+        }
+
+                elseif "禁止事项" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[41]出自凉宫春日的忧郁，意思是不能回答的问题\n\w9\w9\w5\0 话说%(username)曾经制作过朝比奈的纸膜，貌似失败的说\w9\w9\w5\0\s[33]真可怜\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[41]出自凉宫春日的忧郁，意思是不能回答的问题\n\w9\w9\w5\0 话说%(username)曾经制作过朝比奈的纸膜，貌似失败的说\w9\w9\w5\0\s[33]真可怜\e"
+                }
+        }
+
+                elseif "绝对领域" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]宅人必须了解词汇，出自eva中的绝对恐怖的领域，现在特指穿长筒袜和裙子的女性的裙子以下到长筒袜以上的漏出皮肤的部分\n\w9\w9\w5\0\s[9]貌似女仆你没有绝对领域的衣服吧\w9\w9\w5\0\s[33]恩恩，好想要啊\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]宅人必须了解词汇，出自eva中的绝对恐怖的领域，现在特指穿长筒袜和裙子的女性的裙子以下到长筒袜以上的漏出皮肤的部分\n\w9\w9\w5\0\s[9]貌似女仆你没有绝对领域的衣服吧\w9\w9\w5\0\s[33]恩恩，好想要啊\e"
+                }
+        }
+
+                elseif "考据党" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指喜爱在动漫中一些场景里进行考据的人\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指喜爱在动漫中一些场景里进行考据的人\e"
+                }
+        }
+
+                elseif "坑" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]未完成作品,\w9\w9\w5\0\s[35]貌似很多都是带坑的作品\n\w9\w9\w5\0\s[9]不过%(username)好想很喜欢看带坑的，\w9\w9\w5还说这样才好看\w9\w9\w5\0\s[16]这样啊？\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]未完成作品,\w9\w9\w5\0\s[35]貌似很多都是带坑的作品\n\w9\w9\w5\0\s[9]不过%(username)好想很喜欢看带坑的，\w9\w9\w5还说这样才好看\w9\w9\w5\0\s[16]这样啊？\e"
+                }
+        }
+
+                elseif "key社" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]日本著名ACG游戏制作商，神社，其下作品《AIR》《Kanon（雪之少女）》《Clannad》被广大ACG迷称为神作。动画版是日本著名催泪弹。\w9\w9\w5\0\s[5]%(username)每次看都痛哭流涕啊\n\w9\w9\w5\0\s[9]我要看\w9\w9\w5\0\s[16]啊？\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]日本著名ACG游戏制作商，神社，其下作品《AIR》《Kanon（雪之少女）》《Clannad》被广大ACG迷称为神作。动画版是日本著名催泪弹。\w9\w9\w5\0\s[5]%(username)每次看都痛哭流涕啊\n\w9\w9\w5\0\s[9]我要看\w9\w9\w5\0\s[16]啊？\e"
+                }
+        }
+
+                elseif "催泪弹" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]很感人，催人泪下的动画\n\w9\w9\w5\0\s[9]%(username)的某朋友是最喜欢看催泪弹，但是\w9\w9\w5看一会儿就哭了。。。\w9\w9\w5\0\s[110]泪腺脆弱啊\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]很感人，催人泪下的动画\n\w9\w9\w5\0\s[9]%(username)的某朋友是最喜欢看催泪弹，但是\w9\w9\w5看一会儿就哭了。。。\w9\w9\w5\0\s[110]泪腺脆弱啊\e"
+                }
+        }
+
+                elseif "控" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]热衷于某些事物的人\n\w9\w9\w5\0\s[9]某人是萝莉控哦\w9\w9\w5呵呵\w9\w9\w5\0\s[1]恩恩，很像很像\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]热衷于某些事物的人\n\w9\w9\w5\0\s[9]某人是萝莉控哦\w9\w9\w5呵呵\w9\w9\w5\0\s[1]恩恩，很像很像\e"
+                }
+        }
+
+                elseif "罗太" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]LOTAI，即像男生又像女生的小孩子，年龄限定。\n\w9\w9\w5\0\s[9]很多腐女喜欢的东西\w9\w9\w5\0\s[0]好想ssp的人格你有很多这样的设计啊\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]LOTAI，即像男生又像女生的小孩子，年龄限定。\n\w9\w9\w5\0\s[9]很多腐女喜欢的东西\w9\w9\w5\0\s[0]好想ssp的人格你有很多这样的设计啊"
+                }
+        }
+
+                elseif "轮回" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]原为kid的infinity系列游戏宗旨，现一般指又回到起点\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]原为kid的infinity系列游戏宗旨，现一般指又回到起点\e"
+                }
+        }
+
+                elseif "蕾丝" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]只动漫中女性衣服上大量带子一样的装饰物\n\w9\w9\w5\0 你好像没有吧\w9\w9\w5\0\s[9]%(username)不会设计衣服，我也没办法啊\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]只动漫中女性衣服上大量带子一样的装饰物\n\w9\w9\w5\0 你好像没有吧\w9\w9\w5\0\s[9]%(username)不会设计衣服，我也没办法啊\e"
+                }
+        }
+
+                elseif "萝卜" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指机器人动画，因为萝卜与英文robot很像\n\w9\w9\w5\0 不过sf动漫算不算啊？\w9\w9\w5\0\s[3]对哦，%(username)说他也不知的\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指机器人动画，因为萝卜与英文robot很像\n\w9\w9\w5\0 不过sf动漫算不算啊？\w9\w9\w5\0\s[3]对哦，%(username)说他也不知的\e"
+                }
+        }
+
+                elseif "乱入" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指某人突然闯入一种稳定的气氛中而带来的不稳定因素的行为\n\w9\w9\w5\0 很模糊的解释啊\w9\w9\w5\0\s[16]你就是很明显的乱入了\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指某人突然闯入一种稳定的气氛中而带来的不稳定因素的行为\n\w9\w9\w5\0 很模糊的解释啊\w9\w9\w5\0\s[16]你就是很明显的乱入了\e"
+                }
+        }
+
+                elseif "麻瓜" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出自哈里波特系列，指不懂魔法的人。Acg界指不懂acg或者对其有误解的人\n\w9\w9\w5\0 天朝很多的说\n\w9\w9\w5\0\s[16]和谐掉他们\w9\w9\w5别冲动的说\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]出自哈里波特系列，指不懂魔法的人。Acg界指不懂acg或者对其有误解的人\n\w9\w9\w5\0 天朝很多的说\n\w9\w9\w5\0\s[16]和谐掉他们\w9\w9\w5别冲动的说\e"
+                }
+        }
+
+                elseif "满赛" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]日文词汇 万岁的中文音译\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]日文词汇 万岁的中文音译\e\e"
+                }
+        }
+
+                elseif "喵的" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]妈的委婉的动漫萌的说法\w9\w9\w5\0\s[9]很强大，很xe\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]妈的委婉的动漫萌的说法\w9\w9\w5\0\s[9]很强大，很xe\e"
+                }
+        }
+
+                elseif "萌" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]大概意思为可爱的\w9\w9\w5,我很萌吗？\w9\w9\w5\0 去问正在看你的那个人吧\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]大概意思为可爱的\w9\w9\w5,我很萌吗？\w9\w9\w5\0 去问正在看你的那个人吧\e"
+                }
+        }
+
+                elseif "MIA" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]生死不明\w9\w9\w5\0\s[27]要调查吗？\w9\w9\w5\0\s[9]你还真是麻烦啊\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]生死不明\w9\w9\w5\0\s[27]要调查吗？\w9\w9\w5\0\s[9]你还真是麻烦啊\e"
+                }
+        }
+
+                elseif "脑内补完" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[9]对某些邪恶事情进行YY\w9\w9\w5\0 你不是再yy吧\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]对某些邪恶事情进行YY\w9\w9\w5\0 你不是再yy吧\e"
+                }
+        }
+
+                elseif "脑残" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[5]火星人的想法，做法，非正常的行为YY\w9\w9\w5\0\s[9]话说凉宫算不算？\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[5]火星人的想法，做法，非正常的行为YY\w9\w9\w5\0\s[9]话说凉宫算不算？\e"
+                }
+        }
+
+                elseif "NICE boat" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[16]很好很强大，很黄很暴力\w9\w9\w5\0\s[9]%(username)很nice boat\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[16]很好很强大，很黄很暴力\w9\w9\w5\0\s[9]%(username)很nice boat\e"
+                }
+        }
+
+                elseif "捏他" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]日语词汇，剧透\w9\w9\w5\0 试试问剧透吧\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]日语词汇，剧透\w9\w9\w5\0 试试问剧透吧\e"
+                }
+        }
+
+                elseif "Orz" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]形象词，一个人无奈而倒地\w9\w9\w5\0 %(username)经常完败与某腐女\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]形象词，一个人无奈而倒地\w9\w9\w5\0 %(username)经常完败与某腐女\e"
+                }
+        }
+
+                elseif "皮据女" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出自《SCHOOL DAYS》因原作中女主角曾用皮据据开情敌的脖子而闻名\n\w9\w9\w5\0 和某女很像的作风啊\n\w9\w9\w5\0\s[32]嗯？\w9\w5\0\s[9]没事没事\w9\w5\0\s[0]\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]出自《SCHOOL DAYS》因原作中女主角曾用皮据据开情敌的脖子而闻名\n\w9\w9\w5\0 和某女很像的作风啊\n\w9\w9\w5\0\s[32]嗯？\w9\w5\0\s[9]没事没事\w9\w5\0\s[0]\e"
+                }
+        }
+
+                elseif "人棍" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出自《高达SEED》由于驾驶员在机体中部，所以动漫中主角将机体四肢斩掉，形象如人棍\n\w9\w9\w5\0 果然高人啊\n\w9\w9\w5\0\s[5]吐槽好没力度啊\w9\w5\0\s[9]%(username)教导的差劲而已\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]出自《高达SEED》由于驾驶员在机体中部，所以动漫中主角将机体四肢斩掉，形象如人棍\n\w9\w9\w5\0 果然高人啊\n\w9\w9\w5\0\s[5]吐槽好没力度啊\w9\w5\0\s[9]%(username)教导的差劲而已\e"
+                }
+        }
+
+                elseif "人渣" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]动漫中特指后宫剧中推倒了复数的男主角\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]动漫中特指后宫剧中推倒了复数的男主角\e\e"
+                }
+        }
+
+                elseif "瑞穗" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]出自某名动漫，此人为伪娘剧的典范，后称之为伪娘\n\w9\w9\w5\0\s[9]%(username)说，某动漫展上很多伪娘的说\n\w9\w9\w5\0\s[3]哪个？\w9\w9\w5\0\s[9]保密\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]出自某名动漫，此人为伪娘剧的典范，后称之为伪娘\n\w9\w9\w5\0\s[9]%(username)说，某动漫展上很多伪娘的说\n\w9\w9\w5\0\s[3]哪个？\w9\w9\w5\0\s[9]保密\e"
+                }
+        }
+
+                elseif "扫雷" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]对新作品进行确认质量\n\w9\w9\w5\0\s[9]还以为是系统自带那个\n\w9\w9\w5\0\s[5]\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]对新作品进行确认质量\n\w9\w9\w5\0\s[9]还以为是系统自带那个\n\w9\w9\w5\0\s[5]\e"
+                }
+        }
+
+                elseif "三无" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]无心，无表情，无感觉既长门型，一种萌元素。\n\w9\w9\w5\0\s[9]那个可是女神哦\n\w9\w9\w5\0\s[3]这个你也知道？\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]无心，无表情，无感觉既长门型，一种萌元素。\n\w9\w9\w5\0\s[9]那个可是女神哦\n\w9\w9\w5\0\s[3]这个你也知道？\e"
+                }
+        }
+
+                elseif "杀必死" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[9]服务画面，邪恶画面\n\w9\w9\w5\0\s[9]%(username)最爱啊\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]服务画面，邪恶画面\n\w9\w9\w5\0\s[9]%(username)最爱啊\e"
+                }
+        }
+
+                elseif "生肉" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指新作无字幕\n\w9\w9\w5\0 可惜那些不会11区文字的人了\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指新作无字幕\n\w9\w9\w5\0 可惜那些不会11区文字的人了\e"
+                }
+        }
+
+                elseif "团长" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]凉宫春日特有专业称呼\n\w9\w9\w5\0 看了2009版会脑残的\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]凉宫春日特有专业称呼\n\w9\w9\w5\0 看了2009版会脑残的\e"
+                }
+        }
+
+                elseif "推土机" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]见一个推倒一个的动漫男主角的戏称\n\w9\w9\w5\0 没什么可说的\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]见一个推倒一个的动漫男主角的戏称\n\w9\w9\w5\0 没什么可说的\e"
+                }
+        }
+
+                elseif "天然呆" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]性格上比较模糊，毕竟迟钝的女性，萌属性\n\w9\w9\w5\0\s[9]话说天然呆动画最近很少了的说\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]性格上比较模糊，毕竟迟钝的女性，萌属性\n\w9\w9\w5\0\s[9]话说天然呆动画最近很少了的说\e"
+                }
+        }
+
+                elseif "伪非" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]不是很了解就大肆胡乱发言的人，很强的蔑视之意\n\w9\w9\w5\0\s[9]要鄙视\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]不是很了解就大肆胡乱发言的人，很强的蔑视之意\n\w9\w9\w5\0\s[9]要鄙视\e"
+                }
+        }
+
+                elseif "呜咕" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]口头禅，出自《Kanon》中的月宫亚由，萌元素\n\w9\w9\w5\0\s[9]の。。。。\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]口头禅，出自《Kanon》中的月宫亚由，萌元素\n\w9\w9\w5\0\s[9]の。。。。\e"
+                }
+        }
+
+                elseif "伪娘" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]男性很像女性的外表，或者是男扮女装者，具体意义极为复杂。\n\w9\w9\w5\0\s[9]你不会解释吧。。。\w9\w9\w5\0\s[1]%(username)说太长了，不可想打\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]男性很像女性的外表，或者是男扮女装者，具体意义极为复杂。\n\w9\w9\w5\0\s[9]你不会解释吧。。。\w9\w9\w5\0\s[1]%(username)说太长了，不可想打\e"
+                }
+        }
+
+                elseif "西奈" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[32]日文词汇 去死的意思\n\w9\w9\w5\0\s[9]不要这样解释词语啊\w9\w9\w5\0\s[3]看错了的说\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[32]日文词汇 去死的意思\n\w9\w9\w5\0\s[9]不要这样解释词语啊\w9\w9\w5\0\s[3]看错了的说\e"
+                }
+        }
+
+                elseif "XXOO" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[9]推倒\n\w9\w9\w5\0\s[9]问女仆推倒试试\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]推倒\n\w9\w9\w5\0\s[9]问女仆推倒试试\e"
+                }
+        }
+
+                elseif "远目" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]省略的意思\n\w9\w9\w5\0\s[9]差不多就是这个了\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]省略的意思\n\w9\w9\w5\0\s[9]差不多就是这个了\e"
+                }
+        }
+
+                elseif "糟糕" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]一般指18X物\n\w9\w9\w5\0\s[9]很xe啊\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]一般指18X物\n\w9\w9\w5\0\s[9]很xe啊\e"
+                }
+        }
+
+                elseif "追" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]关注的意思\n\w9\w9\w5\0\s[9]咕~~(╯﹏╰)b\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]关注的意思\n\w9\w9\w5\0\s[9]咕~~(╯﹏╰)b\e"
+                }
+        }
+
+                elseif "女王" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[110]强势型女性\n\w9\w9\w5\0\s[9]变的真快啊\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[110]强势型女性\n\w9\w9\w5\0\s[9]变的真快啊\e"
+                }
+        }
+
+                elseif "H" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[9]18禁的东西\n\w9\w9\w5\0 这东西%(username)电脑里貌似很多的说\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[9]18禁的东西\n\w9\w9\w5\0 这东西%(username)电脑里貌似很多的说\e"
+                }
+        }
+
+                elseif "初回特典" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]第一次放印的特典\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]第一次放印的特典\e"
+                }
+        }
+
+                elseif "映像特典" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]名动画片的特典\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]名动画片的特典\e"
+                }
+        }
+
+                elseif "圣战" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]同人志的口语\e"	
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]同人志的口语\e"
+                }
+        }
+
+               
+                elseif "便当" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]动漫角色死亡或消失或行踪不明。\w9\w9领便当的都是不重要的角色吧？\w9\w9\w9\0主要角色领便当作品便完结了\e"
+
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]动漫角色死亡或消失或行踪不明。\w9\w9领便当的都是不重要的角色吧？\w9\w9\w9\0主要角色领便当作品便完结了\e"
+                }
+        }
+
+               elseif "雷" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]受到惊吓或震憾，\w9\w9就像脑袋里打雷一样。\w9\w9\w9女仆讲的笑话很雷吧？\w9\w9\w9\0应该是很冷\e"
+
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]受到惊吓或震憾，\w9\w9就像脑袋里打雷一样。\w9\w9\w9女仆讲的笑话很雷吧？\w9\w9\w9\0应该是很冷\e"
+
+                }
+        }
+
+            elseif "基友" _in_ reference1 || "基情" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]那些共同有爱及其有暖味关系的人互称对方为基友，\w9\w9也作搞基的朋友，\w9\w9他们间的情感称为基情，\w9\w9\0 我和你能称为基友吗？\w9\w9\0\s[32]妄想！\e"
+
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]那些共同有爱及其有暖味关系的人互称对方为基友，\w9\w9也作搞基的朋友，\w9\w9他们间的情感称为基情，\w9\w9\0 我和你能称为基友吗？\w9\w9\0\s[32]妄想！\e"
+
+                }
+        }
+
+         
+            elseif "搞基" _in_ reference1 ||"搅基" _in_ reference1
+	{
+		if scope == "0"
+		{
+			"\0\s[0]指男性同性恋趋向者。\w9\w9是指某一种喜欢男人的男性，\w9\w9此类人称为“搞基”。 \w9\w9“基”的粤语读音和“Gay”的读音相同。 \w9\w9“搞基”是男性与男性之间的性关系群,\w9\w9在当代社会中此种现象有日趋上升的势头。\w9\w9该词也由贬义词成为中性词。搞基的不一定是同性恋哪。\e"
+
+		}
+		elseif scope == "1"
+		{
+			"\0\s[0]指男性同性恋趋向者。\w9\w9是指某一种喜欢男人的男性，\w9\w9此类人称为“搞基”。 \w9\w9“基”的粤语读音和“Gay”的读音相同。 \w9\w9“搞基”是男性与男性之间的性关系群,\w9\w9在当代社会中此种现象有日趋上升的势头。\w9\w9该词也由贬义词成为中性词。搞基的不一定是同性恋哪。\e"
+
+                }
+        }
+
+               
+
+else
+	{
+    NvpuTalkToUser;
+	}
+}
+
+
+
+//---- 上面沟通用到的 ------------
+RestStart
+{
+	rest = "1"
+	if tea == "1"
+	{
+		"\0\s[16]那么…\w9啊…\w9\w9\s[5]\n请稍微等一下。\w9\w9\w9\s[99]\n\n[half]…\w9…\w9…\w9…\w9…\w9\w9\s[150]\n\n[half]久等了。\w9\w9\n\n[half]稍微休息一下、\w9\n效率可能会比较好喔。\e"
+	}
+	elseif tea == "2"
+	{
+		"\0\s[16]那么…\w9啊…\w9\w9\s[5]\n请稍微等一下。\w9\w9\w9\s[99]\n\n[half]…\w9…\w9…\w9…\w9…\w9\w9\s[250]\n\n[half]久等了。\w9\w9\n\n[half]稍微休息一下、\w9\n效率可能会比较好喔。\e"
+	}
+	else
+	{
+		"\0\s[16]那么…\w9啊…\w9\w9\s[5]\n请稍微等一下。\w9\w9\w9\s[99]\n\n[half]…\w9…\w9…\w9…\w9…\w9\w9\s[50]\n\n[half]久等了。\w9\w9\n\n[half]稍微休息一下、\w9\n效率可能会比较好喔。\e"
+	}
+}
+
+
+
+CallNvpu
+{
+	scope = "0"
+	"\0\s[0]什么事呢？\e"
+}
+
+CallTowa
+{
+	scope = "1"
+	"\0 嗯、\w5我吗？\w9\w5\n怎么了？\e"
+}
+
+Choice.ForcedClose_0
+{
+	"\0\s[5]好的。\w9\s[5]\n那么%username、\w9祝你有个好梦…\w9\w5\0 掰啦。\w9\w9\-\e"
+	"\0\s[0]晚安、\w9%username。\w9\w9\-\e"
+}
+Choice.ForcedCloseCancel_0
+{
+	"\0 不是要睡了吗？\w9\w9\n算了、\w9也好。\e"
+	"\0\s[1]咦…\w9\w9\s[1]\n嗯…\w9\w9\n那么、\w9再稍微\w9待在这儿一会吧。\e"
+}
+
+Choice.ForcedClose_1
+{
+	"\0\s[5]好的。\w9\w5\s[1]\n这个…\w9\w9\n啊…\s[29]路、\w9路上小心。\w9\w9\0\s[9]…\w9嗯。\w9\w9\s[9]\n总之、好好的去吧。\w9\w9\-\e"
+	"\0\s[5]好的。\w9\w5\s[1]\n这个…\w9\w9\n啊…\s[29]路、\w9路上小心。\w9\w9\0\s[9]…\w9嗯。\w9\w9\s[9]\n总之、别太勉强就是了。\w9\w9\-\e"
+}
+Choice.ForcedCloseCancel_1
+{
+	"\0\s[9]喂喂…\w9没问题吧？\w9\w9\0\s[5]啊哈哈…\e"
+}
+
+Choice.Usercomm0_yes
+{
+	"\0\s[1]…\w9…\w9…\0\s[9]\w9\w9\0\s[29]\n…\w9…\w9…\w9\w9\s[41]\n嗯…\e"
+}
+
+Choice.Usercomm0_no
+{
+	"\0\s[1]是、\w9是吗？\w9\w9\s[5]\n嗯…\e"
+}
+
+Choice.gotosea
+{   intimacy += 5;
+OnSummer
+}
+
+
+
+Choice.nogotosea
+{   intimacy -= 5;
+        "\0\s[29]唔、明明很想去海边的呢。"
+}
+
+OnSmokingPlace
+{
+	smoking = "1"
+	"\0 暂离、\w9我要去补给菸分。\w9\w9\0\s[5]菸分？\0\s[16]\b[-1]\e"
+}
+
+/*
+//---- 见切れ中 -------------------------------------------------------------------------------------------------------
+MikireTalk
+{
+	talkmemo = "e_0"
+	"\0\s[3]嗯…\e"
+	"\0\s[3]如果会碍事的话、\w9\w9\n可以不要勉强让我们留着喔…\e"
+}
+
+//---- 见切れ终了 -----------------------------------------------------------------------------------------------------
+EndMikireTalk
+{
+	talkmemo = "e_0"
+	"\0\s[5]不会妨碍到吗？\e"
+	"\0\s[0]啊…\w\w9\s[5]谢谢。\e"
+}
+
+//**** 重なり *********************************************************************************************************
+
+Kasanari
+{
+	"\0 …\w9…\w9…\w9\w9\4\w9\w9\w9\0\s[30]唔。\e"
+}
+
+//**** サーフィス复元 *************************************************************************************************
+
+OnSurfaceRestore
+{
+	if mode == "1"
+	{
+		"\0\s[99]\0\s[110]\b[-1]\e"
+	}
+        elseif mode =="2"
+        {
+		"\0\s[99]\0\s[200]\b[-1]\e"
+	}
+	elseif rest == "1"
+	{
+	"\0\b[-1]\e"
+	}
+	elseif smoking == "1"
+	{
+		"\0\s[0]\b[-1]\e"
+	}
+	else
+	{
+		"\0\s[0]\0 \e"
+	}
+}
+
+
+
+*/

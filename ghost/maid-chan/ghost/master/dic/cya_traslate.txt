@@ -1,0 +1,337 @@
+///////// —————— ↓著作權相關↓ ——————
+///////// 唯獨是這個文件内的文字，包括程式碼、圖片、文字等，無視「偽春菜著作權問答」內的允許條例，
+///////// 以下全部為禁止事項：
+///////// ①隨意拿走、再打包發布給他人格使用；
+///////// ②進行修改、再打包發布給他人格使用；
+///////// ③放在別的人格內，再進行發布；
+///////// —————— ↑著作權相關↑ ——————
+///////// 如果有需要用到，請與我聯繫：984405219@qq.com
+
+//**** Google翻譯 *****************************************************************************
+//---- 選單 -----------------------------------------------------------------------------
+/*Choice.GoogleDicBACK
+{
+	MenuGoogleDic
+}*/
+Choice.DicMenu
+{
+	MenuGoogleDic
+}
+MenuGoogleDic
+{
+	"\0\b[2]\s[6]\_q/
+//	\f[bold,true]Google線上字典\f[bold,false]\n\n/
+//	\![*]\q[繁體中文英漢互譯,GoogleDiczhTWen]\n/
+//	\![*]\q[中文(簡體)→英語,GoogleDiczhCNen]\n/
+//	\![*]\q[英語→中文(繁體),GoogleDicenzhTW]\n/
+//	\![*]\q[英語→中文(簡體),GoogleDicenzhCN]\n/
+//	\n\n[half]/
+	\f[bold,true]金山詞霸線上字典\f[bold,false]\n\n/
+	\![*]\q[英汉互译,ICIBADiczhCNen]\n/
+	\n\n[half]/
+	\_b[img/back.png,inline]\q[Back,BACK]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]/
+	\_q\e"
+}
+/*Choice.GoogleDiczhTWen
+{ "\0\s[6]\_q現在使用的是\n「繁體中文英漢互譯」\n請輸入需要翻譯的字詞。\_q\![open,inputbox,InputGoogleDiczhTWen]\e" }*/
+Choice.ICIBADiczhCNen
+{ "\0\s[6]\_q現在使用的是\n「金山詞霸英漢互譯」\n請輸入需要翻譯的字詞。\_q\![open,inputbox,InputICIBADiczhCNen]\e" }
+
+//**** 翻譯 *******************************************************************************
+//---- 轉譯 -----------------------------------------------------------
+//---- 中文(繁體)→英語
+EntryGoogleDiczhTWen
+{
+	 googledicword = reference1
+	"\0\s[6]連線中.....\![execute,http-get,http://www.google.cn/dictionary,--param=langpair=zh-TW%7Cen&q="
+	--
+	STRENCODE(googledicword,"UTF-8")
+	--
+	"&ie=UTF-8&oe=UTF-8&aq=f,--file=googledic.html,--param-charset=UTF-8,--timeout=50,--async=googledic]\e"
+}
+//---- 中文(簡體)→英語
+/*EntryGoogleDiczhCNen
+{
+	 googledicword = reference1
+	"\0\s[6]連線中.....\![execute,http-get,http://www.google.cn/dictionary,--param=langpair=zh-CN%7Cen&q="
+	--
+	STRENCODE(googledicword,"UTF-8")
+	--
+	"&ie=UTF-8&oe=UTF-8&aq=f,--file=googledic.html,--param-charset=UTF-8,--timeout=50,--async=googledic]\s[5]完成了。\e"
+}
+//---- 英語→中文(繁體)
+EntryGoogleDicenzhTW
+{
+	 googledicword = reference1
+	"\0\s[6]連線中.....\![execute,http-get,http://www.google.cn/dictionary,--param=langpair=zh-TW%7Cen&q="
+	--
+	STRENCODE(googledicword,"UTF-8")
+	--
+	"&ie=UTF-8&oe=UTF-8&aq=f,--file=googledic.html,--param-charset=UTF-8,--timeout=50,--async=googledic]\e"
+}
+//---- 英語→中文(簡體)
+EntryGoogleDicenzhCN
+{
+	 googledicword = reference1
+	"\0\s[6]連線中.....\![execute,http-get,http://www.google.cn/dictionary,--param=langpair=zh-CN%7Cen&q="
+	--
+	STRENCODE(googledicword,"UTF-8")
+	--
+	"&ie=UTF-8&oe=UTF-8&aq=f,--file=googledic.html,--param-charset=UTF-8,--timeout=50,--async=googledic]\e"
+}*/
+
+//---- 編譯并輸出---------------------------------------------------------
+
+/*#define GOOGLEDIC_FILE 'var\googledic.html'
+
+GoogleDicRead
+{
+	//---- 迴圈（感謝時原砂さん）
+        FCHARSET(1);
+        _txt = '';
+        _ret = FOPEN(GOOGLEDIC_FILE,'r');
+        if _ret == 1 {
+                while (_str = FREAD(GOOGLEDIC_FILE)) != -1 {
+                        _txt += "%(_str)\n";
+                }
+                FCLOSE(GOOGLEDIC_FILE);
+        }
+
+	//----取出關鍵詞
+	_pos1 = STRSTR(_txt,'<h2 class="wd">',0)
+	_pos2 = STRSTR(_txt,'</h2>',0)
+	_title = REPLACE(SUBSTR(_txt,_pos1,(_pos2-_pos1)),'<h2 class="wd">','')
+	_title = RE_REPLACE(_title,'<.+?>','')
+	_title = REPLACE(_title,'\n','')
+	_title = RE_SPLIT(_title,'[]|[]+')
+
+	//---- 取出解釋
+	_pos3 = STRSTR(_txt,'<ul id="dfnt">',0)
+	_pos4 = STRSTR(_txt,'</ul>',0)
+	_content = REPLACE(SUBSTR(_txt,_pos3,(_pos4-_pos3)),'<ul id="dfnt">','')
+	_content = REPLACE(_content,"\n","")
+	_content = REPLACE(_content,'<h4>','\n\n[half]\f[bold,true]')
+	_content = REPLACE(_content,'</h4>','\f[bold,false]\n\n[half]')
+	_content = REPLACE(_content,'<span class="mn">','\n「')
+	_content = REPLACE(_content,'<span class="translate">','\n「')
+	_content = REPLACE(_content,'</span>','」\n')
+	_content = RE_REPLACE(_content,"<.+?>","")
+	_content = RE_REPLACE(_content,"&nbsp;","")
+	_content = RE_REPLACE(_content,"&#40;","(")
+	_content = RE_REPLACE(_content,"&#41;",")\n")
+	
+	//---- 輸出
+	if _pos3 != -1 {
+        "\0\s[5]完成了。\b[-1]\c\0\b[2]\![set,autoscroll,disable]\![set,balloontimeout,-1]\![set,choicetimeout,-1]\_q【關鍵詞】\n\n[half]\f[bold,true]%(_title[0])\f[bold,false]\n\n[half]/
+	(%(_title[1])) %(_title[2])\n(%(_title[3])) %(_title[4])\n\n/
+	【字典解釋】%(_content)\n\n\n[half]/
+	\f[height,9]\_m[169] 2008 \_a[http://www.google.com]Google\_a\f[height,default]\n/
+	\n\n[half]\_q/
+	\_b[img/back.png,inline]\q[Back,DicMenu]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+	}
+	else {
+	"\_q\0\s[4]找不到「%(googledicword)」的翻譯啾……如果沒有繁/簡體錯誤的話，試試看其他字詞呣？/
+	\n\_b[img/back.png,inline]\q[再次查詢,DicMenu]\_q\e"
+	}
+}
+*/
+
+//**** 金山詞霸在線字典 *****************************************************************************
+EntryIcibaDiccn
+{
+	_r = FUNCTIONEX("saori\ChConverter.dll", "simplified", reference1) //轉簡
+	 icibadicword = _r
+	"\0\s[6]翻譯「%(icibadicword)」連線中.....\![execute,http-get,http://www.iciba.com/"
+	--
+	STRENCODE(icibadicword,"UTF-8")
+	--
+	"/,--file=icibadic.html,--param-charset=UTF-8,--timeout=50,--async=aicibadic]\e"
+}
+//---- 編譯并輸出---------------------------------------------------------
+
+#define ICIBADIC_FILE 'var\icibadic.html'
+
+IcibaDicRead
+{
+	//---- 迴圈（感謝時原砂さん）
+        FCHARSET(1);
+        _txt = '';
+        _ret = FOPEN(ICIBADIC_FILE,'r');
+        if _ret == 1 {
+                while (_str = FREAD(ICIBADIC_FILE)) != -1 {
+                        _txt += "%(_str)\n";
+                }
+                FCLOSE(ICIBADIC_FILE);
+        }
+
+	//----取出關鍵詞
+	_pos1 = STRSTR(_txt,'<h1>',0)
+	_pos2 = STRSTR(_txt,'</h1>',0)
+	_title = REPLACE(SUBSTR(_txt,_pos1,(_pos2-_pos1)),'<h1>','')
+
+	//---- 取出解釋
+	_pos3 = STRSTR(_txt,'<dt>词性及解释</dt>',0)
+	_pos4 = STRSTR(_txt,'</dl>',_pos3)
+	_content = REPLACE(SUBSTR(_txt,_pos3,(_pos4-_pos3)),'<dt>词性及解释</dt>','')
+	_content = REPLACE(_content,'<img src="/images/dot.gif" border="0" class="dot"  />',"\![*]")
+	_content = REPLACE(_content,'</dd>',"\n")
+	_content = RE_REPLACE(_content,"<.+?>","")
+
+	
+	//---- 輸出
+	if _pos1 != -1 {
+        "\0\s[5]完成了。\b[-1]\c\0\b[2]\![set,autoscroll,disable]\![set,balloontimeout,-1]\![set,choicetimeout,-1]\_q/
+	【關鍵詞】\n\n[half]\f[bold,true]%(_title)\f[bold,false]\n\n[half]/
+	【詞性及解釋】\n[half]%(_content)\n\n[half]/
+	\f[height,9]\_m[169] 2008 \_a[http://www.iciba.com]Kingsoft\_a\f[height,default]\n/
+	\n\n[half]\_q/
+	\_b[img/back.png,inline]\q[Back,DicMenu]\_l[50,-]/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+	}
+	else {
+	"\_q\0\s[4]找不到「%(icibadicword)」的翻譯啾……試看其他字詞呣？\n\_q/
+	\_b[img/back.png,inline]\q[再次查詢,ICIBADiczhCNen]\e"
+	}
+}
+
+
+//**** IP查詢功能 ****************************************************************************************
+Choice.IPAdrMenu
+{
+	IPAdrMenuTalk;
+}
+IPAdrMenuTalk
+{
+	"\0\s[6]請輸入想要查詢的IP地址。\![open,inputbox,InputIPAdr]\e"
+}
+SendIPAdr
+{
+         ipadr = reference1
+        "\0\s[6]\0\s[6]連線中.....\![execute,http-get,http://www.sogou.com/features/ip.jsp?query="
+        --
+        STRENCODE(ipadr,"GB2312")
+        --
+        ",--file=ipadr.html,--param-charset=GB2312,--timeout=50,--async=ipadr]\e"
+}
+
+#define IPADR_FILE 'var\ipadr.html'
+ReadIPAdr
+{
+        //---- 迴圈（感謝時原砂さん）
+        FCHARSET(4);
+        _txt = '';
+        _ret = FOPEN(IPADR_FILE,'r');
+        if _ret == 1 {
+                while (_str = FREAD(IPADR_FILE)) != -1 {
+                        _txt += "%(_str)\n";
+                }
+                FCLOSE(IPADR_FILE);
+        }
+	//
+	//----取出關鍵詞
+	_pos1 = STRSTR(_txt,'<div id="content">',0)
+	_pos2 = STRSTR(_txt,'</div>',977)
+	_title = REPLACE(SUBSTR(_txt,_pos1,(_pos2-_pos1)),'<div id="content">','')
+	_title = REPLACE(_title,' ','')
+	_title = REPLACE(_title,'<h1>','\f[bold,true]')
+	_title = REPLACE(_title,'</h1>','\f[bold,false]')
+	_title = REPLACE(_title,'</p>','\n')
+	_title = RE_REPLACE(_title,"<.+?>","")
+	_title = REPLACE(_title,"点击这里搜索包含该IP的网页","")
+	
+	//---- 輸出
+        "\0\s[5]完成了。\b[-1]\c\0\b[2]\![set,autoscroll,disable]\![set,balloontimeout,-1]\![set,choicetimeout,-1]\_q/
+	%(_title)/
+	\f[height,9]\_m[169] 2008 \_a[http://www.sogou.comp]SOGOU.COM\_a\f[height,default]\n/
+	\n\n[half]\_q/
+	\_b[img/back.png,inline]\q[再次查詢,IPAdrMenu]\n/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+}
+
+//*******************************************************************************************
+/*Choice.GooDicEntry
+{
+	"\0\s[6]連線中.....\![execute,http-get,http://ext.dictionary.goo.ne.jp/search.php,--param=MT=%E3%81%AF%E3%81%AF&kind=all&mode=0,--file=goodic.html]\e"
+}*/
+
+//*********************************************************************************************
+//輸入所在地
+Choice.LocaleEntry
+{
+	if locale == "未知地" {
+	"\0\s[3]想要查詢天氣預報的話，需要知道%(username)所在的城市名稱。\n\n[half]\0\s[6]%(username)住在哪個城市呢？\n\s[15]只需城市名就可以了呣。\![open,inputbox,InputLocale,-1,請輸入城市名]\e"
+	}
+	elseif locale == 0 {
+	"\0\s[2]想要查詢天氣預報的話，需要知道%(username)所在的城市名稱。\n\n[half]\0\s[5]%(username)住在哪個城市呢？\n\s[5]只需城市名就可以了呣。\![open,inputbox,InputLocale,-1,請輸入城市名]\e"
+	}
+	else {
+	"\0\s[5]\0\s[6]開始查詢「%(locale)」的天氣狀況。"
+	--
+	WeatherCheck;
+	}
+}
+Choice.EditLocale
+{
+	"\0\s[2]%(username)需要更改所在地嗎？\1\s[16]那麼、請輸入新的地點。\![open,inputbox,InputLocale,-1,請輸入城市名]\e"
+}
+
+//查詢天氣預報
+WeatherCheck
+{
+        
+        "連線中......\![execute,http-get,http://www.sogou.com/features/weather.jsp?query=,--param="
+        --
+        STRENCODE(locale,"GB2312")
+        --
+        ",--file=weather.html,--param-charset=GB2312,--timeout=50,--async=weathercheck]"
+}
+#define WEATHER_FILE 'var\weather.html'
+WeatherRead
+{
+        //---- 迴圈（感謝時原砂さん）
+        FCHARSET(4);
+        _txt = '';
+        _ret = FOPEN(WEATHER_FILE,'r');
+        if _ret == 1 {
+                while (_str = FREAD(WEATHER_FILE)) != -1 {
+                        _txt += "%(_str)\n";
+                }
+                FCLOSE(WEATHER_FILE);
+        }
+	//
+	//----取出關鍵詞
+	_pos1 = STRSTR(_txt,'<div id="content">',0)
+	_pos2 = STRSTR(_txt,'</div>',977)
+	_title = REPLACE(SUBSTR(_txt,_pos1,(_pos2-_pos1)),'<div id="content">','')
+	_title = REPLACE(_title,' ','')
+	_title = REPLACE(_title,'<h1>','\f[bold,true]')
+	_title = REPLACE(_title,'</h1>','\f[bold,false]')
+	_title = REPLACE(_title,'<th>','【')
+	_title = REPLACE(_title,'</th>','】')
+	_title = REPLACE(_title,'</p>','\n')
+	_title = RE_REPLACE(_title,"<.+?>","")
+	_title = REPLACE(_title,'\n\n','\n[half]')
+	_title = REPLACE(_title,'\n\n\n\n','')
+	
+	//---- 輸出
+        "\0\s[5]完成了。\b[-1]\c\0\b[2]\![set,autoscroll,disable]\![set,balloontimeout,-1]\![set,choicetimeout,-1]\_q/
+	%(_title)/
+	\n\n[half]\f[height,9]\_m[169] 2008 \_a[http://www.sogou.comp]SOGOU.COM\_a\f[height,default]\n/
+	\n\n[half]\_q/
+	\_b[img/next.png,inline]\q[更改所在地,EditLocale]\n/
+	\_b[img/close.png,inline]\q[Cancel,CANCEL]\e"
+}
+
+Choice.fanfou
+{
+	"\0\s[6]連線中.....\![execute,http-get,http://api.fanfou.com/statuses/user_timeline.rss?id=貓魚,--file=fanfou.xml,--param-charset=UTF-8,--timeout=50,--async=fanfou]\e"
+}
+
+Choice.fanfou2
+{
+	_text = '啊啊啊啊'
+	_parameters = "status=%(_text)"
+	"\0\s[6]連線中.....\![execute,http-post,http://api.fanfou.com/statuses/update.xml,--param=%(_parameters),--param-charset=UTF-8,--timeout=50,--async=fanfoupost]\e"
+}

@@ -1,0 +1,10 @@
+charset,gb2312
+message.end,\h完成。\e
+
+menu.title,[功能选项]
+menu.repair_icon,修复图标缓存
+menu.empty_recycle_bin,清空回收站
+menu.delete_tmpfile,删除系统临时文件
+menu.exit_windows,退出Windows
+menu.cancel,取消
+

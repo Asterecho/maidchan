@@ -1,0 +1,271 @@
+﻿///////// マウス入力関連辞書
+///////// 根據「文　ゴーストテンプレート 紺野ややめ」寫成
+
+//**** TIPS說明 ***********************************************************************************
+// 「はろーYAYAわーるど」yaya_tmpl_util.txtに記述済み
+// 既に辞書にない場合こちらも一緒に記述
+AYATEMPLATE.MouseEventExec
+{
+  _fname = _argv[0] + TOSTR(reference[3]) + TOSTR(reference[4])
+  if ISFUNC(_fname) {
+    EVAL(_fname)
+    return
+  }
+
+  _fname = _argv[0] + TOSTR(reference[3])
+  if ISFUNC(_fname) {
+    EVAL(_fname)
+    return
+  }
+}
+
+//**** 撫摸反應 ***********************************************************************************
+
+//---- OnMouseMove事件 ------------------------------------------------------------------
+OnMouseMove
+{
+	//---- 根據reference3判定是本体側還是kero側
+	if reference3 == 0
+	{
+		//---- 本体側的撫摸
+		MouseMoveSakura
+	}
+	else
+	{
+		//---- kero側的撫摸
+		MouseMoveKero
+	}
+}
+
+//---- 本体側の撫摸反應 -----------------------------------------------------------------
+MouseMoveSakura : sequential
+{
+	if reference4 != ""
+	{
+		//---- 當撫摸人格特定位置時
+		stroke++
+		
+		//---- 撫摸達到一定量時判定撫摸的部位
+		if stroke >= 15
+		{
+			//---- 撫摸反應發動。根據撫摸的部位產生相應對話
+			if reference4 == "Head"
+			{
+
+				"\0\s[2]唔……你摸我头干嘛？\e"
+				"\0\s[5]…………我的头 > < \e"
+				"\0\s[29]呼呼啾……快睡著了……\e"
+
+			}
+
+			elseif reference4 == "Face"
+			{
+
+				"\0\s[1]啾……\e"
+				"\0\s[2]這裡，軟綿綿的嗎？\e"
+				"\0\s[2]唔……%(username)的手有點熱。\e"
+
+			}
+			elseif reference4 == "Hand"
+			{
+
+				"\0\s[0]摸我手你想干嘛……\w8只有龙之介大人才可以哦！\e"
+				"\0\s[2]这么想摸我的手吗\e"
+				"\0\s[2]你的手好恶心啊\e"
+
+			}
+			elseif reference4 == "Bust"
+			{
+
+
+				"\0\b[0]\s[5]\![move,-120,500,100]\![set,trayballoon,--timeout=15,--text=啊啊啊啊啊！你好H啊]\_w[5000]\![move,100,100,1000]\e"
+
+			}
+
+
+
+			stroke = 0
+		}
+	}
+	else
+	{
+		// 撫摸未定義部位時無反應
+		stroke = 0
+	}
+}
+
+//**** 雙擊反應 ***********************************************************************************
+
+//---- OnMouseDoubleClick事件 -----------------------------------------------------------
+OnMouseDoubleClick
+{
+	//---- 根據reference3判定是本体側還是kero側
+	if reference3 == 0
+	{
+		//---- 本体側的雙擊
+		MouseDoubleClickSakura
+	}
+/*	elseif reference3 == 1
+	{
+		//---- kero側的雙擊
+		MouseDoubleClickKero
+	}
+	else
+	{
+		//---- 播放器的雙擊
+		TalkPlayerOpenFile
+	}*/
+}
+//---- 本体側的雙擊反應 -------------------------------------------------------------
+MouseDoubleClickSakura : sequential
+{
+	//---- 雙擊部位判定
+			if reference4 == "Head"
+			{
+
+				"\0\s[4]啾……\e"
+				"\0\s[3]啾咿……\e"
+				"\0\s[4]輕一點啾……\e"
+				"\0\s[2]如果我永遠也長不大的話，%(username)要負責哦！\e"
+				"\0\s[4]%(username)這麼喜歡摸我的頭嗎……真的會長不高啦……\e"
+
+			}
+
+			elseif reference4 == "Face"
+			{
+
+				"\0\s[7]啾……！\e"
+				"\0\s[7]不要碰兔的臉頰！……有蛀牙。\e"
+				"\0\s[15]臉頰這裡很痛的，你看，腫起來了！\e"
+				"\0\s[4]啊……\e"
+				"\0\s[7]我也是會紅的啦！\e"
+				"\0\s[15]那邊有蛀牙……不要捏……\e"
+				"\0\s[15]%(username)喜歡我嗎？\e"
+
+			}
+			elseif reference4 == "Hand"
+			{
+
+				"\0\s[0]摸我手你想干嘛……\w8只有龙之介大人才可以哦！\e"
+				"\0\s[2]这么想牵我的手吗\e"
+				"\0\s[2]你的手好恶心啊\e"
+
+			}
+			elseif reference4 == "Bust"
+			{
+                                "\0\b[0]\s[5]\![move,-120,500,100]\![set,trayballoon,--timeout=15,--text=啊啊啊啊啊！你好H啊]\_w[5000]\![move,100,100,1000]\e"
+				"\0\s[4]你真H啊！！\s[11]不行！\w9\e"
+				"\0\s[4]…………\w9现行犯啊！\e"
+
+				
+
+			}
+
+
+	else
+	{
+		//---- 雙擊其他部位時打開選單
+		OpenMenu
+	}
+}
+
+
+			
+
+//---- 播放器的雙擊反應 -------------------------------------------------------------
+TalkPlayerOpenFile
+{
+	if  reference4 == "Open"
+	{
+		"\1\s[10]\0\s[0]\![open,dialog,open,--id=musicopen,--title=請選擇需要播放的音樂文件]\e"
+	}
+	else{}
+}
+//**** OnMouseClickイベント *************************************************************************
+OnMouseClick
+{
+	if  reference3 == 2 {
+	ClickPlayer;
+	}
+	else {}
+}
+//---- 播放器點擊 --------------------------------------
+ClickPlayer
+{
+	if  reference4 == "Play"
+	{
+		if playmode == 1 {
+		playmode = 1
+		"\p[2]\s[4]\0\s[5]\![sound,play]正在播放。\e"
+		}
+		elseif playmode == 2 {
+		playmode = 1
+		"\p[2]\s[4]\0\s[5]\![sound,resume]繼續播放。\e"
+		}
+		else {
+		TalkPlayerNone
+		}
+	}
+	elseif  reference4 == "Loop"
+	{
+		if playmode == 1 {
+		playmode = 2
+		"\p[2]\s[4]\0\s[2]\![sound,pause]暫停播放。\e"
+		}
+		elseif playmode == 2 {
+		playmode = 2
+		"\p[2]\s[4]\0\s[3]已經暫停了呣…\e"
+		}
+		else {
+		TalkPlayerNone
+		}
+	}
+	elseif  reference4 == "Stop"
+	{
+		if playmode == 1 {
+		playmode = 0
+		"\p[2]\s[4]\0\s[0]\![sound,stop]停止了。\e"
+		}
+		elseif playmode == 2 {
+		playmode = 0
+		"\p[2]\s[4]\0\s[0]\![sound,stop]停止了。\e"
+		}
+		else {
+		TalkPlayerNone
+		}
+	}
+	elseif  reference4 == "Close"
+	{
+		"\p[2]\s[-1]\0\s[0]果殼音樂播放器關閉了。\e"
+	}
+}
+TalkPlayerNone
+{
+	"\0\s[2]沒有音樂啾…將音樂文件拖給我，或者雙擊播放器熒幕打開文件。\e"
+}
+
+
+
+
+
+
+
+//**** 鼠標拖曳反映（感謝時原砂さん）*************************************************************************
+OnMouseDragStart
+{
+        if reference3 == 0 {
+        "\0\s[23]"; }
+        elseif reference3 == 1 {
+        "\0\s[23]"; }
+}
+
+OnMouseDragEnd
+{
+        if reference3 == 0 {
+        "\0\s[5]"; }
+        elseif reference3 == 1 {
+        "\1\s[14]"; }
+}
+
+
+

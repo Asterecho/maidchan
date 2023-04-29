@@ -1,0 +1,190 @@
+
+//**** 右鍵選單項目 *******************************************************************************
+
+//---- 使用者名稱 -----------------------------------------------------------------------
+On_username
+{
+	username
+}
+
+//---- お気に入りメニュー変換 -------------------------------------------
+LinkMenuConvert
+{
+	_text = ''
+	_data = IARRAY
+	for _i = 0 ; _i < _argc ; _i++ {
+		_data = (RE_SPLIT(_argv[_i],'\s*\|\s*'),'','') //ダミー
+		_text += "%(_data[0])%(CHR(1))%(_data[1])%(CHR(1))%(_data[2])%(CHR(1))%(CHR(2))"
+	}
+	_text;
+}
+
+//---- 線上更新的基準網址URL ------------------------------------------------------------
+On_homeurl
+{
+	"http:"
+}
+
+//---- 入口網站的選單按鍵名稱 -----------------------------------------------------------
+On_portalrootbutton.caption
+{
+	"??????"
+}
+
+//---- 入口網站的清單 -------------------------------------------------------------------
+On_sakura.portalsites
+{
+	LinkMenuConvert(On_sakura.portalsites_EX)
+}
+/*
+On_sakura.portalsites_EX : array
+{
+	'- 作者相關 -			|													| '
+	'貓魚的狗窩				| http://cat-fish.net								| '
+	'鮮花怒放				| http://www.warmsoil.com							| '
+	'蛋撻鹿(≧∇≦)人工生命製造屋| http://warmsoil.com/cgi-bin/diarypro/diary.cgi| '
+	'- 中文人格 -			| 													| '
+	'茶兔＆茶鹿(配布元)		| http://cat-fish.net/ssp/cyaucyaka/				| '
+	'落鳥					| http://cat-fish.net/ssp/rakutori/					| '
+	'橘花＆斗和				| http://ckikka.cuc2.idv.tw/						| '
+	'偽春菜的野菜園			| http://cuc2.idv.tw/viewthread.php?tid=455&extra=page%3D1	| '
+	'瑪姬＆白仔				| http://blog.yam.com/markken						| '
+}
+*/
+//---- 本体側推薦網站的選單按鍵名稱 -----------------------------------------------------
+On_recommendrootbutton.caption
+{
+	"特別感謝"
+}
+
+//---- 本体側推薦網站的清單 -------------------------------------------------------------
+On_sakura.recommendsites
+{
+	LinkMenuConvert(On_sakura.recommendsites_EX)
+}
+On_sakura.recommendsites_EX : array
+{
+	'- 支援感謝 -		| 										| '
+	'中文偽春菜後援會	| http://cuc2.idv.tw/								| '
+	'中文偽春菜後援會Wiki	| http://cuc2.idv.tw/wiki/							| '
+	'SSP中文發佈站		| http://cers.cuc2.idv.tw							| '
+	'とらぶる☆ばぐとらっく/SSP BUGTRAQ| http://ssp.shillest.net						| '
+	'- 資料倉庫 -		| 										| '
+	'CROWˇSSPリファレンス	| http://crow.aqrs.jp/reference/all/index.html					| '
+	'駄でべろぱの小ネタWiki	| http://emily.shillest.net/specwiki/						| '
+	'文Wiki「文屋」		| http://emily.shillest.net/ayaya/						| '
+	'伺かwiki		| http://www.towano.net/ua-ks/							| '
+	'非公式 伺か 仕様書	| http://www.ooyashima.net/db/							| '
+}
+
+//---- kero側推薦網站的選單按鍵名稱 -----------------------------------------------------
+On_kero.recommendbuttoncaption
+{
+	"茶鹿的便籤"
+}
+
+//---- kero側推薦網站的清單 -------------------------------------------------------------
+On_kero.recommendsites
+{
+	LinkMenuConvert(On_kero.recommendsites_EX)
+}
+On_kero.recommendsites_EX : array
+{
+	'- SAORI感謝 -			|					| '
+	'SAORI「カイ」			| http://enflapment.ifdef.jp/saori/index.html/| '
+	'SAORI「MCIAudioR」		| http://umeici.hp.infoseek.co.jp/	| '
+	'SAORI「set_wall_paper」| http://www.geocities.jp/poskoma		| '
+	'SAORI「gomi.dll」		| 					| '
+	'SAORI「AnalogClock2.0」| http://cuc2.idv.tw/viewthread.php?tid=949&extra=page%3D2| '
+	'SAORI「systeminfo.dll」| 						| '
+	'SAORI「saori_cpuid.dll」| 						| '
+	'SAORI「saori_ip.dll」	| 						| '
+	'SAORI「uds.dll」		| 					| '
+	'SAORI「wmove.dll」		| 					| '
+	'SAORI「cpconv.dll」		| 					| '
+	'SAORI「screencatch.dll」	| http://cuc2.idv.tw/viewthread.php?tid=1426&pid=9726&page=1&extra=#pid9726	| '
+	'SAORI「RunStart.dll」		| 					| '
+	'- 函式感謝 -			|					| '
+	'日野春鉄道人間工学研究所| http://railway.nanika.jp			| '
+	'二次元斷層		| http://hk.geocities.com/tionzy/index.htm	| '
+	'某廢柴的廢棄日記	| http://scrappedblog.blogspot.com/		| '
+}
+
+//---- 線上更新的選單按鍵名稱 -----------------------------------------------------------
+On_updatebutton.caption
+{
+	"用餐時間"
+}
+
+//---- readme的選單按鍵名稱 -------------------------------------------------------------
+On_readmebutton.caption
+{
+	"女仆酱"
+}
+
+//---- 消滅指示的選單按鍵名稱 -----------------------------------------------------------
+On_vanishbutton.caption
+{
+	"再见了"
+}
+//---- 消滅指示ボタン表示切り替え -------------------------------------------------------
+
+On_vanishbutton.visible
+{
+	vanishbutton.visible
+}
+
+//---- 取得其他起動中的人格名稱（感謝Royさん） ---------------------------------------------------------
+On_otherghostname
+{
+        // 作成現在起動中人格的清單
+        ghostexlist = ""
+        _i = 0
+        while _i >= 0 {
+                _ghostname = NAMETOVALUE("reference%_i")
+                if _ghostname != "" {
+                        if _i > 0; ghostexlist += ","
+                        if CHR(1) _in_ _ghostname[0]; _ghostname = SPLIT(_ghostname[0],CHR(1))
+                        ghostexlist += _ghostname[0]
+                        _i++
+                }
+                else; _i = -1
+        }
+        ghostexcount = ARRAYSIZE(ghostexlist)
+}
+
+//---- SHIORI 相關情報 ------------------------------------------------------------------
+On_version
+{
+	GETSETTING(AYAINFO_VERSION)
+}
+
+On_craftman
+{
+	"harry159821"
+}
+
+On_craftmanw
+{
+	"harry159821"
+}
+
+On_name
+{
+	"YAYA"
+}
+
+//---- Owned SSTP 用 uniqueid 取得 ------------------------------------------------------
+On_uniqueid
+{
+	uniqueid = reference0
+}
+
+//---- hwnd 取得 ------------------------------------------------------------------------
+On_hwnd
+{
+	sakurahwnd    = reference0[0]
+	kerohwnd      = reference0[1]
+	sakurablnhwnd = reference1[0]
+	keroblnhwnd   = reference1[1]
+}

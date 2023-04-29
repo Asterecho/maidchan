@@ -1,0 +1,147 @@
+﻿//---- 倒数计时 ---
+Choice.count
+{
+	i=0;
+	--
+        "\0\![open,inputbox,Oncountchange,-1]%(username)您要我帮忙倒数几秒呢？\n\n[half]\q[◇取消倒数,countend]";
+}
+
+Oncount
+{     
+	if reference0 > 0  
+		"\s[5]收到！\s[20]\t倒数%(reference0)秒钟…\n\n[half]\q[◇取消倒数,countend]\_w[%(reference0*1000)]\c\s[5]\![sound,stop]\_v[saori\Ring.mp3]锵锵～时间到了。\x";
+	else
+		"数字错误喔。";
+}
+
+Oncountchange
+{
+	if reference0!=NULL
+		num=reference0;
+	if num>0
+	{
+		
+		_txt="\C\![quicksession,1]\c\0\s[5]收到！倒数%(num-i)秒钟…\n\n[half]\q[◇取消倒数,countend]";
+		if i<=num
+		{
+			i++;
+			_txt+"\_w[1000]\![raise,Oncountchange]";
+			
+		}
+		else
+		{
+			_txt="\![sound,stop]\c\0\s[5]\_v[vioce\收到.mp3]\_q锵锵～时间到了。\x";
+			_txt;
+			break;
+		}
+	}
+	
+	
+	else
+		"数字错误喔。";
+}
+
+//----------------------秒表----------------------------------------------
+OnSecondWatch
+{
+	
+	
+	if !reference0
+	{
+		SecondWatch.m=0;SecondWatch.s=0;SecondWatch.ss=0;
+		"\b[0]%(username)要使用秒表计时吗？\n\q[开始计时,OnSecondWatch,timerecord]\n\_l[0,130]\q[◇返回,OnOpenMenu,3]";
+	}
+	elseif reference0=="timerecord"
+	{        
+		if SecondWatch.ss>=90
+		{
+			SecondWatch.ss=0;
+			SecondWatch.s++;
+		}
+		if SecondWatch.s>=60
+		{
+			SecondWatch.s=0;
+			SecondWatch.m++;
+		}
+		SecondWatch.ss+=10;
+		_txt="\C\![quicksession,1]\c\b[0]%(SecondWatch.m)分%(SecondWatch.s)秒%(SecondWatch.ss)\n\q[暂停计时,OnSecondWatch,pause]\n\q[停止计时,OnSecondWatch,stop]\n\_l[0,130]\q[◇返回,OnOpenMenu,3]";
+		_txt+"\_w[100]\![raise,OnSecondWatch,timerecord]"
+	}
+	
+	elseif reference0=="pause"
+	{   
+		_txt="\b[0]%(SecondWatch.m)分%(SecondWatch.s)秒%(SecondWatch.ss)\w9\w9\w9\n\q[继续计时,OnSecondWatch,timerecord]\n\q[停止计时,OnSecondWatch,stop]\n\_l[0,130]\q[◇返回,OnOpenMenu,3]";
+		_txt;
+	}   
+	
+	
+	
+	
+    elseif reference0=="stop"
+	{   
+		_txt="\b[0]%(SecondWatch.m)分%(SecondWatch.s)秒%(SecondWatch.ss)\w9\w9\w9\n\q[开始计时,OnSecondWatch,timerecord]\n\_l[0,130]\q[◇返回,OnOpenMenu,3]";
+		SecondWatch.m=0;SecondWatch.s=0;SecondWatch.ss=0;
+		_txt;
+	}   
+	
+	
+	
+}
+
+
+
+
+Choice.countend
+{
+	"\![close,inputbox,Oncount]\s[0]取消倒数了。";
+}
+
+//**********************C盘清理***************************************************************************
+Choice.ClearC
+{
+	"\0\s[40]C盘垃圾清理能让%(username)的电脑变得更快哦。确定要清理吗？\n\n\q[◇确定,OnClearC]\n\q[◇不用了,OnOpenMenu,3]";
+}
+
+OnClearC
+{
+	"\![open,file,saori\c盘垃圾文件清理.bat]";
+}
+
+//*********************IE不能打开新链接修复************************************************
+Choice.ierepair
+{
+	"\0\s[40]IE不能打开新连接了？试试这个工具吧。\n\n\q[◇确定,Onierepair]\n\q[◇不用了,OnOpenMenu,3]";
+	
+}
+
+Onierepair
+{
+	"\![open,file,saori\IE不能打开新链接修复.cmd]";
+}
+
+//************************输入法调整工具************************************************
+Choice.inputtool
+{
+	"\0\s[40]想要设置输入法或调整输入法的顺序吗？\n\n\q[◇确定,Oninputtool]\n\q[◇不用了,OnOpenMenu,3]";
+	
+}
+
+Oninputtool
+{
+	"\![open,file,saori\输入法调整工具.EXE]";
+	
+}
+
+//***********************网络测试工具************************************************
+Choice.netcheck
+{
+	"\0\s[40]是否要测试网络速率\n\n\q[◇确定,Onnetcheck]\n\q[◇不用了,OnOpenMenu,3]";
+}
+
+Onnetcheck
+{
+	"\![open,file,saori\kmspeed.exe]";
+	
+}
+
+

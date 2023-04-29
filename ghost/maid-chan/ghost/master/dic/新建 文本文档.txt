@@ -1,0 +1,248 @@
+//---- OnMinuteChange事件 ---------------------------------------------------------------
+OnMinuteChange
+{
+	EVAL("intimacy+=0.03");
+	_time = GETTIME(); //取得當前系統時間
+	//---- 判定是否設置了自動關機
+
+//---- 任务系统时间部分开始 ---------------------------------------------------------------
+	if tmp1[0] == hour && tmp1[1] == minute
+	{
+		OnChange1
+	}
+//---- 任务系统时间部分结尾 ---------------------------------------------------------------
+	if shutdowntime[0] == hour && shutdowntime[1] == minute
+	{
+		if shutdowntimeswitch == "1"
+		{
+			SAVEVAR();
+			"\![sound,stop]\0\s[16]\![sound,play,voice/pong.mp3]30秒後將進行關機。如果要取消的話，請雙擊對話框。\_w[30000]"
+			--
+			_i = FUNCTIONEX("saori\KI.dll","ExitWindows","ShutDown");
+		}
+	}
+
+	//---- 判定是否到了鬧鈴設定的時間
+	if AlarmTime[0] == hour && AlarmTime[1] == minute
+	{
+		if AlarmOpenSwitch == "ON" && AlarmDaySwitch == "只今日提醒" && AlarmDay[1] == month && AlarmDay[2] == day
+		{
+			"\![sound,stop]\0\s[16]\![sound,play,voice/lalala.mp3]%(hour)點%(minute)分到了～\x"
+		}
+		elseif AlarmOpenSwitch == "ON" && AlarmDaySwitch == "每日都提醒"
+		{
+			"\![sound,stop]\0\s[2]\![sound,play,voice/lalala.mp3]%(hour)點%(minute)分到了～\x"
+		}
+	}
+	//---- 每隔*分鐘提醒一次
+	elseif AlarmOpenSwitch == "ON" && AlarmPinlvSwitch == "間隔提醒" && _time[5] - AlarmEntryTime[5] == AlarmDelay
+	{
+		AlarmEntryTime = GETTIME();
+		"\![sound,stop]\0\s[2]\![sound,play,voice/lalala.mp3]%(hour)點%(minute)分到了～%(AlarmDelay)分鐘後還會提醒%(username)喲。\e"
+	}
+	//---- 時間的分鐘為 0 時產生報時對話。其他情況時則執行重疊判定
+	elseif minute == 0
+	{
+		MinuteTalk();
+	}
+	elseif mikireflag == 1
+	{
+		//---- 進行見切時的對話
+		if mikireswitch == "1"
+		{
+			MikireTalk
+		}
+	}
+	elseif reference2 == 1
+	{
+		//---- 檢測本體側與kero側是否重疊，並進行重疊反應對話
+		//---- 通常是讓kero側移到一邊去
+		if kasanariswitch == "1"
+		{
+			Kasanari
+		}
+	}
+}
+
+
+//-------- 報時 -------------------------------------------------------------------------
+
+MinuteTalk
+{
+	MinuteTalk1();
+	MinuteTalk2();
+}
+
+MinuteTalk1
+{
+	"\0\s[5]\![sound,play,voice/baoshi.wav]例行報時！\w9\w9\n\n\0\s[16]也就是說，現在已經%(HourPoint)%(hour12)點了。\w9\w9\n\n\0\s[16]女仆酱我的話，時間從沒搞錯過！\w9\w9";
+}
+
+MinuteTalk2
+{
+	case hour {
+		when 0 {
+			"\0\s[4]\![sound,play,voice/baoshi.wav]現在已經是0點了！不可以睡这么晚的哦，难道你想熬夜？";
+		}
+		when 1-3 {
+			"\0\s[4]\![sound,play,voice/baoshi.wav]……\w9\n\n\0\s[9]也就是說現在已經%(HourPoint)%(hour12)點了，去睡嗎？\w9\w9\n\n\0\s[0]我的工作就是陪著%(username)……";
+		}
+		when 4-6 {
+			"%(hour)點了…干脆去看日出吧？";
+			"\![sound,play,voice/baoshi.wav]呼哈～不困吗？\w8\n[150]唔…%(hour)點了。";
+		}
+		when 7-8 {
+			"\![sound,play,voice/baoshi.wav]%(hour)點了，還沒清醒的話趕快打起精神喔。";
+		}
+		when 9-11 {
+			"\![sound,play,voice/baoshi.wav]%(hour)點了…據說是人一天中記憶能力最好的時段呢，要好好利用喔。";
+		}
+		when 12 {
+			"\0\s[4]\![sound,play,voice/baoshi.wav]午飯香？\w9\w9\0\s[16]也就是說現在已經是%(HourPoint)12點了。快去吃午饭吧，千万别饿着肚子哦。";
+		}
+		when 13-14 {
+			"\![sound,play,voice/baoshi.wav]下午%(hour12)點整…總是很想睡的時間呢。";
+		}
+		when 15-16 {
+			"\0\s[6]沒有茶會的%(HourPoint)%(hour12)點一點意思也沒有。\w9\w9\0\s[16]也就是說現在已經是%(HourPoint)%(hour12)點了。";
+		}
+		when 17-18 {
+			"\![sound,play,voice/baoshi.wav]下午%(hour12)點，晚餐時間啦～";
+		}
+		when 19 {
+			"\0\s[5]\![sound,play,voice/baoshi.wav]工作時間結束！\w9\w9\n\n\0\s[16]也就是說現在是%(HourPoint)%(hour12)點了。\w9\w9\n\n\0\s[0]實際上除了玩之外什麼也沒做啊。";
+		}
+		when 20-22 {
+			"\0\s[3]\![sound,play,voice/baoshi.wav]有人在打哈欠了！好大的鼻泡！\w9\w9\n\n\0\s[6]……啊。\w9\0\s[6]也就是說，現在已經是%(HourPoint)%(hour12)點了。\w9\w9\n\n\0\s[6]……";
+		}
+	}
+}
+
+HourPoint
+{
+	if ( _argc == 0 )
+		_argv[0] = hour;
+	
+	case _argv[0] {
+		when 0-3	{ "凌晨"; "半夜"; }
+		when 4-6	{ "清晨"; }
+		when 7-8	{ "早上"; }
+		when 9-11	{ "上午"; }
+		when 12-14	{ "中午"; }
+		when 15-18	{ "午後"; }
+		when 19-23	{ "晚上"; }
+	}
+}
+
+/*---------------------------------------------------------------------------------------
+ *  函式名：IsLeapYear
+ *  機能　：判斷是否為潤年
+ *  引數　：_argv[0]　 年
+ * --------------------------------------------------------------------------------------
+*/
+
+IsLeapYear
+{
+	if _argv[0] % 400 == 0 && _argv[0] % 100 != 0 || _argv[0] % 4 == 0
+		1;
+}
+
+/*---------------------------------------------------------------------------------------
+ *  函式名：IsRightDate
+ *  機能　：判斷日期是否正確
+ *  引數　：_argv[0]　 年
+ *			_argv[1]　 月
+ *			_argv[2]　 日
+ * --------------------------------------------------------------------------------------
+*/
+
+IsRightDate
+{
+	_year	= TOINT(_argv[0]);
+	_month	= TOINT(_argv[1]);
+	_day	= TOINT(_argv[2]);
+	_date	= (31,28,31,30,31,30,31,31,30,31,30,31);
+	
+	// 潤年判定
+	if IsLeapYear(_year)
+		_data[1] = 29;
+	
+	if 0 < _day && _day <= _date[_month - 1]
+		1;
+}
+
+/*---------------------------------------------------------------------------------------
+ *  函式名：ZodiacSign
+ *  機能　：根據日期回傳其星座名稱
+ *  引數　：_argv[0]　 月
+ *			_argv[1]　 日
+ *  感謝Royさん及時原砂さん
+ * --------------------------------------------------------------------------------------
+*/
+OnZodiacSign
+{
+        _month        = userbirthday[1];
+        _day        = userbirthday[2];
+        _zodiac = ("水瓶座","雙魚座","牡羊座","金牛座","雙子座","巨蟹座","獅子座","處女座","天秤座","天蠍座","人馬座","摩羯座");
+        _sign        = "";
+
+        _date        = (31,28,31,30,31,30,31,31,30,31,31);
+        _dateAdj= (-5,1,1,1,0,-2,-3,-4,-6,-6,-5,-6);
+
+        // Day of Year
+        CVINT(_day);
+        _dayofyear = _day;
+        for _i=0; _i<(_month - 1); _i++
+        {
+                _dayofyear += _date[_i];
+        }
+        if _month > 1 
+                _dayofyear--;
+
+        // Offset修正
+        _dayofyear -= 20;
+        if _dayofyear < 0
+                _dayofyear += 365;
+        _dayofyear += _dateAdj[_month - 1];
+
+        _index = _dayofyear/30;
+        CVINT(_index);
+        _sign = _zodiac[_index];
+
+        _sign;
+}
+//**** 見切 ***************************************************************************************
+
+//---- OnSecondChange事件 ---------------------------------------------------------------
+OnSecondChange
+{
+    if mikireenable && reference1 && !mikireflag {
+       mikiretimer--;
+       if mikiretimer < 1 {
+          mikireflag   = 1
+          MikireTalk //見切れ反応時のトーク
+       }
+    } else {
+       mikiretimer = 5
+    }
+ 
+    if mikireflag && !reference1 {
+       //5秒以内に復帰した場合は、見切れ後トークを行わない
+       endmikire = 1
+    }
+ 
+    if endmikire {
+       EndMikireTalk //見切れ終了時のトーク
+    }
+ 
+    if kasanarienable && reference2 {
+       kasanaritimer--;
+       if kasanaritimer < 1 {
+          kasanarienable = 0;
+          Kasanari //重なり反応時のトーク
+          kasanarienable = 1;
+       }
+    } else {
+       kasanaritimer = 5
+    }
+}

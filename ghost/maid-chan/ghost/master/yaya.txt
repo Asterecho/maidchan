@@ -1,0 +1,38 @@
+﻿
+charset, UTF-8
+charset.extension, default
+//---- 系统辞书 -------------------------------------------------------------------------
+
+dic, yaya_config.dic
+dic, aya_shiori3.dic			// YAYA: 辭書制御辭書
+dic, aya_compatible.dic			// YAYA: AYA過去互換用辭書
+dic, aya_schedule.dic
+
+//---- 辞书 -------------------------------------------------------------------------
+dic, dic/aya_word.txt			// 单词辞书
+dic, dic/aya_aitalk.txt			// AI对话辞书
+dic, dic/aya_bootend.txt		// 起動/終了/切替 對話辞书
+dic, dic/aya_communicate.txt		// 沟通辞书
+dic, dic/aya_menu.txt			// 菜单辞书
+dic, dic/aya_react.txt			// 事件反应辞书
+dic, dic/aya_string.txt			// 右键菜单辞书
+dic, dic/aya_etc.txt			// 其他核心事件辞书
+dic, dic/aya_username.txt		// 称呼辞书
+dic, dic/cya_database.txt               // 数据库辞书
+dic, dic/comm&user.txt                  // 教学辞书
+//dic, dic/clock.txt                      // 闹钟
+dic, dic/xuanyi.txt
+dic, dic/talk.txt
+dic, dic/rjkj3.txt
+dic, dic/open.txt
+dic, dic/mission.txt
+dic, dic/playwithlrc_Unicode.txt
+dic, dic/aya_hotkey.txt                 // 热键辞书
+dic, dic/cya_tieba.txt		        // 贴吧辞书
+dic, dic/miniuse.txt                    // 应用辞书
+dic, dic/story.txt                      // 讲笑话辞书
+dic, dic/cya_traslate.txt		// 翻译辞书
+dic, dic/cya_runstart.txt		// 开机自启辞书
+
+log, ayame.log		
+iolog, on

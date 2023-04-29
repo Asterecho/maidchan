@@ -1,0 +1,5 @@
+type,balloon
+name,女仆酱的对话框
+directory,nvpu_balloon
+//refresh,0
+script,\h\s[0]「%lastobjectname」啊...\w9\n\s[5]是女仆酱的專屬對話框呢...\w9\w9\n謝謝^^\e
